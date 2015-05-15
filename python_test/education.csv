@@ -1,0 +1,260 @@
+id	name	type		email	phone	desc	fees	program_computers	program_counseling	program_description	program_feeding	program_orphans	program_scouting	program_specialneeds	program_sports	staff_female	staff_male	student_age_range	students_female	students_male	students	teachers_female	teachers_male	teachers_trained	teachers_tsc	teachers_untrained	teachers	opening_hours	electricity	operational_status	operator_description	operator_type	lon	lat	user
+478551902	Shadrack Kimalel Primary School	primary																											often				36.7988296	-1.3104681	fondolucy
+612004414	Guum Primary School	kindergaten,nursery,primary		guum@yahoo.com	0721940010		KShs 300 per month		yes		yes	yes			yes	2		4-13yrs			128	4	2	4		2	6	07:00-16:00	never	operational		ngo_cbo	36.7820998	-1.3158708	ebrelsford
+612006960	Jeremic Adventist Academy	nursery,primary,secondary			0727760808		supported individually		yes		yes				yes		6		138	129	267	11	10				21	07:00-17:00	never	operational		private	36.7802849	-1.3122249	ebrelsford
+612006977	St Michaels Holy Unity Academy	nursery,primary		hushgo@yahoo.com	0722939737			yes			yes	yes	yes		yes	4	2	4-18yrs	351	450	801	10	14	8	2	16	24	06:30-18:00	often	operational		ngo_cbo	36.7723461	-1.3109696	omino
+612007000	New Hope School	primary																														religious	36.7945025	-1.3190154	Blasio
+612007003	Supiria Primary School	primary																															36.7938872	-1.318405	ebrelsford
+612007006	World Ecclesiastes Primary	primary																												operational		religious	36.7948792	-1.3192283	Blasio
+612007007	Nomiya School	nursery																														religious	36.7948218	-1.3188423	ebrelsford
+612007018	Pag Academy	other																															36.8055166	-1.3133049	anekeya
+612007021	Soweto Academy	primary,secondary		makabwabwire@yahoo.com	0721984541/0736674397		Secondary 7000 KShs per term,Primary 500 KShs per month		yes		yes	yes	yes		yes	3	4	7-17yrs	343	208	551	7	16				23	06:00-21:00	always	operational		private	36.7755758	-1.3160953	ebrelsford
+612007086	Drug Fighters Primary School	nursery,primary					yes		yes		yes	yes			yes	2	3	3-14yrs			120	7	3	10			10	Mo-Fr 07:00-16:00	sometimes	operational		private	36.7932873	-1.3132073	ebrelsford
+612007112	Kirega Primary School	primary																															36.7858825	-1.3127332	ebrelsford
+612007146	St Esther Academy	nursery,primary																										07:00-16:00			More infomation was not given due to abscence of the head in charge	private	36.7786455	-1.3129539	ebrelsford
+612007152	Olympic Primary School	nursery,primary,secondary				Funded. Has Nursery,Secondary	none		yes		yes	yes			yes			3-24yrs	1476	1375	2851	22	9				31	07:00-17:00	sometimes	operational	Total no. exclude Secondary Students		36.7804905	-1.3133253	regynnah
+612007263	Kibera Academy	other				Funded. Has Nursery,Secondary																											36.788001	-1.3111155	omino
+612007264	Kambi Muru Nursery	nursery																															36.7886451	-1.3107635	ebrelsford
+612007272	Risa Children Center	primary,childrens home			0721-962693	They keep children who don&apos;t have parents and home	KShs 100 per month		yes		yes	yes			yes	2	1	7mnth-15yrs	60	40	100	4	1	3		2	5	08:00-16:00	always	operational		ngo_cbo	36.78943	-1.3103201	ebrelsford
+612007279	Mashimoni Squatters Primary	primary			0716583975		KShs 150-600 per year		no		yes	yes	yes		yes	3	8	5-14yrs	285	276	561	13	9	21		1	22	08:00-17:00	always	operational		private	36.7907061	-1.312484	anekeya
+612007398	Mashimoni Friends Church	nursery					KShs 200				yes	yes			yes	1		3-7yrs	10	20	30	3	2	3		2	5	Mo-Fr 07:00-16:00	never	operational		religious	36.7915831	-1.3095937	ebrelsford
+612007401	Lindi Ushirika Nursery School	nursery																															36.7902852	-1.3150596	ebrelsford
+612007406	Saviour Kings Academy Primary	primary																															36.7940253	-1.3155859	ebrelsford
+612007412	Rudolf High School	secondary																															36.7950352	-1.3146274	ebrelsford
+612007413	Lindi Ushirika Nursery School,Primary	nursery,primary		p.o box, 7083-00200 nairobi	0710895928		KShs 300 per month		yes		yes	yes			yes	2	2	3-14yrs	200	70	270	5	2	3		4	7	Mo-Fr 07:00-15:00	never	operational		ngo_cbo	36.794168	-1.3138256	ebrelsford
+612007436	Talent Private School	other																														private	36.7860909	-1.3077913	anekeya
+612007444	Stara Rescue Centre	Private																															36.7897768	-1.3083927	fondolucy
+612007446	Makina Baptist Primary School	primary																															36.7899473	-1.3085984	ebrelsford
+612007447	New Adventist High School	secondary																															36.7895166	-1.3083946	ebrelsford
+612007489	Mzalendo High Technical Center	technical																															36.7884157	-1.3111681	ebrelsford
+612007491	Sunrose Baby Care/ Nursery	kindergarten																															36.7892935	-1.3108481	ebrelsford
+612007505	St Monica Nursery School	nursery					KShs 200 per month					yes				1		3-7yrs			42	4				4	4	08:00-16:00	never	operational		private	36.7785492	-1.3190021	ebrelsford
+612007506	Kibera Library	library																															36.7784823	-1.3192191	ebrelsford
+612007520	Imani Nursery School	nursery																															36.7790073	-1.3188992	ebrelsford
+612007554	Palm Olive Academy	primary			0721608794	Has Nursery	KShs 3000 per term		yes							2	1	21/2-14yrs	190	187	377	7	7	13		1	14		always	operational		private	36.7794245	-1.313813	ebrelsford
+612007565	Kids Zone	nursery,primary		kidszone2008@yahoo.com	0722945037		KShs 2000 per term for primary	yes	yes		yes	yes	yes		yes		1	21/2-8yrs	30	25	55	4	1				5	08:00-15:00	sometimes	operational	no funders	ngo_cbo	36.7804906	-1.3137325	ebrelsford
+612007576	Robster Nursery / Baby Day Care Center	nursery			0718670721		KShs 1000 per month					yes				1	1	2-6yrs	48	30	78	5		5			5	07:00-18:00	never	operational	No funders	private	36.7801005	-1.3134749	ebrelsford
+612007585	AMMSA Junior Academy	primary				also has pre school	fees not stated				yes					1		21/2-9yrs	32	28	60	5					5	07:30-17:00	never	operational	run by individual	private	36.7773233	-1.3126169	ebrelsford
+612007631	Mashimoni Primary	primary																											often				36.7901811	-1.3100353	fondolucy
+612007635	Free Methodist Primary School	primary																															36.7946902	-1.3128994	ebrelsford
+612007641	K.T.D.P.	college																															36.7960799	-1.3143991	ebrelsford
+612007657	Ushirika Kindergarten	kindergarten																															36.7940806	-1.3123394	ebrelsford
+612007672	Laini Saba Nursery and Primary School	nursery,primary		lasba@yahoo.com	0720200847				yes		yes		yes		yes	4	6	6-14yrs	238	217	455	6	8				14	Mo-Fr 07:30-17:00	always	operational		religious	36.7941802	-1.3103386	ebrelsford
+612007678	Church of God nursery and primary school	nursery,primary																															36.7951339	-1.310942	ebrelsford
+612007690	Y.M.C.A. School	nursery,primary		jarednyakuna@yahoo.com	0715342075		KShs 500 per term		yes	v.t.t training centre available	yes		yes		yes		2	3-14yrs	60	85	145	7	3	6		4	10	Mo-Fr 08:00-16:00	often	operational		international_ngo	36.7952886	-1.3109902	fondolucy
+612007712	Glory Primary School	primary																															36.7963005	-1.3113873	ebrelsford
+612007716	Jakes Academy	nursery,primary					KShs 500 per month		yes			yes	yes		yes	2	1	3-15yrs	320	190	130	12	6				18	Mo-Fr 08:00-16:00	always	operational		private	36.7947541	-1.3098221	ebrelsford
+612007816	Linda Baby Care	kindergarten																															36.7868672	-1.3141701	ebrelsford
+612007820	Kisumu Ndogo Primary School	primary			0728697781/ box No.34700100		KShs 1000 per term		yes		yes	yes	yes		yes		2	3-15yrs	220	200	420	5	9	11		3	14	07:30-16:10	never	operational	started by the community but not registered	other- community school	36.7889701	-1.3137941	ebrelsford
+612007886	Fair View School	nursery,primary			0726808699		nursery 200KShs,primary 250KShs,food 200KShs					yes			yes	1	1	3-16yrs	54	37	91	3	2	2		3	5	08:15-15:30	never	operational		ngo_cbo	36.7770696	-1.3151892	ebrelsford
+612007927	Friends Church and School	kindergarten																															36.7827131	-1.3149973	ebrelsford
+612007942	Cana Junior Academy	other																															36.7853204	-1.3149281	anekeya
+612008370	St Christine Primary School	nursery,primary			0720212414	also nursery			yes	care kenya partially supports sports	yes		yes		yes	2	1	4-16yrs	205	210	415	6	8	2		12	14	08:00-17:00	never	operational		religious	36.7770397	-1.3172201	ebrelsford
+612008379	Lindi Friends School	nursery,primary		p.o box,4669-00100 nairobi			yes		yes		yes	yes			yes	2	2	6-14yrs			100	6	4	6		4	10	Mo-Fr 07:00-17:00	sometimes	operational		religious	36.7909977	-1.3146802	ebrelsford
+612008385	Imani Jere Children Center	primary																												operational		religious	36.794059	-1.3176267	Blasio
+612008402	P.C.E.A  Emmanuel Centre Kibera  Parish	computer,technical,tailoring			0738299626	Has Tailoring, Hairdressing, Catering, Nursary school,Business, Electrical and Electronics		yes	yes			yes					1	Form four leavers and majority are adult			57	3	5				8	08:00-20:00	always	operational	funded by Church no. of students keeps on fluctuating	religious	36.7797742	-1.310736	fondolucy
+612008411	Huruma Primary	primary																															36.7898568	-1.3098505	ebrelsford
+612008414	Makina Baptist Primary	primary																															36.7904166	-1.309177	ebrelsford
+612008425	Kibera Center for Evangelization	other																															36.7798244	-1.3138046	millicentoo
+612008438	Graebens Driving School	driving		graebben.school@yahoo.com														adult	160	740	900		7				7	07:30-18:30			No funders	private	36.7792917	-1.3127441	ebrelsford
+612008445	Nyanya Toto Nursary School	nursery				CBO	KShs 300 per month				yes					6	3	3-7yrs	15	25	40	2		2			2	08:00-15:30	sometimes	operational	No funders	private	36.7797956	-1.3121811	ebrelsford
+612008446	Hot Sun Foundation/Kibera Film School	other				film school	none										1	Out of school drop outs and adult				2	2				4	07:00-17:30	always	operational		international_ngo	36.7799887	-1.3121918	ebrelsford
+612008468	Neema Nursery, Primary and Pre-Unit	nursery,primary																															36.7863863	-1.3150005	ebrelsford
+612008472	Ushirika Children Centre	kindergarten																															36.7961457	-1.3131078	ebrelsford
+612008500	Tenderlines Baby Care School Ayany	nursery			020-24693228		KShs 6000 per term	yes			yes				yes	4	4	2.5-6yrs			300	15	2	14			17	07:30-15:30	always	operational		private	36.7762577	-1.3085809	omino
+612008555	Lahasa Day Care School	nursery		dshimuli@yahoo.com	0721 32 90 10	day care	KShs 400 per month, those below 3yrs pay KSsh 35 per day											10 months-6yrs	18	22	40	1		1			1	Mo-Fr 07:00-17:00	never	operational		private	36.7979823	-1.315346	ebrelsford
+612008568	St Gabriel Nursery School	nursery					KShs 300 per term				yes					2		1-5years	17	15	32	3	2				5	Mo-Fr 08:00-15:00	always	operational		religious	36.7978307	-1.3132458	ebrelsford
+612008576	Victory Hope Children Centre	nursery,primary					KShs 450 per term						yes		yes	2	1	3-15yrs	96	72	168	16	10				26	Mo-Fr 08:00-16:00	sometimes	operational		private	36.8029848	-1.315724	ebrelsford
+612008612	Changing Times Centre	nursery,primary					yes		yes		yes	yes			yes	4	4	3-14yrs	30	20	50	4	6	10			10	Mo-Fr 07:00-15:00	sometimes	operational		religious	36.792648	-1.3126535	millicentoo
+612008615	Mashimoni Ushirika Primary	primary																															36.7921397	-1.3096404	ebrelsford
+612008628	Mama Knight Dress-making &amp; Tailoring School	tailoring			0725 61 45 01		KShs 700 per month												3	1	4	1	1	2			2	Mo-Fr 08:00-18:00	never	operational		private	36.7952662	-1.3167038	Blasio
+612008704	Good Hope Nursery School	nursery														1		3-5yrs	29	23	52	4	1				5	Mo-Fr 08:00-15:00				religious	36.8006386	-1.313368	ebrelsford
+612008715	Charity Nursery School	nursery					KShs 250 per month		yes		yes	yes				1	1	3-6yrs			58	2	2	3		1	4	08:00-15:00	often	operational		private	36.7846634	-1.3114235	ebrelsford
+612008764	Brothers Missionery Primary School	primary			0711134067				yes		yes	yes	yes		yes	3	2	7-15yrs			156	6	6	11			11	08:00-17:00	always	operational		religious	36.7728971	-1.3104398	omino
+612008779	G.A.A. Kibera Community Library	library																															36.7725816	-1.3090593	ebrelsford
+612008786	Zelyn Academy	primary		academyzelyn@yahoo.com	0721 44 85 28, 0727 969723, 0724 96 64 39		KShs 1000 per term					yes	yes		yes	1		4-12yrs	132	119	251	6	4	7		3	10	Mo-Fr 06:30-18:00	never	operational	Zelyn Community Based Organisation	ngo_cbo	36.7984783	-1.3172236	ebrelsford
+612008845		kindergarten																															36.78535	-1.3150173	ebrelsford
+612008847	St Anne&apos;s Nursery School	kindergarten,nursery																															36.7861505	-1.3149247	ebrelsford
+612008854	St John&apos;s Baptist School	kindergarten																															36.7860589	-1.3149038	ebrelsford
+612008869	Jacobs Well School	nursery																													More infomation was not given due to abscence of the head in charge	private	36.7787834	-1.3146802	ebrelsford
+612008874	Little Angel Kindergarten	kindergarten																															36.7779849	-1.3138948	ebrelsford
+612008903	Ujamaa Community Primary School	nursery,primary		ujamaacounty@yahoo.com	0724385517		KShs 300		yes		yes	yes						3-14yrs			40	3	1	3		1	4	Mo-Fr 07:00-15:00	never	operational		ngo_cbo	36.7924852	-1.3163609	ebrelsford
+612008908	St Augustus High School	secondary					yes		yes		yes	yes	yes			1	1	15-20yrs	40	20	60	3	2	3		2	5	Mo-Fr 07:00-17:00	never	operational		private	36.7906754	-1.3147838	ebrelsford
+612008910	Kibra Academy	secondary		kibraacademy@yahoo.com					yes		yes		yes		yes	2	4	14-18yrs	70	80	150	9	1	10			10	07:00-18:00	always	operational		religious	36.7822407	-1.3115356	ebrelsford
+612008955	Elite Visionary High School	secondary																															36.7940269	-1.3122167	muindre
+612009018	Calvary Adventure School	Private																															36.7895187	-1.3083732	anekeya
+612009037	St John Academy	primary		josiahmunyutu@yahoo.com	0725 63 55 21		KShs 100 per month		yes		yes	yes	no		yes	2	2	3-16yrs	465	482	947	10	6	5		11	16	Mo-Fr 08:30-16:00	never	operational		private	36.7961302	-1.318367	ebrelsford
+612009057	Soweto Baptised High School	secondary		sowetobaptisedhighsch@yahoo.com	0714  529 422		KShs 4000 per term		yes		yes		yes		yes		1	14-18yrs	70	50	120		7	2		5	7	Mo-Fr 07:00-17:00	never	operational		religious	36.8000633	-1.3168134	ebrelsford
+612009062	Day Care Nursery	nursery			0712546723				yes		yes	yes		yes		1	2	2.5-6yrs			53	4	2	6			6	08:00-15:00	always	operational		private	36.7735151	-1.3106535	ebrelsford
+612009121	Brimalisa School	other																															36.8024215	-1.3150947	fondolucy
+612009125	Wendy Day Care	nursery																															36.8015813	-1.3144689	ebrelsford
+612009172	Olkhalos Daughter Knitting Training	tailoring																															36.7920963	-1.3121532	ebrelsford
+612009188	Care High Way Little School	nursery		kenya@carehighway.org	0724278129,0731090439		none		yes		yes	yes			yes	1	1	4-6yrs	7	18	25	1					1	07:00-17:00	never	operational	funded	international_ngo	36.7788314	-1.3151491	ebrelsford
+612009191	Red Rose Nursary Children Center	nursery,primary		RedRosechildren@yahoo.com		also has nursery	yes, maintenance of facilities and teachers renumeration	yes	yes		yes	yes				5	2	31/2-14yrs	76	80	156	10	4				14	07:30-16:30	always	operational	non formal	private	36.7772304	-1.3123809	ebrelsford
+612009192	Berith Bible College	college																															36.777227	-1.3119792	omino
+612009243	Makina Self Help School	other																											often				36.7899024	-1.3079144	anekeya
+612009363	Kibera School for Girls	Private																															36.7860804	-1.3157161	fondolucy
+612009364	St Stephen Children&apos;s Centre	other																															36.7835223	-1.3153374	fondolucy
+612009711	Wanderful Driving School	driving																															36.7868303	-1.3063548	ebrelsford
+612011358	Glory Secondary School	secondary		pastorboaz@yahoo.com	0727073298		KShs 10900 per year	yes	yes		no		yes		yes	1	3	15-20yrs	170	110	280	4	6	4	8	6	10	Mo-Fr 07:00-17:00	often	operational		religious	36.7957903	-1.3118843	ebrelsford
+612011372	Christ the King Library	library																															36.7946037	-1.3107304	ebrelsford
+662794312	Turning Point	school																															36.7927173	-1.3115065	OSMF Redaction Account
+662800049	Turning Point	school																															36.775202	-1.3125609	OSMF Redaction Account
+701794738	Kibera Community Youth Programme Computer School	school		info@kcyp.net	0723232359		KShs 1500 per package	yes				yes				2	3		10	25	35	1	1	2			2	09:00-17:30	always	operational		ngo_cbo	36.7848157	-1.3106448	muindre
+712907767	Shape The Child Foundation	nursery,primary		info@shapethe children foundation.org			yes		yes		yes	yes	yes		yes	3	2	3-14yrs			120	7	6	10		3	13	Mo-Fr 07:00-17:00	sometimes	operational		international_ngo	36.790294	-1.314497	ebrelsford
+712999562	Golden Heart Academy	nursery					KShs 350 per term				yes	yes				1		21/2-6yrs	6	6	12	1					1	08:00-15:30	sometimes	operational	funded	private	36.778691	-1.314211	ebrelsford
+748771051	Nazarene Self-Help School	nursery,primary		nazarneprimary@yahoo.com	0710805593		nursery KShs 200,primary KShs 300		yes		yes	yes	yes		yes	2	1	3-16yrs	231	209	440	7	5	3			12	07:00-18:00	sometimes	operational		ngo_cbo	36.7782001	-1.3157602	ebrelsford
+748775203	Bidii Nursery School	nursery			0723842458	Has Baby Class and pre-unit Classes	baby class,nursery,pre-unit KShs 250,orphans free					yes			yes	1		2-7yrs	54	54	108	4	3	3		1	7	06:30-15:00	never	operational		ngo_cbo	36.7764859	-1.3147759	ebrelsford
+748777107	St James Academy	nursery					KShs 200 per month											4-7yrs	19	19	38	2		1		1	2	07:00-15:00	never	operational		private	36.7888637	-1.3106016	ebrelsford
+748777109	Pracious Children Centre	nursery					KShs 400 per month		yes									3-8yrs	48	32	80	3		1		2	3	07:30-15:00	never	operational		private	36.7880001	-1.311171	ebrelsford
+748777394	Favour Day Care	nursery,kindergarten			0724651405/0712578070	Has Day Care	2months-1yr KShs 650,2-4yrs KShs 500					yes			yes	1		2months-4yrs	17	20	37	2				2	2	08:00-17:00	always	operational		private	36.7754191	-1.3147796	ebrelsford
+748779286	Abib Kindergarten	nursery,kindergarten,primary			0722216546	Has Day Care and Pre-unit Classes	3yrs KShs 500,nursery KShs 300,primary KShs 400		yes		yes	yes			yes	1		3-7yrs	30	43	73	3		3			3	07:00-16:00	sometimes	operational		private	36.7754013	-1.3149053	ebrelsford
+748781666	Happy Kids Childrens Center	nursery			0725407489		KShs 100 per month			KShs 10 per day for food					yes	1		4-6yrs	7	4	11	1	1	1		1	2	08:00-15:00	sometimes	operational		ngo_cbo	36.7754437	-1.3146608	ebrelsford
+748782202	Akili Complex	primary					KShs 200 per month		yes		yes	yes	yes		yes			5-18yrs	85	95	180	4	4	1		7	8	07:00-16:00	never	operational		private	36.7887272	-1.3104293	ebrelsford
+748782275	Miracle Children Centre	nursery			0725-003164		KShs 100 for food		yes		yes	yes		yes		1		2-7yrs	33	71	110	4	1	1		4	5	08:00-15:00	never	operational		religious	36.7842577	-1.3130274	ebrelsford
+748782276	Kibera Academy Secondary School	secondary			0721-494154		form 1/2 KShs 3200 per term,form 3/4 KShs 4000 per term		yes			yes	yes		yes			15-17yrs	80	70	150	2	4	4		2	6	08:00-17:30	never	operational		private	36.7886518	-1.3106663	ebrelsford
+748782277	Tumaini Juniour Academy	nursery					KShs 400 per month					yes			yes	1		3-5yrs			120	4		4			4	07:30-15:00	never	operational		private	36.7848457	-1.3128637	ebrelsford
+748783441	St Catherine Home and Educational Centre	nursery,primary			0713869156		KShs 200		yes		yes	yes	yes		yes	2		1-13yrs	90	68	158	3	2	3		2	5	08:00-18:00	sometimes	operational		religious	36.7753093	-1.3153942	ebrelsford
+748803831	Goodnews Academy	nursery,primary		christinekimeu2006@yahoo.com	0720455264/0722655395		KShs 400 per term		yes		yes	yes			yes	1		9months-14yrs	108	72	180	4	2	4		2	6	Mo-Fr 08:00-17:00	often	operational		religious	36.793955	-1.3096066	ebrelsford
+748804441	Christ The King Vocational Training Centre	technical		christkibera@yahoo.com		it offers training in masonry and carpentry	yes		yes		yes				yes	2		18yrs and above		20	20		3				3	Mo-Fr 08:00-15:00	often	operational		religious	36.7943928	-1.3107265	ebrelsford
+748804545	Holiy Mountain School	nursery					KShs 300		yes		yes	yes				2		3-7yrs			50	3	2	3		2	5	Mo-Fr 07:30-15:00	sometimes	operational		religious	36.7947956	-1.3173312	ebrelsford
+748804547	Mashimoni High School	secondary		p.o box, 21717-00505 nairobi			yes		yes			yes			yes	3	2	14-19yrs	50	30	80	6	5	11			11	Mo-Fr 07:00-17:00	sometimes	operational		private	36.7911143	-1.3096587	ebrelsford
+748804548	Mashimoni Primary School	primary		p.o box, 21717-00505 nairobi			yes		yes			yes			yes	3	2	7-14yrs	60	100	160	8	8	16			16	Mo-Fr 07:00-17:00	sometimes	operational		private	36.7911137	-1.3096516	ebrelsford
+748804549	Tranform F.H Children Center	nursery		patrickanidasa@yahoo.com	0724759396		KShs 100-200		yes		yes	yes				1	1	3-9yrs	38	32	70	2	2	2		2	4	Mo-Fr 08:30-15:30	never	operational		religious	36.7900814	-1.3107729	ebrelsford
+748804550	Jamhuri Assembly School	nursery					KShs 200				yes	yes				2		3-6yrs	18	12	30	3	0	3			3	Mo-Fr 08:00-15:00	never	operational		religious	36.7919443	-1.3096173	ebrelsford
+748804553	A.D.C Elim Assembly Nuru Region	nursery					KShs 200			kids carry their own food from home		yes				0	0	3-6yrs	12	8	20	2	0	0		2	2	Mo-Fr 08:00-15:00	never	operational		religious	36.790195	-1.3100061	ebrelsford
+748804555	Patmos Fellowship Church (school)	nursery		p.o box, 21377-00505 nairobi			KShs 200				yes	yes						3-7yrs	18	12	20	2	0	2			2	Mo-Fr 08:30-15:00	never	operational		religious	36.7926827	-1.3109782	ebrelsford
+748804556	Maranatha Academy	nursery			0722404726-o734343491		yes			carry food from home	yes	yes				1		3-6yrs	15	10	25	1					1	Mo-Fr 08:00-15:00	never	operational		religious	36.793513	-1.3129495	ebrelsford
+748805433	Kibera Church of God Nursery and Primary School	nursery,primary			P.O Box 21706 0100 Nairobi	The nursery and primary are located at the same compound but at different point of the compound.	nursery KShs 250,primary KShs 450		yes		yes		yes	yes	yes	2	1	9 months-14yrs	120	100	220	4	2				6	Mo-Fr 08:00-16:00	always	operational		religious	36.7949336	-1.3105546	ebrelsford
+748826131	Kibera Free Methodist Academy	nursery,primary		andrewsaval2yahoo.com	0722465092											2	2	4-16 years	139	113	250	6	6	11		1	12	Mo-Fr 08:00-16:00				religious	36.7946878	-1.3131996	ebrelsford
+748826132	Elite Visionary High School	secondary			0723411369/0722337987/0722446903		form 1-3 kShs 11400 per year,form four KShs 14100		yes				yes		yes		1	15-20yrs			157		8	3		5	8	Mo-Fr 08:00-18:00	often	operational		private	36.7940254	-1.3122955	ebrelsford
+748826133	Magoso Primary School	primary			0725712604		total orphans KShs 50 for exams,partial orphans KShs 100,those with parents KShs 250	yes	yes	music and drama	yes	yes	yes	yes		3	4	2-15yrs	210	158	368	7	13	14		6	20	Mo-Fr 08:00-17:00	always	operational		local_ngo	36.7932298	-1.3104484	ebrelsford
+748828881	Kibera Transformation and Development Programe	nursery,tailoring,hairdressing			0731052013	it has a nursery school and also hair dressing	Baby class to pre-unit pay KShs 700,tailoring KShs 1000,salon and embroidery KShs 1500		yes						yes		3	3-25yrs			198	15	3				18	Mo-Fr 08:00-16:00	always	operational		local_ngo	36.7960926	-1.3145488	ebrelsford
+748833031	Little Rock school	nursery			0722272968		30% pays fees				yes	yes		yes	yes	11	3	1-6yrs	97	153	250	20	1				21	07:30-15:30	sometimes	operational	marketing one on one with well wishers	ngo_cbo	36.7792242	-1.3144326	anekeya
+748833032	Tunza Children Center	nursery,primary		tunzachildrencentre@yahoo.com			some pay for feeding program		yes		yes	yes			yes	1	2	31/2-16yrs	70	60	130	4	4		1		8	08:00-16:00	often	operational		ngo_cbo	36.7769271	-1.3124483	ebrelsford
+748833033	Green House Pre-unit School for Deaf	kindergarten,nursery		kenya@deafaid.org	(245)0724519466		none				yes			yes	yes	3		3-11yrs	11	13	24	1	2				3	8hours	sometimes	operational		international_ngo	36.780417	-1.3128694	ebrelsford
+748833034	STAWI Junior Academy	nursery,primary					yes				yes	yes				1		4-10yrs	28	22	50	2	1				3	08:00-15:00	never	operational		private	36.7777621	-1.313817	ebrelsford
+748833035	Valley of Hope	kindergarten,primary					yes				yes						1	3-5yrs	10	10	20	3					3	07:00-16:00	always	operational		private	36.7778436	-1.3143525	ebrelsford
+748833036	Revival Fellowship Children Center	nursery,primary			0725378240		small contribution from parents to feed the children		yes			yes			yes		2	21/2-12yrs	35	30	65	2	3				5	08:00-15:00	sometimes	operational	No funders	private	36.7805711	-1.312802	ebrelsford
+748833039	Bible College	other		africabiblecollege@gmail.org	0722465606	Religious Institution	free		yes	Epowering youths in Business and Mentorship		yes					2	adult	30	34	64	3	1				4	09:00-20:30	always	operational		religious	36.779841	-1.3138591	ebrelsford
+748833040	Vocational Tranning Center	computer		kag.olympic@gmail.com		has also tailoring, hairdressing, GYM	yes										3	adult	22		22	2	2				4	08:00-16:00	sometimes	operational	Total no. exclude GYM and computer students who alternate after two months	religious	36.7778996	-1.3147043	ebrelsford
+748833041	Starays Hope Community Center	secondary		staraysope@yahoo.com			half of school pay fees		yes		yes	yes	yes		yes	2	3	Teenagers and young mothers	70	180	250	1	12				13	07:00-17:00	sometimes	operational		ngo_cbo	36.7769952	-1.3145082	ebrelsford
+748833042	Loam Education Center	nursery				Has pre school (day care, baby class, and pre unit)	yes		yes			yes				1		0-61/2yrs	32	38	70	2	2				4	07:00-15:30	never	operational		private	36.7775941	-1.3136394	ebrelsford
+748833044	Olympic Educational Center	nursery,primary					yes for feeding and fees	yes	yes		yes	yes			yes	1	2	3-15yrs	126	123	249	10	2				12	07:00-17:00	sometimes	operational		private	36.7778397	-1.314701	ebrelsford
+748845930	Bible Baptised Primary	primary			0725 488 163		KShs 200 per month		yes		yes	yes	yes		yes			6-17yrs	246	201	447	4	8	2		10	12	Mo-Fr 08:00-16:00	never	operational	Bible Baptised Church	religious	36.7944435	-1.3183465	ebrelsford
+748845933	St Lazarus School	primary		rachloms@yahoo.com	0727 654 161		KShs 100 per month			feeding program is locally organised	yes	yes				1	1	4-15yrs	120	80	200	6		6			6	Mo-Fr 07:00-16:00	never	operational	St.Lazarus Ministries	religious	36.7990005	-1.315496	ebrelsford
+748845940	ACK St. Emmanuel School	primary			0720 45 00 57		KShs 300 per month		yes		yes	yes	yes		yes	1		3-15yrs	45	75	120	4	1	1		4	5	Mo-Fr 07:00-16:00	never	operational	ACK Church	religious	36.7986811	-1.3185087	ebrelsford
+748845943	Undugu School Kibera	post secondary non-formal			0710 383 782		none		yes		yes	yes			yes	2	1	7-20yrs	80	120	200	2	4	6	4		6	Mo-Fr 07:00-16:00	never	operational		local_ngo	36.799904	-1.31746	ebrelsford
+748858916	Shepherd Junior Academy	nursery					KShs 300 per term				yes					1		1-4yrs			20		3				3	Mo-Fr 08:00-15:00	always	operational		religious	36.7976833	-1.3145825	ebrelsford
+748858917	Ushirika Children Centre	nursery,primary		tunzatoto@yahoo.com	P.O.BOX68990200NRB		KShs 350 per term		yes		yes				yes	1		3-5yrs			25	3					3	08:00-15:00	always	operational		ngo_cbo	36.7961257	-1.3130326	ebrelsford
+748858919	Little Angels Academy	nursery					KShs 250 per term				yes	yes				2		3-5 years			30	3	1				4	Mo-Fr 08:00-15:00	always	operational		religious	36.796389	-1.3125641	ebrelsford
+748858922	Supa toto Kindergarten	nursery					KShs 300 per term		yes						yes	1		10 months-6yrs			40	3					3	Mo-Fr 08:00-15:00	often	operational		private	36.7939486	-1.3100345	ebrelsford
+748863823	Siloam Fellowship Ministry Academy	primary		siloamministry@yahoo.com	0710 24 45 65		KShs 900 per term				yes	yes			yes	3		4-17yrs	230	238	468	7	5	8		5	12	Mo-Fr 08:00-16:10	sometimes	operational	Siloam Ministry	religious	36.7976981	-1.3171852	ebrelsford
+748863824	St Bakita Nursery School	nursery																												operational		religious	36.7984272	-1.3174306	ebrelsford
+748863825	Holy Mountain Worship Center &amp; Children Centre Academy	other																												operational		religious	36.7946042	-1.3171032	anekeya
+748863826	MOC Primary	primary																												operational	Mission Outreach Church	religious	36.7952003	-1.3158626	ebrelsford
+748863827	Wings of Life Children&apos;s Centre	primary		jaedwing@yahoo.com	0723 941 883		KShs 300 per month		yes		yes				yes	1		2-11yrs	63	26	89	4		3		1	4	Mo-Fr 08:00-16:00	never	operational	Wings of Life	religious	36.7960604	-1.3172693	ebrelsford
+748863829	PCEA High School	nursery,secondary			0721 63 04 36		KShs 900 per term nursery, 3500 per term secondary		yes		yes		yes		yes	3	2	3-22yrs	53	72	125	4	5	5		4	9	Mo-Fr 06:30-20:00	always	operational	PCEA Church	religious	36.7971583	-1.3173358	Blasio
+748863830	Jesus Winners Pre-School	nursery																										Mo-Fr 08:00-17:00				religious	36.7987457	-1.3153244	Blasio
+748870478	Anajali Community Centre	primary							yes		yes		yes		no	1	4	7-15yrs			416	14	7	1		20	21	07:00-17:00	sometimes	operational		religious	36.7791437	-1.318965	ebrelsford
+748870479	Church on The Rock Academy	nursery,primary		ngajosewa@hotmail.com	0720700795,0722893683		KShs 200 per month		yes		yes		yes		yes	2	1	3-11yrs	68	50	118	4	1	5			5	08:00-15:00	always	operational		religious	36.7776101	-1.3173868	ebrelsford
+748870481	Kids Star Academy	nursery			0724532076		KShs 250									1		3-7yrs	40	17	57	4					4	07:30-15:00	never	operational		ngo_cbo	36.7780367	-1.3178359	ebrelsford
+748870482	St Stephen Primary	primary			0720918745		KShs 250					yes				1	1	3-8yrs			80	2	1	2		1	3	07:40-16:00	never	operational		private	36.7774512	-1.3174427	ebrelsford
+748912629	Gifted Hands Educational Centre	kindergarten,nursery,primary,secondary			0721683523		KShs 300 per month		yes		yes	yes			yes	1	1	1-13yrs			180	5	5	5		5	10	07:00-17:00	never	operational		private	36.7840681	-1.3139266	ebrelsford
+748912656	Mount Sinai Nursery School	nursery			0711354341		KShs 200 per month		yes		yes	yes			yes			2-6yrs	12	33	45	2					2	07:30-15:30	never	operational		private	36.78229	-1.3135945	ebrelsford
+748912674	Baraka za Ibrahimu	kindergarten,nursery,primary,secondry,tailoring		p21cc@yahoo.com	0724257132		KShs 350 per month	yes	yes		yes	yes			yes	9	7	2-17yrs	283	225	538	14	10	14		10	24	07:00-18:00	always	operational		ngo_cbo	36.7845704	-1.3151199	ebrelsford
+748912704	St Joseph Primary School	nursery			0729464344-6003336		they dont pay fees		yes		yes	yes			yes		1	6-12yrs			260	6		3		3	6	07:00-12:30	never	operational	missionary of charity sister	religious	36.7824388	-1.31479	ebrelsford
+748912718	Shelter School	nursery			0712927263		KShs 300 per month		yes		yes	yes						3-5yrs	15	25	40	1	1	2			2	07:30-15:00	never	operational		private	36.7826575	-1.3149775	ebrelsford
+748912736	Seed Juniour School	nursery			0752239982		KShs 300 per month		yes		yes	yes	no		yes			4-5yrs	3	3	6	2	1	2		1	3	08:00-12:30	never	operational		private	36.7818385	-1.3162323	ebrelsford
+748912754	Avest Centre Academy	nursery,kindergarten,primary			0720017244		KShs 300 per month		yes		yes	yes			yes			3-5yrs			30	2					2	07:00-15:30	often	operational		private	36.7823115	-1.3134999	ebrelsford
+748912771	Hope Academy	nursery,kindergarten			0712880711		KShs 250 per month		yes		yes	yes			yes			3-5yrs	7	13	20	1		1			1	08:00-15:00	never	operational		private	36.7812568	-1.3144033	ebrelsford
+748912790	Canner Juniour Acdemy	kindergarten,nursery,primary		praisemirrowlib@yahoo.com	0728912143		KShs 200 per month		yes		yes	yes			yes	1		2-14yrs			80	1	2				3	07:00-16:30	often	operational		religious	36.7855517	-1.3149302	ebrelsford
+748912808	Kissckodep School	nursery					KShs 300 per month		yes		yes	yes			yes			3-8yrs			40	3	3	3			3	07:30-15:30	never	operational		private	36.7823611	-1.3140789	ebrelsford
+748912818	St Stiphine Children Centre	kindergarten,nursery,primary		ststephene2008@yahoo.com	0720141337		KShs 300 per month		yes		yes	yes			yes	2		3-12yrs	205	219	424	7	1	3		5	8	07:00-16:00	never	operational		private	36.7834331	-1.3149315	ebrelsford
+748912871	St Polly Children Centre	nursery,primary			0723642635				yes		yes	yes	yes		yes	2	1	4-14yrs			350	9	3	10		2	12	08:30-15:30	never	operational		ngo_cbo	36.7864117	-1.3149067	ebrelsford
+752219201	Y.M.C.A. Kibera	tailoring			0721423609		KShs 400 per term		yes						yes			15-21yrs	18	2	20	1					1	Mo-Fr 08:00-16:30	always	operational		international_ngo	36.7955438	-1.3108517	ebrelsford
+752221613	Kibera Soweto School	nursery,primary					KShs 400 per term						yes		yes			5-14yrs	72	80	152	7	5				12	Mo-Fr 08:00-16:00	often	operational		private	36.8035428	-1.3155618	Blasio
+752221614	St Lazarus School	nursery,primary					KShs 400 per month				yes				yes	2		3-9yrs	38	22	60	4					4	Mo-Fr 08:00-16:00	often	operational		private	36.8051787	-1.3141839	ebrelsford
+752223310	Kibera Blessed Academy	nursery,primary		patlumbus@yahoo.com	0721540869		Free			Free education (donors from U.S.A(W.M.E))	yes	yes				2	4	6-14yrs	255	135	120	6	6	8		4	12	Mo-Fr 08:00-16:00	always	operational		religious	36.8018424	-1.3154464	Manu1400
+752254027	PAG School	nursery					yes				yes	yes			yes	2	1	3-6yrs			30	2	0	1		1	2	Mo-Fr 08:00-15:00	sometimes	operational		religious	36.7946888	-1.3137477	Blasio
+752254053	St Veronica Nursery School	nursery					yes		yes		yes	yes				2	1	3-6yrs			30	2	0	0		2	2	Mo-Fr 08:00-15:00	sometimes	operational		religious	36.7941986	-1.3143604	ebrelsford
+752254067	Siloam Fellowship Ministry	secondary		p.o box 67611 Nairobi			yes		yes			yes						15-20yrs	20	15	35	0	4	4			4	Mo-Fr 07:00-17:00	never	operational		religious	36.7912343	-1.3135487	ebrelsford
+752262462	Kambi Muru Ushirika	nursery			0720063516		KShs 150 per month		yes		yes	yes						3-7yrs			72	1				1	1	08:00-17:00	never	operational		ngo_cbo	36.787643	-1.3109354	ebrelsford
+752262463	Chill and stay a life Tailoring	tailoring			0723311277		KShs 300 per month												11		11	3		3			3	08:00-17:00	never			ngo_cbo	36.786906	-1.3099826	ebrelsford
+752276347	Luther Academy	nursery,primary			0723-754389		KShs 1200 per month	yes	yes		yes	yes	yes		no	3	1	3-9yrs	75	55	130	5	1	6			6	07:30-16:00	always	operational	Congregations contribution	religious	36.7797252	-1.3115755	ebrelsford
+752276359	Spurgeons Academy	nursery,primary			0725473289	Has Nursery	KShs 500 per month		yes		yes	yes	yes		yes	3	2	3-15yrs	197	223	420	5	9	14			14	06:00-19:00	always	operational	Funded by well wishers	ngo_cbo	36.7802864	-1.3144824	ebrelsford
+752276386	Graebens Driving Shool	driving		graebens.school@yahoo.com			BCE8800.Class E7500											adult	160	740	900		7				7	07:30-18:30	never	operational	No funders	private	36.782237	-1.3077569	ebrelsford
+752276387	Three Bells Center	nursery,primary					KShs 800										3	3-5yrs	75	60	135	2	3				5	08:00-15:00	never	operational	No funders	private	36.7787496	-1.3112565	ebrelsford
+752317805	Optimist Educational Centre	nursery,primary		optimist educational center@hot mail	0722948228		KShs 300 per month		yes	funded by well wishers	yes	yes	yes		yes	1	1	2-14yrs			300	7	3	4		6	10	07:00-17:00	often	operational		ngo_cbo	36.7846873	-1.308597	regynnah
+752317837	Baraka Nursery School	nursery			0735544919		KShs 700 per month		yes		yes	yes			yes	1	2	3-7yrs			170	5	1	6			6	07:30-15:00	often	operational		ngo_cbo	36.7825678	-1.3070584	ebrelsford
+752319660	Mchanganyioko ECD	nursery		mchangawomen@yahoo.com	0710381176		KShs 350 per month		yes		yes	yes				1		3-6yrs	7	5	12	1	1	2			2	08:00-15:00	always	operational		ngo_cbo	36.7816286	-1.3103307	ebrelsford
+752352033	Raila Educational Centre (Secondary)	secondary		joanamunge@yahoo.com					yes		yes		yes		yes	3	4	14-19yrs	120	290	410	7	8	3		12	15	06:30-18:00	always	operational		government	36.7835726	-1.3125717	ebrelsford
+752362193	Green Pastures Academy	primary							yes		yes				yes	2	3	6-16yrs	120	80	200	2	8	6		4	10	08:00-17:00	always	operational		private	36.7838911	-1.3111243	ebrelsford
+752388425	Holy Trinity Nursery School	nursery,primary									no	yes				1	2	3-7yrs			256	4	1	2		3	5	08:00-15:00	always	operational		religious	36.7832084	-1.3068913	ebrelsford
+752388466	St Bathlomia	nursery,primary			0723626177		250		yes			yes				1	1	2-10yrs			55	2	1	1		2	3	07:00-15:30	never	operational		private	36.7832059	-1.3068884	ebrelsford
+752394857	Tenderlings Primary School	primary			020-24693228		KShs 8000 per term	yes			yes	yes	yes		yes	3	2	7-14yrs			200	4	6	6		4	10	07:30-16:00	always	operational		private	36.7764779	-1.3086486	ebrelsford
+752394881	ayany Primary School	primary		ayanyprimaryschool@gmail.com	box00200-55768				yes		yes	yes	yes		yes	4	5	7-16yrs			1505	23	4	27			27	class 1-3: 07:30-16:00, class 4-8: 07:00-16:00	often	operational		government	36.7768708	-1.307804	regynnah
+752394892	Old Kibera Primary School	primary		oldkiberaprimary@gmail.com					yes		yes		yes		yes	3	4	7-17yrs			1400	15	10	22		3	25	08:00-17:00	always	operational		government	36.7843595	-1.3106984	anekeya
+752410539	Tapa Education Center	nursery			0727842235						yes	yes				3	2	3-6yrs			106	2	3	5			5	08:00-16:00	always	operational		private	36.7753806	-1.3081546	ebrelsford
+752423585	St Andrews Educational Center	nursery		box 564891-00200	0720688452		KShs 300 per month				yes	yes				5	4	3-7yrs			64	2	1	3			3	08:00-15:00	always	operational		religious	36.7764429	-1.3119416	ebrelsford
+752429630	MSK Tusaidie Watoo Project	nursery			0720285362		none		yes		yes	yes				2	3	3.5-6yrs			55		4	4			4	08:00-15:30	always	operational	Karibuni Trust	international_ngo	36.7764489	-1.311838	ebrelsford
+752496685	St Georges Orthodox Nursery School	nursery		Rosemarymusanga@gmail.com	0721868864		KShs 450 per month				yes	yes				2	3	3-9yrs	45	60	105	3	2	4	4	1	5	08:00-15:00	never	operational	Orthodox Church	religious	36.7751638	-1.3118108	ebrelsford
+752803404	Salvation Army Nursery School	nursery		Box 21608-00505,Nairobi	0724201340		KShs 500 per month				yes	yes			yes	2	2	3-6yrs			80	2	1	2		1-undergoing Training	3	07:30-15:00	always	operational	Funder CARE-Kenya	religious	36.7738021	-1.3114453	ebrelsford
+761951369	Kuna Shule Centre	computer,language			0720032052		KShs 2500 per training (computer packages), KShs 4500 for language courses per person	yes									1		12	8	20	1	3	4			4	08:00-17:00	always	not operational		international_ngo	36.7718324	-1.3099529	ebrelsford
+761951370	Joowi Academy	secondary			0724367014				yes			yes	yes		yes	1	3		54	100	154	2	3	3	1	2	6	08:00-18:00	always	operational		private	36.7718718	-1.3084931	ebrelsford
+761952623	St Cecilia SH School	primary		seciliaacademy@yahoo.com.box50401 Nairobi	0720412568		KShs 350 per month per student				yes	yes	yes		yes	1	1		113	118	231	7	6	6	3,1 is undergoing training	3	13	07:00-17:00	always	operational		private	36.7719921	-1.3104771	ebrelsford
+761956459	Joysprings Educational Centre	nursery,primary		joysprings@yahoo.com	0721201173		nursery KShs 450 per month,primary KShs 550 per month				yes	yes	yes		yes	3	1	3-14yrs	198	200	398	8	8	14		2	16	08:00-17:00	often	operational		private	36.7749988	-1.312233	ebrelsford
+761957138	Soweto West LLC Church Nusery School	nursery			0724766913		KShs 450 per month				yes	yes			yes	1	1	3-6yrs	65	55	120	2	1	1		2	3	09:00-15:00	always	operational		religious	36.7759705	-1.313967	ebrelsford
+761965627	St Allocious Gonzaga Secondary School	secondary						yes	yes		yes	yes	yes		yes	6	4	14-19yrs			280	6	7	13			13	08:00-18:00	always	operational		international_ngo	36.7729079	-1.3103256	ebrelsford
+761980443	New Life MC School	primary			0726724015				yes		yes	yes	yes		yes	1	2		220	160	380	2	4	3		3	6	08:00-17:30	often	operational		religious	36.7726229	-1.3098228	ebrelsford
+761992157	St Collins Nursery School	nursery					KShs 300 per month				yes	yes				1	1	3-6yrs			54	1	2	3			3	08:00-15:00	never	operational		private	36.7729016	-1.3090137	ebrelsford
+761993870	Methodist Nursery School	nursery			0727843560		KShs 350 per month				yes	yes				1	3	3-7yrs			73	2	2	4			4	08:00-15:00	often	operational		religious	36.7761372	-1.3119711	ebrelsford
+761995282	Shammah Children School	nursery					KShs 300 per month				yes	yes				3	2	3-7yrs			86	3	2	4		1	5	08:00-15:00	often	operational		religious	36.7762986	-1.3118119	ebrelsford
+767095636	Subra School	primary			0714 97 94 92		KShs 100 per month		yes		yes	yes			yes	2		2-10yrs	20	50	70	4		4			4	Mo-Fr 08:00-16:00	never	operational		private	36.7946294	-1.3186798	ebrelsford
+767095637	World Harvest Center &amp; Compassion Christian Academy	primary																												operational		religious	36.7940989	-1.3183179	Blasio
+767108095	Gospel Believers Fellowship	primary			0724 057 580		KShs 300 per month		yes			yes						2-10yrs	32	22	55	2		2			2	Su 08:00-12:00	never	operational	Gospel Believers Fellowship	religious	36.802454	-1.316573	Blasio
+767108097	Kibera Christian Primary School	primary			0724 057 580		KShs 300 per month		yes			yes						2-10yrs	32	22	54	2		2			2	Mo-Fr 08:00-16:00pm	never	operational	Gospel Believers Fellowship	religious	36.8024389	-1.3166189	Blasio
+769110769	Beliavers Revival Sanctuary School	primary							yes		yes	yes				1	2	6-12yrs	43	40	83	4	4	all			8	08:00-17:00	often	operational		religious	36.7759192	-1.3134763	ebrelsford
+775527189	Girls Soccer Secondary School	secondary			0727842235				yes		yes	yes	yes		yes	2	1				171	3	7	6		4	10	07:00-18:00	often	operational		international_ngo	36.7868772	-1.3112447	ebrelsford
+775535480	Stara Rescue Centre School	primary,secondary							yes		yes	yes	yes		yes	2	2				182	6	3	5		4	9	06:00-18:00	always	operational		local_ngo	36.7861834	-1.3116629	ebrelsford
+890550409	Slum Out reach	nursery,primary					KShs 200		yes		yes	yes			yes	2		3-14yrs	30	20	50	7	3	7		3	10	Mo-Fr 07:00-17:00	sometimes	operational		religious	36.7914163	-1.3111486	ebrelsford
+890550456	St Gabriel Academy	secondary		christinegakiu@yahoo.com	0721 34 50 95		KShs 3000 per term		yes				yes		yes	2	3	14-18yrs	35	52	87	1	7	3		5	8	Mo-Fr 07:00-17:00	never	operational	St Gabriel Self Help Group	ngo_cbo	36.8003064	-1.3166437	ebrelsford
+890550499	Anwar Junior Academy	nursery,primary																										Mo-Fr 07:00-15:00				religious	36.7934488	-1.3144191	ebrelsford
+890550513	St Vincent De Paul Academy	nursery		lucykayiwa@yahoo.com				yes	yes		yes	yes				2	1	3-6yrs	39	48	87	4					4	07:30-16:30	sometimes	operational	receive funds	local_ngo	36.7774457	-1.3141267	ebrelsford
+890550556	St Paul Secondary School	secondary		p.o box, 21188 Nairobi			yes		yes			yes	yes		yes	3	2	15-19yrs			120	4	6	10			10	07:00-17:00	sometimes	operational		religious	36.7930658	-1.3117333	ebrelsford
+890550597	Better Life Center	nursery									yes	yes				3	1	3-7yrs	30	20	50	2		2			2	Mo-Fr 08:00-15:00	sometimes	operational		religious	36.7919123	-1.3127531	hassanow
+890550633	Kibra Nursery	nursery		kibranuersery@gmail.com			KShs 1000 per month				yes	yes			yes	3	1	2.5-6yrs			108	5		5			5	08:00-15:00	always	operational		religious	36.7819679	-1.3110303	ebrelsford
+890550666	Raila Educational Centre (Primary)	primary		joanamunge@yahoo.com	0710606059						yes	yes			yes	2	3	7-14yrs			305	4	6	10			10	08:00-17:00	always	operational			36.7837545	-1.31249	anekeya
+890550720	Kenya Church of Christ	nursery					KShs 100-200				yes	yes				0	0	3-6yrs	10	10	20	3	0	1		2	3	Mo-Fr 08:00-15:30	sometimes	operational		religious	36.7911922	-1.3116971	ebrelsford
+1000521280	SHOFCO Youth Centre	school																															36.7784578	-1.3138842	xybot
+1015581296	Angels of Hope Childrens Centre/Church	school																															36.7786972	-1.316626	hassanow
+1015581299	Marcy Junior academy	school																															36.7782599	-1.3155256	hassanow
+1015625631	Inua Mimi Center	school																															36.777398	-1.3131336	hassanow
+1015636354	Havilla Children Centre	kindergarten																															36.7737198	-1.3102065	PrimusK
+1015701525	Love Africa	primary																														private	36.7915103	-1.3111474	hassanow
+1042356213	Kiberra Film School	school																															36.7800351	-1.3122075	Blasio
+1249726679	Egesa Daycare Community School	other				Daycare																										private	36.7896016	-1.3067801	millicentoo
+1691733174	Bidii mothers school	kindergarten																															36.778214	-1.3139835	Blasio
+1712435881	Olympic Kids Centre	kindergarten																															36.7797094	-1.3131177	fondolucy
+1712435882	Palm Olive Academy	school																															36.7804405	-1.3137374	fondolucy
+1722620243	Hope Childrens Centre	kindergarten																															36.7744101	-1.3160057	fondolucy
+1722668360	Brown daisy children center	school																															36.7788566	-1.3145568	millicentoo
+1722668361	Golden heart academy	school																															36.7780441	-1.3139815	millicentoo
+1722668362	Kids zone school	school																															36.7785514	-1.3118845	millicentoo
+1722668363	Little Angel Kindergarten	kindergarten																															36.7779161	-1.3138972	millicentoo
+1727588864	grace spring academy	school																															36.7822418	-1.3140183	kevole
+1763898746	Adventure pride primary school	school																															36.7893755	-1.3092843	millicentoo
+1763898747	Kibera school for girls	school																															36.7861554	-1.3155724	millicentoo
+1768443464	New horizon high school	school																															36.7940254	-1.3122219	muindre
+1771323210	Akili Complex	school																															36.7921726	-1.311317	millicentoo
+1771323212	Conesus Primary School	school																															36.7925732	-1.3126323	millicentoo
+1771323213	Elite Visionary High School	school																															36.7930032	-1.3128406	millicentoo
+1771323214	Kingulu Primary School	school																															36.7926279	-1.3123011	millicentoo
+1771323215	Love Africa somi school	school																															36.7915537	-1.311191	millicentoo
+1801454706	Joowi Academy-Pre-Unit and Nursery	school																															36.7718528	-1.3084052	omino
+1864056792	Little Prince Primary School	school			+254721370167																												36.7792695	-1.3080615	omino
+1875796685	Toi primary school	school																											often				36.7801864	-1.3056333	anekeya
+2064571553	Olympic secondary	school																											sometimes				36.7806898	-1.3132579	anekeya
+2064571555	St charles lwanga school	school																											always				36.7771303	-1.317278	anekeya
+2105331260	Laini Saba Salvation Army	nursery			0700 326 565		KShs 900 per term					yes				1		6months-4yrs	50	36	86	2		1		1	2	Mo-Fr 07:00-16:00	always	operational	Salvation Army Church	religious	36.8012513	-1.3155094	muindre
+2115330631	Mbagathi Road Primary.	school																											often				36.8014763	-1.3087658	anekeya
