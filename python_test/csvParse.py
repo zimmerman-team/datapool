@@ -1,8 +1,8 @@
-import xmlParse
+from genericDataPool import DataPool
 import csv
 import pprint
 
-class CsvImport(xmlParse.xmlImport):
+class CsvImport(DataPool):
 
 	name_cvs = ''
 	class_name = ''
@@ -77,13 +77,7 @@ class CsvImport(xmlParse.xmlImport):
 			colnum += 1
 		return cluster_id
 
-	def delete_data(self):
-		try:
-			self.client.command('DELETE VERTEX '+self.class_name)
-			self.client.command('DROP CLASS '+self.class_name)
-		except:
-			pass
-
+	
 
 
 

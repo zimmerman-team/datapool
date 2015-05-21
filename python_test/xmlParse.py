@@ -4,23 +4,15 @@ from lxml import etree
 from lxml import objectify
 from io import StringIO, BytesIO
 from dateutil.parser import parse
+from genericDataPool import DataPool
+import json
 import re
 import pprint
 
 
-class xmlImport():
+class xmlImport(DataPool):
 	
-	db_name = 'datapool'
-	user_name = 'root'
-	password = 'solaria07'
-	xml_tree = None
-	schema = None
-	prefix = 'iati105'
-
-	def connect(self):
-		self.client = pyorient.OrientDB("localhost", 2424)
-		self.client.connect(self.user_name,self.password)
-		self.client.db_open(self.db_name, self.user_name,self.password )
+	
 
 	def create_class(self,class_name,element):
 		cluster_id = self.client.command('create class '+class_name+' EXTENDS V')
@@ -29,6 +21,10 @@ class xmlImport():
 			self.client.command('create property '+class_name+'.'+self.format_attrib_name(attr_key)+' STRING')
 			if 'date' in attr_key:
 				self.client.command('create property '+class_name+'.'+self.format_attrib_name(attr_key)+'__iso__'+' DATETIME')
+		if element.text != '':
+				print 'create property '+class_name+'.text STRING'
+				self.client.command('create property '+class_name+'.text STRING')
+
 		return cluster_id
 
 	def insert_data(self,element):
@@ -58,7 +54,7 @@ class xmlImport():
 	 				print 'parsedate failed '+element.get(attr_key)
 	 				pass
 	 	if element.text != '':
-	 		rec_data['text'] = unicode(element.text).replace('"','')
+	 		rec_data['text'] = unicode(element.text).replace('"','\\"').encode('utf-8')
 		rec = {'@'+class_name:rec_data}
 		pprint.pprint(rec)
 		rec_position = self.client.record_create(class_cluster_id,rec )
@@ -126,41 +122,21 @@ class xmlImport():
 			self.parse_xml_element(e,rec,element.tag)
 
 
-	def delete_classes(self,drop_class=False):
-		list_command = "SELECT classes FROM 0:1"
-		classes = self.client.command(list_command)
-		for clss in classes[0].classes:
-			print clss.get('name')
-			print clss.get('superClass')
-			if clss.get('superClass') == 'E' or clss.get('superClass') == 'V':
-				if(clss.get('superClass') == 'V'):
-					self.client.command('DELETE VERTEX '+clss.get('name'))
-				else:
-					self.client.command('DELETE edge '+clss.get('name'))
-
-				if drop_class == True:
-					print 'DROP CLASS '+clss.get('name')
-					self.client.command('DROP CLASS '+clss.get('name'))
-
-
-	def format_class_name(self,tag_name):
-		#replace minus
-		tag_name = tag_name.replace('-','_')
-		
-		return self.prefix+'_'+tag_name.replace(' ','_')
-
-	def format_attrib_name(self,tag_name):
-		#replace minus
-		tag_name = re.sub("(\{.*\})","",tag_name) 
-		tag_name = tag_name.replace('-','_')
-		tag_name = tag_name.replace('"','')
-		return tag_name.replace(' ','_')
+	
 
 	def testWithBuza(self):
 		self.connect()
-		self.delete_classes()
+		self.delete_classes(drop_class=False)
 		#self.load_xtd('iati-activities-schema.xsd')
 		self.load_xml('iati-activities.xml')
+		self.parse_xml()
+
+	def testWithMaec(self):
+		self.connect()
+		self.prefix = 'iati201'
+		self.delete_classes(drop_class=False)
+		#self.load_xtd('iati-activities-schema.xsd')
+		self.load_xml('MAEC_IATI_INDONESIA.xml')
 		self.parse_xml()
 
 	def test_xsd(self):
@@ -169,7 +145,8 @@ class xmlImport():
 		return
 		self.load_xml('iati-activities-schema.xsd')
 		self.parse_xml()
-
+		
+	
 
 class XsdParser(xmlImport):
 	"""make a tree with attribute types, for storing with the right data type in orient db /or any other db"""
