@@ -1,0 +1,1743 @@
+<ROOT>
+    <data>
+        <record>
+            <field name="Country or Area">Afghanistan</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;2</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Afghanistan</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Angola</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">60</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Angola</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">59</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Argentina</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">8.9</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Argentina</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">7.7</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Armenia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;17</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Armenia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;3</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Australia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.2</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Australia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.3</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Austria</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.5</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Austria</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.6</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Azerbaijan</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;11</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Azerbaijan</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;2</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Bahamas</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;134</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Bahamas</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;165</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Bangladesh</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Bangladesh</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Barbados</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;35</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Barbados</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;37</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Belarus</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">11</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Belarus</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.7</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Belize</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;62</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Belize</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;82</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Benin</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">31</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Benin</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">57</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Bhutan</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;13</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Bhutan</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;17</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Bolivia (Plurinational State of)</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">13</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Bolivia (Plurinational State of)</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;12</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Botswana</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">282</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Botswana</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">1171</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Brazil</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">7.8</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Brazil</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">8.4</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Burkina Faso</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">33</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Burkina Faso</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">163</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Burundi</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">48</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Burundi</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">191</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Cabo Verde</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;20</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Cabo Verde</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;44</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Cambodia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">18</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Cambodia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">48</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Cameroon</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">159</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Cameroon</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">176</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Canada</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">1.1</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Canada</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">1.5</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Chad</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">116</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Chad</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">160</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Chile</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">2.4</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Chile</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">3.7</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Colombia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">14</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Colombia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">21</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Comoros</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">6.7</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Comoros</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Congo</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">119</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Congo</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">280</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Costa Rica</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">2.9</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Costa Rica</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">3.5</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Côte d’Ivoire</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">157</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Côte d’Ivoire</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">283</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Cuba</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">2.6</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cuba</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">1.1</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cyprus</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.2</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Cyprus</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.2</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Democratic Republic of the Congo</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">48</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Democratic Republic of the Congo</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">65</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Denmark</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.5</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Denmark</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.7</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Djibouti</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;116</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Djibouti</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;136</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Dominican Republic</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">19</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Dominican Republic</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">52</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Ecuador</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">17</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Ecuador</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">22</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Egypt</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Egypt</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">El Salvador</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;16</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">El Salvador</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">27</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Equatorial Guinea</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">194</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Equatorial Guinea</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;187</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Eritrea</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">19</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Eritrea</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">66</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Ethiopia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">51</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Ethiopia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">148</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Fiji</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;11</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Fiji</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;12</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">France</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.7</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">France</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">2</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Gabon</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">143</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Gabon</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">187</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Gambia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;56</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Gambia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;39</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Georgia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;5</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Georgia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;2</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Ghana</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">46</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Ghana</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Guatemala</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">23</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Guatemala</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">17</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Guinea</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">44</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Guinea</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">37</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Guinea-Bissau</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">136</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Guinea-Bissau</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;77</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Guyana</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;13</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Guyana</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;27</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Haiti</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">73</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Haiti</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">174</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Honduras</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">22</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Honduras</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">57</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Iceland</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.1</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Iceland</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.7</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">India</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">11</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">India</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">13</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Indonesia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">11</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Indonesia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.6</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Iran (Islamic Republic of)</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">6</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Iran (Islamic Republic of)</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Italy</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">1.4</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Italy</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">2.8</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Jamaica</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">46</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Jamaica</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">105</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Kenya</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">133</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Kenya</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">412</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Kuwait</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.1</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kuwait</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Kyrgyzstan</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;9</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Kyrgyzstan</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;2</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Lao People's Democratic Republic</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;8</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Lao People's Democratic Republic</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;2</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Lesotho</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">755</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Lesotho</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">858</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Liberia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">40</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Liberia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">67</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Madagascar</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">28</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Madagascar</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">29</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Malawi</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">287</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Malawi</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">743</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Malaysia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">18</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Malaysia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">18</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Maldives</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;30</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Maldives</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;36</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Mali</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">33</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Mali</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">74</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Mauritania</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;26</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Mauritania</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;18</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Mauritius</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">5.5</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mauritius</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">1.3</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Mongolia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">1.7</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Mongolia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.7</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Morocco</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">3.7</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Morocco</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;2</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Mozambique</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">305</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Mozambique</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">210</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Myanmar</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">22</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Myanmar</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">20</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Namibia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">219</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Namibia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">483</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Nepal</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">15</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Nepal</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">6.7</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">New Zealand</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.1</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">New Zealand</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.1</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Nicaragua</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;3</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Nicaragua</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;2</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Niger</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">20</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Niger</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">28</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Nigeria</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">142</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Nigeria</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">120</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Pakistan</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">2</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Pakistan</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Panama</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;26</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Panama</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">53</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Papua New Guinea</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;14</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Papua New Guinea</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">23</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Paraguay</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;7</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Paraguay</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;9</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Peru</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">14</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Peru</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">35</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Philippines</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Philippines</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Portugal</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">6.6</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Portugal</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">11</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Republic of Moldova</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">37</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Republic of Moldova</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;25</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Romania</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.9</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Romania</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">2.3</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Russian Federation</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">43</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Russian Federation</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">15</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Rwanda</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">49</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Rwanda</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">267</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Sao Tome and Principe</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;53</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Sao Tome and Principe</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;71</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Senegal</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">14</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Senegal</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">13</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Sierra Leone</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">55</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Sierra Leone</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">25</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Slovakia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Slovakia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.1</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Slovenia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.1</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Slovenia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.4</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Somalia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">25</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Somalia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">26</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">South Africa</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">449</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">South Africa</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">438</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">South Sudan</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">119</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">South Sudan</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">100</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Sri Lanka</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Sri Lanka</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Suriname</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;37</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Suriname</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;106</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Swaziland</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">443</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Swaziland</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">713</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Sweden</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.2</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Sweden</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0.4</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Switzerland</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0.5</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Switzerland</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">1.8</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Tajikistan</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;12</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Tajikistan</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;2</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Thailand</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">31</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Thailand</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">97</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">The former Yugoslav Republic of Macedonia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">0</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">The former Yugoslav Republic of Macedonia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">0</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Togo</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">108</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Togo</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">158</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Trinidad and Tobago</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">16</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Trinidad and Tobago</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">41</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Tunisia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Tunisia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;1</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Uganda</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">174</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Uganda</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">424</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Ukraine</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">46</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Ukraine</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">18</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">United Republic of Tanzania</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">167</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">United Republic of Tanzania</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">339</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">United States of America</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">2.5</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">United States of America</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">5.2</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uruguay</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">6.3</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uruguay</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">5.1</field>
+            <field name="Value Footnotes">1</field>
+            <field name="Value Footnotes">1</field>
+        </record>
+        <record>
+            <field name="Country or Area">Uzbekistan</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">8.6</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Uzbekistan</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">7</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Venezuela (Bolivarian Republic of)</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">13</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Venezuela (Bolivarian Republic of)</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">28</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Viet Nam</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">13</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Viet Nam</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">6.7</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Yemen</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">&lt;4</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Yemen</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">&lt;3</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Zambia</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">215</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Zambia</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">745</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Zimbabwe</field>
+            <field name="Year(s)">2012</field>
+            <field name="Value">288</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+        <record>
+            <field name="Country or Area">Zimbabwe</field>
+            <field name="Year(s)">2001</field>
+            <field name="Value">1252</field>
+            <field name="Value Footnotes"></field>
+            <field name="Value Footnotes"></field>
+        </record>
+    </data>
+    <footnotes>
+        <footnote footnoteSeqID="1">Mortality Data. Geneva, World Health Organization, 2014 (http://www.who.int/gho/mortality_burden_disease/en/).</footnote>
+    </footnotes>
+</ROOT>
