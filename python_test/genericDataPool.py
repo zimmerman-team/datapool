@@ -163,13 +163,13 @@ class DataPool():
 		#self.client.command(query)
 		query = 'CREATE PROPERTY '+class_name+'.match STRING'
 		#self.client.command(query)
-		edge_to_name = 
+		edge_to_name = ''
 		query = 'CREATE CLASS '+class_name+' EXTENDS E'
 		#self.client.command(query)
 		query = "SELECT "+from_match+' FROM '+from_class+' GROUP BY '+from_match
 		matches = self.client.command(query)
-			for match in matches:
-				print match.get('from_match')
+		for match in matches:
+			print match.get('from_match')
 
 
 
