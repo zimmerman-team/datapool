@@ -40,19 +40,25 @@ the front end is being build in python with django as a frame work.
 
 What is done:
 
-loading and parsing of xml and csv
-models in django to mirror the classes and edges in orientdb
+	loading and parsing of xml and csv
+	models in django to mirror the classes and edges in orientdb
 
 To do:
 
-translate orientdb classes and edges to python models (structure already done)
-make front end to upload and configure data 
-make front end to generate pivot points between datasets
-make front end to visually make selection of the data with filters and aggregation
+	translate orientdb classes and edges to python models (structure already done)
+	make front end to upload and configure data 
+	make front end to generate pivot points between datasets
+	make front end to visually make selection of the data with filters and aggregation
 
 Nice to haves:
 
-export data directly to graph of choise.
+	export data directly to graph of choise.
+
+
+Layout:
+	python_test contains the test scripts for the proof of concept
+	site contains the django implementaion
+	
 
 
 
