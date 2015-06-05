@@ -1,5 +1,4 @@
 # datapool
-datapool orientdb main db
 
 
 this is the repository of the datapool software
