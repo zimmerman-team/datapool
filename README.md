@@ -29,8 +29,9 @@ data can be private (only to be seen by the user whom uploaded it) or public (av
 We might build the option to share data with a team so that the team can use without it being public.
 
 
-The data is stored in <a href="http://orientdb.com">orientDB</a> an relations between dataset is define by edges to the pivot points.
+The data is stored in <a href="http://orientdb.com">orientDB</a> and relations between dataset is defined by edges to the pivot points.
 the front end is being build in python with django as a frame work.
+
 
 
 
