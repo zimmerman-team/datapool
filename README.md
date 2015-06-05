@@ -11,7 +11,8 @@ python 2.7
 
 What is datapool:
 
-Datapool is a system where one can upload datafiles (csv,xml,json ..plus more to come) the system will analyse those files and store them in orient db.
+Datapool is a system where one can upload datafiles (csv,xml,json ..plus more to come) . 
+The system will analyse those files and store them in orient db as a graph (xml or json child-parent relations are Edges).
 Then the data can be linked to other data trough pivot points.
 For example:
 
