@@ -19,7 +19,7 @@ For example:
 	Iata data has transaction information with dates and location,
 	an other file has violent incidents per year and location
 	through the pivot points , year and location data can be generated which shows the possible relation 
-	between money spend and violent incidents per year fpor a certain location
+	between money spend and violent incidents per year for a certain location
 
 the front end will include a query builder which makes it possible to visually see the data structures and click on the values you want 
 and if you want to filter or aggregate them (SUM,AVG,MAX,MIN,MED)
