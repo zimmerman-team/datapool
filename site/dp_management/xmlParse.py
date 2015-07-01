@@ -5,6 +5,7 @@ from lxml import objectify
 from io import StringIO, BytesIO
 from dateutil.parser import parse
 from genericDataPool import DataPool
+from ..models import DataConnection,DataSourceFlags,DataSource,DataSourceComment,DataModelClass,DataModelProperty,DataModelEdge,DataModelEdgeProperty
 import json
 import re
 import pprint
@@ -16,31 +17,22 @@ class xmlImport(DataPool):
 
 	schema_only = False
 	schema_properties = {}
+	schema_classes = {}
+	schema_edges = {}
+	source = None
 
-	def create_class(self,class_name,element):
-		cluster_id = self.client.command('create class '+class_name+' EXTENDS V')
-		for attr_key in element.keys():
-			print 'create property '+class_name+'.'+self.format_attrib_name(attr_key)+' STRING'
-			self.client.command('create property '+class_name+'.'+self.format_attrib_name(attr_key)+' STRING')
-			if 'date' in attr_key:
-				self.client.command('create property '+class_name+'.'+self.format_attrib_name(attr_key)+'__iso__'+' DATETIME')
-		if element.text != '':
-				print 'create property '+class_name+'.text STRING'
-				self.client.command('create property '+class_name+'.text STRING')
-
-		return cluster_id
 
 	def insert_data(self,element):
 		#get_cluster_id
 		class_cluster_id = None
 		class_name = self.format_class_name(element.tag)
-		cluster_ids = self.client.command("select classes[name='"+class_name+"'].defaultClusterId FROM 0:1")
-		for cluster_id in cluster_ids:
-			try:
-				class_cluster_id = cluster_id.classes 
-			except Exception as exception:
-				class_cluster_id = self.create_class(class_name,element)
-				class_cluster_id = class_cluster_id[0]
+		if class_name in self.schema_classes:
+			class_cluster_id = self.schema_classes[class_name]['cluster_id']
+
+		else:
+			class_cluster_id = self.create_class(class_name)
+
+		django_object = self.schema_classes[class_name]['django_object']
 
 		print class_cluster_id
 		print "is cluster id"
@@ -48,6 +40,9 @@ class xmlImport(DataPool):
 	 	#get attributes
 	 	rec_data = {}
 	 	for attr_key in element.keys():
+	 		if not class_name+'.'+format_attrib_name(attr_key) in self.schema_properties:
+	 			self.create_property(class_name,attr_key,django_object)
+
 	 		rec_data[self.format_attrib_name(attr_key)] =  element.get(attr_key)
 	 		if 'date' in attr_key:
 	 			try:
@@ -57,26 +52,13 @@ class xmlImport(DataPool):
 	 				print 'parsedate failed '+element.get(attr_key)
 	 				pass
 	 	if element.text != '':
+	 		if not class_name+'.text' in self.schema_properties:
+	 			self.create_property(class_name,'text',django_object)
 	 		rec_data['text'] = unicode(element.text).replace('"','\\"').encode('utf-8')
 		rec = {'@'+class_name:rec_data}
 		pprint.pprint(rec)
 		rec_position = self.client.record_create(class_cluster_id,rec )
 		return rec_position._rid
-
-	def create_edge(self,from_rec,to_rec,edge_name,parent,child):
-		edge_command = "CREATE edge "+edge_name+" from "+from_rec+" to "+to_rec
-		try:
-			self.client.command(edge_command)
-		except Exception as exeception:
-			self.create_edge_object(edge_name,parent,child)
-			self.client.command(edge_command)
-	
-	def create_edge_object(self,edge_name,parent,child):
-		edge_command = "create class "+edge_name+" extends E"
-
-		self.client.command(edge_command)
-		self.client.command('CREATE PROPERTY '+edge_name+'.out LINK '+parent)
-		self.client.command('CREATE PROPERTY '+edge_name+'.in LINK '+child)
 
 
 
@@ -117,7 +99,9 @@ class xmlImport(DataPool):
 		if(parent_tag != None):
 			edge_name = self.format_class_name(parent_tag)+'_'+self.format_class_name(element.tag)
 			#print parent_rec
-			self.create_edge(parent_rec,rec,edge_name,self.format_class_name(parent_tag),self.format_class_name(element.tag))
+			parent_obj = self.schema_classes[self.format_class_name(parent_tag)]['django_object']
+			child_obj = self.schema_classes[self.format_class_name(element.tag)]['django_object']
+			self.create_edge(parent_rec,rec,edge_name,parent_obj,child_obj)
 		for e in element.getchildren():
 			if e == None or type(e).__name__ != '_Element':
 				continue
@@ -125,30 +109,5 @@ class xmlImport(DataPool):
 			self.parse_xml_element(e,rec,element.tag)
 
 
+
 	
-
-	def testWithBuza(self):
-		self.connect_old()
-		self.delete_classes(drop_class=False)
-		#self.load_xtd('iati-activities-schema.xsd')
-		self.load_xml('iati-activities.xml')
-		self.parse_xml()
-
-	def testWithMaec(self):
-		self.connect_old()
-		self.prefix = 'iati201'
-		self.delete_classes(drop_class=False)
-		#self.load_xtd('iati-activities-schema.xsd')
-		self.load_xml('MAEC_IATI_INDONESIA.xml')
-		self.parse_xml()
-
-	def test_xsd(self):
-		self.connect()
-		self.delete_classes()
-		return
-		self.load_xml('iati-activities-schema.xsd')
-		self.parse_xml()
-		
-
-
-

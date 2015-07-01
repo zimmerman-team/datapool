@@ -12,7 +12,7 @@ class CsvImport(DataPool):
 	remove_quotes = False;
 	new_row_on_number = False;
 	row_on_number_column_name = 'year'
-	def parse_csv(self,file_name):
+	def parse(self,file_name):
 		rownum = 0
 		with open(file_name, 'rb') as csvfile:
 			#dialect = csv.Sniffer().sniff(csvfile.read(1024))      

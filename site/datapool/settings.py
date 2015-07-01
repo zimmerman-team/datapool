@@ -138,7 +138,9 @@ INSTALLED_APPS = (
     'djangocms_teaser',
     'djangocms_video',
     'reversion',
-    'datapool'
+    'datapool',
+    'dp_management',
+    'ordered_model'
 )
 
 LANGUAGES = (
