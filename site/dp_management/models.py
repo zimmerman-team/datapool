@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from ordered_model.models import OrderedModel
-#from parselib.xmlParse import xmlImport
-#from parselib.csvParse import CsvImport
-
+from xmlParse import xmlImport
+from csvParse import CsvImport
+from filegrabber import FileGrabber
 # Create your models here.
 
 class DataConnection(models.Model):
@@ -66,14 +66,22 @@ class DataSource(models.Model):
 	def __unicode__(self):
 		return self.name
 
-	# def process(self):
-	# 	if self.data_type == 1:
-	# 		parser = xmlParse.xmlImport()
-	# 	elif self.data_type == 0:
-	# 		parser = csvParse.CsvImport()
-	# 	connection = self.data_connection
-	# 	parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
-	# 	#get the file 
+	def process(self):
+		if self.data_type == 1:
+			parser = xmlImport()
+		elif self.data_type == 0:
+			parser = CsvImport()
+		connection = self.data_connection
+		parser.source = self
+		#parser.connect(connection.name,connection.username,connection.password,'localhost',connection.port,self.prefix)
+		parser.connect_old()
+		#get the file 
+		file_grabber = FileGrabber()
+		parse_file = file_grabber.get_the_file(self.url)
+		if self.data_type == 1:
+			parser.delete_classes(drop_class=True)
+			parser.load_xml(parse_file)
+			parser.parse_xml()
 
 
 
@@ -110,7 +118,7 @@ class DataModelSubGroup(models.Model):
 class DataModelProperty(models.Model):
 	data_model_class = models.ForeignKey(DataModelClass)
 	name = models.CharField(max_length=30)
-	data_model_subgroup = models.ForeignKey(DataModelSubGroup)
+	data_model_subgroup = models.ForeignKey(DataModelSubGroup,null=True)
 	translated_name = models.CharField(max_length=30)
 	property_type = models.CharField(max_length=30)
 	property_values = models.TextField() # possible values is more than 20 
@@ -119,6 +127,7 @@ class DataModelProperty(models.Model):
 
 class DataModelEdge(models.Model):
 	data_source = models.ForeignKey(DataSource)
+	name = models.CharField(max_length=128)
 	class_in = models.ForeignKey(DataModelClass,related_name='class_in')
 	class_out = models.ForeignKey(DataModelClass,related_name='class_out')
 

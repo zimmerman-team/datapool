@@ -8,7 +8,7 @@ import json
 import re
 import pprint
 from filegrabber import FileGrabber
-from models import DataConnection,DataSourceFlags,DataSource,DataSourceComment,DataModelClass,DataModelProperty,DataModelEdge,DataModelEdgeProperty
+import models
 
 
 class DataPool():
@@ -23,8 +23,17 @@ class DataPool():
 
 	def create_class(self,class_name):
 		cluster_ids = self.client.command('create class '+class_name+' EXTENDS V')
+
 		cluster_id = cluster_ids[0]
-		data_model_class = DataModelClass()
+		print 'create class cluster_id = '+cluster_id+' '+class_name
+		for cl_id in cluster_ids:
+			print 'cl_id = '+cl_id
+		cluster_ids = self.client.command("select classes[name='"+class_name+"'].defaultClusterId FROM 0:1")
+		cluster_id = cluster_ids[0].classes
+		print 'query for  cluster_id = '+str(cluster_id)+' '+class_name
+		for cl_id in cluster_ids:
+			print 'cl_id = '+str(cl_id.classes)
+		data_model_class = models.DataModelClass()
 		data_model_class.name = class_name
 		data_model_class.default_cluster_id = cluster_id
 		data_model_class.data_source = self.source
@@ -32,26 +41,28 @@ class DataPool():
 		self.schema_classes[class_name] = {}
 		self.schema_classes[class_name]['cluster_id'] = cluster_id
 		self.schema_classes[class_name]['django_object'] = data_model_class
+
 		
 
 		return cluster_id
 
 	def create_property(self,class_name,property_name,data_model_class):
 		prop_name =self.format_attrib_name(property_name)
-		self.schema_properties[class_name+'.'+property_name] = True
-		data_model_class_property = DataModelProperty()
+		self.schema_properties[class_name+'.'+prop_name] = True
+		data_model_class_property = models.DataModelProperty()
 		data_model_class_property.data_model_class = data_model_class
-		data_model_class_property.name = property_name
+		data_model_class_property.name = prop_name
 		data_model_class_property.type = 'STRING'
-		print 'create property '+class_name+'.'+property_name+' STRING'
-		self.client.command('create property '+class_name+'.'+property_name+' STRING')
-		if 'date' in attr_key:
-			data_model_class_property_iso_ = DataModelProperty()
+		data_model_class_property.save()
+		print 'create property '+class_name+'.'+prop_name+' STRING'
+		self.client.command('create property '+class_name+'.'+prop_name+' STRING')
+		if 'date' in prop_name:
+			data_model_class_property_iso_ = models.DataModelProperty()
 			data_model_class_property_iso_.data_model_class = data_model_class
-			data_model_class_property_iso_.name = property_name+'__iso__'
+			data_model_class_property_iso_.name = prop_name+'__iso__'
 			data_model_class_property_iso_.type = 'DATETIME'
-
-			self.client.command('create property '+class_name+'.'+property_name+'__iso__'+' DATETIME')
+			data_model_class_property_iso_.save()
+			self.client.command('create property '+class_name+'.'+prop_name+'__iso__'+' DATETIME')
 
 
 	def create_edge(self,from_rec,to_rec,edge_name,parent,child):
@@ -69,10 +80,11 @@ class DataPool():
 		self.client.command(edge_command)
 		self.client.command('CREATE PROPERTY '+edge_name+'.out LINK '+parent_object.name)
 		self.client.command('CREATE PROPERTY '+edge_name+'.in LINK '+child_object.name)
-		django_edge = DataModelEdge()
+		django_edge = models.DataModelEdge()
 		django_edge.name = edge_name
 		django_edge.class_out = parent_object
 		django_edge.class_in = child_object
+		django_edge.data_source = self.source
 		django_edge.save()
 		self.schema_edges[edge_name] = django_edge
 
@@ -251,14 +263,14 @@ class DataPool():
 		#load schema from django models
 		source = self.source
 		#get classes
-		classes = DataModelClass.objects.filter(data_source=source)
+		classes = models.DataModelClass.objects.filter(data_source=source)
 		for data_model_class in classes:
 			self.schema_classes[data_model_class.name] = {}
 			self.schema_classes[data_model_class.name]['cluster_id'] = data_model_class.cluster_id
 			self.schema_classes[data_model_class.name]['django_object'] = data_model_class
-			for class_prop in DataModelProperty.objects.filter(data_model_class=data_model_class):
+			for class_prop in models.DataModelProperty.objects.filter(data_model_class=data_model_class):
 				self.schema_properties[data_model_class.name+'.'+class_prop.name] = True
-		for data_model_edge in DataModelEdge.objects.filter(data_source=source):
+		for data_model_edge in models.DataModelEdge.objects.filter(data_source=source):
 			self.schema_edges[data_model_edge.name] = data_model_edge
 
 

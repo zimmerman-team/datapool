@@ -5,7 +5,6 @@ from lxml import objectify
 from io import StringIO, BytesIO
 from dateutil.parser import parse
 from genericDataPool import DataPool
-from ..models import DataConnection,DataSourceFlags,DataSource,DataSourceComment,DataModelClass,DataModelProperty,DataModelEdge,DataModelEdgeProperty
 import json
 import re
 import pprint
@@ -40,7 +39,7 @@ class xmlImport(DataPool):
 	 	#get attributes
 	 	rec_data = {}
 	 	for attr_key in element.keys():
-	 		if not class_name+'.'+format_attrib_name(attr_key) in self.schema_properties:
+	 		if not class_name+'.'+self.format_attrib_name(attr_key) in self.schema_properties:
 	 			self.create_property(class_name,attr_key,django_object)
 
 	 		rec_data[self.format_attrib_name(attr_key)] =  element.get(attr_key)
@@ -98,7 +97,9 @@ class xmlImport(DataPool):
 		
 		if(parent_tag != None):
 			edge_name = self.format_class_name(parent_tag)+'_'+self.format_class_name(element.tag)
-			#print parent_rec
+			print edge_name
+			print parent_rec
+			print rec
 			parent_obj = self.schema_classes[self.format_class_name(parent_tag)]['django_object']
 			child_obj = self.schema_classes[self.format_class_name(element.tag)]['django_object']
 			self.create_edge(parent_rec,rec,edge_name,parent_obj,child_obj)
