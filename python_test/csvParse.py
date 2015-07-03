@@ -44,10 +44,10 @@ class CsvImport(DataPool):
 							
 							if self.new_row_on_number == True:
 								if str(attr_key).isdigit():
-									rec_data_row_on_number[self.header[colnum]] = col
+									rec_data_row_on_number[self.header[colnum]] = unicode(col).replace('"','\\"').encode('utf-8')
 									colnum += 1
 									continue
-							rec_data[self.format_attrib_name(attr_key)] =  col
+							rec_data[self.format_attrib_name(attr_key)] =  unicode(col).replace('"','\\"').encode('utf-8')
 					 		if 'date' in attr_key.lower():
 					 			try:
 					 				date = parse( col)
