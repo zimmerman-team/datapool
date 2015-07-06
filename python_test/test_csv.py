@@ -3,9 +3,10 @@ test = CsvImport()
 
 test.connect()
 
-test.class_name = 'twitterdata'
-test.prefix = 'twitterdata'
-test.delete_classes(drop_class=True)
+
+test.class_name = 'dolly'
+test.prefix = 'dolly'
+test.delete_classes()
 
 test.delimiter = ','
 test.parse_csv("ccountryken-twitteraf2012.csv")

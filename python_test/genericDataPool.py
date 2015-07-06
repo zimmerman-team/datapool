@@ -163,7 +163,7 @@ class DataPool():
 		#self.client.command(query)
 		query = 'CREATE PROPERTY '+class_name+'.match STRING'
 		#self.client.command(query)
-		edge_to_name = "red"
+		edge_to_name = ''
 		query = 'CREATE CLASS '+class_name+' EXTENDS E'
 		#self.client.command(query)
 		query = "SELECT "+from_match+' FROM '+from_class+' GROUP BY '+from_match
