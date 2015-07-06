@@ -3,9 +3,9 @@ test = CsvImport()
 
 test.connect()
 
-test.class_name = 'acled_test'
-test.prefix = 'acled_test'
+test.class_name = 'twitterdata'
+test.prefix = 'twitterdata'
 test.delete_classes(drop_class=True)
 
 test.delimiter = ','
-test.parse_csv("csv/ACLED Version 5 All Africa 1997-2014_dyadic_Updated_csv.csv")
+test.parse_csv("ccountryken-twitteraf2012.csv")
