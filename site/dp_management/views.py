@@ -12,11 +12,16 @@ def get_dolly_data(request):
 
 	start_date = request.GET['start']
 	end_date = request.GET['end']
+	exclude_ids = []
+	
+	exclude_ids = request.GET.getlist('exclude_ids')
+	include_ids = request.GET.getlist('include_ids')
+
 	if 'search' in request.GET and request.GET['search'] != '':
 		search_string = request.GET['search']
-		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).filter(text__search=search_string)[:1000]
+		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).filter(text__search=search_string).exclude(u_id_id__in=exclude_ids)[:1000]
 	else:
-		data = DollyData.objects.filter(create_at__range=[start_date, end_date])[:1000]
+		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).exclude(u_id_id__in=exclude_ids)[:1000]
 	return HttpResponse(serializers.serialize("json", data))
 
 def get_tweets_per_day(request):
