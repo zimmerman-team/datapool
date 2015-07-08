@@ -33,5 +33,8 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "datapool.settings_live"
 activate_env=os.path.expanduser("/home/siem/sites/datapoolEnv/bin/activate_this.py")
 execfile(activate_env, dict(__file__=activate_env))
  
-import django.core.handlers.wsgi
-application = django.core.handlers.wsgi.WSGIHandler()
+#import django.core.handlers.wsgi
+#application = django.core.handlers.wsgi.WSGIHandler()
+
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
