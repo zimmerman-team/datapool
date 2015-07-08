@@ -13,7 +13,9 @@ urlpatterns = i18n_patterns('',
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
         {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^select2/', include('django_select2.urls')),
+    url(r'^dolly_data','dp_management.views.get_dolly_data'),
     url(r'^', include('cms.urls')),
+
 )
 
 # This is only needed when using runserver.

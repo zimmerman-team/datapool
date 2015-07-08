@@ -114,7 +114,6 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'djangocms_admin_style',
-    'djangocms_text_ckeditor',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -179,7 +178,7 @@ CMS_PLACEHOLDER_CONF = {}
 
 DATABASES = {
    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'datapool',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
         'PASSWORD': 'solaria07',                  # Not used with sqlite3.

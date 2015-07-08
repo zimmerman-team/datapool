@@ -212,8 +212,27 @@ class DataSetStreamProperty(models.Model):
 	def __unicode__(self):
 		return self.data_model_property.translated_name
 
+class Keyword(models.Model):
+	keyword = models.CharField(max_length=128,null=True,blank=True)
+	count = models.IntegerField()
 
-     
+class TwitterUser(models.Model):
+	u_id = models.BigIntegerField(primary_key=True)
+	count = models.IntegerField()
+
+
+class DollyData(models.Model):
+
+	id = models.BigIntegerField(primary_key=True)
+	u_id = models.ForeignKey(TwitterUser)
+	latitude = models.FloatField()
+	longtitude = models.FloatField()
+	create_at = models.DateTimeField()
+	text = models.CharField(max_length=200)
+
+	def __unicode__(self):	
+		return self.text 
+    
     
 
     
