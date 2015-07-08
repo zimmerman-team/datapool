@@ -12,16 +12,28 @@ def get_dolly_data(request):
 
 	start_date = request.GET['start']
 	end_date = request.GET['end']
-	search_string = request.GET['search']
-	data = DollyData.objects.filter(create_at__range=[start_date, end_date])[:1000]
+	if 'search' in request.GET and request.GET['search'] != '':
+		search_string = request.GET['search']
+		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).filter(text__search=search_string)[:1000]
+	else:
+		data = DollyData.objects.filter(create_at__range=[start_date, end_date])[:1000]
 	return HttpResponse(serializers.serialize("json", data))
 
 def get_tweets_per_day(request):
 	start_date = request.GET['start']
 	end_date = request.GET['end']
-	search_string = request.GET['search']
-	data = DollyData.objects.filter(create_at__range=[start_date, end_date]).extra(select={'day': 'date( create_at )'}).values('day').annotate(tweets=Count('create_at')).order_by('day')
+	start_date = request.GET['start']
+	end_date = request.GET['end']
+	if 'search' in request.GET and request.GET['search'] != '':
+		search_string = request.GET['search']
+		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).filter(text__search=search_string).extra(select={'day': 'date( create_at )'}).values('day').annotate(tweets=Count('create_at')).order_by('day')
+	else:
+		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).extra(select={'day': 'date( create_at )'}).values('day').annotate(tweets=Count('create_at')).order_by('day')
 	return_data = []
 	for row in  data:
 		return_data.append({'tweets':row['tweets'],'date': str(row['day'])})
 	return HttpResponse(json.dumps(return_data))
+
+def get_top_twitter_users(request):
+	data = TwitterUser.objects.all().order_by('-count')[:50]
+	return HttpResponse(serializers.serialize("json", data))
