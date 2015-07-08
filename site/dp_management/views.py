@@ -27,13 +27,13 @@ def get_dolly_data(request):
 def get_tweets_per_day(request):
 	start_date = request.GET['start']
 	end_date = request.GET['end']
-	start_date = request.GET['start']
-	end_date = request.GET['end']
+	exclude_ids = request.GET.getlist('exclude_ids')
+	include_ids = request.GET.getlist('include_ids')
 	if 'search' in request.GET and request.GET['search'] != '':
 		search_string = request.GET['search']
-		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).filter(text__search=search_string).extra(select={'day': 'date( create_at )'}).values('day').annotate(tweets=Count('create_at')).order_by('day')
+		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).filter(text__search=search_string).exclude(u_id_id__in=exclude_ids).extra(select={'day': 'date( create_at )'}).values('day').annotate(tweets=Count('create_at')).order_by('day')
 	else:
-		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).extra(select={'day': 'date( create_at )'}).values('day').annotate(tweets=Count('create_at')).order_by('day')
+		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).exclude(u_id_id__in=exclude_ids).extra(select={'day': 'date( create_at )'}).values('day').annotate(tweets=Count('create_at')).order_by('day')
 	return_data = []
 	for row in  data:
 		return_data.append({'tweets':row['tweets'],'date': str(row['day'])})

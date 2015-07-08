@@ -226,7 +226,7 @@ class DollyData(models.Model):
 	id = models.BigIntegerField(primary_key=True)
 	u_id = models.ForeignKey(TwitterUser)
 	latitude = models.FloatField()
-	longtitude = models.FloatField()
+	longitude = models.FloatField()
 	create_at = models.DateTimeField()
 	text = models.CharField(max_length=200)
 
