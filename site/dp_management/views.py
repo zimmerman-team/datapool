@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.core import serializers
 from models import DollyData,TwitterUser
 from django.db.models import Count
+from django.db import connection
+
 import json
 
 # Create your views here.
@@ -37,6 +39,21 @@ def get_tweets_per_day(request):
 	return_data = []
 	for row in  data:
 		return_data.append({'tweets':row['tweets'],'date': str(row['day'])})
+	return HttpResponse(json.dumps(return_data))
+
+def get_tweets_per_hour(request):
+	start_date = request.GET['start']
+	end_date = request.GET['end']
+	exclude_ids = request.GET.getlist('exclude_ids')
+	include_ids = request.GET.getlist('include_ids')
+	if 'search' in request.GET and request.GET['search'] != '':
+		search_string = request.GET['search']
+		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).filter(text__search=search_string).exclude(u_id_id__in=exclude_ids).extra(select={'hour': connection.ops.date_trunc_sql('hour', 'create_at')}).values('hour').annotate(tweets=Count('create_at')).order_by('hour')
+	else:
+		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).exclude(u_id_id__in=exclude_ids).extra(select={'hour': connection.ops.date_trunc_sql('hour', 'create_at')}).values('hour').annotate(tweets=Count('create_at')).order_by('hour')
+	return_data = []
+	for row in  data:
+		return_data.append({'tweets':row['tweets'],'hour': str(row['hour'])})
 	return HttpResponse(json.dumps(return_data))
 
 def get_top_twitter_users(request):
