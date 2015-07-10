@@ -12,8 +12,15 @@ class CsvImport(DataPool):
 	remove_quotes = False;
 	new_row_on_number = False;
 	row_on_number_column_name = 'year'
+
+	schema_properties = {}
+	schema_classes = {}
+	schema_edges = {}
+
+
 	def parse(self,file_name):
 		rownum = 0
+		self.class_name = self.prefix
 		with open(file_name, 'rb') as csvfile:
 			#dialect = csv.Sniffer().sniff(csvfile.read(1024))      
 			csvfile.seek(0)                                                                                      
@@ -79,12 +86,23 @@ class CsvImport(DataPool):
 
 	def create_class(self,first_row):
 	   	cluster_id = self.client.command('create class '+self.class_name+' EXTENDS V')
+	   	data_model_class = models.DataModelClass()
+		data_model_class.name = self.class_name
+		data_model_class.default_cluster_id = cluster_id
+		data_model_class.data_source = self.source
+		data_model_class.save()
+
 	   	colnum = 0
 	   	if(self.new_row_on_number):
-	   		self.client.command('create property '+self.class_name+'.'+self.row_on_number_column_name+' INTEGER')
-	   		print 'create property '+self.class_name+'.'+self.row_on_number_column_name+' INTEGER'
-	   		self.client.command('create property '+self.class_name+'.year_value STRING')
-	   		print 'create property '+self.class_name+'.year_value STRING'
+	   		self.create_property(self.class_name,self.row_on_number_column_name,data_model_class)
+	   		#self.client.command('create property '+self.class_name+'.'+self.row_on_number_column_name+' INTEGER')
+	   		
+	   		#print 'create property '+self.class_name+'.'+self.row_on_number_column_name+' INTEGER'
+			self.create_property(self.class_name,self.row_on_number_column_name+'_value',data_model_class)
+	   		#self.client.command('create property '+self.class_name+'.year_value STRING')
+	   		
+	   		#print 'create property '+self.class_name+'.year_value STRING'
+
 		for attr_key in first_row:
 			attr_key = str(attr_key).replace(self.quotechar,'')
 			if(attr_key == ''):
@@ -97,9 +115,10 @@ class CsvImport(DataPool):
 				print 'set column is digit'
 			self.header[colnum] = attr_key
 			print 'create property '+self.class_name+'.'+self.format_attrib_name(attr_key)+' STRING'
-			self.client.command('create property '+self.class_name+'.'+self.format_attrib_name(attr_key)+' STRING')
-			if 'date' in attr_key.lower():
-				self.client.command('create property '+self.class_name+'.'+self.format_attrib_name(attr_key)+'__iso__'+' DATETIME')
+			self.create_property(self.class_name,self.format_attrib_name(attr_key),data_model_class)
+			# self.client.command('create property '+self.class_name+'.'+self.format_attrib_name(attr_key)+' STRING')
+			# if 'date' in attr_key.lower():
+			# 	self.client.command('create property '+self.class_name+'.'+self.format_attrib_name(attr_key)+'__iso__'+' DATETIME')
 			colnum += 1
 		return cluster_id
 

@@ -19,6 +19,8 @@ class CsvImport(DataPool):
 			csvfile.seek(0)                                                                                      
 			reader = csv.reader(csvfile, delimiter=self.delimiter, quotechar=self.quotechar)
 			for row in reader:
+				unicode_row = [x.decode('utf8') for x in row]
+				row = unicode_row
 				if rownum == 0:
 					self.header = row
 

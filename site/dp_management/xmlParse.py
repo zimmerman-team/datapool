@@ -25,6 +25,7 @@ class xmlImport(DataPool):
 		#get_cluster_id
 		class_cluster_id = None
 		class_name = self.format_class_name(element.tag)
+		print
 		if class_name in self.schema_classes:
 			class_cluster_id = self.schema_classes[class_name]['cluster_id']
 
@@ -84,6 +85,9 @@ class xmlImport(DataPool):
 	def parse_xml(self):
 		root = self.xml_tree.getroot()
 		objectify.deannotate(root, cleanup_namespaces=True)
+		for class_name in self.schema_classes:
+			print class_name
+		#exit()
 		self.parse_xml_element(root,None,None)
 
 

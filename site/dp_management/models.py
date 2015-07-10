@@ -4,12 +4,16 @@ from ordered_model.models import OrderedModel
 from xmlParse import xmlImport
 from csvParse import CsvImport
 from filegrabber import FileGrabber
+from django.utils.translation import ugettext_lazy as _
+from django.utils.safestring import mark_safe
+
+
 # Create your models here.
 
 class DataConnection(models.Model):
 	username = models.CharField(max_length=30)
 	password = models.CharField(max_length=30)
-	host = models.URLField()
+	host = models.GenericIPAddressField()
 	port = models.IntegerField(default=2424)
 	name = models.CharField(max_length=30)
 	
@@ -20,6 +24,9 @@ class DataConnection(models.Model):
 class DataSourceFlags(models.Model):
 	name = models.CharField(max_length=30)
 	description = models.TextField()
+
+	def __unicode__(self):
+		return self.name
 
 class DataSource(models.Model):
 
@@ -65,7 +72,12 @@ class DataSource(models.Model):
 
 	def __unicode__(self):
 		return self.name
-
+	
+	
+	def parse_status(self):
+		return mark_safe("<a href='parse-source/?source_id=%i' class='parse-btn'>Parse</a>") % self.id
+	parse_status.allow_tags =  True
+	
 	def process(self):
 		if self.data_type == 1:
 			parser = xmlImport()
@@ -73,15 +85,22 @@ class DataSource(models.Model):
 			parser = CsvImport()
 		connection = self.data_connection
 		parser.source = self
-		#parser.connect(connection.name,connection.username,connection.password,'localhost',connection.port,self.prefix)
-		parser.connect_old()
+		parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
+		#parser.connect_old()
 		#get the file 
 		file_grabber = FileGrabber()
 		parse_file = file_grabber.get_the_file(self.url)
 		if self.data_type == 1:
-			parser.delete_classes(drop_class=True)
+			#parser.delete_classes()
+			parser.load_schema()
 			parser.load_xml(parse_file)
 			parser.parse_xml()
+		if self.data_type == 0:
+			parser.delete_classes(drop_class=True)
+			parser.delimiter = self.csv_seprator
+			parser.new_row_on_number = self.new_row_on_number
+			parser.new_row_on_number_name = self.new_row_on_number_name
+			parser.parse(parse_file.name)
 
 
 

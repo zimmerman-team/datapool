@@ -66,6 +66,14 @@ $c = UNIONALL( $a, $b )
 ORDER BY description
 
 
+SELECT year ,lnk.lang,COUNT(text) FROM 
+(
+SELECT IN('iati105_transaction_iati105_transaction_date').IN('iati105_iati_activity_iati105_transaction') AS lnk,iso_date__iso__.format('yyyy') AS year, text FROM iati105_transaction_date 
+  )
+GROUP BY year
+ORDER BY YEAR ASC
+
+
 
 
 

@@ -20,6 +20,9 @@ class DataPool():
 	prefix = 'iati105'
 	max_rows_to_delete = 9999
 	file_to_parse = None
+	schema_properties = {}
+	schema_classes = {}
+	schema_edges = {}
 
 	def create_class(self,class_name):
 		cluster_ids = self.client.command('create class '+class_name+' EXTENDS V')
@@ -66,7 +69,7 @@ class DataPool():
 
 
 	def create_edge(self,from_rec,to_rec,edge_name,parent,child):
-		edge_command = "CREATE edge "+edge_name+" from "+from_rec+" to "+to_rec
+		edge_command = "CREATE edge "+edge_name.encode('ascii')+" from "+from_rec+" to "+to_rec
 		try:
 			self.client.command(edge_command)
 		except Exception as exeception:
@@ -74,12 +77,12 @@ class DataPool():
 			self.client.command(edge_command)
 	
 	def create_edge_object(self,edge_name,parent_object,child_object):
-		edge_command = "create class "+edge_name+" extends E"
+		edge_command = "create class "+edge_name.encode('ascii')+" extends E"
 		#add edge to list
 
 		self.client.command(edge_command)
-		self.client.command('CREATE PROPERTY '+edge_name+'.out LINK '+parent_object.name)
-		self.client.command('CREATE PROPERTY '+edge_name+'.in LINK '+child_object.name)
+		self.client.command('CREATE PROPERTY '+edge_name.encode('ascii')+'.out LINK '+parent_object.name.encode('ascii'))
+		self.client.command('CREATE PROPERTY '+edge_name.encode('ascii')+'.in LINK '+child_object.name.encode('ascii'))
 		django_edge = models.DataModelEdge()
 		django_edge.name = edge_name
 		django_edge.class_out = parent_object
@@ -92,7 +95,8 @@ class DataPool():
 
 	def connect(self,db_name,user_name,password,host,port,prefix):
 		self.client = pyorient.OrientDB(host, port)
-		self.client.connect(user_name,password)
+		print user_name+' '+password
+		self.client.connect(user_name.encode("utf-8"),password.encode("utf-8"))
 		self.client.db_open(db_name, user_name,password )
 		self.prefix = prefix
 
@@ -130,7 +134,9 @@ class DataPool():
 
 	def format_class_name(self,tag_name):
 		#replace minus
+		tag_name = re.sub("(\{.*\})","",tag_name) 
 		tag_name = tag_name.replace('-','_')
+		tag_name = tag_name.replace('"','').encode('ascii')
 		
 		return self.prefix+'_'+tag_name.replace(' ','_')
 
@@ -139,7 +145,7 @@ class DataPool():
 		tag_name = re.sub("(\{.*\})","",tag_name) 
 		tag_name = tag_name.replace('-','_')
 		tag_name = tag_name.replace('"','')
-		return tag_name.replace(' ','_')
+		return tag_name.replace(' ','_').encode('ascii')
 
 	def make_structure(self):
 		query = 'SELECT classes FROM 0:1'
@@ -265,8 +271,9 @@ class DataPool():
 		#get classes
 		classes = models.DataModelClass.objects.filter(data_source=source)
 		for data_model_class in classes:
+			#print data_model_class.name
 			self.schema_classes[data_model_class.name] = {}
-			self.schema_classes[data_model_class.name]['cluster_id'] = data_model_class.cluster_id
+			self.schema_classes[data_model_class.name]['cluster_id'] = data_model_class.default_cluster_id
 			self.schema_classes[data_model_class.name]['django_object'] = data_model_class
 			for class_prop in models.DataModelProperty.objects.filter(data_model_class=data_model_class):
 				self.schema_properties[data_model_class.name+'.'+class_prop.name] = True
