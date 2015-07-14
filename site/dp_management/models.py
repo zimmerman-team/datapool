@@ -12,7 +12,7 @@ from django.utils.safestring import mark_safe
 
 class DataConnection(models.Model):
 	username = models.CharField(max_length=30)
-	password = models.CharField(max_length=30)
+	password = models.CharField(max_length=512)
 	host = models.GenericIPAddressField()
 	port = models.IntegerField(default=2424)
 	name = models.CharField(max_length=30)
@@ -43,7 +43,7 @@ class DataSource(models.Model):
 	    (2, 'OVERWRITE'),
 	)
 
-	name = models.CharField(max_length=30)
+	name = models.CharField(max_length=30) 
 	url = models.URLField(null=True)
 	owner = models.ForeignKey(User)
 	prefix = models.CharField(max_length=10)
@@ -88,19 +88,20 @@ class DataSource(models.Model):
 		parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
 		#parser.connect_old()
 		#get the file 
+		parser.load_schema()
 		file_grabber = FileGrabber()
 		parse_file = file_grabber.get_the_file(self.url)
 		if self.data_type == 1:
 			#parser.delete_classes()
-			parser.load_schema()
+			
 			parser.load_xml(parse_file)
 			parser.parse_xml()
 		if self.data_type == 0:
-			parser.delete_classes(drop_class=True)
+			parser.delete_classes(drop_class=False)
 			parser.delimiter = self.csv_seprator
 			parser.new_row_on_number = self.new_row_on_number
 			parser.new_row_on_number_name = self.new_row_on_number_name
-			parser.parse(parse_file.name)
+			parser.parse(parse_file)
 
 
 

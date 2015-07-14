@@ -96,7 +96,7 @@ class DataPool():
 	def connect(self,db_name,user_name,password,host,port,prefix):
 		self.client = pyorient.OrientDB(host, port)
 		print user_name+' '+password
-		self.client.connect(user_name.encode("utf-8"),password.encode("utf-8"))
+		self.client.connect(user_name.encode("ascii"),password.encode("ascii"))
 		self.client.db_open(db_name, user_name,password )
 		self.prefix = prefix
 
@@ -146,6 +146,12 @@ class DataPool():
 		tag_name = tag_name.replace('-','_')
 		tag_name = tag_name.replace('"','')
 		return tag_name.replace(' ','_').encode('ascii')
+
+	def escape_orientdb(self,text):
+		escapechars = '@()"%'
+		for special_char in escapechars:
+			text = text.replace(special_char,'\\'+special_char)
+		return text
 
 	def make_structure(self):
 		query = 'SELECT classes FROM 0:1'

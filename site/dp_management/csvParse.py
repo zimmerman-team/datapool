@@ -1,7 +1,8 @@
 from genericDataPool import DataPool
 import csv
 import pprint
-
+import models
+import urllib
 class CsvImport(DataPool):
 
 	name_cvs = ''
@@ -18,21 +19,25 @@ class CsvImport(DataPool):
 	schema_edges = {}
 
 
-	def parse(self,file_name):
+	def parse(self,file):
 		rownum = 0
 		self.class_name = self.prefix
-		with open(file_name, 'rb') as csvfile:
-			#dialect = csv.Sniffer().sniff(csvfile.read(1024))      
-			csvfile.seek(0)                                                                                      
-			reader = csv.reader(csvfile, delimiter=self.delimiter, quotechar=self.quotechar)
-			for row in reader:
-				if rownum == 0:
-					self.header = row
+		                                                                  
+		reader = csv.reader(file, delimiter=self.delimiter.encode('ascii'), quotechar=self.quotechar.encode('ascii'))
+		for row in reader:
+			if rownum == 0:
+				self.header = row
 
 
+			else:
+				if rownum%1000 == 0:
+					print 'thousand rows parsed'
+				colnum = 0
+				#print "select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1"
+				if self.class_name in self.schema_classes:
+					class_cluster_id = self.schema_classes[self.class_name]['cluster_id']
+					print class_cluster_id
 				else:
-					colnum = 0
-					print "select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1"
 					cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1")
 					for cluster_id in cluster_ids:
 						try:
@@ -41,51 +46,54 @@ class CsvImport(DataPool):
 							pprint.pprint(cluster_ids)
 							print 'class not found'
 							class_cluster_id = self.create_class(self.header)
-							class_cluster_id = class_cluster_id[0]
-					rec_data = {}
-					rec_data_row_on_number = {}
-					for col in row:
-						if(col != ''):
-							print 'colnum '+str(colnum)+' '+col
-							attr_key = str(self.header[colnum])
-							
-							if self.new_row_on_number == True:
-								if str(attr_key).isdigit():
-									rec_data_row_on_number[self.header[colnum]] = col
-									colnum += 1
-									continue
-							rec_data[self.format_attrib_name(attr_key)] =  col
-					 		if 'date' in attr_key.lower():
-					 			try:
-					 				date = parse( col)
-					 				rec_data[self.format_attrib_name(attr_key)+'__iso__'] = col
-					 			except:
-					 				print 'parsedate failed '+col
-					 				pass
-						colnum += 1
-					for number_col in rec_data_row_on_number:
-						rec_data['year'] = int(number_col);
-						rec_data['year_value'] = rec_data_row_on_number[number_col];
-						rec = {'@'+self.class_name:rec_data}
-						pprint.pprint(rec)
-						pprint.pprint(self.header)
-						try:
-							rec_position = self.client.record_create(class_cluster_id,rec )
-						except:
-							print 'failed'
-					else:
-						rec = {'@'+self.class_name:rec_data}
-						pprint.pprint(rec)
-						pprint.pprint(self.header)
-						try:
-							rec_position = self.client.record_create(class_cluster_id,rec )
-						except:
-							print 'failed'
-			            
-				rownum += 1
+
+				rec_data = {}
+				rec_data_row_on_number = {}
+				for col in row:
+					
+
+					if(col != ''):
+						attr_key = str(self.header[colnum])
+						
+						if self.new_row_on_number == True:
+							if str(attr_key).isdigit():
+								rec_data_row_on_number[self.header[colnum]] = self.escape_orientdb(col)
+								colnum += 1
+								continue
+						rec_data[self.format_attrib_name(attr_key)] =  self.escape_orientdb(col)
+				 		if 'date' in attr_key.lower():
+				 			try:
+				 				date = parse( col)
+				 				rec_data[self.format_attrib_name(attr_key)+'__iso__'] = col
+				 			except:
+				 				print 'parsedate failed '+col
+				 				pass
+					colnum += 1
+				for number_col in rec_data_row_on_number:
+					rec_data['year'] = int(number_col);
+					rec_data['year_value'] = rec_data_row_on_number[number_col];
+					rec = {'@'+self.class_name:rec_data}
+					pprint.pprint(rec)
+					pprint.pprint(self.header)
+					try:
+						rec_position = self.client.record_create(class_cluster_id,rec )
+					except:
+						print 'failed'
+				else:
+					rec = {'@'+self.class_name:rec_data}
+					#pprint.pprint(rec)
+					#pprint.pprint(self.header)
+					try:
+						rec_position = self.client.record_create(class_cluster_id,rec )
+					except:
+						print 'failed'
+		            
+			rownum += 1
 
 	def create_class(self,first_row):
 	   	cluster_id = self.client.command('create class '+self.class_name+' EXTENDS V')
+	   	cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1")
+		cluster_id = cluster_ids[0].classes
 	   	data_model_class = models.DataModelClass()
 		data_model_class.name = self.class_name
 		data_model_class.default_cluster_id = cluster_id

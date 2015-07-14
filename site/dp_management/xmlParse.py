@@ -8,6 +8,8 @@ from genericDataPool import DataPool
 import json
 import re
 import pprint
+import models
+
 
 
 class xmlImport(DataPool):

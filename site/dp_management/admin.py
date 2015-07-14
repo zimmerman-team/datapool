@@ -3,6 +3,7 @@ from ordered_model.admin import OrderedModelAdmin
 from models import DataConnection,DataSourceFlags,DataSource,DataSourceComment,DataModelClass,DataModelGroup,DataModelSubGroup,DataModelProperty,DataModelEdge,DataModelQuery
 from django.conf.urls import patterns
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 
 
 # Register your models here.
