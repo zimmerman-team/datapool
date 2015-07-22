@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.7/howto/deployment/wsgi/
 """
 
 
-ALLDIRS = ['/home/centos/sites/datapool/site/','/home/centos/sites/datapool/site/datapool','/home/centos/.virtualenvs/datapool/lib/python2.7/site-packages']
+ALLDIRS = ['/var/wwwdatapool/site/','/var/www/datapool/site/datapool','/var/virtualenvs/datapool/lib/python2.7/site-packages']
 import os
 import sys 
 import site 
@@ -30,7 +30,7 @@ sys.path[:0] = new_sys_path
 # Activate your virtual env
 os.environ["DJANGO_SETTINGS_MODULE"] = "datapool.settings_aws"
 
-activate_env=os.path.expanduser("/home/centos/.virtualenvs/datapool/bin/activate_this.py")
+activate_env=os.path.expanduser("/var/www/virtualenvs/datapool/bin/activate_this.py")
 execfile(activate_env, dict(__file__=activate_env))
  
 #import django.core.handlers.wsgi
