@@ -30,7 +30,7 @@ sys.path[:0] = new_sys_path
 # Activate your virtual env
 os.environ["DJANGO_SETTINGS_MODULE"] = "datapool.settings_aws"
 
-activate_env=os.path.expanduser("/var/www/virtualenvs/datapool/bin/activate_this.py")
+activate_env=os.path.expanduser("/var/virtualenvs/datapool/bin/activate_this.py")
 execfile(activate_env, dict(__file__=activate_env))
  
 #import django.core.handlers.wsgi
