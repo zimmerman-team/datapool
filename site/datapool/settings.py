@@ -202,4 +202,7 @@ MIGRATION_MODULES = {
     'djangocms_teaser': 'djangocms_teaser.migrations_django',
     'djangocms_video': 'djangocms_video.migrations_django'
 }
-
+try:
+    from local_settings import *
+except ImportError:
+    pass
