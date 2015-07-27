@@ -1,3 +1,4 @@
+{% load cms_tags menu_tags sekizai_tags %}
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -10,12 +11,13 @@
     <link rel="stylesheet" href="/static/stylesheets/app.css" />
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
     <link rel="stylesheet" href="https://cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.css" />
+     {% render_block "css" %}
 
     <script src="bower_components/modernizr/modernizr.js"></script>
 
   </head>
   <body>
-
+{% cms_toolbar %}
     <div class="bg-wrapper">
 
       <div class="topbar">
@@ -83,6 +85,6 @@
     <script src="/static/js/datapool-map.js"></script>
     <script src="/static/js/datapool-line-chart.js"></script>
     <script src="/static/js/main.js"></script>
-
+    {% render_block "js" %}
   </body>
 </html>

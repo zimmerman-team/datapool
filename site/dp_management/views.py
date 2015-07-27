@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 
 from django.core import serializers
-from models import DollyData,TwitterUser
+from models import DollyData,TwitterUser,DataProject,DataSource
 from django.db.models import Count
 from django.db import connection
 from django.contrib.auth.decorators import login_required
@@ -66,9 +66,18 @@ def get_top_twitter_users(request):
 
 @login_required
 def add_data(request):
-	return render_to_response('add_data.html',{})
+	data_streams = DataSource.objects.all()
+
+	return render_to_response('add_data.html',{'data_streams':data_streams})
 
 @login_required
 def add_project(request):
-	return render_to_response('add_project.html',{})	
+	data_streams = DataSource.objects.all()
+	return render_to_response('add_project.html',{'data_streams':data_streams,})	
+
+@login_required
+def add_project_datastream(request):
+	project_name =  request.post['name']
+	project = DataProject()
+	return render_to_response('add_data.html',{})
 

@@ -28,6 +28,21 @@ class DataSourceFlags(models.Model):
 	def __unicode__(self):
 		return self.name
 
+class DataSourceCategory(models.Model):
+	name = models.CharField(max_length=30)
+	description = models.TextField()
+
+	def __unicode__(self):
+		return self.name
+
+class DataSourceSubCategory(models.Model):
+	category = models.ForeignKey(DataSourceCategory)
+	name = models.CharField(max_length=30)
+	description = models.TextField()
+
+	def __unicode__(self):
+		return self.name
+
 class DataSource(models.Model):
 
 	DATATYPECHOICE = (
@@ -58,6 +73,7 @@ class DataSource(models.Model):
 	data_from_date = models.DateTimeField(null=True)
 	data_to_date = models.DateTimeField(null=True)
 	date_last_update = models.DateTimeField(default=None, null=True)
+	sub_category = models.ForeignKey(DataSourceSubCategory,null=True)
 	update_interval = models.CharField(
         max_length=20,
         choices=(

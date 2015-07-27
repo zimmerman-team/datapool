@@ -1,4 +1,4 @@
-{% extends "base_dp.html" %}
+{% extends "base_dp_no_cms.html" %}
 
 {% block content %}
 
@@ -20,7 +20,9 @@
                     <option value="">Subcategory</option>
                   </select>
                   <select id="stream">
-                    <option value="">Dolly Dataset</option>
+                      {% for data_stream in data_streams %}
+                        <option value="{{data_stream.id}}">{{data_stream.name}}</option>
+                      {% endfor %}
                   </select>
                 </div>
               </div>
@@ -310,4 +312,4 @@
 
         </div>
       </div>
-{% enblock %}
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends "base_dp.html" %}
+{% extends "base_dp_no_cms.html" %}
 {% block content %}
 
 
@@ -15,7 +15,9 @@
                   <div id="datastreams">
                     <select id="datastreams0">
                       <option value="">Add data stream</option>
-                      <option value="stream1">Stream 1</option>
+                      {% for data_stream in data_streams %}
+                        <option value="{{data_stream.id}}">{{data_stream.name}}</option>
+                      {% endfor %}
                     </select>
                   </div>
                 </div>
