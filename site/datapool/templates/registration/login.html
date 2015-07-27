@@ -13,6 +13,7 @@
             {% if form.errors %}
             <div data-alert class="alert-box alert">
                 Your username and password didn't match. Please try again.
+                <a href="#" class="close">&times;</a>
             </div>
             {% endif %}
 
@@ -21,10 +22,12 @@
                 <div data-alert class="alert-box alert">
                     Your account doesn't have access to this page. To proceed,
                     please login with an account that has access.
+                    <a href="#" class="close">&times;</a>
                 </div>
                     {% else %}
                 <div data-alert class="alert-box alert">
                     Please login to see this page.
+                    <a href="#" class="close">&times;</a>
                 </div>
                 {% endif %}
             {% endif %}
