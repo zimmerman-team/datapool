@@ -31,6 +31,9 @@ class DataSourceFlags(models.Model):
 class DataSourceCategory(models.Model):
 	name = models.CharField(max_length=30)
 	description = models.TextField()
+	class Meta:
+   		verbose_name = "Category"
+   		verbose_name_plural = "Categories"
 
 	def __unicode__(self):
 		return self.name
@@ -39,7 +42,9 @@ class DataSourceSubCategory(models.Model):
 	category = models.ForeignKey(DataSourceCategory)
 	name = models.CharField(max_length=30)
 	description = models.TextField()
-
+	class Meta:
+   		verbose_name = "Sub Category"
+   		verbose_name_plural = "Sub Categories"
 	def __unicode__(self):
 		return self.name
 

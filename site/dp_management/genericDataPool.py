@@ -23,6 +23,7 @@ class DataPool():
 	schema_properties = {}
 	schema_classes = {}
 	schema_edges = {}
+	encoding = 'ascii'
 
 	def create_class(self,class_name):
 		cluster_ids = self.client.command('create class '+class_name+' EXTENDS V')
@@ -69,7 +70,7 @@ class DataPool():
 
 
 	def create_edge(self,from_rec,to_rec,edge_name,parent,child):
-		edge_command = "CREATE edge "+edge_name.encode('ascii')+" from "+from_rec+" to "+to_rec
+		edge_command = "CREATE edge "+edge_name.encode(self.encoding)+" from "+from_rec+" to "+to_rec
 		try:
 			self.client.command(edge_command)
 		except Exception as exeception:
@@ -77,12 +78,12 @@ class DataPool():
 			self.client.command(edge_command)
 	
 	def create_edge_object(self,edge_name,parent_object,child_object):
-		edge_command = "create class "+edge_name.encode('ascii')+" extends E"
+		edge_command = "create class "+edge_name.encode(self.encoding)+" extends E"
 		#add edge to list
 
 		self.client.command(edge_command)
-		self.client.command('CREATE PROPERTY '+edge_name.encode('ascii')+'.out LINK '+parent_object.name.encode('ascii'))
-		self.client.command('CREATE PROPERTY '+edge_name.encode('ascii')+'.in LINK '+child_object.name.encode('ascii'))
+		self.client.command('CREATE PROPERTY '+edge_name.encode(self.encoding)+'.out LINK '+parent_object.name.encode(self.encoding))
+		self.client.command('CREATE PROPERTY '+edge_name.encode(self.encoding)+'.in LINK '+child_object.name.encode(self.encoding))
 		django_edge = models.DataModelEdge()
 		django_edge.name = edge_name
 		django_edge.class_out = parent_object
@@ -96,7 +97,7 @@ class DataPool():
 	def connect(self,db_name,user_name,password,host,port,prefix):
 		self.client = pyorient.OrientDB(host, port)
 		print user_name+' '+password
-		self.client.connect(user_name.encode("ascii"),password.encode("ascii"))
+		self.client.connect(user_name.encode(self.encoding),password.encode(self.encoding))
 		self.client.db_open(db_name, user_name,password )
 		self.prefix = prefix
 
@@ -136,7 +137,7 @@ class DataPool():
 		#replace minus
 		tag_name = re.sub("(\{.*\})","",tag_name) 
 		tag_name = tag_name.replace('-','_')
-		tag_name = tag_name.replace('"','').encode('ascii')
+		tag_name = tag_name.replace('"','').encode(self.encoding)
 		
 		return self.prefix+'_'+tag_name.replace(' ','_')
 
@@ -145,7 +146,7 @@ class DataPool():
 		tag_name = re.sub("(\{.*\})","",tag_name) 
 		tag_name = tag_name.replace('-','_')
 		tag_name = tag_name.replace('"','')
-		return tag_name.replace(' ','_').encode('ascii')
+		return tag_name.replace(' ','_').encode(self.encoding)
 
 	def escape_orientdb(self,text):
 		escapechars = '@()"%'
