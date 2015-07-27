@@ -34,10 +34,12 @@
 
               <section class="top-bar-section">
                 <ul class="right">
+                  {% block navigation %}
                   <li><a href="index.html">Data Pool</a></li>
                   <li class="active"><a href="add_data.html">Your data streams</a></li>
                   <li><a href="add_project.html">Your projects</a></li>
                   <li><a href="#">Support</a></li>
+                  {% endblock %}
                 </ul>
               </section>
             </nav>
