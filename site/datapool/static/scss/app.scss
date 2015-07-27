@@ -1,0 +1,316 @@
+@import "settings";
+@import "foundation";
+
+// Or selectively include components
+// @import
+//   "foundation/components/accordion",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/block-grid",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/button-groups",
+//   "foundation/components/buttons",
+//   "foundation/components/clearing",
+//   "foundation/components/dropdown",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/forms",
+//   "foundation/components/grid",
+//   "foundation/components/inline-lists",
+//   "foundation/components/joyride",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/magellan",
+//   "foundation/components/orbit",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/reveal",
+//   "foundation/components/side-nav",
+//   "foundation/components/split-buttons",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switches",
+//   "foundation/components/tables",
+//   "foundation/components/tabs",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/top-bar",
+//   "foundation/components/type",
+//   "foundation/components/offcanvas",
+//   "foundation/components/visibility";
+
+.bg-wrapper {
+	background:$silver;
+}
+
+.topbar {
+	background:$blu-tlight;
+	box-shadow: inset 0 -3px 0 0 $blu-tmlight;
+	nav {
+		box-shadow: inset 0 -3px 0 0 $blu-tmlight;
+		.top-bar-section ul li {
+			a {
+				box-shadow: inset 0 -3px 0 0 $blu-tmlight;
+			}
+			&:hover a, &.active a {
+				box-shadow: inset 0 -3px 0 0 $red;
+			}
+		}
+		.name {
+			width: 14rem;
+			img {
+				width: 100%;
+				height: auto;
+			}
+			h1 {
+				a {
+					padding-left:0;
+				}
+			}
+		}
+	}
+}
+
+.header {
+	text-align:center;
+	margin:rem-calc(20) 0;
+	padding-bottom:rem-calc(10);
+	border-bottom:1px solid $jet;
+}
+
+.panel {
+	//box-shadow:1px 1px 1px 0px rgba(0,0,0,0.4);
+	//border-radius:4px;
+	overflow:hidden;
+	&.dashboard {
+		h5 {
+			margin-top:rem-calc(-20);
+			margin-left:rem-calc(-20);
+			margin-right:rem-calc(-20);
+			padding:rem-calc(20);
+			color:$blu-dark;
+		}
+	}
+	&.filters {
+		h5 {
+			background:$oil;
+			color:$white;
+		}
+	}
+	&.number {
+		color:#fff;
+		.fa {
+			color:#fff;
+			font-size:3rem;
+			margin-bottom: 1rem;
+		}
+		.content {
+			font-size:2rem;
+			line-height: 1;
+		}
+		small {
+			font-size:.8rem;
+		}
+	}
+	&.datastream {
+
+	}
+	&#tweets {
+		background:#55acee;
+	}
+	&#retweets {
+		background:darken(#55acee,20%);
+	}
+	&#mentions {
+		background:$primary-color;
+	}
+	&#users {
+		background:$red-dark;
+	}
+	.fa {
+		margin-right: 5px;
+		color:$red;
+	}
+}
+
+footer {
+	background:$blu-tlight;
+	color:$white;
+	padding:rem-calc(20);
+}
+
+//form, datepicker 
+#ui-datepicker-div {
+	background:$white;
+	padding:.5rem 1rem;
+	border:1px solid $iron;
+	display:none;
+	z-index:99999;
+	.ui-datepicker-next {
+		float:right;
+	}
+	.ui-datepicker-month {
+		width:83%;
+		display: block;
+		float:left;
+	}
+	.ui-datepicker-year {
+		display: block;
+		float: right;
+		width:15%;
+		height: 2.3125rem;
+  		line-height: 2.3125rem;
+  		text-align: right;
+	}
+	td {
+		text-align: center;
+		padding:0;
+		span {
+			display: block;
+			padding:0.5625rem 0.625rem;
+		}
+		a {
+			display: block;
+			padding:0.5625rem 0.625rem;
+			&:hover {
+				background:$blu-light;
+			}
+		}
+	}
+	.ui-datepicker-current-day {
+		a {
+			background:darken($blu-light, 10%);
+		}
+	}
+	.ui-datepicker-unselectable {
+		color:$iron;
+	}
+	.ui-datepicker-today {
+		a {
+			border:1px solid $iron;
+		}
+	}
+}
+
+#keyword-0_flexselect {
+	border-color:$primary-color;
+}
+
+#keyword-1_flexselect {
+	border-color:$red-dark;
+}
+
+//datastream stylez
+.datastream {
+	button {
+		margin-bottom: 0;
+		font-size:.8rem;
+		.fa {
+			color: #fff;
+		}
+	}
+	h1 {
+		font-size: 1.8rem;
+		margin:.6rem 0;
+	}
+	.hl {
+		&:hover {
+			background:$smoke;
+		}
+		input, select, label {
+			margin-top:.35rem;
+			margin-bottom: .35rem;
+		}
+	}
+	input {
+		&.header-input {
+			font-size:1.8rem;
+			height:auto;
+		}
+		&[type=checkbox] {
+			height:2.3125rem;
+			float: left;
+			+ label {
+				height:2.3125rem;
+				line-height: 2.3125rem;
+			}
+		}
+	}
+	table {
+		width:100%;
+		td {
+			width: 33.3333333%;
+		}
+		input,select,label {
+			margin-top:0;
+			margin-bottom: 0;
+		}
+	}
+	#save {
+		margin-top:1rem;
+	}
+}
+
+.alert-box {
+	background:$blu-tmlight;
+	padding:1.25rem;
+	h3 {
+		color:#fff;
+	}
+	&.nopadding {
+		padding:0;
+		margin:0;
+	}
+	.close {
+		position: relative;
+		opacity: 1;
+		right:auto;
+		margin-top:0;
+		top:auto;
+		@include button;
+		font-size: .8rem;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+.addstream .fa {
+	margin:0;
+}
+
+.panel-content {
+	display:none;
+}
+
+.killbutton {
+	overflow:hidden;
+	display:inline-block;
+	float:right;
+	margin-left:.3rem;
+	button {
+		white-space:nowrap;
+	}
+}
+
+//helper classes
+.margin-top {
+	margin-top:rem-calc(20);
+}
+
+#linechart svg {
+    width: 100%;
+    height: 400px;
+}
+
+.alert.disabled {
+	display:none;
+}
+
+// [data-magellan-expedition], [data-magellan-expedition-clone] {
+// 	min-width: initial;
+// }
+// div[data-magellan-expedition="fixed"].fixed {
+// 	left: auto;
+// 	max-width:320px;
+// }

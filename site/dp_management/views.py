@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
+
 from django.core import serializers
 from models import DollyData,TwitterUser
 from django.db.models import Count
 from django.db import connection
+from django.contrib.auth.decorators import login_required
+
 
 import json
 
@@ -59,3 +63,12 @@ def get_tweets_per_hour(request):
 def get_top_twitter_users(request):
 	data = TwitterUser.objects.all().order_by('-count')[:50]
 	return HttpResponse(serializers.serialize("json", data))
+
+@login_required
+def add_data(request):
+	return render_to_response('add_data.html',{})
+
+@login_required
+def add_project(request):
+	return render_to_response('add_project.html',{})	
+

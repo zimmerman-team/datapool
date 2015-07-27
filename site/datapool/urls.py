@@ -5,6 +5,8 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 from django.conf import settings
+from django.contrib.auth import views as auth_views
+
 
 admin.autodiscover()
 
@@ -17,7 +19,11 @@ urlpatterns = i18n_patterns('',
     url(r'^tweets_per_day','dp_management.views.get_tweets_per_day'),
     url(r'^tweets_per_hour','dp_management.views.get_tweets_per_hour'),
     url(r'^top_twitter_users','dp_management.views.get_top_twitter_users'),
+    url(r'^add_data','dp_management.views.add_data'),
+    url(r'^add_project','dp_management.views.add_project'),
+    url(r'^accounts/login/$', auth_views.login),
     url(r'^', include('cms.urls')),
+
 
 )
 
@@ -27,3 +33,7 @@ if settings.DEBUG:
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve',  # NOQA
             {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
         ) + staticfiles_urlpatterns() + urlpatterns  # NOQA
+
+
+    
+

@@ -1,0 +1,313 @@
+{% extends "base_dp.html" %}
+
+{% block content %}
+
+      <div class="row margin-top">
+        <div class="large-3 columns">
+          <div class="panel dashboard filters">
+            <h5><i class="fa fa-database"></i>Add a data stream</h5>
+            <form>
+              <div class="row">
+                <div class="large-12 columns">
+                  <div class="margin-top">
+                    <input id="project-name" type="text" placeholder="Name your stream">
+                  </div>
+                  <h6>Select a data set</h6>
+                  <select id="cat">
+                    <option value="">Category</option>
+                  </select>
+                  <select id="subcat">
+                    <option value="">Subcategory</option>
+                  </select>
+                  <select id="stream">
+                    <option value="">Dolly Dataset</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns margin-top">
+                  <a id="go" href="#" class="small button secondary">Add and configure</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div> 
+        <div class="large-9 columns">
+
+          <div data-alert class="alert-box">
+            <h3>Adding data streams to your Data Pool</h3>
+            <p>A stream contains a configured data set that you would like to compare in Data Pool. Streams are needed to create projects. Select a stream on the left, and give it a name. Then add it to your stream list.</p>
+            <p>Once it's added, you can configure it on the right. You don't need to completely define everything, it's also possible to configure on the fly in the Data Pool visualisation dashboard. </p>
+            <p>Don't forget to save once you're done. Then head over to the Projects section.</p>
+            <button class="close btn">Ok, I got it</button>
+          </div>
+
+          <!-- start van boxje -->
+
+          <div class="row">
+            <div class="large-12 columns">
+              <div class="panel datastream">
+
+                <div class="panel-header">
+                  <div class="row">
+                    <div class="large-7 columns">
+                      <h1>A set of data</h1>
+                    </div>
+                    <div class="large-5 columns text-right">
+                      <button class="btn configure">Configure</button>
+                      <div class="killbutton"><button class="btn alert kill">Delete</button></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-content">
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <input class="header-input" id="data-name" type="text" value="Dolly Dataset #1">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="large-12 columns margin-top">
+                      <h6>Set some filters</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="large-2 columns">
+                      <input id="year" type="text" placeholder="From year">
+                    </div>
+                    <div class="large-2 columns">
+                      <input id="year" type="text" placeholder="To year">
+                    </div>
+                    <div class="large-4 columns">
+                      <select id="country">
+                        <option value="">Country</option>
+                      </select>
+                    </div>
+                    <div class="large-4 columns">
+                      <select id="city">
+                        <option value="">City</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns margin-top">
+                      <h6>Select what you'd like to include</h6>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-4 columns">
+                      <select id="filter-group">
+                        <option value="">Filter terms by group</option>
+                        <option value="group1">Group 1</option>
+                      </select>
+                    </div>
+                    <div class="large-4 columns">
+                      <select id="filter-subgroup">
+                        <option value="">Filter terms by subgroup</option>
+                      </select>
+                    </div>
+                    <div class="large-4 columns">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="columns large-12">
+                      <table class="filters">
+                        <thead>
+                          <tr>
+                            <th><span>Select terms</span></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <input id="checkbox1" type="checkbox" checked><label for="checkbox1">Checkbox 1</label></td>
+                            <td>
+                              <select id="">
+                                <option value="">Actions to apply</option>
+                                <option value="filter">Filter</option>
+                                <option value="something">Somehing</option>
+                              </select>
+                            </td>
+                            <td><input id="" type="text" placeholder="Filter by keywords"></td>
+                          </tr>
+                          <tr>
+                            <td><input id="checkbox2" type="checkbox" checked><label for="checkbox2">Checkbox 2</label></td>
+                            <td>
+                              <select id="">
+                                <option value="">Actions to apply</option>
+                                <option value="filter" selected>Filter</option>
+                                <option value="something">Somehing</option>
+                              </select>
+                            </td>
+                            <td><input id="" type="text" placeholder="Filter by keywords"></td>
+                          </tr>
+                          <tr>
+                            <td><input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label></td>
+                            <td>
+                              <select id="">
+                                <option value="">Actions to apply</option>
+                                <option value="filter">Filter</option>
+                                <option value="something">Somehing</option>
+                              </select>
+                            </td>
+                            <td><input id="" type="text" placeholder="Filter by keywords"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <button class="btn save">Save</button>
+                      <button class="btn close secondary">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- eind boxje -->
+
+          <!-- start van boxje -->
+
+          <div class="row">
+            <div class="large-12 columns">
+              <div class="panel datastream">
+
+                <div class="panel-header">
+                  <div class="row">
+                    <div class="large-7 columns">
+                      <h1>A set of data</h1>
+                    </div>
+                    <div class="large-5 columns text-right">
+                      <button class="btn configure">Configure</button>
+                      <div class="killbutton"><button class="btn alert kill">Delete</button></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-content">
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <input class="header-input" id="data-name" type="text" value="Dolly Dataset #1">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="large-12 columns margin-top">
+                      <h6>Set some filters</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="large-2 columns">
+                      <input id="year" type="text" placeholder="From year">
+                    </div>
+                    <div class="large-2 columns">
+                      <input id="year" type="text" placeholder="To year">
+                    </div>
+                    <div class="large-4 columns">
+                      <select id="country">
+                        <option value="">Country</option>
+                      </select>
+                    </div>
+                    <div class="large-4 columns">
+                      <select id="city">
+                        <option value="">City</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns margin-top">
+                      <h6>Select what you'd like to include</h6>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-4 columns">
+                      <select id="filter-group">
+                        <option value="">Filter terms by group</option>
+                        <option value="group1">Group 1</option>
+                      </select>
+                    </div>
+                    <div class="large-4 columns">
+                      <select id="filter-subgroup">
+                        <option value="">Filter terms by subgroup</option>
+                      </select>
+                    </div>
+                    <div class="large-4 columns">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="columns large-12">
+                      <table class="filters">
+                        <thead>
+                          <tr>
+                            <th><span>Select terms</span></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <input id="checkbox1" type="checkbox" checked><label for="checkbox1">Checkbox 1</label></td>
+                            <td>
+                              <select id="">
+                                <option value="">Actions to apply</option>
+                                <option value="filter">Filter</option>
+                                <option value="something">Somehing</option>
+                              </select>
+                            </td>
+                            <td><input id="" type="text" placeholder="Filter by keywords"></td>
+                          </tr>
+                          <tr>
+                            <td><input id="checkbox2" type="checkbox" checked><label for="checkbox2">Checkbox 2</label></td>
+                            <td>
+                              <select id="">
+                                <option value="">Actions to apply</option>
+                                <option value="filter" selected>Filter</option>
+                                <option value="something">Somehing</option>
+                              </select>
+                            </td>
+                            <td><input id="" type="text" placeholder="Filter by keywords"></td>
+                          </tr>
+                          <tr>
+                            <td><input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label></td>
+                            <td>
+                              <select id="">
+                                <option value="">Actions to apply</option>
+                                <option value="filter">Filter</option>
+                                <option value="something">Somehing</option>
+                              </select>
+                            </td>
+                            <td><input id="" type="text" placeholder="Filter by keywords"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <button class="btn save">Save</button>
+                      <button class="btn close secondary">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- eind boxje -->
+
+        </div>
+      </div>
+{% enblock %}
