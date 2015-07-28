@@ -291,7 +291,7 @@ class DataPool():
 				continue
 			else:
 				print len(cluster_ids)
-				pprint.pprint(cluster_ids[0])
+				pprint.pprint(cluster_ids[0].classes)
 				exit()
 			#print data_model_class.name
 			self.schema_classes[data_model_class.name] = {}
