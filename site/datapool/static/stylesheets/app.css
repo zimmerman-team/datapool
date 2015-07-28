@@ -4029,9 +4029,9 @@ label {
   color: #4d4d4d;
   cursor: pointer;
   display: block;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 1.1;
   margin-bottom: 0.6rem;
   /* Styles for required inputs */
 }
@@ -4058,9 +4058,9 @@ label small {
   border-style: solid;
   border-width: 1px;
   display: block;
-  font-size: 0.875rem;
-  height: 2.3125rem;
-  line-height: 2.3125rem;
+  font-size: 0.75rem;
+  height: 2.4375rem;
+  line-height: 2.4375rem;
   overflow: visible;
   padding-bottom: 0;
   padding-top: 0;
@@ -4152,8 +4152,8 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   color: rgba(0, 0, 0, 0.75);
   display: block;
   font-family: inherit;
-  font-size: 0.875rem;
-  height: 2.3125rem;
+  font-size: 1rem;
+  height: 2.4375rem;
   margin: 0 0 1rem 0;
   padding: 0.5rem;
   width: 100%;
@@ -4320,11 +4320,11 @@ select {
   border-color: #cccccc;
   color: rgba(0, 0, 0, 0.75);
   font-family: inherit;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: normal;
   padding: 0.5rem;
   border-radius: 0;
-  height: 2.3125rem;
+  height: 2.4375rem;
 }
 /* line 337, ../bower_components/foundation/scss/foundation/components/_forms.scss */
 select::-ms-expand {
@@ -9682,21 +9682,21 @@ footer {
 }
 
 /* line 254, ../scss/app.scss */
-.alert-box {
+.alert-box.helper {
   background: #99d9da;
   padding: 1.25rem;
 }
 /* line 257, ../scss/app.scss */
-.alert-box h3 {
+.alert-box.helper h3 {
   color: #fff;
 }
 /* line 260, ../scss/app.scss */
-.alert-box.nopadding {
+.alert-box.helper.nopadding {
   padding: 0;
   margin: 0;
 }
 /* line 264, ../scss/app.scss */
-.alert-box .close {
+.alert-box.helper .close {
   position: relative;
   opacity: 1;
   right: auto;
@@ -9725,15 +9725,15 @@ footer {
   font-size: .8rem;
 }
 /* line 158, ../bower_components/foundation/scss/foundation/components/_buttons.scss */
-.alert-box .close:hover, .alert-box .close:focus {
+.alert-box.helper .close:hover, .alert-box.helper .close:focus {
   background-color: #3a9c9d;
 }
 /* line 164, ../bower_components/foundation/scss/foundation/components/_buttons.scss */
-.alert-box .close:hover, .alert-box .close:focus {
+.alert-box.helper .close:hover, .alert-box.helper .close:focus {
   color: #FFFFFF;
 }
 /* line 272, ../scss/app.scss */
-.alert-box .close:hover {
+.alert-box.helper .close:hover {
   opacity: 1;
 }
 
