@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'djangocms_picture',
     'djangocms_teaser',
     'djangocms_video',
+    'djangocms_text_ckeditor',
     'reversion',
     'datapool',
     'dp_management',
