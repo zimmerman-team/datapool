@@ -288,6 +288,10 @@ class DataPool():
 			if len(cluster_ids[0].classes) == 0 :
 				models.DataModelProperty.objects.filter(data_model_class=data_model_class).delete()
 				data_model_class.delete()
+				print len(cluster_ids[0].classes)
+				print 'deleted'
+				print 'exiting'
+				exit()
 				continue
 			else:
 				print len(cluster_ids[0].classes)
