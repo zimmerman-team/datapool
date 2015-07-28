@@ -289,7 +289,11 @@ class DataPool():
 				models.DataModelProperty.objects.filter(data_model_class=data_model_class).delete()
 				data_model_class.delete()
 				continue
-			
+			else:
+				print len(cluster_ids[0].classes)
+				print 'not deleted'
+				print 'exiting'
+				exit()
 			#print data_model_class.name
 			self.schema_classes[data_model_class.name] = {}
 			self.schema_classes[data_model_class.name]['cluster_id'] = data_model_class.default_cluster_id
