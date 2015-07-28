@@ -291,13 +291,8 @@ class DataPool():
 				print len(cluster_ids[0].classes)
 				print 'deleted'
 				print 'exiting'
-				exit()
 				continue
-			else:
-				print len(cluster_ids[0].classes)
-				print 'not deleted'
-				print 'exiting'
-				exit()
+			
 			#print data_model_class.name
 			self.schema_classes[data_model_class.name] = {}
 			self.schema_classes[data_model_class.name]['cluster_id'] = data_model_class.default_cluster_id
