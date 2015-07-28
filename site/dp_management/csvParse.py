@@ -95,7 +95,6 @@ class CsvImport(DataPool):
 	   	cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1")
 		cluster_id = cluster_ids[0].classes
 		print 'in create class cluster_id = '+str(cluster_id)
-		exit()
 	   	data_model_class = models.DataModelClass()
 		data_model_class.name = self.class_name
 		data_model_class.default_cluster_id = cluster_id
