@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.7/howto/deployment/wsgi/
 """
 
 
-ALLDIRS = ['/home/siem/sites/datapool/site/','/home/siem/sites/datapool/site/datapool','/home/siem/sites/datapoolEnv/lib/python2.7/site-packages']
+ALLDIRS = ['/home/daan/datapool/datapool/site/','/home/daan/datapool/datapool/site/datapool','/home/daan/.virtualenvs/datapool/lib/python2.7/site-packages']
 import os
 import sys 
 import site 
@@ -30,7 +30,7 @@ sys.path[:0] = new_sys_path
 # Activate your virtual env
 os.environ["DJANGO_SETTINGS_MODULE"] = "datapool.settings_live"
 
-activate_env=os.path.expanduser("/home/siem/sites/datapoolEnv/bin/activate_this.py")
+activate_env=os.path.expanduser("/home/daan/.virtualenvs/datapool/bin/activate_this.py")
 execfile(activate_env, dict(__file__=activate_env))
  
 #import django.core.handlers.wsgi
