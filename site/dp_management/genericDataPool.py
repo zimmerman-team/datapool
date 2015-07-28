@@ -285,14 +285,11 @@ class DataPool():
 		for data_model_class in classes:
 			cluster_ids = self.client.command("select classes[name='"+data_model_class.name+"'].defaultClusterId FROM 0:1")
 			print "select classes[name='"+data_model_class.name+"'].defaultClusterId FROM 0:1"
-			if len(cluster_ids) == 0 :
+			if len(cluster_ids[0].classes) == 0 :
 				models.DataModelProperty.objects.filter(data_model_class=data_model_class).delete()
 				data_model_class.delete()
 				continue
-			else:
-				print len(cluster_ids)
-				pprint.pprint(cluster_ids[0].classes)
-				exit()
+			
 			#print data_model_class.name
 			self.schema_classes[data_model_class.name] = {}
 			self.schema_classes[data_model_class.name]['cluster_id'] = data_model_class.default_cluster_id
@@ -303,7 +300,7 @@ class DataPool():
 				
 		for data_model_edge in models.DataModelEdge.objects.filter(data_source=source):
 			cluster_ids = self.client.command("select classes[name='"+data_model_edge.name+"'].defaultClusterId FROM 0:1")
-			if len(cluster_ids) == 0 :
+			if len(cluster_ids[0].classes) == 0 :
 				data_model_edge.delete()
 				continue
 			self.schema_edges[data_model_edge.name] = data_model_edge
