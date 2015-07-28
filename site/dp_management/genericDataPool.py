@@ -45,7 +45,7 @@ class DataPool():
 		data_model_class = models.DataModelClass()
 		data_model_class.name = class_name
 		data_model_class.default_cluster_id = cluster_id
-		data_model_class.data_source = self.source
+		data_model_class.data_source = self.source9175
 		data_model_class.save()
 		self.schema_classes[class_name] = {}
 		self.schema_classes[class_name]['cluster_id'] = cluster_id
@@ -285,7 +285,10 @@ class DataPool():
 		for data_model_class in classes:
 			cluster_ids = self.client.command("select classes[name='"+data_model_class.name+"'].defaultClusterId FROM 0:1")
 			print "select classes[name='"+data_model_class.name+"'].defaultClusterId FROM 0:1"
-			if len(cluster_ids[0].classes) == 0 :
+			
+			cluster_test = cluster_ids[0].classes
+
+			if (not isinstance( cluster_test, int )) and len(cluster_test) == 0:
 				models.DataModelProperty.objects.filter(data_model_class=data_model_class).delete()
 				data_model_class.delete()
 				print len(cluster_ids[0].classes)
@@ -303,7 +306,9 @@ class DataPool():
 				
 		for data_model_edge in models.DataModelEdge.objects.filter(data_source=source):
 			cluster_ids = self.client.command("select classes[name='"+data_model_edge.name+"'].defaultClusterId FROM 0:1")
-			if len(cluster_ids[0].classes) == 0 :
+			try:
+				cluster_test = cluster_ids[0].classes
+			except:
 				data_model_edge.delete()
 				continue
 			self.schema_edges[data_model_edge.name] = data_model_edge

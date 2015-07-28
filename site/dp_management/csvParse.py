@@ -41,12 +41,14 @@ class CsvImport(DataPool):
 					cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1")
 					for cluster_id in cluster_ids:
 						try:
+							pprint.pprint(cluster_id.classes)
 							class_cluster_id = cluster_id.classes
+							if len(cluster_id.classes) == 0:
+								class_cluster_id = self.create_class(self.header)
 						except Exception as exception:
 							pprint.pprint(cluster_ids)
 							print 'class not found'
 							class_cluster_id = self.create_class(self.header)
-
 				rec_data = {}
 				rec_data_row_on_number = {}
 				for col in row:
@@ -73,16 +75,16 @@ class CsvImport(DataPool):
 					rec_data['year'] = int(number_col);
 					rec_data['year_value'] = rec_data_row_on_number[number_col];
 					rec = {'@'+self.class_name:rec_data}
-					pprint.pprint(rec)
-					pprint.pprint(self.header)
+					#pprint.pprint(rec)
+					#pprint.pprint(self.header)
 					try:
 						rec_position = self.client.record_create(class_cluster_id,rec )
 					except:
 						print 'failed '+self.class_name
 				else:
 					rec = {'@'+self.class_name:rec_data}
-					pprint.pprint(rec)
-					pprint.pprint(self.header)
+					#pprint.pprint(rec)
+					#pprint.pprint(self.header)
 					try:
 						rec_position = self.client.record_create(class_cluster_id,rec )
 					except:
@@ -100,6 +102,7 @@ class CsvImport(DataPool):
 		data_model_class.default_cluster_id = cluster_id
 		data_model_class.data_source = self.source
 		data_model_class.save()
+		self.schema_classes[self.class_name] = cluster_id
 
 	   	colnum = 0
 	   	if(self.new_row_on_number):
