@@ -291,7 +291,7 @@ class DataPool():
 			cluster_id = cluster_ids[0].classes
 			class_created = False
 			if cluster_id != data_model_class.default_cluster_id:
-				self.create_class(data_model_class.name,cluster_id=data_model_class.default_cluster_id)
+				self.create_class(data_model_class.name,existing_cluster_id=data_model_class.default_cluster_id)
 				class_created = True
 			for class_prop in models.DataModelProperty.objects.filter(data_model_class=data_model_class):
 				self.schema_properties[data_model_class.name+'.'+class_prop.name] = True
