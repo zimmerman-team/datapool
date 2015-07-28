@@ -25,8 +25,13 @@ class DataPool():
 	schema_edges = {}
 	encoding = 'ascii'
 
-	def create_class(self,class_name):
-		cluster_ids = self.client.command('create class '+class_name+' EXTENDS V')
+	def create_class(self,class_name,existing_cluster_id=None):
+		if(existing_cluster_id != None):
+			cluster_id_text = ' CLUSTER '+existing_cluster_id
+		else:
+			cluster_id_text = ''
+
+		cluster_ids = self.client.command('create class '+class_name+' EXTENDS V '+cluster_id_text)
 
 		cluster_id = cluster_ids[0]
 		print 'create class cluster_id = '+cluster_id+' '+class_name
@@ -282,10 +287,19 @@ class DataPool():
 			self.schema_classes[data_model_class.name] = {}
 			self.schema_classes[data_model_class.name]['cluster_id'] = data_model_class.default_cluster_id
 			self.schema_classes[data_model_class.name]['django_object'] = data_model_class
+			cluster_ids = self.client.command("select classes[name='"+data_model_class.name+"'].defaultClusterId FROM 0:1")
+			cluster_id = cluster_ids[0].classes
+			class_created = False
+			if cluster_id != data_model_class.default_cluster_id:
+				self.create_class(data_model_class.name,cluster_id=data_model_class.default_cluster_id)
+				class_created = True
 			for class_prop in models.DataModelProperty.objects.filter(data_model_class=data_model_class):
 				self.schema_properties[data_model_class.name+'.'+class_prop.name] = True
+				if class_created:
+					self.create_property(data_model_class.name,class_prop.name,data_model_class)
 		for data_model_edge in models.DataModelEdge.objects.filter(data_source=source):
 			self.schema_edges[data_model_edge.name] = data_model_edge
+
 
 
 
