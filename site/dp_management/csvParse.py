@@ -102,7 +102,9 @@ class CsvImport(DataPool):
 		data_model_class.default_cluster_id = cluster_id
 		data_model_class.data_source = self.source
 		data_model_class.save()
-		self.schema_classes[self.class_name] = cluster_id
+		self.schema_classes[self.class_name] = {}
+		self.schema_classes[self.class_name]['cluster_id'] = cluster_id
+		self.schema_classes[self.class_name]['django_object'] = data_model_class
 
 	   	colnum = 0
 	   	if(self.new_row_on_number):
