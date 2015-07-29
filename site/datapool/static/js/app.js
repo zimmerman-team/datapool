@@ -48,6 +48,7 @@ $(document).ready(function(){
       $(this).parents('.panel-header').slideUp().siblings('.panel-content').slideDown();
     });
     $('.close').on('click',function(){
+      $.cookie('hide_help', 'true');
       $(this).parents('.panel-content').slideUp().siblings('.panel-header').slideDown();
     });
     $('.killbutton').width($('.killbutton .kill').outerWidth());
@@ -114,5 +115,46 @@ $(document).ready(function(){
         });
       });;
     });
+    //select data set category
+    $('#cat').on('change',function() {
+      category_id = $(this).val();
+      console.log('category id = '+category_id);
+      $.getJSON( "/get_sub_categories/"+category_id+"/",function(data){
+        $('#subcat').empty()
+        for(sub_cat_id in data){
+          $('#subcat').append($("<option />").val(sub_cat_id).text(data[sub_cat_id]));
+        }
+        $("#subcat option:first").attr('selected','selected');
+        $('#subcat').trigger('change');
+      });
+     
+    }
+
+    );
+    //select subcategory
+    $('#subcat').on('change',function() {
+      sub_category_id = $(this).val();
+      console.log('sub cat id = '+sub_category_id);
+      $.getJSON( "/get_data_streams/"+sub_category_id+"/",function(data){
+        $('#stream').empty()
+        for(stream in data){
+          console.log(data[stream]);
+          $('#stream').append($("<option />").val(stream).text(data[stream]));
+        }
+      });
+    }
+
+    );
+    //preselect first option and fire change
+    $("#cat option:first").attr('selected','selected');
+    $('#cat').trigger('change');
+
+    $('#go').click(function(){
+      stream_id = $("#stream").val();
+            
+
+    }
+
+    );
 
 });

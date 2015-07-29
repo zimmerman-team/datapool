@@ -110,6 +110,7 @@ class DataSource(models.Model):
 		#parser.connect_old()
 		#get the file 
 		parser.load_schema()
+		
 		file_grabber = FileGrabber()
 		parse_file = file_grabber.get_the_file(self.url)
 		if self.data_type == 1:
@@ -216,17 +217,11 @@ class DataProject(models.Model):
 	def __unicode__(self):
    		return self.name
 
-class DataSet(models.Model):
-	data_project = models.ForeignKey(DataProject)
-	name = models.CharField(max_length=56)
-	description = models.TextField(null=True,blank=True)
 
-	def __unicode__(self):
-   		return self.name
 
 class DataSetStream(models.Model):
 
-	data_set = models.ForeignKey(DataSet)
+	data_project = models.ForeignKey(DataProject)
 	data_stream = models.ForeignKey(DataSource)
    	class Meta:
    		verbose_name = "Data set stream"

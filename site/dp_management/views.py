@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 
 from django.core import serializers
-from models import DollyData,TwitterUser,DataProject,DataSource
+from models import DollyData,TwitterUser,DataProject,DataSource,DataSourceCategory,DataSourceSubCategory
 from django.db.models import Count
 from django.db import connection
 from django.contrib.auth.decorators import login_required
@@ -66,9 +66,10 @@ def get_top_twitter_users(request):
 
 @login_required
 def add_data(request):
-	data_streams = DataSource.objects.all()
+	categories = DataSourceCategory.objects.all()
+	my_sources = 
 
-	return render_to_response('add_data.html',{'data_streams':data_streams})
+	return render_to_response('add_data.html',{'categories':categories})
 
 @login_required
 def add_project(request):
@@ -76,8 +77,33 @@ def add_project(request):
 	return render_to_response('add_project.html',{'data_streams':data_streams,})	
 
 @login_required
-def add_project_datastream(request):
+def add_project_datastream(request,name,stream_id):
 	project_name =  request.post['name']
+	data_stream_id = request.post['stream_id']
 	project = DataProject()
-	return render_to_response('add_data.html',{})
+	return add_data(request)
+
+@login_required
+def get_categories(request):
+	categories = DataSourceCategory.objects.all()
+	cat_array = {}
+	for cat in categories:
+		cat_array[cat.id] = cat.name
+	return HttpResponse(json.dumps(cat_array))
+
+@login_required
+def get_sub_categories(request,category_id):
+	sub_categories = DataSourceSubCategory.objects.filter(category_id=category_id)
+	cat_array = {}
+	for cat in sub_categories:
+		cat_array[cat.id] = cat.name
+	return HttpResponse(json.dumps(cat_array))
+
+@login_required
+def get_data_streams(request,sub_category_id):
+	sources = DataSource.objects.filter(sub_category_id=sub_category_id)
+	streams_arr = {}
+	for source in sources:
+		streams_arr[source.id] = source.name 
+	return HttpResponse(json.dumps(streams_arr))
 

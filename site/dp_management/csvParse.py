@@ -36,7 +36,7 @@ class CsvImport(DataPool):
 				#print "select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1"
 				if self.class_name in self.schema_classes:
 					class_cluster_id = self.schema_classes[self.class_name]['cluster_id']
-					print class_cluster_id
+					#print class_cluster_id
 				else:
 					cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1")
 					for cluster_id in cluster_ids:
