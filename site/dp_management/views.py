@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 
 from django.core import serializers
-from models import DollyData,TwitterUser,DataProject,DataSource,DataSourceCategory,DataSourceSubCategory
+from models import DollyData,TwitterUser,DataProject,DataSource,DataSourceCategory,DataSourceSubCategory,DataSetStream,DataProject
 from django.db.models import Count
 from django.db import connection
 from django.contrib.auth.decorators import login_required
@@ -67,20 +67,28 @@ def get_top_twitter_users(request):
 @login_required
 def add_data(request):
 	categories = DataSourceCategory.objects.all()
-	my_sources = 
+	my_data_streams = DataSetStream.objects.all()
+
 
 	return render_to_response('add_data.html',{'categories':categories})
 
 @login_required
 def add_project(request):
-	data_streams = DataSource.objects.all()
-	return render_to_response('add_project.html',{'data_streams':data_streams,})	
+
+	data_set_stream = DataSetStream.objects.filter(user=request.user)
+	if request.method == 'POST':
+		data_project = DataProject()
+		data_project.user = request.user
+		data_project.name = request.post['name']
+		data_project.description = request.post['description']
+		data_project.save()
+	my_projects = DataProject.objects.filter(user=request.user)
+	return render_to_response('add_project.html',{'data_set_stream':data_set_stream,'my_projects':my_projects})	
 
 @login_required
-def add_project_datastream(request,name,stream_id):
+def add_datastream(request,name,stream_id):
 	project_name =  request.post['name']
 	data_stream_id = request.post['stream_id']
-	project = DataProject()
 	return add_data(request)
 
 @login_required

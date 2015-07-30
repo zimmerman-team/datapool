@@ -204,12 +204,23 @@ class DataModelPivotPoint(models.Model):
 
 
 
+class DataSetStream(models.Model):
+
+	user = models.ForeignKey(User)
+	data_stream = models.ForeignKey(DataSource)
+   	class Meta:
+   		verbose_name = "Data set stream"
+   		verbose_name_plural = "Data set streams"
+
+	def __unicode__(self):
+		return self.data_set.name+'-'+self.data_stream.name
+
 class DataProject(models.Model):
 
 	user = models.ForeignKey(User)
 	name = models.CharField(max_length=56)
 	description = models.TextField(null=True,blank=True)
-
+	data_streams = models.ManyToManyField(DataSetStream,null=True)
 
     
 	
@@ -219,16 +230,6 @@ class DataProject(models.Model):
 
 
 
-class DataSetStream(models.Model):
-
-	data_project = models.ForeignKey(DataProject)
-	data_stream = models.ForeignKey(DataSource)
-   	class Meta:
-   		verbose_name = "Data set stream"
-   		verbose_name_plural = "Data set streams"
-
-	def __unicode__(self):
-		return self.data_set.name+'-'+self.data_stream.name
 
 class DataSetStreamProperty(models.Model):
 

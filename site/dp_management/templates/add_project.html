@@ -15,8 +15,8 @@
                   <div id="datastreams">
                     <select id="datastreams0">
                       <option value="">Add data stream</option>
-                      {% for data_stream in data_streams %}
-                        <option value="{{data_stream.id}}">{{data_stream.name}}</option>
+                      {% for data_project in data_projects %}
+                        <option value="{{data_project.id}}">{{data_project.name}}</option>
                       {% endfor %}
                     </select>
                   </div>
@@ -39,66 +39,6 @@
             <button class="close btn">Ok, I got it</button>
           </div>
 
-          <!--start van het boxje -->
-
-          <div class="row">
-            <div class="large-12 columns">
-              <div class="panel datastream">
-
-                <div class="panel-header">
-                  <div class="row">
-                    <div class="large-7 columns">
-                      <h1>Project name</h1>
-                    </div>
-                    <div class="large-5 columns text-right">
-                      <button class="btn configure">Configure</button>
-                      <div class="killbutton"><button class="btn alert kill">Delete</button></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="panel-content">
-                  <div class="row">
-                    <div class="large-12 columns">
-                      <input class="header-input" id="data-name" type="text" value="Another project">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="large-12 columns">
-                      <label>Change, add or remove data streams</label>
-                    </div>
-                  </div>
-                  <div class="streams">
-                    <div class="row stream datastream0 disabledelete">
-                      <div class="large-8 columns">
-                        <select>
-                          <option value="dolly1">Dolly Data #1</option>
-                          <option value="dolly2">Dolly Data #2</option>
-                        </select>
-                      </div>
-                      <div class="large-4 columns">
-                        <button class="btn alert tiny disabled">Delete</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="large-8 columns text-right">
-                      <button class="btn addstream"><i class="fa fa-plus"></i></button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="large-12 columns">
-                      <button class="btn save">Save</button>
-                      <button class="btn close secondary">Close</button>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- eind van het boxje -->
 
           <!--start van het boxje -->
 
