@@ -136,7 +136,7 @@ class DataSourceComment(models.Model):
 
 
 class DataModelClass(models.Model):
-	data_source = models.ForeignKey(DataSource)
+	data_source = models.ForeignKey(DataSource,related_name="classes")
 	name = models.CharField(max_length=30)
 	default_cluster_id = models.CharField(max_length=5)
 	translated_name = models.CharField(max_length=30)
@@ -158,7 +158,7 @@ class DataModelSubGroup(models.Model):
 
 
 class DataModelProperty(models.Model):
-	data_model_class = models.ForeignKey(DataModelClass)
+	data_model_class = models.ForeignKey(DataModelClass,related_name="properties")
 	name = models.CharField(max_length=30)
 	data_model_subgroup = models.ForeignKey(DataModelSubGroup,null=True)
 	translated_name = models.CharField(max_length=30)
@@ -207,7 +207,8 @@ class DataModelPivotPoint(models.Model):
 class DataSetStream(models.Model):
 
 	user = models.ForeignKey(User)
-	data_stream = models.ForeignKey(DataSource)
+	name = models.CharField(max_length=56)
+	data_stream = models.ForeignKey(DataSource,related_name="data_set_streams")
    	class Meta:
    		verbose_name = "Data set stream"
    		verbose_name_plural = "Data set streams"
@@ -234,15 +235,20 @@ class DataProject(models.Model):
 class DataSetStreamProperty(models.Model):
 
 	ACTIONCHOICE = (
-	    (0, 'SUM'),
-	    (1, 'AVG'),
-	    (2, 'MAX'),
+	    (0, 'FILTER'),
+	    (1, 'SEARCHBOX'),
+	    (2, 'BETWEEN'),
 	    (3,	'MIN'),
-	    (4,	'GROUP BY'),
-
+	    (4,	'MAX'),
+	    (5,	'SUM'),
+	    (6, 'AVG'),
+	    (7, 'GROUP BY')
 	)
-	data_set_stream = models.ForeignKey(DataSetStream)
+
+	data_set_stream = models.ForeignKey(DataSetStream,related_name='properties')
+	data_stream_class = models.ForeignKey(DataModelClass,related_name="my_properties")
 	data_model_property = models.ForeignKey(DataModelProperty)
+	use_property = models.BooleanField(default=False)
 	action = models.IntegerField(choices=ACTIONCHOICE, default=0) 
 	filter_value = models.CharField(max_length=512,null=True,blank=True)
 

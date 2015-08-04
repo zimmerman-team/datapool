@@ -54,11 +54,27 @@ $(document).ready(function(){
     $('.killbutton').width($('.killbutton .kill').outerWidth());
     $('.kill').on('click',function(){
       if (confirm('Are you sure?')) {
+        data_stream_id = $(this).attr('data-stream-id');
+        console.log(data_stream_id);
+        $.getJSON( "/delete_data_stream/"+data_stream_id+"/",function(data){
+          return;
+        });
         $(this).parents('.panel').parent().parent().fadeOut(300,function(){
           $(this).remove();
         });
       }
       return false;
+    });
+    $('.save').on('click',function(){
+      stream_id = $(this).attr('stream-id');
+      console.log('.stream_id_'+stream_id);
+      $('.stream_id_'+stream_id).each(function () {
+        console.log('inloop');
+        console.log($(this).attr('test'));
+
+        $(this).ajaxSubmit({url: 'save_property/', type: 'post'});
+      });
+
     });
 
     //add data scherm
@@ -78,7 +94,7 @@ $(document).ready(function(){
     $('table.filters input[type=checkbox]').on('change', function(){
       if ($(this).is(':checked')) {
         $(this).parent().next().children('select').fadeIn(200);
-        if ($(this).parent().next().children('select').val() == 'filter') {
+        if ($(this).parent().next().children('select').val() == '0') {
           $(this).parent().nextAll().children('input').fadeIn(200);
         }
       }
@@ -88,13 +104,15 @@ $(document).ready(function(){
       }
     });
     $('table.filters select').on('change', function(){
-      if ($(this).val() == 'filter') {
+      if ($(this).val() == '0') {
         $(this).parent().next().children('input').fadeIn(200);
       }
       else {
         $(this).parent().next().children('input').fadeOut(200);
       }
     });
+    $('table.filters select').trigger('change');
+
 
     //add project scherm
     //linker kant
@@ -151,7 +169,8 @@ $(document).ready(function(){
 
     $('#go').click(function(){
       stream_id = $("#stream").val();
-            
+      console.log('stream id = '+stream_id);
+      $(this).parents('form:first').submit();
 
     }
 

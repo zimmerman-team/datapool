@@ -6,14 +6,15 @@
         <div class="large-3 columns">
           <div id="addproject" class="panel dashboard filters">
             <h5><i class="fa fa-tachometer"></i>Add a project</h5>
-            <form>
-              <div class="row">
+            <form id='project_form' method='POST'>
+             {% csrf_token %}
+               <div class="row">
                 <div class="large-12 columns">
                    <div class="margin-top">
                     <input id="project-name" type="text" placeholder="Name your project">
                   </div>
                   <div id="datastreams">
-                    <select id="datastreams0">
+                    <select id="datastreams0" name='data_set'>
                       <option value="">Add data stream</option>
                       {% for data_project in data_projects %}
                         <option value="{{data_project.id}}">{{data_project.name}}</option>

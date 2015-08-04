@@ -3,10 +3,12 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 
 from django.core import serializers
-from models import DollyData,TwitterUser,DataProject,DataSource,DataSourceCategory,DataSourceSubCategory,DataSetStream,DataProject
+from models import DollyData,TwitterUser,DataProject,DataSource,DataSourceCategory,DataSourceSubCategory,DataSetStream,DataProject,DataSetStreamProperty
 from django.db.models import Count
 from django.db import connection
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
+
 
 
 import json
@@ -68,14 +70,34 @@ def get_top_twitter_users(request):
 def add_data(request):
 	categories = DataSourceCategory.objects.all()
 	my_data_streams = DataSetStream.objects.all()
+	if request.method == 'POST':
+		print 'in post'
+		data_set_name =  request.POST['name']
+		data_stream_id = request.POST['stream_id']
+		data_set = DataSetStream()
+		data_set.name = data_set_name
+		data_set.user = request.user
+		data_set.data_stream_id = data_stream_id
+		data_set.save();
+		data_stream = DataSource.objects.get(pk=data_stream_id)
+		for data_stream_class in data_stream.classes.all():
+			for data_stream_property in data_stream_class.properties.all():
+				data_set_property = DataSetStreamProperty()
+				data_set_property.data_set_stream = data_set
+				data_set_property.data_stream_class = data_stream_class
+				data_set_property.data_model_property = data_stream_property
+				data_set_property.save()
 
-
-	return render_to_response('add_data.html',{'categories':categories})
+	
+	page_vars = {'categories':categories,'my_data_streams':my_data_streams}
+	crsfcontext = RequestContext(request, page_vars)
+	return render_to_response('add_data.html',crsfcontext)
 
 @login_required
 def add_project(request):
 
 	data_set_stream = DataSetStream.objects.filter(user=request.user)
+
 	if request.method == 'POST':
 		data_project = DataProject()
 		data_project.user = request.user
@@ -85,10 +107,11 @@ def add_project(request):
 	my_projects = DataProject.objects.filter(user=request.user)
 	return render_to_response('add_project.html',{'data_set_stream':data_set_stream,'my_projects':my_projects})	
 
+
 @login_required
-def add_datastream(request,name,stream_id):
-	project_name =  request.post['name']
-	data_stream_id = request.post['stream_id']
+def add_datastream(request):
+
+	
 	return add_data(request)
 
 @login_required
@@ -115,3 +138,24 @@ def get_data_streams(request,sub_category_id):
 		streams_arr[source.id] = source.name 
 	return HttpResponse(json.dumps(streams_arr))
 
+@login_required
+def delete_data_stream(request,id):
+	data_set_stream = DataSetStream.objects.get(pk=id)
+	if data_set_stream.user == request.user :
+		data_set_stream.delete();
+	return HttpResponse("{'success':'true'}")
+
+@login_required
+def save_property(request):
+	print 'in save'
+	if request.method == 'POST':
+		print 'in post'
+		data_set_property = DataSetStreamProperty.objects.get(pk=request.POST['property-id']);
+		data_set_property.action = request.POST['property_action']
+		data_set_property.filter_value = request.POST['filter_value']
+		if 'use_property' in request.POST:
+			data_set_property.use_property = True
+		else:
+			data_set_property.use_property = False
+		data_set_property.save()
+	return HttpResponse("{'success':'true'}")

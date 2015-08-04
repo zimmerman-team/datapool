@@ -6,11 +6,12 @@
         <div class="large-3 columns">
           <div class="panel dashboard filters">
             <h5><i class="fa fa-database"></i>Add a data stream to project</h5>
-            <form>
+            <form id='data_form' method='POST'>
+             {% csrf_token %} 
               <div class="row">
                 <div class="large-12 columns">
                   <div class="margin-top">
-                    <input id="project-name" type="text" placeholder="Name your project">
+                    <input id="name" name='name' type="text" placeholder="Name your project">
                   </div>
                   <h6>Select a data set</h6>
                   <select id="cat">
@@ -21,7 +22,7 @@
                   <select id="subcat">
                     <option value="">Select Category First</option>
                   </select>
-                  <select id="stream">
+                  <select id="stream" name='stream_id'>
                    
                   </select>
                 </div>
@@ -45,7 +46,7 @@
           </div>
 
           <!-- start van boxje -->
-
+          {% for my_data_stream in my_data_streams.all %}
           <div class="row">
             <div class="large-12 columns">
               <div class="panel datastream">
@@ -53,11 +54,11 @@
                 <div class="panel-header">
                   <div class="row">
                     <div class="large-7 columns">
-                      <h1>A set of data</h1>
+                      <h1>{{my_data_stream.name}} from {{my_data_stream.data_stream.name}}</h1>
                     </div>
                     <div class="large-5 columns text-right">
                       <button class="btn configure">Configure</button>
-                      <div class="killbutton"><button class="btn alert kill">Delete</button></div>
+                      <div class="killbutton"><button class="btn alert kill" data-stream-id="{{my_data_stream.id}}">Delete</button></div>
                     </div>
                   </div>
                 </div>
@@ -65,7 +66,7 @@
                 <div class="panel-content">
                   <div class="row">
                     <div class="large-12 columns">
-                      <input class="header-input" id="data-name" type="text" value="Dolly Dataset #1">
+                      <input class="header-input" id="data-name" type="text" value="{{my_data_stream.name}}">
                     </div>
                   </div>
                   <div class="row">
@@ -97,7 +98,6 @@
                       <h6>Select what you'd like to include</h6>
                     </div>
                   </div>
-
                   <div class="row">
                     <div class="large-4 columns">
                       <select id="filter-group">
@@ -125,56 +125,42 @@
                           </tr>
                         </thead>
                         <tbody>
+                          {% for my_data_set_property in my_data_stream.properties.all %}
+                          <form class='stream_id_{{my_data_stream.id}}' test='bl_id_{{my_data_stream.id}}' method='post'>
+                            {% csrf_token %} 
                           <tr>
                             <td>
-                              <input id="checkbox1" type="checkbox" checked><label for="checkbox1">Checkbox 1</label></td>
+                              <input type='hidden' name='property-id' value='{{my_data_set_property.id}}' />
+                              <input id="checkbox1" type="checkbox" name="use_property" {%if my_data_set_property.use_property %}CHECKED{%endif%}><label for="checkbox1">{{my_data_set_property.data_model_property.name}}</label></td>
                             <td>
-                              <select id="">
-                                <option value="">Actions to apply</option>
-                                <option value="filter">Filter</option>
-                                <option value="something">Somehing</option>
+                              <select id="" name='property_action'>
+                              {% for action_choice in my_data_set_property.ACTIONCHOICE %}
+                                <option value="{{action_choice.0}}" {% if action_choice.0 == my_data_set_property.action %}selected{%endif%}>{{action_choice.1}}</option>
+                                
+                              {% endfor %}
                               </select>
+                              
                             </td>
-                            <td><input id="" type="text" placeholder="Filter by keywords"></td>
+                            <td><input id="filter_value" name="filter_value" type="text" placeholder="Filter by keywords"></td>
                           </tr>
-                          <tr>
-                            <td><input id="checkbox2" type="checkbox" checked><label for="checkbox2">Checkbox 2</label></td>
-                            <td>
-                              <select id="">
-                                <option value="">Actions to apply</option>
-                                <option value="filter" selected>Filter</option>
-                                <option value="something">Somehing</option>
-                              </select>
-                            </td>
-                            <td><input id="" type="text" placeholder="Filter by keywords"></td>
-                          </tr>
-                          <tr>
-                            <td><input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label></td>
-                            <td>
-                              <select id="">
-                                <option value="">Actions to apply</option>
-                                <option value="filter">Filter</option>
-                                <option value="something">Somehing</option>
-                              </select>
-                            </td>
-                            <td><input id="" type="text" placeholder="Filter by keywords"></td>
-                          </tr>
+                          </form>
+                          {% endfor %}
+                          
                         </tbody>
                       </table>
                     </div>
                   </div>
-
                   <div class="row">
                     <div class="large-12 columns">
-                      <button class="btn save">Save</button>
-                      <button class="btn close secondary">Close</button>
+                      <button class="btn save" stream-id='{{my_data_stream.id}}'>Save</button>
+                      <button class="btn close secondary" >Close</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
+          {% endfor %}
           <!-- eind boxje -->
 
 
