@@ -235,14 +235,15 @@ class DataProject(models.Model):
 class DataSetStreamProperty(models.Model):
 
 	ACTIONCHOICE = (
-	    (0, 'FILTER'),
+	    (0, 'SELECT'),
 	    (1, 'SEARCHBOX'),
 	    (2, 'BETWEEN'),
 	    (3,	'MIN'),
 	    (4,	'MAX'),
 	    (5,	'SUM'),
 	    (6, 'AVG'),
-	    (7, 'GROUP BY')
+	    (7, 'FILTER'),
+	    (8, 'COUNT')
 	)
 
 	data_set_stream = models.ForeignKey(DataSetStream,related_name='properties')

@@ -314,6 +314,72 @@ class DataPool():
 			self.schema_edges[data_model_edge.name] = data_model_edge
 
 
+	def get_query_data(self,data_set):
+		connection = data_set.data_stream.data_connection
+		self.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
+		#make query
+		query_data_set = {}
+		for data_set_property in data_set.properties.all():
+			if not data_set_property.use_property:
+				continue
+			action_list = data_set_property.ACTIONCHOICE
+			class_name = data_set_property.data_stream_class.name
+			if not class_name  in query_data_set:
+				query_data_set[class_name] = QueryData()
+				query_data_set[class_name].class_name = class_name
+			query_data = query_data_set[class_name]
+			
+			query_data.fields[action_list[data_set_property.action][1]].append(data_set_property.data_model_property.name)
+		query_result = []
+		for query_data in query_data_set:
+			result = self.client.query(query_data_set[query_data].make_query().encode(self.encoding))
+			for row in result:
+				print row.oRecordData['COUNT']
+			query_result.append(result)
+		return query_result
+		
+
+		
+
+
+
+class QueryData:
+	
+	class_name = ''
+	fields = {}
+
+	def __init__(self):
+		actionlist = models.DataSetStreamProperty.ACTIONCHOICE
+		for action in actionlist:
+			self.fields[action[1]] = []
+
+
+
+	def make_query(self):
+		group_by_fields = ','.join(self.fields['SELECT'])
+		sum_fields =  ','.join(['SUM('+field+')' for field in self.fields['SUM']])
+		avg_fields =  ','.join(['AVG('+field+')' for field in self.fields['AVG']])
+		min_fields =  ','.join(['MIN('+field+')' for field in self.fields['MIN']])
+		max_fields =  ','.join(['MAX('+field+')' for field in self.fields['MAX']])
+		count_fields =  ','.join(['COUNT('+field+')' for field in self.fields['COUNT']])
+		select_query = ','.join(filter(bool,[sum_fields,avg_fields,min_fields,max_fields,group_by_fields,count_fields]))
+		# todo filter fields
+		# and searhcbox fields
+		from_query = ' FROM '+self.class_name
+		group_by_query = ''
+		if group_by_fields != select_query: 
+			group_by_query = ' GROUP BY '+group_by_fields
+		query = 'SELECT '+select_query+from_query+group_by_query+' LIMIT 10'
+		return query;
+
+
+
+
+
+
+
+
+
 
 
 

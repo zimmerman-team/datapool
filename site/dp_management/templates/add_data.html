@@ -135,7 +135,7 @@
                             <td>
                               <select id="" name='property_action'>
                               {% for action_choice in my_data_set_property.ACTIONCHOICE %}
-                                <option value="{{action_choice.0}}" {% if action_choice.0 == my_data_set_property.action %}selected{%endif%}>{{action_choice.1}}</option>
+                                <option value="{{action_choice.0}}" {% if action_choice.0 == my_data_set_property.action and my_data_set_property.use_property == True%}selected{%endif%}>{{action_choice.1}}</option>
                                 
                               {% endfor %}
                               </select>

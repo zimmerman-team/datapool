@@ -8,6 +8,7 @@ from django.db.models import Count
 from django.db import connection
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
+from genericDataPool import DataPool
 
 
 
@@ -149,7 +150,6 @@ def delete_data_stream(request,id):
 def save_property(request):
 	print 'in save'
 	if request.method == 'POST':
-		print 'in post'
 		data_set_property = DataSetStreamProperty.objects.get(pk=request.POST['property-id']);
 		data_set_property.action = request.POST['property_action']
 		data_set_property.filter_value = request.POST['filter_value']
@@ -159,3 +159,12 @@ def save_property(request):
 			data_set_property.use_property = False
 		data_set_property.save()
 	return HttpResponse("{'success':'true'}")
+
+
+@login_required
+def get_queries(request,data_set_id):
+	data_set = DataSetStream.objects.get(pk=data_set_id);
+	datapool = DataPool()
+	query_data_set = datapool.get_query_data(data_set);
+	return HttpResponse(json.dumps(query_data_set))
+

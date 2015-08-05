@@ -94,7 +94,7 @@ $(document).ready(function(){
     $('table.filters input[type=checkbox]').on('change', function(){
       if ($(this).is(':checked')) {
         $(this).parent().next().children('select').fadeIn(200);
-        if ($(this).parent().next().children('select').val() == '0') {
+        if ($(this).parent().next().children('select').val() == '7') {
           $(this).parent().nextAll().children('input').fadeIn(200);
         }
       }
@@ -104,7 +104,7 @@ $(document).ready(function(){
       }
     });
     $('table.filters select').on('change', function(){
-      if ($(this).val() == '0') {
+      if ($(this).val() == '7') {
         $(this).parent().next().children('input').fadeIn(200);
       }
       else {
@@ -112,7 +112,7 @@ $(document).ready(function(){
       }
     });
     $('table.filters select').trigger('change');
-
+    $('table.filters input[type=checkbox]').trigger('change');
 
     //add project scherm
     //linker kant
