@@ -70,17 +70,21 @@ def get_top_twitter_users(request):
 @login_required
 def add_data(request):
 	categories = DataSourceCategory.objects.all()
-	my_data_streams = DataSetStream.objects.all()
+	my_data_streams = DataSetStream.objects.filter(user=request.user).all()
+	
 	if request.method == 'POST':
 		print 'in post'
 		data_set_name =  request.POST['name']
 		data_stream_id = request.POST['stream_id']
+		data_stream = DataSource.objects.get(pk=data_stream_id)
 		data_set = DataSetStream()
 		data_set.name = data_set_name
+		if data_set_name == '':
+			data_set.name = data_stream.name
 		data_set.user = request.user
 		data_set.data_stream_id = data_stream_id
 		data_set.save();
-		data_stream = DataSource.objects.get(pk=data_stream_id)
+		
 		for data_stream_class in data_stream.classes.all():
 			for data_stream_property in data_stream_class.properties.all():
 				data_set_property = DataSetStreamProperty()
@@ -97,7 +101,22 @@ def add_data(request):
 @login_required
 def add_project(request):
 
-	data_set_stream = DataSetStream.objects.filter(user=request.user)
+	data_set_streams = DataSetStream.objects.filter(user=request.user)
+
+	if request.method == 'POST':
+		data_project = DataProject()
+		data_project.user = request.user
+		data_project.name = request.POST['name']
+		data_project.description = request.POST['description']
+		data_project.save()
+
+	my_projects = DataProject.objects.filter(user=request.user)
+	page_vars = {'data_set_streams':data_set_streams,'my_projects':my_projects}
+	crsfcontext = RequestContext(request, page_vars)
+	return render_to_response('add_project.html',crsfcontext)	
+
+@login_required
+def add_dataset_to_project(request):
 
 	if request.method == 'POST':
 		data_project = DataProject()
@@ -105,9 +124,6 @@ def add_project(request):
 		data_project.name = request.post['name']
 		data_project.description = request.post['description']
 		data_project.save()
-	my_projects = DataProject.objects.filter(user=request.user)
-	return render_to_response('add_project.html',{'data_set_stream':data_set_stream,'my_projects':my_projects})	
-
 
 @login_required
 def add_datastream(request):

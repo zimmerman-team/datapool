@@ -16,8 +16,8 @@
                   <div id="datastreams">
                     <select id="datastreams0" name='data_set'>
                       <option value="">Add data stream</option>
-                      {% for data_project in data_projects %}
-                        <option value="{{data_project.id}}">{{data_project.name}}</option>
+                      {% for data_stream in data_set_streams %}
+                        <option value="{{data_stream.id}}">{{data_stream.name}}</option>
                       {% endfor %}
                     </select>
                   </div>

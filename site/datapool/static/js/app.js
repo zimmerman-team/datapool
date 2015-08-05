@@ -170,6 +170,11 @@ $(document).ready(function(){
     $('#go').click(function(){
       stream_id = $("#stream").val();
       console.log('stream id = '+stream_id);
+      if($('#name').val() == ''){
+        alert('give data stream a name');
+        return false;
+
+      }
       $(this).parents('form:first').submit();
 
     }
