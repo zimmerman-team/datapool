@@ -334,8 +334,8 @@ class DataPool():
 		for query_data in query_data_set:
 			result = self.client.query(query_data_set[query_data].make_query().encode(self.encoding))
 			for row in result:
-				print row.oRecordData['COUNT']
-			query_result.append(result)
+				query_result.append(row.oRecordData)
+			
 		return query_result
 		
 
@@ -369,7 +369,7 @@ class QueryData:
 		group_by_query = ''
 		if group_by_fields != select_query: 
 			group_by_query = ' GROUP BY '+group_by_fields
-		query = 'SELECT '+select_query+from_query+group_by_query+' LIMIT 10'
+		query = 'SELECT '+select_query+from_query+group_by_query+' LIMIT 10000'
 		return query;
 
 
