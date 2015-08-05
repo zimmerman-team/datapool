@@ -357,11 +357,11 @@ class QueryData:
 
 	def make_query(self):
 		group_by_fields = ','.join(self.fields['SELECT'])
-		sum_fields =  ','.join(['SUM('+field+')' for field in self.fields['SUM']])
-		avg_fields =  ','.join(['AVG('+field+')' for field in self.fields['AVG']])
-		min_fields =  ','.join(['MIN('+field+')' for field in self.fields['MIN']])
-		max_fields =  ','.join(['MAX('+field+')' for field in self.fields['MAX']])
-		count_fields =  ','.join(['COUNT('+field+')' for field in self.fields['COUNT']])
+		sum_fields =  ','.join(['SUM('+field+') AS '+field+'_sum' for field in self.fields['SUM']])
+		avg_fields =  ','.join(['AVG('+field+') AS '+field+'_avg' for field in self.fields['AVG']])
+		min_fields =  ','.join(['MIN('+field+') AS '+field+'_min' for field in self.fields['MIN']])
+		max_fields =  ','.join(['MAX('+field+') AS '+field+'_max' for field in self.fields['MAX']])
+		count_fields =  ','.join(['COUNT('+field+') AS '+field+'_count' for field in self.fields['COUNT']])
 		select_query = ','.join(filter(bool,[sum_fields,avg_fields,min_fields,max_fields,group_by_fields,count_fields]))
 		# todo filter fields
 		# and searhcbox fields
