@@ -54,9 +54,19 @@ $(document).ready(function(){
     $('.killbutton').width($('.killbutton .kill').outerWidth());
     $('.kill').on('click',function(){
       if (confirm('Are you sure?')) {
-        data_stream_id = $(this).attr('data-stream-id');
-        console.log(data_stream_id);
-        $.getJSON( "/delete_data_stream/"+data_stream_id+"/",function(data){
+        console.log($(this).attr('data-project-id'));
+        if($(this).attr('data-stream-id') != undefined){
+          //console.log('data-stream-id');
+          data_id = $(this).attr('data-stream-id');
+          url = "/delete_data_stream/"+data_id+"/"
+        }
+        if($(this).attr('data-project-id') != undefined){
+          //console.log('data-project-id');
+          data_id = $(this).attr('data-project-id');
+          url = "/delete_data_project/"+data_id+"/"
+        }
+        console.log(url);
+        $.getJSON( url,function(data){
           return;
         });
         $(this).parents('.panel').parent().parent().fadeOut(300,function(){

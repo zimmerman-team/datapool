@@ -7,11 +7,11 @@
           <div id="addproject" class="panel dashboard filters">
             <h5><i class="fa fa-tachometer"></i>Add a project</h5>
             <form id='project_form' method='POST'>
-             {% csrf_token %}
+              {% csrf_token %}
                <div class="row">
                 <div class="large-12 columns">
                    <div class="margin-top">
-                    <input id="project-name" type="text" placeholder="Name your project">
+                    <input name='name' id="project-name" type="text" placeholder="Name your project">
                   </div>
                   <div id="datastreams">
                     <select id="datastreams0" name='data_set'>
@@ -42,7 +42,7 @@
 
 
           <!--start van het boxje -->
-
+          {% for project in my_projects.all %}
           <div class="row">
             <div class="large-12 columns">
               <div class="panel datastream">
@@ -50,11 +50,11 @@
                 <div class="panel-header">
                   <div class="row">
                     <div class="large-7 columns">
-                      <h1>Project name</h1>
+                      <h1>{{project.name}}</h1>
                     </div>
                     <div class="large-5 columns text-right">
                       <button class="btn configure">Configure</button>
-                      <div class="killbutton"><button class="btn alert kill">Delete</button></div>
+                      <div class="killbutton"><button class="btn alert kill" data-project-id='{{project.id}}'>Delete</button></div>
                     </div>
                   </div>
                 </div>
@@ -70,19 +70,24 @@
                       <label>Change, add or remove data streams</label>
                     </div>
                   </div>
+                  {%for my_data_stream in project.data_streams.all%}
                   <div class="streams">
                     <div class="row stream datastream0 disabledelete">
                       <div class="large-8 columns">
-                        <select>
-                          <option value="dolly1">Dolly Data #1</option>
-                          <option value="dolly2">Dolly Data #2</option>
+                        <select name='data_stream'>
+                        {% for data_stream in data_set_streams.all %}
+                          <option value="{{data_stream.id}}" {%if data_stream.id == my_data_stream.id%}SELECTED{%endif%}>{{data_stream.name}}</option>
+                        {% endfor %}
+                          
                         </select>
                       </div>
                       <div class="large-4 columns">
-                        <button class="btn alert tiny disabled">Delete</button>
+                        <button class="btn alert tiny">Delete</button>
                       </div>
                     </div>
                   </div>
+                  {% endfor %}
+
                   <div class="row">
                     <div class="large-8 columns text-right">
                       <button class="btn addstream"><i class="fa fa-plus"></i></button>
@@ -99,7 +104,7 @@
               </div>
             </div>
           </div>
-
+          {% endfor %}
           <!-- eind van het boxje -->
 
 

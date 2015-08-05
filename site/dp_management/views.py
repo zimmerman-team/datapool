@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
+from django.http import QueryDict
 
 from django.core import serializers
 from models import DollyData,TwitterUser,DataProject,DataSource,DataSourceCategory,DataSourceSubCategory,DataSetStream,DataProject,DataSetStreamProperty
@@ -9,6 +10,7 @@ from django.db import connection
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from genericDataPool import DataPool
+import pprint
 
 
 
@@ -104,13 +106,20 @@ def add_project(request):
 	data_set_streams = DataSetStream.objects.filter(user=request.user)
 
 	if request.method == 'POST':
+		pprint.pprint(request.POST)
 		data_project = DataProject()
 		data_project.user = request.user
 		data_project.name = request.POST['name']
-		data_project.description = request.POST['description']
+		#data_project.description = request.POST['description']
 		data_project.save()
+		#print 'data_Set = '+request.POST[u'data_set']
+		for data_stream_id in dict(request.POST)['data_set']:
+			if data_stream_id == '':
+				continue
+			data_project.data_streams.add(DataSetStream.objects.get(pk=int(data_stream_id)))
+		data_project.save();
 
-	my_projects = DataProject.objects.filter(user=request.user)
+	my_projects = DataProject.objects.filter(user=request.user).all()
 	page_vars = {'data_set_streams':data_set_streams,'my_projects':my_projects}
 	crsfcontext = RequestContext(request, page_vars)
 	return render_to_response('add_project.html',crsfcontext)	
@@ -160,6 +169,13 @@ def delete_data_stream(request,id):
 	data_set_stream = DataSetStream.objects.get(pk=id)
 	if data_set_stream.user == request.user :
 		data_set_stream.delete();
+	return HttpResponse("{'success':'true'}")
+
+@login_required
+def delete_data_project(request,id):
+	data_project = DataProject.objects.get(pk=id)
+	if data_project.user == request.user :
+		data_project.delete();
 	return HttpResponse("{'success':'true'}")
 
 @login_required
