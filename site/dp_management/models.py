@@ -214,7 +214,7 @@ class DataSetStream(models.Model):
    		verbose_name_plural = "Data set streams"
 
 	def __unicode__(self):
-		return self.data_set.name+'-'+self.data_stream.name
+		return self.data_stream.name+'-'+self.data_stream.name
 
 class DataProject(models.Model):
 
