@@ -27,15 +27,23 @@ class DataSourceAdmin(admin.ModelAdmin):
         obj.process()
         return HttpResponse('Success')
 
+class DataModelPropertyInline(admin.TabularInline):
+    model = DataModelProperty
+
+class DataModelClassAdmin(admin.ModelAdmin):
+    inlines = [DataModelPropertyInline]
+    list_display = ['__unicode__', ]
+    change_form_template_extends = 'admin/hvad/change_form.html'
+
 admin.site.register(DataModelQuery, DataModelQueryAdmin)
 admin.site.register(DataConnection)
 admin.site.register(DataSourceFlags)
 admin.site.register(DataSource,DataSourceAdmin)
 admin.site.register(DataSourceComment)
-admin.site.register(DataModelClass)
+admin.site.register(DataModelClass, DataModelClassAdmin)
 admin.site.register(DataModelGroup)
 admin.site.register(DataModelSubGroup)
-admin.site.register(DataModelProperty)
+admin.site.register(DataModelProperty,)
 admin.site.register(DataModelEdge)
 admin.site.register(DataSourceCategory)
 admin.site.register(DataSourceSubCategory)
