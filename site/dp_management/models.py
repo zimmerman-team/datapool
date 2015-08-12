@@ -110,11 +110,12 @@ class DataSource(models.Model):
 		#parser.connect_old()
 		#get the file 
 		parser.load_schema()
-		
+		parser.delete_classes()
+		parser.create_schema()
 		file_grabber = FileGrabber()
 		parse_file = file_grabber.get_the_file(self.url)
 		if self.data_type == 1:
-			#parser.delete_classes()
+			parser.delete_classes()
 			
 			parser.load_xml(parse_file)
 			parser.parse_xml()
@@ -158,12 +159,23 @@ class DataModelSubGroup(models.Model):
 
 
 class DataModelProperty(models.Model):
+
+	TYPECHOICE = (
+	    (0, 'STRING'),
+	    (1, 'INTEGER'),
+	    (2, 'FLOAT'),
+	    (3,	'TEXT'),
+	    (4,	'DATE'),
+	    (5,	'DATATIME'),    
+	)
 	data_model_class = models.ForeignKey(DataModelClass,related_name="properties")
 	name = models.CharField(max_length=30)
 	data_model_subgroup = models.ForeignKey(DataModelSubGroup,null=True)
 	translated_name = models.CharField(max_length=30)
-	property_type = models.CharField(max_length=30)
-	property_values = models.TextField() # possible values is more than 20 
+	orient_name = models.CharField(max_length=30)
+	property_type = models.IntegerField(choices=TYPECHOICE, default=0) 
+	property_values = models.TextField(null=True,blank=True) # possible values is more than 20 
+	defaul_value = models.CharField(max_length=30,null=True,blank=True)
 	def __unicode__(self):
 		return "%s.%s" % (self.data_model_class.name, self.name)
 

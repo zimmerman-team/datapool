@@ -142,7 +142,8 @@ INSTALLED_APPS = (
     'reversion',
     'datapool',
     'dp_management',
-    'ordered_model'
+    'ordered_model',
+    'hvad'
 )
 
 LANGUAGES = (

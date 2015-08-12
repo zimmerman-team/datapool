@@ -93,26 +93,25 @@ class CsvImport(DataPool):
 			rownum += 1
 
 	def create_class(self,first_row):
-	   	cluster_id = self.client.command('create class '+self.class_name+' EXTENDS V')
-	   	cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1")
-		cluster_id = cluster_ids[0].classes
-		print 'in create class cluster_id = '+str(cluster_id)
+	   	#cluster_id = self.client.command('create class '+self.class_name+' EXTENDS V')
+	   	#cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1")
+		#cluster_id = cluster_ids[0].classes
 	   	data_model_class = models.DataModelClass()
 		data_model_class.name = self.class_name
-		data_model_class.default_cluster_id = cluster_id
+		data_model_class.default_cluster_id = 0
 		data_model_class.data_source = self.source
 		data_model_class.save()
 		self.schema_classes[self.class_name] = {}
-		self.schema_classes[self.class_name]['cluster_id'] = cluster_id
+		self.schema_classes[self.class_name]['cluster_id'] = 0
 		self.schema_classes[self.class_name]['django_object'] = data_model_class
 
 	   	colnum = 0
 	   	if(self.new_row_on_number):
-	   		self.create_property(self.class_name,self.row_on_number_column_name,data_model_class)
+	   		self.create_property_model(self.class_name,self.row_on_number_column_name,data_model_class)
 	   		#self.client.command('create property '+self.class_name+'.'+self.row_on_number_column_name+' INTEGER')
 	   		
 	   		#print 'create property '+self.class_name+'.'+self.row_on_number_column_name+' INTEGER'
-			self.create_property(self.class_name,self.row_on_number_column_name+'_value',data_model_class)
+			self.create_property_model(self.class_name,self.row_on_number_column_name+'_value',data_model_class)
 	   		#self.client.command('create property '+self.class_name+'.year_value STRING')
 	   		
 	   		#print 'create property '+self.class_name+'.year_value STRING'
@@ -129,12 +128,14 @@ class CsvImport(DataPool):
 				print 'set column is digit'
 			self.header[colnum] = attr_key
 			print 'create property '+self.class_name+'.'+self.format_attrib_name(attr_key)+' STRING'
-			self.create_property(self.class_name,self.format_attrib_name(attr_key),data_model_class)
+			self.create_property_model(self.class_name,self.format_attrib_name(attr_key),data_model_class)
 			# self.client.command('create property '+self.class_name+'.'+self.format_attrib_name(attr_key)+' STRING')
 			# if 'date' in attr_key.lower():
 			# 	self.client.command('create property '+self.class_name+'.'+self.format_attrib_name(attr_key)+'__iso__'+' DATETIME')
 			colnum += 1
-		return cluster_id
+		return data_model_class
+
+
 
 	
 

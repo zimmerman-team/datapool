@@ -32,7 +32,7 @@ class xmlImport(DataPool):
 			class_cluster_id = self.schema_classes[class_name]['cluster_id']
 
 		else:
-			class_cluster_id = self.create_class(class_name)
+			class_cluster_id = self.create_class_model(class_name)
 
 		django_object = self.schema_classes[class_name]['django_object']
 
@@ -43,7 +43,7 @@ class xmlImport(DataPool):
 	 	rec_data = {}
 	 	for attr_key in element.keys():
 	 		if not class_name+'.'+self.format_attrib_name(attr_key) in self.schema_properties:
-	 			self.create_property(class_name,attr_key,django_object)
+	 			self.create_property_model(class_name,attr_key,django_object)
 
 	 		rec_data[self.format_attrib_name(attr_key)] =  element.get(attr_key)
 	 		if 'date' in attr_key:
@@ -55,11 +55,12 @@ class xmlImport(DataPool):
 	 				pass
 	 	if element.text != '':
 	 		if not class_name+'.text' in self.schema_properties:
-	 			self.create_property(class_name,'text',django_object)
+	 			self.create_property_model(class_name,'text',django_object)
 	 		rec_data['text'] = unicode(element.text).replace('"','\\"').encode('utf-8')
 		rec = {'@'+class_name:rec_data}
 		pprint.pprint(rec)
-		rec_position = self.client.record_create(class_cluster_id,rec )
+		if not self.create_schema :
+			rec_position = self.client.record_create(class_cluster_id,rec )
 		return rec_position._rid
 
 

@@ -24,24 +24,20 @@ class DataPool():
 	schema_classes = {}
 	schema_edges = {}
 	encoding = 'ascii'
+	create_schema = True
 
-	def create_class(self,class_name):
-		if(existing_cluster_id != None):
-			cluster_id_text = ' CLUSTER '+existing_cluster_id
-		else:
-			cluster_id_text = ''
 
-		cluster_ids = self.client.command('create class '+class_name+' EXTENDS V '+cluster_id_text)
+	def create_class(self,data_model_class):
 
+		cluster_ids = self.client.command('create class '+data_model_class.orient_name+' EXTENDS V '+cluster_id_text)
 		cluster_id = cluster_ids[0]
-		print 'create class cluster_id = '+cluster_id+' '+class_name
-		for cl_id in cluster_ids:
-			print 'cl_id = '+cl_id
-		cluster_ids = self.client.command("select classes[name='"+class_name+"'].defaultClusterId FROM 0:1")
+		cluster_ids = self.client.command("select classes[name='"+data_model_class.orient_name+"'].defaultClusterId FROM 0:1")
 		cluster_id = cluster_ids[0].classes
-		print 'query for  cluster_id = '+str(cluster_id)+' '+class_name
-		for cl_id in cluster_ids:
-			print 'cl_id = '+str(cl_id.classes)
+		data_model_class.cluster_id = cluster_id
+		data_model_class.save()
+		return cluster_id
+
+	def create_model(self,class_name):
 		data_model_class = models.DataModelClass()
 		data_model_class.name = class_name
 		data_model_class.default_cluster_id = cluster_id
@@ -50,12 +46,9 @@ class DataPool():
 		self.schema_classes[class_name] = {}
 		self.schema_classes[class_name]['cluster_id'] = cluster_id
 		self.schema_classes[class_name]['django_object'] = data_model_class
-
+		return data_model_class
 		
-
-		return cluster_id
-
-	def create_property(self,class_name,property_name,data_model_class):
+	def create_property_model(self,class_name,property_name,data_model_class):
 		prop_name =self.format_attrib_name(property_name)
 		self.schema_properties[class_name+'.'+prop_name] = True
 		data_model_class_property = models.DataModelProperty()
@@ -63,15 +56,18 @@ class DataPool():
 		data_model_class_property.name = prop_name
 		data_model_class_property.type = 'STRING'
 		data_model_class_property.save()
-		print 'create property '+class_name+'.'+prop_name+' STRING'
-		self.client.command('create property '+class_name+'.'+prop_name+' STRING')
 		if 'date' in prop_name:
 			data_model_class_property_iso_ = models.DataModelProperty()
 			data_model_class_property_iso_.data_model_class = data_model_class
 			data_model_class_property_iso_.name = prop_name+'__iso__'
 			data_model_class_property_iso_.type = 'DATETIME'
 			data_model_class_property_iso_.save()
-			self.client.command('create property '+class_name+'.'+prop_name+'__iso__'+' DATETIME')
+	
+	def create_property(self,data_model_class_property):
+		self.client.command('create property '+data_model_class_property.data_model_class.name+'.'+data_model_class_property.orient_name+' '+data_model_class_property.property_type)
+
+
+
 
 
 	def create_edge(self,from_rec,to_rec,edge_name,parent,child):
@@ -82,13 +78,16 @@ class DataPool():
 			self.create_edge_object(edge_name,parent,child)
 			self.client.command(edge_command)
 	
-	def create_edge_object(self,edge_name,parent_object,child_object):
+	def create_edge_object(self,django_edge):
 		edge_command = "create class "+edge_name.encode(self.encoding)+" extends E"
 		#add edge to list
 
 		self.client.command(edge_command)
-		self.client.command('CREATE PROPERTY '+edge_name.encode(self.encoding)+'.out LINK '+parent_object.name.encode(self.encoding))
-		self.client.command('CREATE PROPERTY '+edge_name.encode(self.encoding)+'.in LINK '+child_object.name.encode(self.encoding))
+		self.client.command('CREATE PROPERTY '+django_edge.name.encode(self.encoding)+'.out LINK '+django_edge.class_out.name.encode(self.encoding))
+		self.client.command('CREATE PROPERTY '+django_edge.name.encode(self.encoding)+'.in LINK '+dajngo_edge.class_in.name.encode(self.encoding))
+		
+
+	def create_edge_model(self,edge_name,parent_object,child_object):
 		django_edge = models.DataModelEdge()
 		django_edge.name = edge_name
 		django_edge.class_out = parent_object
@@ -96,6 +95,7 @@ class DataPool():
 		django_edge.data_source = self.source
 		django_edge.save()
 		self.schema_edges[edge_name] = django_edge
+		return django_edge
 
 
 
@@ -313,6 +313,20 @@ class DataPool():
 				continue
 			self.schema_edges[data_model_edge.name] = data_model_edge
 
+	def create_orient_schema(self):
+		source = self.source
+		#get classes
+		classes = models.DataModelClass.objects.filter(data_source=source)
+		for data_model_class in classes:
+			self.create_class(data_model_class)
+
+			
+			for class_prop in models.DataModelProperty.objects.filter(data_model_class=data_model_class):
+				
+				self.create_property_model(data_model_class.name,class_prop)
+				
+		for data_model_edge in models.DataModelEdge.objects.filter(data_source=source):
+			self.create_edge_object(data_model_edge)
 
 	def get_query_data(self,data_set):
 		connection = data_set.data_stream.data_connection
@@ -332,7 +346,9 @@ class DataPool():
 			query_data.fields[action_list[data_set_property.action][1]].append(data_set_property.data_model_property.name)
 		query_result = []
 		for query_data in query_data_set:
-			result = self.client.query(query_data_set[query_data].make_query().encode(self.encoding))
+			query = query_data_set[query_data].make_query().encode(self.encoding)
+			result = self.client.query(query)
+			query_result.append({'query':query})
 			for row in result:
 				query_result.append(row.oRecordData)
 			
