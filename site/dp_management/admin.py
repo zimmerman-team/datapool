@@ -13,12 +13,13 @@ class DataModelQueryAdmin(OrderedModelAdmin):
 
 class DataSourceAdmin(admin.ModelAdmin):
     search_fields = ['name']
-    list_display = ['name','parse_status']
+    list_display = ['name','parse_status','django_models','orient_models']
     def get_urls(self):
         urls = super(DataSourceAdmin, self).get_urls()
         extra_urls = patterns('',
             (r'^parse-source/$', self.admin_site.admin_view(self.parse_source)),
-            
+            (r'^create-django-schema/$', self.admin_site.admin_view(self.create_django_schema)),
+            (r'^create-orient-schema/$', self.admin_site.admin_view(self.create_orient_schema)),
         )
         return extra_urls + urls
     def parse_source(self, request):
@@ -26,6 +27,21 @@ class DataSourceAdmin(admin.ModelAdmin):
         obj = get_object_or_404(DataSource, id=source_id)
         obj.process()
         return HttpResponse('Success')
+
+    def create_django_schema(self, request):
+        source_id = request.GET.get('source_id')
+        obj = get_object_or_404(DataSource, id=source_id)
+        obj.create_django_schema()
+        return HttpResponse('Success')
+
+    def create_orient_schema(self, request):
+        source_id = request.GET.get('source_id')
+        obj = get_object_or_404(DataSource, id=source_id)
+        obj.create_orient_schema()
+        return HttpResponse('Success')
+
+
+
 
 class DataModelPropertyInline(admin.TabularInline):
     model = DataModelProperty

@@ -3,6 +3,8 @@ import csv
 import pprint
 import models
 import urllib
+import sys
+import datetime
 class CsvImport(DataPool):
 
 	name_cvs = ''
@@ -36,7 +38,7 @@ class CsvImport(DataPool):
 				#print "select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1"
 				if self.class_name in self.schema_classes:
 					class_cluster_id = self.schema_classes[self.class_name]['cluster_id']
-					#print class_cluster_id
+					print class_cluster_id
 				else:
 					cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1")
 					for cluster_id in cluster_ids:
@@ -44,16 +46,18 @@ class CsvImport(DataPool):
 							pprint.pprint(cluster_id.classes)
 							class_cluster_id = cluster_id.classes
 							if len(cluster_id.classes) == 0:
-								class_cluster_id = self.create_class(self.header)
+								class_cluster_id = self.create_django_class(self.header)
 						except Exception as exception:
 							pprint.pprint(cluster_ids)
 							print 'class not found'
-							class_cluster_id = self.create_class(self.header)
+							class_cluster_id = self.create_django_class(self.header)
+				if self.create_schema ==True :
+					break
 				rec_data = {}
 				rec_data_row_on_number = {}
 				for col in row:
-					
-
+					print 'column = '+col 
+					print 'header is '+self.header[colnum]
 					if(col != ''):
 						attr_key = str(self.header[colnum])
 						
@@ -62,14 +66,17 @@ class CsvImport(DataPool):
 								rec_data_row_on_number[self.header[colnum]] = self.escape_orientdb(col)
 								colnum += 1
 								continue
-						rec_data[self.format_attrib_name(attr_key)] =  self.escape_orientdb(col)
-				 		if 'date' in attr_key.lower():
-				 			try:
-				 				date = parse( col)
-				 				rec_data[self.format_attrib_name(attr_key)+'__iso__'] = col
-				 			except:
-				 				print 'parsedate failed '+col
-				 				pass
+						col_obj = self.schema_properties[self.prefix+'.'+self.format_attrib_name(attr_key)]['django_object']
+						rec_key = col_obj.orient_name
+						if col_obj.property_type == 1:
+							rec_data[self.format_attrib_name(rec_key)] =  int(col)
+						elif col_obj.property_type == 2:
+							rec_data[self.format_attrib_name(rec_key)] =  float(col)
+						elif col_obj.property_type == 4:
+							rec_data[self.format_attrib_name(rec_key)] =  datetime.datetime.strptime(col, col_obj.time_format) 
+						else:
+							rec_data[self.format_attrib_name(rec_key)] =  self.escape_orientdb(col)
+				 		
 					colnum += 1
 				for number_col in rec_data_row_on_number:
 					rec_data['year'] = int(number_col);
@@ -83,21 +90,25 @@ class CsvImport(DataPool):
 						print 'failed '+self.class_name
 				else:
 					rec = {'@'+self.class_name:rec_data}
-					#pprint.pprint(rec)
-					#pprint.pprint(self.header)
+					pprint.pprint(rec)
+					pprint.pprint(self.header)
 					try:
-						rec_position = self.client.record_create(class_cluster_id,rec )
-					except:
+						if not self.create_schema:
+							rec_position = self.client.record_create(class_cluster_id,rec )
+					except Exception as exception:
+						print sys.exc_info()[0]
 						print 'failed '+self.class_name
 		            
 			rownum += 1
 
-	def create_class(self,first_row):
+	def create_django_class(self,first_row):
 	   	#cluster_id = self.client.command('create class '+self.class_name+' EXTENDS V')
 	   	#cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1")
 		#cluster_id = cluster_ids[0].classes
 	   	data_model_class = models.DataModelClass()
 		data_model_class.name = self.class_name
+		data_model_class.translated_name = self.class_name
+		data_model_class.orient_name = self.class_name
 		data_model_class.default_cluster_id = 0
 		data_model_class.data_source = self.source
 		data_model_class.save()

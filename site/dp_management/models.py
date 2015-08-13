@@ -98,7 +98,53 @@ class DataSource(models.Model):
 	def parse_status(self):
 		return mark_safe("<a href='parse-source/?source_id=%i' class='parse-btn'>Parse</a>") % self.id
 	parse_status.allow_tags =  True
+
+	def django_models(self):
+		return mark_safe("<a href='create-django-schema/?source_id=%i' class='parse-btn'>Parse</a>") % self.id
+	django_models.allow_tags =  True
 	
+	def orient_models(self):
+		return mark_safe("<a href='create-orient-schema/?source_id=%i' class='parse-btn'>Parse</a>") % self.id
+	orient_models.allow_tags =  True
+
+	def create_django_schema(self):
+		if self.data_type == 1:
+			parser = xmlImport()
+		elif self.data_type == 0:
+			parser = CsvImport()
+		connection = self.data_connection
+		parser.source = self
+		parser.create_schema = True
+		parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
+		#parser.connect_old()
+		#get the file 
+		for data_class in DataModelClass.objects.filter(data_source=self).all():
+			data_class.delete()
+		file_grabber = FileGrabber()
+		parse_file = file_grabber.get_the_file(self.url)
+		if self.data_type == 1:			
+			parser.load_xml(parse_file)
+			parser.parse_xml()
+		if self.data_type == 0:
+			#parser.delete_classes(drop_class=)
+			parser.delimiter = self.csv_seprator
+			parser.new_row_on_number = self.new_row_on_number
+			parser.new_row_on_number_name = self.new_row_on_number_name
+			parser.parse(parse_file)
+
+	def create_orient_schema(self):
+		if self.data_type == 1:
+			parser = xmlImport()
+		elif self.data_type == 0:
+			parser = CsvImport()
+		
+		connection = self.data_connection
+		parser.source = self
+		parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
+		parser.delete_classes(drop_class=True)
+		parser.create_orient_schema()
+		#parser.connect_old()
+
 	def process(self):
 		if self.data_type == 1:
 			parser = xmlImport()
@@ -107,20 +153,14 @@ class DataSource(models.Model):
 		connection = self.data_connection
 		parser.source = self
 		parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
-		#parser.connect_old()
-		#get the file 
 		parser.load_schema()
-		parser.delete_classes()
-		parser.create_schema()
 		file_grabber = FileGrabber()
 		parse_file = file_grabber.get_the_file(self.url)
 		if self.data_type == 1:
-			parser.delete_classes()
 			
 			parser.load_xml(parse_file)
 			parser.parse_xml()
 		if self.data_type == 0:
-			parser.delete_classes(drop_class=False)
 			parser.delimiter = self.csv_seprator
 			parser.new_row_on_number = self.new_row_on_number
 			parser.new_row_on_number_name = self.new_row_on_number_name
@@ -140,12 +180,12 @@ class DataModelClass(models.Model):
 	data_source = models.ForeignKey(DataSource,related_name="classes")
 	name = models.CharField(max_length=30)
 	default_cluster_id = models.CharField(max_length=5)
-	translated_name = models.CharField(max_length=30)
+	translated_name = models.CharField(max_length=30,null=True,blank=True)
+	orient_name = models.CharField(max_length=30,null=True,blank=True)
 	def __unicode__(self):
 		return self.name
 
 class DataModelGroup(models.Model):
-	data_model_class = models.ForeignKey(DataModelClass)
 	name = models.CharField(max_length=30)
 	def __unicode__(self):
 		return self.name
@@ -166,7 +206,7 @@ class DataModelProperty(models.Model):
 	    (2, 'FLOAT'),
 	    (3,	'TEXT'),
 	    (4,	'DATE'),
-	    (5,	'DATATIME'),    
+	    (5,	'DATETIME'),    
 	)
 	data_model_class = models.ForeignKey(DataModelClass,related_name="properties")
 	name = models.CharField(max_length=30)
@@ -176,6 +216,7 @@ class DataModelProperty(models.Model):
 	property_type = models.IntegerField(choices=TYPECHOICE, default=0) 
 	property_values = models.TextField(null=True,blank=True) # possible values is more than 20 
 	defaul_value = models.CharField(max_length=30,null=True,blank=True)
+	time_format = models.CharField(max_length=30,null=True,blank=True)
 	def __unicode__(self):
 		return "%s.%s" % (self.data_model_class.name, self.name)
 
