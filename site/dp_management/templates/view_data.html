@@ -1,0 +1,133 @@
+{% extends "base_dp_no_cms.html" %}
+
+{% block content %}
+      <div class="row margin-top">
+        <div class="large-3 columns">
+          <div class="panel dashboard filters">
+            <h5><i class="fa fa-filter"></i>Set your filters</h5>
+            <form>
+              <div class="row">
+                <div class="large-12 columns">
+                  <h6>Select project</h6>
+                  <div class="check-clear">
+                    <select>
+                      <option value="">Project no. 1</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns keywords">
+                  <h6>Select keywords to compare</h6>
+                  <div class="check-clear">
+                    <select class="flexselect" id="keyword-0">
+                      <option disabled selected></option>
+                
+                    </select>
+                  </div>
+                  <div class="check-clear">
+                    <select class="flexselect" id="keyword-1">
+                      <option disabled selected></option>
+                   
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns">
+                  <h6>Set date and time range</h6>
+                  <div class="row">
+                    <div class="large-6 columns">
+                      <div class="check-clear">
+                        <input type="text" id="from" name="from" placeholder="From date" value="2012-07-16">
+                      </div>
+                    </div>
+                    <div class="large-6 columns">
+                      <div class="check-clear">
+                        <input class="timepicker" type="text" id="fromtime" name="fromtime" placeholder="From time">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="large-6 columns">
+                      <div class="check-clear">
+                        <input type="text" id="to" name="to" placeholder="To date" value="2012-12-31">
+                      </div>
+                    </div>
+                    <div class="large-6 columns">
+                      <div class="check-clear">
+                        <input class="timepicker" type="text" id="totime" name="totime" placeholder="To time">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns margin-top">
+                  <a id="go" href="#" class="small button secondary">Go!</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div> 
+        <div class="large-9 columns">
+
+          <div class="row">
+            <div class="large-12 columns">
+              <div id="heatmap" class="panel dashboard">
+               
+              </div>
+            </div>
+          </div>
+
+          <div class="row" data-equalizer>
+            <div class="large-3 columns">
+              <div id="tweets" class="panel number text-center" data-equalizer-watch>
+                <i class="fa fa-twitter"></i>
+                <div id="count-tweets" class="content">
+                  -
+                </div>
+                <small>tweets</small>
+              </div>
+            </div>
+            <div class="large-3 columns">
+              <div id="retweets" class="panel number text-center" data-equalizer-watch>
+                <i class="fa fa-retweet"></i>
+                  <div id="count-retweets" class="content">
+                    -
+                </div>
+                <small>retweets</small>
+              </div>
+            </div>
+            <div class="large-3 columns">
+              <div id="mentions" class="panel number text-center" data-equalizer-watch>
+                <i class="fa fa-comment"></i>
+                <div id="count-mentions" class="content">
+                  -
+                </div>
+                <small>mentions</small>
+              </div>
+            </div>
+            <div class="large-3 columns">
+              <div id="users" class="panel number text-center" data-equalizer-watch>
+                <i class="fa fa-users"></i>
+                <div id="count-users" class="content">
+                  -
+                </div>
+                <small>users</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="large-12 columns">
+              <div id="linechart" class="panel dashboard">
+                <svg></svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from ordered_model.admin import OrderedModelAdmin
-from models import DataConnection,DataSourceFlags,DataSource,DataSourceComment,DataModelClass,DataModelGroup,DataModelSubGroup,DataModelProperty,DataModelEdge,DataModelQuery,DataSourceCategory,DataSourceSubCategory
+from models import DataModelScript,DataConnection,DataSourceFlags,DataSource,DataSourceComment,DataModelClass,DataModelGroup,DataModelSubGroup,DataModelProperty,DataModelEdge,DataModelQuery,DataSourceCategory,DataSourceSubCategory
 from django.conf.urls import patterns
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
@@ -63,6 +63,7 @@ admin.site.register(DataModelProperty,)
 admin.site.register(DataModelEdge)
 admin.site.register(DataSourceCategory)
 admin.site.register(DataSourceSubCategory)
+admin.site.register(DataModelScript)
 
 
 

@@ -70,7 +70,7 @@ class DataPool():
 			data_model_class_property_iso_.save()
 	
 	def create_property(self,data_model_class_property):
-
+		print 'create property '+data_model_class_property.data_model_class.name+'.'+data_model_class_property.orient_name+' '+data_model_class_property.get_property_type_display()
 		self.client.command('create property '+data_model_class_property.data_model_class.name+'.'+data_model_class_property.orient_name+' '+data_model_class_property.get_property_type_display())
 
 
@@ -157,11 +157,12 @@ class DataPool():
 	def format_attrib_name(self,tag_name):
 		#replace minus
 		tag_name = re.sub("(\{.*\})","",tag_name) 
-		tag_name = tag_name.replace('-','_')
+		tag_name = tag_name.replace('-','')
 		tag_name = tag_name.replace('"','')
 		tag_name = tag_name.replace('(','')
 		tag_name = tag_name.replace(')','')
-		return tag_name.replace(' ','_').encode(self.encoding)
+		tag_name = tag_name.replace(':','')
+		return tag_name.replace(' ','').encode(self.encoding)
 
 	def escape_orientdb(self,text):
 		escapechars = '@()"%'
@@ -355,7 +356,7 @@ class DataPool():
 				query_data_set[class_name].class_name = class_name
 			query_data = query_data_set[class_name]
 			
-			query_data.fields[action_list[data_set_property.action][1]].append(data_set_property.data_model_property.name)
+			query_data.fields[action_list[data_set_property.action][1]].append(data_set_property.data_model_property.name_orient)
 		query_result = []
 		for query_data in query_data_set:
 			query = query_data_set[query_data].make_query().encode(self.encoding)

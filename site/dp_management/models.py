@@ -6,7 +6,7 @@ from csvParse import CsvImport
 from filegrabber import FileGrabber
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
-
+import datetime
 
 # Create your models here.
 
@@ -64,7 +64,8 @@ class DataSource(models.Model):
 	)
 
 	name = models.CharField(max_length=30) 
-	url = models.URLField(null=True)
+	url = models.URLField(null=True,blank=True)
+	data_file = models.FileField(upload_to='data_files',blank=True,null=True)
 	owner = models.ForeignKey(User)
 	prefix = models.CharField(max_length=10)
 	private = models.BooleanField(default=False)
@@ -75,9 +76,9 @@ class DataSource(models.Model):
 	new_row_on_number = models.BooleanField(default=False)
 	new_row_on_number_name = models.CharField(max_length=30,null=True,blank=True)
 	overwrite_fields = models.CharField(max_length=50,null=True,blank=True)
-	data_from_date = models.DateTimeField(null=True)
-	data_to_date = models.DateTimeField(null=True)
-	date_last_update = models.DateTimeField(default=None, null=True)
+	#data_from_date = models.DateTimeField(null=True)
+	#data_to_date = models.DateTimeField(null=True)
+	date_last_update = models.DateTimeField(default=datetime.datetime.now(), null=True)
 	sub_category = models.ForeignKey(DataSourceSubCategory,null=True)
 	update_interval = models.CharField(
         max_length=20,
@@ -120,8 +121,12 @@ class DataSource(models.Model):
 		#get the file 
 		for data_class in DataModelClass.objects.filter(data_source=self).all():
 			data_class.delete()
-		file_grabber = FileGrabber()
-		parse_file = file_grabber.get_the_file(self.url)
+		if self.data_file == None:
+			file_grabber = FileGrabber()
+			parse_file = file_grabber.get_the_file(self.url)
+		else:
+			data_file = open(self.data_file.path, 'r')
+			parse_file = data_file.readlines()
 		if self.data_type == 1:			
 			parser.load_xml(parse_file)
 			parser.parse_xml()
@@ -154,8 +159,12 @@ class DataSource(models.Model):
 		parser.source = self
 		parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
 		parser.load_schema()
-		file_grabber = FileGrabber()
-		parse_file = file_grabber.get_the_file(self.url)
+		if self.data_file == None:
+			file_grabber = FileGrabber()
+			parse_file = file_grabber.get_the_file(self.url)
+		else:
+			data_file = open(self.data_file.path, 'r')
+			parse_file = data_file.readlines()
 		if self.data_type == 1:
 			
 			parser.load_xml(parse_file)
@@ -197,6 +206,13 @@ class DataModelSubGroup(models.Model):
 		return self.name
 
 
+class DataModelScript(models.Model):
+	name = models.CharField(max_length=30)
+	description = models.TextField()
+	return_values =  models.TextField()
+	script =  models.TextField()
+	def __unicode__(self):
+		return "%s" % (self.name)
 
 class DataModelProperty(models.Model):
 
@@ -206,17 +222,22 @@ class DataModelProperty(models.Model):
 	    (2, 'FLOAT'),
 	    (3,	'TEXT'),
 	    (4,	'DATE'),
-	    (5,	'DATETIME'),    
+	    (5,	'DATETIME'),
+	    (6,'LAT'),
+	    (7,'LONG'),
+	    (8,'LAT LONG'),
+	    (9,'SCRIPT')    
 	)
 	data_model_class = models.ForeignKey(DataModelClass,related_name="properties")
-	name = models.CharField(max_length=30)
-	data_model_subgroup = models.ForeignKey(DataModelSubGroup,null=True)
-	translated_name = models.CharField(max_length=30)
-	orient_name = models.CharField(max_length=30)
+	name = models.CharField(max_length=128)
+	data_model_subgroup = models.ForeignKey(DataModelSubGroup, blank=True, null=True)
+	translated_name = models.CharField(max_length=128)
+	orient_name = models.CharField(max_length=128)
 	property_type = models.IntegerField(choices=TYPECHOICE, default=0) 
 	property_values = models.TextField(null=True,blank=True) # possible values is more than 20 
 	defaul_value = models.CharField(max_length=30,null=True,blank=True)
 	time_format = models.CharField(max_length=30,null=True,blank=True)
+	script = models.ForeignKey(DataModelScript, blank=True, null=True)
 	def __unicode__(self):
 		return "%s.%s" % (self.data_model_class.name, self.name)
 
