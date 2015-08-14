@@ -125,6 +125,26 @@ def add_project(request):
 	return render_to_response('add_project.html',crsfcontext)	
 
 @login_required
+def save_project(request):
+
+
+	if request.method == 'POST':
+		pprint.pprint(request.POST)
+		data_project = DataProject.objects.get(pk=request.POST['project-id'])
+		data_project.user = request.user
+		data_project.name = request.POST['name']
+		#data_project.description = request.POST['description']
+		data_project.data_streams.clear()
+		#print 'data_Set = '+request.POST[u'data_set']
+		for data_stream_id in dict(request.POST)['data_set']:
+			if data_stream_id == '':
+				continue
+			data_project.data_streams.add(DataSetStream.objects.get(pk=int(data_stream_id)))
+		data_project.save();
+
+	return HttpResponse("{'success':'true'}")
+
+@login_required
 def add_dataset_to_project(request):
 
 	if request.method == 'POST':
@@ -133,6 +153,7 @@ def add_dataset_to_project(request):
 		data_project.name = request.post['name']
 		data_project.description = request.post['description']
 		data_project.save()
+	return HttpResponse("{'success':'true'}")
 
 @login_required
 def add_datastream(request):
@@ -175,7 +196,20 @@ def delete_data_stream(request,id):
 def delete_data_project(request,id):
 	data_project = DataProject.objects.get(pk=id)
 	if data_project.user == request.user :
-		data_project.delete();
+		data_project.delete()
+	return HttpResponse("{'success':'true'}")
+
+@login_required
+def save_data_set(request):
+	print 'in save_data_set'
+	if request.method == 'POST':
+		print 'in method post'
+		data_set_stream = DataSetStream.objects.get(pk=request.POST['stream-id']);
+		if data_set_stream.user == request.user :
+			data_set_stream.name = request.POST['name']
+			print request.POST['name']
+			data_set_stream.chart_type = request.POST['chart-type']
+			data_set_stream.save()
 	return HttpResponse("{'success':'true'}")
 
 @login_required
@@ -191,6 +225,20 @@ def save_property(request):
 			data_set_property.use_property = False
 		data_set_property.save()
 	return HttpResponse("{'success':'true'}")
+
+
+def visualize_project(request,project_id):
+	#get the datasets
+	data_project = DataProject.objects.get(pk=project_id)
+	data_set_streams = {}
+	for data_stream in data_project.data_streams.all():
+		if not data_stream.get_chart_type_display() in data_set_streams:
+			data_set_streams[data_stream.get_chart_type_display()] = []
+		data_set_streams[data_stream.get_chart_type_display()].append(data_stream)
+
+	page_vars = {'data_project':data_project,'data_streams':data_set_streams}
+	crsfcontext = RequestContext(request, page_vars)
+	return render_to_response('view_data.html',crsfcontext)	
 
 
 @login_required

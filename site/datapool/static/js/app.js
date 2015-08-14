@@ -46,10 +46,12 @@ $(document).ready(function(){
     //doe in css $('.panel-content').hide();
     $('.configure').on('click',function(){
       $(this).parents('.panel-header').slideUp().siblings('.panel-content').slideDown();
+      return false;
     });
     $('.close').on('click',function(){
       $.cookie('hide_help', 'true');
       $(this).parents('.panel-content').slideUp().siblings('.panel-header').slideDown();
+      return false;
     });
     $('.killbutton').width($('.killbutton .kill').outerWidth());
     $('.kill').on('click',function(){
@@ -78,12 +80,28 @@ $(document).ready(function(){
     $('.save').on('click',function(){
       stream_id = $(this).attr('stream-id');
       console.log('.stream_id_'+stream_id);
+
       $('.stream_id_'+stream_id).each(function () {
         console.log('inloop');
-        console.log($(this).attr('test'));
-
-        $(this).ajaxSubmit({url: 'save_property/', type: 'post'});
+        stream_or_prop = $(this).attr('stream-or-prop');
+        console.log(stream_or_prop);
+        if(stream_or_prop == 'prop'){
+          $(this).ajaxSubmit({url: 'save_property/', type: 'post'});
+        }
+        else{
+          $(this).ajaxSubmit({url: 'save_data_set/', type: 'post'});
+        }
       });
+      return false;
+
+    });
+
+    $('.save-project').on('click',function(){
+      
+      project_id = $(this).attr('project-id');
+      $('#project-form-'+project_id).ajaxSubmit({url: 'save_project/', type: 'post'});
+       
+      return false;
 
     });
 
@@ -132,6 +150,7 @@ $(document).ready(function(){
         $('select#datastreams0').clone(true, true).attr('id', 'datastreams'+i).appendTo('#datastreams');
         i++;
       }
+      return false;
     });
     //rechter kant
     $('.addstream').on('click',function(){
@@ -141,7 +160,8 @@ $(document).ready(function(){
         $(this).parents('.stream').fadeOut(200, function() {
           $(this.remove());
         });
-      });;
+      });
+      return false;
     });
     //select data set category
     $('#cat').on('change',function() {
@@ -188,7 +208,12 @@ $(document).ready(function(){
       $(this).parents('form:first').submit();
 
     }
-
     );
+    $('.visualize').on('click',function(){
+        project_id = $(this).attr('project-id');
+        window.location = '/visualize_project/'+project_id+'/';
+        return false;
+    });
+
 
 });

@@ -58,11 +58,13 @@
                     </div>
                   </div>
                 </div>
-
+                
                 <div class="panel-content">
+                  <form id='project-form-{{project.id}}'>
                   <div class="row">
                     <div class="large-12 columns">
-                      <input class="header-input" id="data-name" type="text" value="Another project">
+                      <input class="header-input" id="data-name" name="name" type="text" value="{{project.name}}">
+                      <input type="hidden" name="project-id" value="{{project.id}}" >
                     </div>
                   </div>
                   <div class="row">
@@ -74,7 +76,7 @@
                   <div class="streams">
                     <div class="row stream datastream0 disabledelete">
                       <div class="large-8 columns">
-                        <select name='data_stream'>
+                        <select name='data_set'>
                         {% for data_stream in data_set_streams.all %}
                           <option value="{{data_stream.id}}" {%if data_stream.id == my_data_stream.id%}SELECTED{%endif%}>{{data_stream.name}}</option>
                         {% endfor %}
@@ -93,13 +95,16 @@
                       <button class="btn addstream"><i class="fa fa-plus"></i></button>
                     </div>
                   </div>
+                  </form>
                   <div class="row">
                     <div class="large-12 columns">
-                      <button class="btn save">Save</button>
+                      <button class="btn visualize" project-id="{{project.id}}">Visualize</button>
+                      <button class="btn save_project" project-id="{{project.id}}">Save</button>
                       <button class="btn close secondary">Close</button>
                     </div>
                   </div>
                 </div>
+               
 
               </div>
             </div>

@@ -279,10 +279,21 @@ class DataModelPivotPoint(models.Model):
 
 
 class DataSetStream(models.Model):
-
+	CHART_CHOICE = (
+	    (0, 'heat_map'),
+	    (1, 'country_map'),
+	    (2, 'bar_chart'),
+	    (3,	'line_chart'),
+	    #(4,	'MAX'),
+	    #(5,	'SUM'),
+	    #(6, 'AVG'),
+	    #(7, 'FILTER'),
+	    #(8, 'COUNT')
+	)
 	user = models.ForeignKey(User)
 	name = models.CharField(max_length=56)
 	data_stream = models.ForeignKey(DataSource,related_name="data_set_streams")
+	chart_type = models.IntegerField(choices=CHART_CHOICE, default=0) 
    	class Meta:
    		verbose_name = "Data set stream"
    		verbose_name_plural = "Data set streams"
@@ -326,6 +337,7 @@ class DataSetStreamProperty(models.Model):
 	use_property = models.BooleanField(default=False)
 	action = models.IntegerField(choices=ACTIONCHOICE, default=0) 
 	filter_value = models.CharField(max_length=512,null=True,blank=True)
+	x_axis = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return self.data_model_property.translated_name

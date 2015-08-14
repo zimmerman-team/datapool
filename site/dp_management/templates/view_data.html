@@ -71,7 +71,7 @@
           </div>
         </div> 
         <div class="large-9 columns">
-
+        {% for chart in data_streams.heat_map %}
           <div class="row">
             <div class="large-12 columns">
               <div id="heatmap" class="panel dashboard">
@@ -79,46 +79,10 @@
               </div>
             </div>
           </div>
+         {% endfor %} 
 
-          <div class="row" data-equalizer>
-            <div class="large-3 columns">
-              <div id="tweets" class="panel number text-center" data-equalizer-watch>
-                <i class="fa fa-twitter"></i>
-                <div id="count-tweets" class="content">
-                  -
-                </div>
-                <small>tweets</small>
-              </div>
-            </div>
-            <div class="large-3 columns">
-              <div id="retweets" class="panel number text-center" data-equalizer-watch>
-                <i class="fa fa-retweet"></i>
-                  <div id="count-retweets" class="content">
-                    -
-                </div>
-                <small>retweets</small>
-              </div>
-            </div>
-            <div class="large-3 columns">
-              <div id="mentions" class="panel number text-center" data-equalizer-watch>
-                <i class="fa fa-comment"></i>
-                <div id="count-mentions" class="content">
-                  -
-                </div>
-                <small>mentions</small>
-              </div>
-            </div>
-            <div class="large-3 columns">
-              <div id="users" class="panel number text-center" data-equalizer-watch>
-                <i class="fa fa-users"></i>
-                <div id="count-users" class="content">
-                  -
-                </div>
-                <small>users</small>
-              </div>
-            </div>
-          </div>
-
+ 
+        {% for chart in data_streams.line_chart %}
           <div class="row">
             <div class="large-12 columns">
               <div id="linechart" class="panel dashboard">
@@ -126,6 +90,7 @@
               </div>
             </div>
           </div>
+        {% endfor %}
 
         </div>
       </div>
