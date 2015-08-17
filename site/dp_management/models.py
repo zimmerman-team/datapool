@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import User
 from ordered_model.models import OrderedModel
@@ -80,6 +81,7 @@ class DataSource(models.Model):
 	#data_to_date = models.DateTimeField(null=True)
 	date_last_update = models.DateTimeField(default=datetime.datetime.now(), null=True)
 	sub_category = models.ForeignKey(DataSourceSubCategory,null=True)
+	remove_prop_strings = models.TextField(null=True,blank=True) # possible values is more than 20 
 	update_interval = models.CharField(
         max_length=20,
         choices=(
@@ -91,6 +93,7 @@ class DataSource(models.Model):
         default="month")
 	quality_of_source = models.FloatField(default=5.0)#to be determened
 	flags = models.ManyToManyField(DataSourceFlags)
+
 
 	def __unicode__(self):
 		return self.name
@@ -108,7 +111,7 @@ class DataSource(models.Model):
 		return mark_safe("<a href='create-orient-schema/?source_id=%i' class='parse-btn'>Parse</a>") % self.id
 	orient_models.allow_tags =  True
 
-	def create_django_schema(self):
+	def create_django_schema(self) :
 		if self.data_type == 1:
 			parser = xmlImport()
 		elif self.data_type == 0:
@@ -163,8 +166,8 @@ class DataSource(models.Model):
 			file_grabber = FileGrabber()
 			parse_file = file_grabber.get_the_file(self.url)
 		else:
-			data_file = open(self.data_file.path, 'r')
-			parse_file = data_file.readlines()
+			parse_file = open(self.data_file.path, 'r')
+			#parse_file = data_file.readlines()
 		if self.data_type == 1:
 			
 			parser.load_xml(parse_file)

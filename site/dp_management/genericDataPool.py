@@ -25,6 +25,8 @@ class DataPool():
 	schema_edges = {}
 	encoding = 'ascii'
 	create_schema = False
+	source = None
+
 
 
 	def create_class(self,data_model_class):
@@ -156,12 +158,14 @@ class DataPool():
 
 	def format_attrib_name(self,tag_name):
 		#replace minus
+		#tag_name = self.remove_prefixes(tag_name)
 		tag_name = re.sub("(\{.*\})","",tag_name) 
-		tag_name = tag_name.replace('-','')
+		tag_name = tag_name.replace('-','_')
 		tag_name = tag_name.replace('"','')
-		tag_name = tag_name.replace('(','')
-		tag_name = tag_name.replace(')','')
-		tag_name = tag_name.replace(':','')
+		tag_name = tag_name.replace('(','_')
+		tag_name = tag_name.replace(')','_')
+		tag_name = tag_name.replace(':','_')
+		tag_name = tag_name.replace('/','')
 		return tag_name.replace(' ','').encode(self.encoding)
 
 	def escape_orientdb(self,text):
@@ -195,17 +199,15 @@ class DataPool():
 		child_data = {}
 		for key in edges:
 			edge = edges[key]
-
 			parent_data[edge['in']] = edge['out']
 			if(edge['out'] not in child_data):
 				child_data[edge['out']] = []
 			child_data[edge['out']].append(edge['in'])
 
 
-		
-
 		#find root edge
 		root = ''
+
 		for key in parent_data:
 			if(parent_data[key] not in parent_data):
 				root = parent_data[key]
@@ -287,6 +289,17 @@ class DataPool():
 	def parse(self):
 		pass
 
+	def remove_prefixes(self,prop_name):
+		prefixes = self.source.remove_prop_strings.rstrip().split('\n')
+		for prefix in prefixes :
+			if not ':%:' in prefix: 
+				print prefix+'  prop name ='+prop_name
+				prop_name = prop_name.replace(prefix.rstrip(),'')
+			else:
+				prefix_arr = prefix.rstrip().split(':%:')
+				prop_name = prop_name.replace(prefix_arr[0].rstrip(),prefix_arr[1].rstrip())
+			
+		return prop_name
 
 	def load_schema(self):
 		#load schema from django models

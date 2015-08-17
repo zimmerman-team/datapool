@@ -34,6 +34,13 @@ We might build the option to share data with a team so that the team can use wit
 The data is stored in <a href="http://orientdb.com">orientDB</a> and relations between dataset is defined by edges to the pivot points.
 the front end is being build in python with django as a frame work.
 
+installation:
+run 
+pip install -r REQUIREMENTS.TXT
+pip install https://github.com/mogui/pyorient/archive/master.zip --upgrade
+pip install https://github.com/yakky/djangocms-text-ckeditor/archive/django_app.zip --upgrade
+
+the last two are neccecary to get the latest versions
 
 
 
