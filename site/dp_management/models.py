@@ -79,7 +79,7 @@ class DataSource(models.Model):
 	overwrite_fields = models.CharField(max_length=50,null=True,blank=True)
 	#data_from_date = models.DateTimeField(null=True)
 	#data_to_date = models.DateTimeField(null=True)
-	date_last_update = models.DateTimeField(default=datetime.datetime.now(), null=True)
+	date_last_update = models.DateTimeField(blank=True, null=True)
 	sub_category = models.ForeignKey(DataSourceSubCategory,null=True)
 	remove_prop_strings = models.TextField(null=True,blank=True) # possible values is more than 20 
 	update_interval = models.CharField(
