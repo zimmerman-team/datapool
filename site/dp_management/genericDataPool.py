@@ -369,19 +369,23 @@ class DataPool():
 				query_data_set[class_name].class_name = class_name
 			query_data = query_data_set[class_name]
 			
-			query_data.fields[action_list[data_set_property.action][1]].append(data_set_property.data_model_property.name_orient)
+			query_data.fields[action_list[data_set_property.action][1]].append(data_set_property.data_model_property.orient_name)
 		query_result = []
 		for query_data in query_data_set:
 			query = query_data_set[query_data].make_query().encode(self.encoding)
 			result = self.client.query(query)
-			query_result.append({'query':query})
+			temp_data = []
 			for row in result:
-				query_result.append(row.oRecordData)
+				temp_data.append(row.oRecordData)
+			query_result.append({'query':query,'graph':data_set.get_chart_type_display(),'data':temp_data})
+			
 			
 		return query_result
 		
 
-		
+		def format_data_for_graph(self):
+			pass
+
 
 
 
@@ -409,10 +413,15 @@ class QueryData:
 		# and searhcbox fields
 		from_query = ' FROM '+self.class_name
 		group_by_query = ''
-		if group_by_fields != select_query: 
+		if group_by_fields > '' and group_by_fields != select_query: 
 			group_by_query = ' GROUP BY '+group_by_fields
 		query = 'SELECT '+select_query+from_query+group_by_query+' LIMIT 10000'
-		return query;
+		return query
+
+
+
+
+
 
 
 
