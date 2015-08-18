@@ -162,7 +162,7 @@ class DataSource(models.Model):
 		parser.source = self
 		parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
 		parser.load_schema()
-		if self.data_file == None:
+		if self.data_file == None or self.data_file == '':
 			file_grabber = FileGrabber()
 			parse_file = file_grabber.get_the_file(self.url)
 		else:
