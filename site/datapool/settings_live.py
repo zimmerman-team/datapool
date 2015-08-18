@@ -114,6 +114,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'grappelli_nested',
+    'grappelli',
     'djangocms_admin_style',
     'django.contrib.auth',
     'django.contrib.contenttypes',
