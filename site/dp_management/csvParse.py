@@ -72,7 +72,7 @@ class CsvImport(DataPool):
 								continue
 						col_obj = self.schema_properties[self.prefix+'.'+self.format_attrib_name(attr_key)]['django_object']
 						for regexp in col_obj.regexp.all():
-							col = re.sub(regexp,'',col)
+							col = re.sub(regexp.script,'',col)
 
 						rec_key = col_obj.orient_name
 						if col_obj.property_type == 1:
