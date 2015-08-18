@@ -5,6 +5,10 @@ import models
 import urllib
 import sys
 import datetime
+import re
+
+from dateutil.parser import parse as date_parse
+
 class CsvImport(DataPool):
 
 	name_cvs = ''
@@ -67,13 +71,19 @@ class CsvImport(DataPool):
 								colnum += 1
 								continue
 						col_obj = self.schema_properties[self.prefix+'.'+self.format_attrib_name(attr_key)]['django_object']
+						for regexp in col_obj.regexp.all():
+							col = re.sub(regexp,'',col)
+
 						rec_key = col_obj.orient_name
 						if col_obj.property_type == 1:
 							rec_data[self.format_attrib_name(rec_key)] =  int(col)
 						elif col_obj.property_type == 2:
 							rec_data[self.format_attrib_name(rec_key)] =  float(col)
 						elif col_obj.property_type == 4:
-							rec_data[self.format_attrib_name(rec_key)] =  datetime.datetime.strptime(col, col_obj.time_format) 
+							if col_obj.time_format != '':
+								rec_data[self.format_attrib_name(rec_key)] =  datetime.datetime.strptime(col, col_obj.time_format)
+							else:
+								 rec_data[self.format_attrib_name(rec_key)] = date_parse(col)
 						else:
 							rec_data[self.format_attrib_name(rec_key)] =  self.escape_orientdb(col)
 				 		

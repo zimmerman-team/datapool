@@ -217,6 +217,14 @@ class DataModelScript(models.Model):
 	def __unicode__(self):
 		return "%s" % (self.name)
 
+class DataModelRegexp(models.Model):
+	name = models.CharField(max_length=30)
+	description = models.TextField()
+	script =  models.TextField()
+	def __unicode__(self):
+		return "%s" % (self.name)
+
+
 class DataModelProperty(models.Model):
 
 	TYPECHOICE = (
@@ -241,6 +249,7 @@ class DataModelProperty(models.Model):
 	defaul_value = models.CharField(max_length=30,null=True,blank=True)
 	time_format = models.CharField(max_length=30,null=True,blank=True)
 	script = models.ForeignKey(DataModelScript, blank=True, null=True)
+	regexp = models.ManyToManyField(DataModelRegexp, blank=True,null=True)
 	def __unicode__(self):
 		return "%s.%s" % (self.data_model_class.name, self.name)
 

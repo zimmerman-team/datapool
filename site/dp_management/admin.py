@@ -1,6 +1,6 @@
 from django.contrib import admin
 from ordered_model.admin import OrderedModelAdmin
-from models import DataModelScript,DataConnection,DataSourceFlags,DataSource,DataSourceComment,DataModelClass,DataModelGroup,DataModelSubGroup,DataModelProperty,DataModelEdge,DataModelQuery,DataSourceCategory,DataSourceSubCategory
+from models import DataModelRegexp,DataModelScript,DataConnection,DataSourceFlags,DataSource,DataSourceComment,DataModelClass,DataModelGroup,DataModelSubGroup,DataModelProperty,DataModelEdge,DataModelQuery,DataSourceCategory,DataSourceSubCategory
 from django.conf.urls import patterns
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
@@ -10,6 +10,7 @@ from grappelli_nested.admin import NestedModelAdmin, NestedStackedInline, Nested
 
 # class DataModelQueryAdmin(OrderedModelAdmin):
 #     list_display = ('name', 'move_up_down_links')
+
 
 class DataModelPropertyInline(NestedTabularInline):#
     model = DataModelProperty
@@ -73,6 +74,7 @@ admin.site.register(DataModelSubGroup)
 admin.site.register(DataSourceCategory)
 admin.site.register(DataSourceSubCategory)
 admin.site.register(DataModelScript)
+admin.site.register(DataModelRegexp)
 
 
 
