@@ -37,8 +37,15 @@ the front end is being build in python with django as a frame work.
 installation:
 run 
 pip install -r REQUIREMENTS.TXT
+
 pip install https://github.com/mogui/pyorient/archive/master.zip --upgrade
+
 pip install https://github.com/yakky/djangocms-text-ckeditor/archive/django_app.zip --upgrade
+
+pip install https://github.com/sehmaschine/django-grappelli/archive/master.zip --upgrade
+
+pip install https://github.com/datahub/grappelli-nested-inlines/archive/master.zip --upgrade
+
 
 the last two are neccecary to get the latest versions
 

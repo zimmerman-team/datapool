@@ -4,14 +4,30 @@ from models import DataModelScript,DataConnection,DataSourceFlags,DataSource,Dat
 from django.conf.urls import patterns
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
-
+from grappelli_nested.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 
 # Register your models here.
 
-class DataModelQueryAdmin(OrderedModelAdmin):
-    list_display = ('name', 'move_up_down_links')
+# class DataModelQueryAdmin(OrderedModelAdmin):
+#     list_display = ('name', 'move_up_down_links')
 
-class DataSourceAdmin(admin.ModelAdmin):
+class DataModelPropertyInline(NestedTabularInline):#
+    model = DataModelProperty
+
+
+
+# class DataModelClassAdmin(admin.ModelAdmin):
+#     inlines = [DataModelPropertyInline]
+#     list_display = ['__unicode__', ]
+#     change_form_template_extends = 'admin/hvad/change_form.html'
+
+class DataModelClassInline(NestedStackedInline):
+    model = DataModelClass
+    inlines = [DataModelPropertyInline]
+
+
+class DataSourceAdmin(NestedModelAdmin):
+    inlines = [DataModelClassInline]
     search_fields = ['name']
     list_display = ['name','parse_status','django_models','orient_models']
     def get_urls(self):
@@ -43,24 +59,17 @@ class DataSourceAdmin(admin.ModelAdmin):
 
 
 
-class DataModelPropertyInline(admin.TabularInline):
-    model = DataModelProperty
 
-class DataModelClassAdmin(admin.ModelAdmin):
-    inlines = [DataModelPropertyInline]
-    list_display = ['__unicode__', ]
-    change_form_template_extends = 'admin/hvad/change_form.html'
-
-admin.site.register(DataModelQuery, DataModelQueryAdmin)
+#admin.site.register(DataModelQuery, DataModelQueryAdmin)
 admin.site.register(DataConnection)
 admin.site.register(DataSourceFlags)
 admin.site.register(DataSource,DataSourceAdmin)
 admin.site.register(DataSourceComment)
-admin.site.register(DataModelClass, DataModelClassAdmin)
+#admin.site.register(DataModelClass, DataModelClassAdmin)
 admin.site.register(DataModelGroup)
 admin.site.register(DataModelSubGroup)
-admin.site.register(DataModelProperty,)
-admin.site.register(DataModelEdge)
+#admin.site.register(DataModelProperty,)
+#admin.site.register(DataModelEdge)
 admin.site.register(DataSourceCategory)
 admin.site.register(DataSourceSubCategory)
 admin.site.register(DataModelScript)

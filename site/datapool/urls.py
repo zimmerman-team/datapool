@@ -11,6 +11,7 @@ from django.contrib.auth import views as auth_views
 admin.autodiscover()
 
 urlpatterns = i18n_patterns('',
+    url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),  # NOQA
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
         {'sitemaps': {'cmspages': CMSSitemap}}),
