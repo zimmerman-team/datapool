@@ -156,6 +156,17 @@ def add_dataset_to_project(request):
 	return HttpResponse("{'success':'true'}")
 
 @login_required
+def remove_dataset_from_project(request):
+	if request.method == 'POST':
+		data_project = DataProject()
+		data_project.user = request.user
+		data_project.name = request.post['name']
+		data_project.description = request.post['description']
+		data_project.save()
+	return HttpResponse("{'success':'true'}")
+
+
+@login_required
 def add_datastream(request):
 
 	
@@ -209,6 +220,7 @@ def save_data_set(request):
 			data_set_stream.name = request.POST['name']
 			print request.POST['name']
 			data_set_stream.chart_type = request.POST['chart-type']
+			data_set_stream.x_axis_id = request.POST['x-axis']
 			data_set_stream.save()
 	return HttpResponse("{'success':'true'}")
 
@@ -243,8 +255,20 @@ def visualize_project(request,project_id):
 
 @login_required
 def get_queries(request,data_set_id):
-	data_set = DataSetStream.objects.get(pk=data_set_id);
+	data_set = DataSetStream.objects.get(pk=data_set_id)
 	datapool = DataPool()
-	query_data_set = datapool.get_query_data(data_set);
+	query_data_set = datapool.get_query_data(data_set)
 	return HttpResponse(json.dumps(query_data_set))
+
+@login_required
+def get_project_chart_data(request,project_id,chart_type):
+	project = DataProject.objects.get(pk=project_id)
+	return_arr = []
+	datapool = DataPool()
+	for data_set_stream in project.data_streams.all():
+		if data_set_stream.get_chart_type_display() == chart_type:
+			return_arr = return_arr + datapool.get_query_data(data_set_stream)
+	return HttpResponse(json.dumps(return_arr))
+
+
 

@@ -79,6 +79,15 @@
                         {% endfor %}
                       </select>
                     </div>
+                    <div class="large-4 columns">
+                      X-asis <select id="x-axis" name="x-axis">
+                        {% for my_data_set_property in my_data_stream.properties.all %}
+                          <option value="{{my_data_set_property.id}}" {% if my_data_set_property.id == my_data_stream.x_axis.id %}selected{%endif%}>{{my_data_set_property.data_model_property.name}}</option>
+                                
+                        {% endfor %}
+                      </select>
+                    </div>
+
                   <div class="row">
                     <div class="large-12 columns margin-top">
                       <h6>Set some filters</h6>

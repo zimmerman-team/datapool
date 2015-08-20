@@ -7,13 +7,23 @@ var datapoolFilters = {
     'excludeUsers': [],
 }
 
-var dollymap = new DatapoolMap();
-dollymap.filters = datapoolFilters;
-dollymap.set_map('heatmap');
+if(! $('#heatmap').length == 0){
+    var dollymap = new DatapoolMap();
+    dollymap.filters = datapoolFilters;
+    dollymap.set_map('heatmap');
+}
 
-var linechart = new DatapoolLinechart();
-linechart.filters = datapoolFilters;
-linechart.init();
+if(! $('#linechart').length == 0){
+    var linechart = new DatapoolLinechart();
+    linechart.filters = datapoolFilters;
+    linechart.init();
+}
+if(! $('#barchart').length == 0){
+
+    var barchart = new DatapoolBarchart();
+    barchart.filters = datapoolFilters;
+    barchart.init();
+}
 
 var loading = false;
 
@@ -31,6 +41,6 @@ jQuery("#go").click(function(e){
     datapoolFilters.to = jQuery("#to").val();
     datapoolFilters.totime = jQuery("#totime").val();
     
-    dollymap.refresh();
-    linechart.refresh();
+    //dollymap.refresh();
+    //linechart.refresh();
 });

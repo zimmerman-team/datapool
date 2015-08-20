@@ -71,26 +71,34 @@
           </div>
         </div> 
         <div class="large-9 columns">
-        {% for chart in data_streams.heat_map %}
+        {% if data_streams.heat_map %}
           <div class="row">
             <div class="large-12 columns">
-              <div id="heatmap" class="panel dashboard">
+              <div id="heatmap" class="panel dashboard" data-id="{{data_project.id}}">
                
               </div>
             </div>
           </div>
-         {% endfor %} 
+         {% endif %} 
 
- 
-        {% for chart in data_streams.line_chart %}
+        {% if data_streams.line_chart %}
           <div class="row">
             <div class="large-12 columns">
-              <div id="linechart" class="panel dashboard">
+              <div id="linechart" class="panel dashboard" data-id="{{data_project.id}}">
                 <svg></svg>
               </div>
             </div>
           </div>
-        {% endfor %}
+        {% endif %}
+        {% if data_streams.bar_chart %}
+          <div class="row">
+            <div class="large-12 columns">
+              <div id="barchart" class="panel dashboard" data-id="{{data_project.id}}">
+                <svg></svg>
+              </div>
+            </div>
+          </div>
+        {% endif %}
 
         </div>
       </div>

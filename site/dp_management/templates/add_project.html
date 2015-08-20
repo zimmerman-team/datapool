@@ -61,6 +61,7 @@
                 
                 <div class="panel-content">
                   <form id='project-form-{{project.id}}'>
+                  {% csrf_token %}
                   <div class="row">
                     <div class="large-12 columns">
                       <input class="header-input" id="data-name" name="name" type="text" value="{{project.name}}">
@@ -73,7 +74,7 @@
                     </div>
                   </div>
                   {%for my_data_stream in project.data_streams.all%}
-                  <div class="streams">
+                  <div class="streams" id='stream-id-{{my_data_stream.id}}-{{project.id}}'>
                     <div class="row stream datastream0 disabledelete">
                       <div class="large-8 columns">
                         <select name='data_set'>
@@ -84,7 +85,7 @@
                         </select>
                       </div>
                       <div class="large-4 columns">
-                        <button class="btn alert tiny">Delete</button>
+                        <button class="btn alert tiny delete-stream-from-project" stream-parent-id="stream-id-{{my_data_stream.id}}-{{project.id}}" >Delete</button>
                       </div>
                     </div>
                   </div>
@@ -99,7 +100,7 @@
                   <div class="row">
                     <div class="large-12 columns">
                       <button class="btn visualize" project-id="{{project.id}}">Visualize</button>
-                      <button class="btn save_project" project-id="{{project.id}}">Save</button>
+                      <button class="btn save-project" project-id="{{project.id}}">Save</button>
                       <button class="btn close secondary">Close</button>
                     </div>
                   </div>

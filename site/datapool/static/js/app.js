@@ -69,13 +69,19 @@ $(document).ready(function(){
         }
         console.log(url);
         $.getJSON( url,function(data){
-          return;
+          return false;
         });
         $(this).parents('.panel').parent().parent().fadeOut(300,function(){
           $(this).remove();
         });
       }
       return false;
+    });
+    $('.delete-stream-from-project').on('click',function(){
+        parent_id = $(this).attr('stream-parent-id');
+        $('#'+parent_id).remove();
+        return false;
+
     });
     $('.save').on('click',function(){
       stream_id = $(this).attr('stream-id');
@@ -99,6 +105,7 @@ $(document).ready(function(){
     $('.save-project').on('click',function(){
       
       project_id = $(this).attr('project-id');
+      console.log(project_id+' is project_id');
       $('#project-form-'+project_id).ajaxSubmit({url: 'save_project/', type: 'post'});
        
       return false;

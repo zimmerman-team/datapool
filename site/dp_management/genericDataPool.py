@@ -72,8 +72,23 @@ class DataPool():
 			data_model_class_property_iso_.save()
 	
 	def create_property(self,data_model_class_property):
-		print 'create property '+data_model_class_property.data_model_class.name+'.'+data_model_class_property.orient_name+' '+data_model_class_property.get_property_type_display()
-		self.client.command('create property '+data_model_class_property.data_model_class.name+'.'+data_model_class_property.orient_name+' '+data_model_class_property.get_property_type_display())
+		type_conversion ={'STRING':'STRING',
+	    				'INTEGER':'INTEGER',
+	    				'FLOAT':'FLOAT',
+	    				'TEXT':'STRING',
+	    				'DATE':'DATE',
+	   					'DATETIME':'DATETIME',
+	    				'LAT':'FLOAT',
+	    				'LONG':'FLOAT',
+	    				'LAT LONG':'STRING',
+	    				'SCRIPT':'STRING',
+	   					'TIMESTAMP':'DATETIME',
+	    				'TIMESTAMPMILLIS':'DATETIME'}
+	   	prop_type = type_conversion[data_model_class_property.get_property_type_display()]
+	
+
+		print 'create property '+data_model_class_property.data_model_class.name+'.'+data_model_class_property.orient_name+' '+prop_type
+		self.client.command('create property '+data_model_class_property.data_model_class.name+'.'+data_model_class_property.orient_name+' '+prop_type)
 
 
 
@@ -166,6 +181,7 @@ class DataPool():
 		tag_name = tag_name.replace(')','_')
 		tag_name = tag_name.replace(':','_')
 		tag_name = tag_name.replace('/','')
+		tag_name = tag_name.replace('-','')
 		return tag_name.replace(' ','').encode(self.encoding)
 
 	def escape_orientdb(self,text):
@@ -359,9 +375,14 @@ class DataPool():
 		self.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
 		#make query
 		query_data_set = {}
+		property_type_set = {}
 		for data_set_property in data_set.properties.all():
 			if not data_set_property.use_property:
 				continue
+			
+			property_type_set[data_set_property.data_model_property.orient_name] = {}
+			property_type_set[data_set_property.data_model_property.orient_name]['type'] = data_set_property.data_model_property.get_property_type_display()
+			property_type_set[data_set_property.data_model_property.orient_name]['action'] = data_set_property.get_action_display()
 			action_list = data_set_property.ACTIONCHOICE
 			class_name = data_set_property.data_stream_class.name
 			if not class_name  in query_data_set:
@@ -377,14 +398,22 @@ class DataPool():
 			temp_data = []
 			for row in result:
 				temp_data.append(row.oRecordData)
-			query_result.append({'query':query,'graph':data_set.get_chart_type_display(),'data':temp_data})
+			#make datatype array
+
+			query_result.append({'query':query,'property_type_set':property_type_set,'graph':data_set.get_chart_type_display(),'x_axis':data_set.x_axis.data_model_property.orient_name,'data':temp_data})
 			
 			
 		return query_result
 		
 
-		def format_data_for_graph(self):
+	def format_data_for_graph(self):
 			pass
+	def run_regex(self,col_value,col_obj):
+		for regexp in col_obj.regexp.all():
+			col_value = re.sub(regexp.script,'',col_value)
+		
+		print col_value+' after regex'
+		return col_value
 
 
 
@@ -403,10 +432,10 @@ class QueryData:
 
 	def make_query(self):
 		group_by_fields = ','.join(self.fields['SELECT'])
-		sum_fields =  ','.join(['SUM('+field+') AS '+field+'_sum' for field in self.fields['SUM']])
-		avg_fields =  ','.join(['AVG('+field+') AS '+field+'_avg' for field in self.fields['AVG']])
-		min_fields =  ','.join(['MIN('+field+') AS '+field+'_min' for field in self.fields['MIN']])
-		max_fields =  ','.join(['MAX('+field+') AS '+field+'_max' for field in self.fields['MAX']])
+		sum_fields =  ','.join(['SUM('+field+') AS '+field for field in self.fields['SUM']])
+		avg_fields =  ','.join(['AVG('+field+') AS '+field for field in self.fields['AVG']])
+		min_fields =  ','.join(['MIN('+field+') AS '+field for field in self.fields['MIN']])
+		max_fields =  ','.join(['MAX('+field+') AS '+field for field in self.fields['MAX']])
 		count_fields =  ','.join(['COUNT('+field+') AS '+field+'_count' for field in self.fields['COUNT']])
 		select_query = ','.join(filter(bool,[sum_fields,avg_fields,min_fields,max_fields,group_by_fields,count_fields]))
 		# todo filter fields

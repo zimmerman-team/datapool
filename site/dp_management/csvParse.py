@@ -55,25 +55,27 @@ class CsvImport(DataPool):
 							pprint.pprint(cluster_ids)
 							print 'class not found'
 							class_cluster_id = self.create_django_class(self.header)
-				if self.create_schema ==True :
+				if self.create_schema == True :
 					break
 				rec_data = {}
 				rec_data_row_on_number = {}
 				for col in row:
-					print 'column = '+col 
-					print 'header is '+self.header[colnum]
+					#print 'column = '+col 
+					#print 'header is '+self.header[colnum]
 					if(col != ''):
 						attr_key = str(self.header[colnum])
 						
 						if self.new_row_on_number == True:
 							if str(attr_key).isdigit():
+								col_obj = self.schema_properties[self.prefix+'.year_value']['django_object']
+								col = self.run_regex(col,col_obj)
 								rec_data_row_on_number[self.header[colnum]] = self.escape_orientdb(col)
 								colnum += 1
 								continue
 						col_obj = self.schema_properties[self.prefix+'.'+self.format_attrib_name(attr_key)]['django_object']
-						for regexp in col_obj.regexp.all():
-							col = re.sub(regexp.script,'',col)
-
+						print col+' is column'
+						print str(col_obj.property_type)+' is property type'
+						col = self.run_regex(col,col_obj)
 						rec_key = col_obj.orient_name
 						if col_obj.property_type == 1:
 							rec_data[self.format_attrib_name(rec_key)] =  int(col)
@@ -84,6 +86,10 @@ class CsvImport(DataPool):
 								rec_data[self.format_attrib_name(rec_key)] =  datetime.datetime.strptime(col, col_obj.time_format)
 							else:
 								 rec_data[self.format_attrib_name(rec_key)] = date_parse(col)
+						elif col_obj.property_type == 10 :
+							rec_data[self.format_attrib_name(rec_key)] = datetime.datetime.fromtimestamp(int(col))
+						elif col_obj.property_type == 11 :
+							rec_data[self.format_attrib_name(rec_key)] = datetime.datetime.fromtimestamp(int(col)/1000)
 						else:
 							rec_data[self.format_attrib_name(rec_key)] =  self.escape_orientdb(col)
 				 		
@@ -100,8 +106,8 @@ class CsvImport(DataPool):
 						print 'failed '+self.class_name
 				else:
 					rec = {'@'+self.class_name:rec_data}
-					pprint.pprint(rec)
-					pprint.pprint(self.header)
+					#pprint.pprint(rec)
+					#pprint.pprint(self.header)
 					try:
 						if not self.create_schema:
 							rec_position = self.client.record_create(class_cluster_id,rec )

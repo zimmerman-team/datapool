@@ -124,7 +124,7 @@ class DataSource(models.Model):
 		#get the file 
 		for data_class in DataModelClass.objects.filter(data_source=self).all():
 			data_class.delete()
-		if self.data_file == None:
+		if self.data_file == None or self.data_file == '':
 			file_grabber = FileGrabber()
 			parse_file = file_grabber.get_the_file(self.url)
 		else:
@@ -162,6 +162,8 @@ class DataSource(models.Model):
 		parser.source = self
 		parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
 		parser.load_schema()
+		if self.old_data_choice == 0:
+			parser.delete_classes(drop_class=False)
 		if self.data_file == None or self.data_file == '':
 			file_grabber = FileGrabber()
 			parse_file = file_grabber.get_the_file(self.url)
@@ -237,7 +239,9 @@ class DataModelProperty(models.Model):
 	    (6,'LAT'),
 	    (7,'LONG'),
 	    (8,'LAT LONG'),
-	    (9,'SCRIPT')    
+	    (9,'SCRIPT'),
+	    (10, 'TIMESTAMP'),
+	    (11, 'TIMESTAMPMILLIS') 
 	)
 	data_model_class = models.ForeignKey(DataModelClass,related_name="properties")
 	name = models.CharField(max_length=128)
@@ -306,6 +310,7 @@ class DataSetStream(models.Model):
 	name = models.CharField(max_length=56)
 	data_stream = models.ForeignKey(DataSource,related_name="data_set_streams")
 	chart_type = models.IntegerField(choices=CHART_CHOICE, default=0) 
+	x_axis = models.ForeignKey('DataSetStreamProperty',null=True,blank=True)
    	class Meta:
    		verbose_name = "Data set stream"
    		verbose_name_plural = "Data set streams"
@@ -349,7 +354,6 @@ class DataSetStreamProperty(models.Model):
 	use_property = models.BooleanField(default=False)
 	action = models.IntegerField(choices=ACTIONCHOICE, default=0) 
 	filter_value = models.CharField(max_length=512,null=True,blank=True)
-	x_axis = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return self.data_model_property.translated_name

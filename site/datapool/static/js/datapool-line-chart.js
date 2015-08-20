@@ -24,72 +24,73 @@ var DatapoolLinechart = function(){
         this.chart.interpolate("basis")
       
         this.chart.xAxis    
-          .axisLabel('')
-          .tickFormat(function(d) {
-            return d3.time.format('%Y-%m-%d')(new Date(d))
-          });
+          .axisLabel('test x');
 
         this.chart.yAxis 
-              .axisLabel('Amount of tweets per day')
-              .tickFormat(d3.format(',r'));
+              .axisLabel('test y');
 
         d3.select('#linechart svg')
             .datum(this.lineData)
             .call(this.chart);
 
         nv.utils.windowResize(this.chart.update);
+        this.refresh()
 
 
 
     }
 
-    this.createUrl = function(heatmapId){
+    this.createUrl = function(){
         
-        var url = 'get_tweets_by_day.php?parameters=';
+        var url = '/get_queries/'+$('#linechart').attr('data-id')+'/';
 
-        var parameters = [];
+        // var parameters = [];
 
-        parameters.push('search='+this.filters.keywords[heatmapId]);
 
-        var start = 'start='+this.filters.from
-        if (this.filters.fromtime != ''){
-            start += 'T'+this.filters.fromtime;
-        }
-        parameters.push(start);
-        var end = 'end='+this.filters.to
-        if (this.filters.totime != ''){
-            end += 'T'+this.filters.totime;
-        }
+        // var start = 'start='+this.filters.from
+        // if (this.filters.fromtime != ''){
+        //     start += 'T'+this.filters.fromtime;
+        // }
+        // parameters.push(start);
+        // var end = 'end='+this.filters.to
+        // if (this.filters.totime != ''){
+        //     end += 'T'+this.filters.totime;
+        // }http://datapool.bitofpepper.com/en/add_data
 
-        parameters.push(end);
+        // parameters.push(end);
 
-        parameters = parameters.join('&');
-        parameters = encodeURIComponent(parameters);
-        url += parameters;
+        // parameters = parameters.join('&');
+        // parameters = encodeURIComponent(parameters);
+        // url += parameters;
         return url;
     }
 
     this.reformatData = function(data){
         var formattedData = [];
-        for(var i = 0; i < data.length;i++){
-            var curdate = new Date(data[i].date);
-            curdate = curdate.getTime();
-            formattedData.push([curdate, data[i].tweets]);
+        for(var j = 0;j < data.length;j++){
+            types = data[j]['property_types_set'];
+            data_set = data[j]['data'];
+            x_axis = data[j]['x_axis'];
+            console.log('x_axis = '+x_axis);
+            for(var i = 0; i < data_set.length;i++){
+                formattedData.push([data_set[i][x_axis],23]);
+            }
         }
+        
         return formattedData;
     }
 
-    this.refresh = function(data, heatmapId){
+    this.refresh = function(data){
         if(data){
-            this.reDraw(data, heatmapId);
+            this.reDraw(data);
         } else{
-            this.getData(0);
-            this.getData(1);
+            this.getData();
         }
     };
 
-    this.getData = function(heatmapId){
-        var url = this.createUrl(heatmapId);
+    this.getData = function(){
+        var url = this.createUrl();
+        console.log('url = '+url);
         var that = this;
         jQuery.ajax({
             type: 'GET',
@@ -97,21 +98,20 @@ var DatapoolLinechart = function(){
             dataType: 'json',
             success: function(data){
                 var formattedData = that.reformatData(data);
-                that.refresh(formattedData, heatmapId);
+                that.refresh(formattedData);
             }
         });
     }
 
-    this.reDraw = function(data, heatmapId){
+    this.reDraw = function(data){
         
-        this.lineData[heatmapId]['values'] = data;
+        this.lineData[0]['values'] = data;
 
         this.loaded++;
-        if(this.loaded == 2){
+        if(this.loaded == 1){
 
-            this.lineData[0]['key'] = datapoolFilters.keywords[0];
-            this.lineData[1]['key'] = datapoolFilters.keywords[1];
-
+            console.log('in redraw');
+            console.log(data);
             d3.select('#linechart svg')
             .datum(this.lineData)
             .call(this.chart);

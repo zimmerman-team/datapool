@@ -9765,12 +9765,18 @@ footer {
 }
 
 /* line 301, ../scss/app.scss */
+#barchart svg {
+  width: 100%;
+  height: 400px;
+}
+
+/* line 305, ../scss/app.scss */
 #linechart svg {
   width: 100%;
   height: 400px;
 }
 
-/* line 306, ../scss/app.scss */
+/* line 311, ../scss/app.scss */
 .alert.disabled {
   display: none;
 }
