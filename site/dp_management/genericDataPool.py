@@ -41,12 +41,13 @@ class DataPool():
 		return cluster_id
 
 	def create_model(self,class_name):
+		class_name = class_name.strip()
 		data_model_class = models.DataModelClass()
-		data_model_class.name = class_name
+		data_model_class.name = class_name.strip()
 		data_model_class.translated_name = class_name
 		data_model_class.orient_name = class_name
 		#data_model_class.default_cluster_id = cluster_id
-		data_model_class.data_source = self.source9175
+		data_model_class.data_source = self.source
 		data_model_class.save()
 		self.schema_classes[class_name] = {}
 		#self.schema_classes[class_name]['cluster_id'] = cluster_id
@@ -54,6 +55,7 @@ class DataPool():
 		return data_model_class
 		
 	def create_property_model(self,class_name,property_name,data_model_class):
+		property_name = property_name.strip()
 		prop_name =self.format_attrib_name(property_name)
 		self.schema_properties[class_name+'.'+prop_name] = True
 		data_model_class_property = models.DataModelProperty()
@@ -73,8 +75,8 @@ class DataPool():
 	
 	def create_property(self,data_model_class_property):
 		type_conversion ={'STRING':'STRING',
-	    				'INTEGER':'INTEGER',
-	    				'FLOAT':'FLOAT',
+	    				'INTEGER':'LONG',
+	    				'FLOAT':'DOUBLE',
 	    				'TEXT':'STRING',
 	    				'DATE':'DATE',
 	   					'DATETIME':'DATETIME',
@@ -89,6 +91,8 @@ class DataPool():
 
 		print 'create property '+data_model_class_property.data_model_class.name+'.'+data_model_class_property.orient_name+' '+prop_type
 		self.client.command('create property '+data_model_class_property.data_model_class.name+'.'+data_model_class_property.orient_name+' '+prop_type)
+		if prop_type == 'TEXT':
+			self.client.command('create index '+data_model_class_property.data_model_class.name+'.'+data_model_class_property.orient_name+' on '+data_model_class_property.data_model_class.name+' ('+data_model_class_property.orient_name+') FULLTEXT ENGINE LUCENE')
 
 
 
@@ -370,16 +374,20 @@ class DataPool():
 		for data_model_edge in models.DataModelEdge.objects.filter(data_source=source).all():
 			self.create_edge_object(data_model_edge)
 
-	def get_query_data(self,data_set):
+	def get_query_data(self,data_set,post_data):
 		connection = data_set.data_stream.data_connection
 		self.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
 		#make query
 		query_data_set = {}
 		property_type_set = {}
+		search_boxes = {}
 		for data_set_property in data_set.properties.all():
 			if not data_set_property.use_property:
 				continue
-			
+			if data_set_property.get_action_display() == 'SEARCHBOX':
+				search_boxes['param_'+str(data_set_property.id)] = {'name':data_set_property.data_model_property.translated_name,'type':data_set_property.data_model_property.get_property_type_display()}
+
+				
 			property_type_set[data_set_property.data_model_property.orient_name] = {}
 			property_type_set[data_set_property.data_model_property.orient_name]['type'] = data_set_property.data_model_property.get_property_type_display()
 			property_type_set[data_set_property.data_model_property.orient_name]['action'] = data_set_property.get_action_display()
@@ -387,10 +395,12 @@ class DataPool():
 			class_name = data_set_property.data_stream_class.name
 			if not class_name  in query_data_set:
 				query_data_set[class_name] = QueryData()
+				query_data_set[class_name].parameters = post_data
 				query_data_set[class_name].class_name = class_name
+				query_data_set[class_name].order_by = data_set.x_axis.data_model_property.orient_name
 			query_data = query_data_set[class_name]
 			
-			query_data.fields[action_list[data_set_property.action][1]].append(data_set_property.data_model_property.orient_name)
+			query_data.fields[action_list[data_set_property.action][1]].append(data_set_property)
 		query_result = []
 		for query_data in query_data_set:
 			query = query_data_set[query_data].make_query().encode(self.encoding)
@@ -400,7 +410,7 @@ class DataPool():
 				temp_data.append(row.oRecordData)
 			#make datatype array
 
-			query_result.append({'query':query,'property_type_set':property_type_set,'graph':data_set.get_chart_type_display(),'x_axis':data_set.x_axis.data_model_property.orient_name,'data':temp_data})
+			query_result.append({'query':query,'property_type_set':property_type_set,'graph':data_set.get_chart_type_display(),'x_axis':data_set.x_axis.data_model_property.orient_name,'data':temp_data , 'search_boxes':search_boxes})
 			
 			
 		return query_result
@@ -421,7 +431,9 @@ class DataPool():
 class QueryData:
 	
 	class_name = ''
+	order_by = ''
 	fields = {}
+	parameters = {}
 
 	def __init__(self):
 		actionlist = models.DataSetStreamProperty.ACTIONCHOICE
@@ -431,20 +443,65 @@ class QueryData:
 
 
 	def make_query(self):
-		group_by_fields = ','.join(self.fields['SELECT'])
-		sum_fields =  ','.join(['SUM('+field+') AS '+field for field in self.fields['SUM']])
-		avg_fields =  ','.join(['AVG('+field+') AS '+field for field in self.fields['AVG']])
-		min_fields =  ','.join(['MIN('+field+') AS '+field for field in self.fields['MIN']])
-		max_fields =  ','.join(['MAX('+field+') AS '+field for field in self.fields['MAX']])
-		count_fields =  ','.join(['COUNT('+field+') AS '+field+'_count' for field in self.fields['COUNT']])
+		pprint.pprint(self.parameters)
+		#set filter fields
+		filter_query_arr = []
+		for filter_field in self.fields['SEARCHBOX']:
+			if filter_field.show_filter_field == True:
+				self.fields['SELECT'].append(filter_field)
+			param_name = 'param_'+str(filter_field.id)
+			filter_type = filter_field.data_model_property.get_property_type_display()
+			if param_name in self.parameters and self.parameters[param_name] != '':
+				param_value = self.parameters[param_name]
+				if filter_type == 'TEXT':
+					filter_query_arr.append(filter_field.data_model_property.orient_name+" LUCENE '"+param_value+"'")
+				elif filter_type == 'INTEGER' :
+					filter_query_arr.append(filter_field.data_model_property.orient_name+' = '+param_value)
+				else:
+					filter_query_arr.append(filter_field.data_model_property.orient_name+" = '"+param_value+"'")
+
+		for filter_field in self.fields['FILTER']:
+			if filter_field.show_filter_field == True:
+				self.fields['SELECT'].append(filter_field)
+			filter_value = filter_field.filter_value
+			if filter_value == '' or filter_value == None:
+				continue
+			filter_type = filter_field.data_model_property.get_property_type_display()
+			if filter_type == 'TEXT':
+				filter_query_arr.append(filter_field.data_model_property.orient_name+" LUCENE '"+filter_value+"'")
+			elif filter_type == 'INTEGER' :
+				
+				filter_query_arr.append(filter_field.data_model_property.orient_name+' = '+filter_value)
+			else:
+				filter_query_arr.append(filter_field.data_model_property.orient_name+" = '"+filter_value+"'")
+		filter_query = ' AND '.join(filter_query_arr)
+
+
+		group_by_fields =  ','.join([field.data_model_property.orient_name for field in self.fields['SELECT']])
+
+		sum_fields =  ','.join(['SUM('+field.data_model_property.orient_name+') AS '+field.data_model_property.orient_name for field in self.fields['SUM']])
+		avg_fields =  ','.join(['AVG('+field.data_model_property.orient_name+') AS '+field.data_model_property.orient_name for field in self.fields['AVG']])
+		min_fields =  ','.join(['MIN('+field.data_model_property.orient_name+') AS '+field.data_model_property.orient_name for field in self.fields['MIN']])
+		max_fields =  ','.join(['MAX('+field.data_model_property.orient_name+') AS '+field.data_model_property.orient_name for field in self.fields['MAX']])
+		count_fields =  ','.join(['COUNT('+field.data_model_property.orient_name+') AS '+field.data_model_property.orient_name+'_count' for field in self.fields['COUNT']])
+		
+
+
+
+
 		select_query = ','.join(filter(bool,[sum_fields,avg_fields,min_fields,max_fields,group_by_fields,count_fields]))
 		# todo filter fields
 		# and searhcbox fields
 		from_query = ' FROM '+self.class_name
+
 		group_by_query = ''
 		if group_by_fields > '' and group_by_fields != select_query: 
 			group_by_query = ' GROUP BY '+group_by_fields
-		query = 'SELECT '+select_query+from_query+group_by_query+' LIMIT 10000'
+		if filter_query != '':
+		 	filter_query = ' WHERE '+filter_query
+
+		query = 'SELECT '+select_query+from_query+filter_query+group_by_query+' ORDER BY '+self.order_by+' LIMIT 10000'
+		print query
 		return query
 
 

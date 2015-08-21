@@ -103,6 +103,8 @@ class CsvImport(DataPool):
 					try:
 						rec_position = self.client.record_create(class_cluster_id,rec )
 					except:
+						print sys.exc_info()[0]
+						pprint.pprint(rec)
 						print 'failed '+self.class_name
 				else:
 					rec = {'@'+self.class_name:rec_data}
@@ -113,6 +115,7 @@ class CsvImport(DataPool):
 							rec_position = self.client.record_create(class_cluster_id,rec )
 					except Exception as exception:
 						print sys.exc_info()[0]
+						pprint.pprint(rec)
 						print 'failed '+self.class_name
 		            
 			rownum += 1

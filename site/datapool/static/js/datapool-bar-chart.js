@@ -10,10 +10,11 @@ var DatapoolBarchart = function(){
     ];
 
     this.loaded = 0;
+    this.search_boxes_loaded = false;
 
     this.init = function(){
 
-        console.log('in init barchart');
+        //console.log('in init barchart');
         this.chart = nv.models.multiBarChart();
         this.chart.x(function(d) { return d[0] })  
         this.chart.y(function(d) { return d[1] }) 
@@ -34,7 +35,7 @@ var DatapoolBarchart = function(){
             .call(this.chart);
 
         nv.utils.windowResize(this.chart.update);
-        this.refresh()
+        this.refresh();
 
 
 
@@ -43,25 +44,7 @@ var DatapoolBarchart = function(){
     this.createUrl = function(){
         
         var url = '/get_project_chart_data/'+$('#barchart').attr('data-id')+'/bar_chart/';
-        console.log(url)
-        // var parameters = [];
-
-
-        // var start = 'start='+this.filters.from
-        // if (this.filters.fromtime != ''){
-        //     start += 'T'+this.filters.fromtime;
-        // }
-        // parameters.push(start);
-        // var end = 'end='+this.filters.to
-        // if (this.filters.totime != ''){
-        //     end += 'T'+this.filters.totime;
-        // }http://datapool.bitofpepper.com/en/add_data
-
-        // parameters.push(end);
-
-        // parameters = parameters.join('&');
-        // parameters = encodeURIComponent(parameters);
-        // url += parameters;
+      
         return url;
     }
 
@@ -72,12 +55,13 @@ var DatapoolBarchart = function(){
 
             data_set = data[j]['data'];
             x_axis = data[j]['x_axis'];
+            this.search_boxes = data[j]['search_boxes'];
             this.chart.xAxis.axisLabel(x_axis);//set x axis label
-            console.log('x_axis = '+x_axis);
+            //console.log('x_axis = '+x_axis);
             types = data[j]['property_type_set'];
-            console.log(data[j]);
+            //console.log(data[j]);
             for(type in types){
-                console.log(types);
+                //console.log(types);
                 if(type != x_axis){
                     formattedData[type] = [];
                 }
@@ -98,7 +82,7 @@ var DatapoolBarchart = function(){
                 i++;
             }
         }
-        console.log(return_arr);
+        //console.log(return_arr);
         return return_arr;
     }
 
@@ -114,12 +98,17 @@ var DatapoolBarchart = function(){
         var url = this.createUrl();
         //console.log('url = '+url);
         var that = this;
+        console.log($("#all-data").serialize());
         jQuery.ajax({
             type: 'GET',
             url: url,
             dataType: 'json',
+            data:$("#all-data").serialize(),
             success: function(data){
                 var formattedData = that.reformatData(data);
+                if(that.search_boxes_loaded == false){
+                    that.addSearchBoxes()
+                }
                 that.refresh(formattedData);
             }
         });
@@ -132,8 +121,6 @@ var DatapoolBarchart = function(){
         this.loaded++;
         if(this.loaded == 1){
 
-            console.log('in redraw');
-            console.log(data);
             d3.select('#barchart svg')
             .datum(this.barchartData)
             .call(this.chart);
@@ -141,6 +128,13 @@ var DatapoolBarchart = function(){
             this.loaded = 0;
         }
 
+    }
+
+    this.addSearchBoxes = function(){
+        for(box_id in this.search_boxes){
+            $('.bar_chart_search').append("<div>"+this.search_boxes[box_id]['name']+"<input type='text' name='"+box_id+"' id='"+box_id+"'/></div>");
+        }
+        this.search_boxes_loaded = true;
     }
 
 }

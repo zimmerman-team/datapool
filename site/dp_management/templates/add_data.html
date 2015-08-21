@@ -160,7 +160,7 @@
                               </select>
                               
                             </td>
-                            <td><input id="filter_value" name="filter_value" type="text" placeholder="Filter by keywords"></td>
+                            <td><input id="filter_value" name="filter_value" type="text" placeholder="Filter by keywords" value={{my_data_set_property.filter_value}} /> <label>show<input type="checkbox" name='show_filter_field' {% if my_data_set_property.show_filter_field %}CHECKED{% endif %}/></label></td>
                           </tr>
                           </form>
                           {% endfor %}

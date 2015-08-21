@@ -216,6 +216,10 @@ $(document).ready(function(){
 
     }
     );
+    $('#refresh-data').on('click',function(){
+        barchart.getData();
+        return false;
+    });
     $('.visualize').on('click',function(){
         project_id = $(this).attr('project-id');
         window.location = '/visualize_project/'+project_id+'/';

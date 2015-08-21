@@ -64,10 +64,7 @@ function DatapoolMap(){
     };
 
     this.resetData = function(){
-        this.countTweets = 0;
-        this.countRetweets = 0;
-        this.countMentions = 0;
-        this.countUsers = {};
+        
 
         this.heat[0].setLatLngs([]);
         this.heat[1].setLatLngs([]);
@@ -87,27 +84,7 @@ function DatapoolMap(){
 
     this.createUrl = function(heatmapId){
 
-        var url = 'get_tweets.php?parameters=';
-
-        var parameters = [];
-
-        parameters.push('search='+this.filters.keywords[heatmapId]);
-
-        var start = 'start='+this.filters.from
-        if (this.filters.fromtime != ''){
-            start += 'T'+this.filters.fromtime;
-        }
-        parameters.push(start);
-        var end = 'end='+this.filters.to
-        if (this.filters.totime != ''){
-            end += 'T'+this.filters.totime;
-        }
-
-        parameters.push(end);
-
-        parameters = parameters.join('&');
-        parameters = encodeURIComponent(parameters);
-        url += parameters;
+        var url = '/get_project_chart_data/'+$('#barchart').attr('data-id')+'/heat_map/';
         return url;
     }
 
@@ -119,41 +96,25 @@ function DatapoolMap(){
             type: 'GET',
             url: url,
             dataType: 'json',
-            success: function(data){
+            data:$("#all-data").serialize(),
+            success: function(data){http://i.imgur.com/E3b0aCE.jpg
+                that.formatData(data);
                 that.refresh(data, heatmapId);
             }
         });
     };
 
+    this.formatData = function(data){
+
+    }
     this.reDraw = function(data, heatmapId){
 
         for (var i = 0;i< data.length;i++){
             this.heat[heatmapId].addLatLng([data[i]['fields']['latitude'], data[i]['fields']['longitude']]);
 
-            this.countTweets++;
-
-
-            if (data[i]['fields']['text'].substring(0, 2) == "RT") {
-                this.countRetweets++;
-            }
-
-            if (data[i]['fields']['text'].charAt(0) == "@") {
-                this.countMentions++;
-            }
-
-            this.countUsers[data[i]['fields']['u_id']] = true;
         }
 
-        this.loaded++;
-        if(this.loaded == 2){
-
-            jQuery('#count-tweets').text(this.countTweets);
-            jQuery('#count-retweets').text(this.countRetweets);
-            jQuery('#count-mentions').text(this.countMentions);
-            jQuery('#count-users').text(Object.keys(this.countUsers).length);
-
-            loading = false;
-        }
+     
     }
 
 }

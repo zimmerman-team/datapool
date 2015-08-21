@@ -46,6 +46,7 @@ class DataSourceAdmin(NestedModelAdmin):
         return HttpResponse('Success')
 
     def create_django_schema(self, request):
+        print 'in view'
         source_id = request.GET.get('source_id')
         obj = get_object_or_404(DataSource, id=source_id)
         obj.create_django_schema()

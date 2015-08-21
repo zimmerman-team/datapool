@@ -112,6 +112,7 @@ class DataSource(models.Model):
 	orient_models.allow_tags =  True
 
 	def create_django_schema(self) :
+		print 'in create django schema'
 		if self.data_type == 1:
 			parser = xmlImport()
 		elif self.data_type == 0:
@@ -122,6 +123,7 @@ class DataSource(models.Model):
 		parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
 		#parser.connect_old()
 		#get the file 
+
 		for data_class in DataModelClass.objects.filter(data_source=self).all():
 			data_class.delete()
 		if self.data_file == None or self.data_file == '':
@@ -130,6 +132,7 @@ class DataSource(models.Model):
 		else:
 			data_file = open(self.data_file.path, 'r')
 			parse_file = data_file.readlines()
+			print 'parse fiel'
 		if self.data_type == 1:			
 			parser.load_xml(parse_file)
 			parser.parse_xml()
@@ -354,6 +357,7 @@ class DataSetStreamProperty(models.Model):
 	use_property = models.BooleanField(default=False)
 	action = models.IntegerField(choices=ACTIONCHOICE, default=0) 
 	filter_value = models.CharField(max_length=512,null=True,blank=True)
+	show_filter_field = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return self.data_model_property.translated_name

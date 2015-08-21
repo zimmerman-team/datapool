@@ -231,6 +231,10 @@ def save_property(request):
 		data_set_property = DataSetStreamProperty.objects.get(pk=request.POST['property-id']);
 		data_set_property.action = request.POST['property_action']
 		data_set_property.filter_value = request.POST['filter_value']
+		if 'show_filter_field' in request.POST :
+			data_set_property.show_filter_field = True
+		else:
+			data_set_property.show_filter_field = False
 		if 'use_property' in request.POST:
 			data_set_property.use_property = True
 		else:
@@ -257,17 +261,19 @@ def visualize_project(request,project_id):
 def get_queries(request,data_set_id):
 	data_set = DataSetStream.objects.get(pk=data_set_id)
 	datapool = DataPool()
-	query_data_set = datapool.get_query_data(data_set)
+	query_data_set = datapool.get_query_data(data_set,request.POST)
 	return HttpResponse(json.dumps(query_data_set))
 
 @login_required
 def get_project_chart_data(request,project_id,chart_type):
 	project = DataProject.objects.get(pk=project_id)
 	return_arr = []
+	pprint.pprint(request.POST)
+	print 'is post'
 	datapool = DataPool()
 	for data_set_stream in project.data_streams.all():
 		if data_set_stream.get_chart_type_display() == chart_type:
-			return_arr = return_arr + datapool.get_query_data(data_set_stream)
+			return_arr = return_arr + datapool.get_query_data(data_set_stream,request.GET)
 	return HttpResponse(json.dumps(return_arr))
 
 
