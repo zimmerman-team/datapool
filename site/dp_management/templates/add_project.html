@@ -1,121 +1,204 @@
 {% extends "base_dp_no_cms.html" %}
 {% block content %}
 
+  <!-- new project panel -->
 
-      <div class="row margin-top">
-        <div class="large-3 columns">
-          <div id="addproject" class="panel dashboard filters">
-            <h5><i class="fa fa-tachometer"></i>Add a project</h5>
-            <form id='project_form' method='POST'>
-              {% csrf_token %}
-               <div class="row">
-                <div class="large-12 columns">
-                   <div class="margin-top">
-                    <input name='name' id="project-name" type="text" placeholder="Name your project">
-                  </div>
-                  <div id="datastreams">
-                    <select id="datastreams0" name='data_set'>
-                      <option value="">Add data stream</option>
-                      {% for data_stream in data_set_streams %}
-                        <option value="{{data_stream.id}}">{{data_stream.name}}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="large-12 columns margin-top">
-                  <a id="go" href="#" class="small button secondary">Add</a>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div> 
-        <div class="large-9 columns">
+  <div class="columns small-11 small-centered">
+    <div class="panel project-new">
+      <div class="header">
+        Add new project <i class="fa fa-plus"></i>
+      </div>
+      <div class="content">
+        <form>
 
-          <div data-alert class="alert-box helper">
-            <h3>Adding projects to your Data Pool</h3>
-            <p>Projects contain groups of data streams you wish to visualize in the Data Pool dashboard. To create a project, you first need to create some data streams. </p>
-            <p>Once that's done, enter your project name on the left, and select as many data streams as you like. Forgot to add some streams? Don't worry, you can always edit your created projects on this page.</p>
-            <button class="close btn">Ok, I got it</button>
-          </div>
-
-
-          <!--start van het boxje -->
-          {% for project in my_projects.all %}
           <div class="row">
-            <div class="large-12 columns">
-              <div class="panel datastream">
+            <div class="small-8 columns small-centered">
 
-                <div class="panel-header">
-                  <div class="row">
-                    <div class="large-7 columns">
-                      <h1>{{project.name}}</h1>
-                    </div>
-                    <div class="large-5 columns text-right">
-                      <button class="btn configure">Configure</button>
-                      <div class="killbutton"><button class="btn alert kill" data-project-id='{{project.id}}'>Delete</button></div>
-                    </div>
-                  </div>
+              <div class="row">
+                <div class="small-2 columns">
+                  <label for="title" class="right inline">Name of project</label>
                 </div>
-                
-                <div class="panel-content">
-                  <form id='project-form-{{project.id}}'>
-                  {% csrf_token %}
-                  <div class="row">
-                    <div class="large-12 columns">
-                      <input class="header-input" id="data-name" name="name" type="text" value="{{project.name}}">
-                      <input type="hidden" name="project-id" value="{{project.id}}" >
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="large-12 columns">
-                      <label>Change, add or remove data streams</label>
-                    </div>
-                  </div>
-                  {%for my_data_stream in project.data_streams.all%}
-                  <div class="streams" id='stream-id-{{my_data_stream.id}}-{{project.id}}'>
-                    <div class="row stream datastream0 disabledelete">
-                      <div class="large-8 columns">
-                        <select name='data_set'>
-                        {% for data_stream in data_set_streams.all %}
-                          <option value="{{data_stream.id}}" {%if data_stream.id == my_data_stream.id%}SELECTED{%endif%}>{{data_stream.name}}</option>
-                        {% endfor %}
-                          
-                        </select>
-                      </div>
-                      <div class="large-4 columns">
-                        <button class="btn alert tiny delete-stream-from-project" stream-parent-id="stream-id-{{my_data_stream.id}}-{{project.id}}" >Delete</button>
-                      </div>
-                    </div>
-                  </div>
-                  {% endfor %}
+                <div class="small-10 columns">
+                  <input type="text" id="title">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-2 columns">
+                  <label for="subtitle" class="right inline">Subtitle</label>
+                </div>
+                <div class="small-10 columns">
+                  <input type="text" id="subtitle">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-2 columns">
+                  <label for="about" class="right inline">About project</label>
+                </div>
+                <div class="small-10 columns">
+                  <textarea id="about" rows="5"></textarea>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-12 columns text-right">
+                  <input type="submit" class="button" value="Create">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- end new project panel -->
+
+  {% for project in my_projects.all %}
+
+  <!-- an existing project -->
+
+  <div class="columns small-11 small-centered">
+    <div class="panel project">
+      <div class="header main">
+        <div class="row">
+          <div class="columns small-1 avatar"><img src="/static/img/avatar.png">&nbsp;</div>
+          <div class="columns small-4 title">{{project.name}}</div>
+          <div class="columns small-4 subtitle">Subtitle here</div>
+          <div class="columns small-3 datastreams">
+            <div>Datastreams: XX</div>
+            <div class="actions">
+              <button class="button tiny configure">Configure</button>
+              <button class="btn alert tiny kill" data-project-id='{{project.id}}'>Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="row description">
+          <div class="columns small-10 small-offset-2">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae malesuada neque, vitae molestie nisl. Suspendisse rhoncus sodales tortor vel iaculis. Etiam sagittis placerat tincidunt. Mauris non turpis ac nisl elementum posuere. Pellentesque id lacinia lorem. Aliquam leo ex, aliquam sed pulvinar nec, varius a mauris. </p>
+          </div>
+        </div>
+
+        <div class="row stream add-datastream">
+          <div class="columns small-11 small-centered">
+            <div class="panel datastream-new">
+              <div class="header">
+                Add data stream <i class="fa fa-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {%for my_data_stream in project.data_streams.all%}              
+        <!-- start datastream blok -->
+        <div class="row stream edit-datastream" id="stream-id-{{my_data_stream.id}}-{{project.id}}">
+          <div class="columns small-11 small-centered">
+            <div class="panel">
+              <div class="header">
+                {{my_data_stream.name}}
+                <div class="actions">
+                  <button class="button tiny configure">Configure</button>
+                  <button class="button tiny alert delete-stream-from-project" stream-parent-id="stream-id-{{my_data_stream.id}}-{{project.id}}">Delete</button>
+                </div>
+              </div>
+              <div class="content">
+
+                <form>
 
                   <div class="row">
-                    <div class="large-8 columns text-right">
-                      <button class="btn addstream"><i class="fa fa-plus"></i></button>
+                    <div class="columns small-6">
+
+                      <div class="row">
+                        <div class="small-3 columns">
+                          <label for="title" class="right inline">Stream name</label>
+                        </div>
+                        <div class="small-9 columns">
+                          <input type="text" id="title">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="small-3 columns">
+                          <label for="title" class="right inline">Set period</label>
+                        </div>
+                        <div class="small-9 columns">
+                          <input type="text" id="title">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="small-3 columns">
+                          <label for="title" class="right inline">City</label>
+                        </div>
+                        <div class="small-9 columns">
+                          <input type="text" id="title">
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="columns small-6">
+
+                      <div class="row">
+                        <div class="small-3 columns">
+                          <label for="title" class="right inline">Select data stream</label>
+                        </div>
+                        <div class="small-9 columns">
+                          <select id="datastreams0" name='data_set'>
+                            {% for data_stream in data_set_streams %}
+                              <option value="{{data_stream.id}}" {%if data_stream.id == my_data_stream.id%}SELECTED{%endif%}>{{data_stream.name}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="small-3 columns">
+                          <label for="title" class="right inline">Chart type</label>
+                        </div>
+                        <div class="small-9 columns">
+                          <input type="text" id="title">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="small-3 columns">
+                          <label for="title" class="right inline">Chart type</label>
+                        </div>
+                        <div class="small-9 columns">
+                          <input type="text" id="title">
+                        </div>
+                      </div>
+
                     </div>
                   </div>
-                  </form>
+
                   <div class="row">
-                    <div class="large-12 columns">
-                      <button class="btn visualize" project-id="{{project.id}}">Visualize</button>
-                      <button class="btn save-project" project-id="{{project.id}}">Save</button>
-                      <button class="btn close secondary">Close</button>
+                    <div class="columns small-12 text-right">
+                      <input class="button small" type="submit" value="Save">
                     </div>
                   </div>
-                </div>
-               
+
+                </form>
 
               </div>
             </div>
           </div>
-          {% endfor %}
-          <!-- eind van het boxje -->
-
-
-
         </div>
-      </div>
+        <!-- eind datastream blok -->
+        {% endfor %}
 
-   {% endblock %}
+      </div>
+    </div>
+  </div>
+
+  <!-- end an existing project -->
+
+  {% endfor %}
+
+{% endblock %}

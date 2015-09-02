@@ -2,13 +2,21 @@
 
 {% block title %}Data Pool | Login{% endblock %}
 
-{% block navigation %}{% endblock %}
+{% block sidebar %}{% endblock %}
 
-{% block content %}
+{% block rightside %}
+    {% block content %}
 
-<div class="row margin-top">
-    <div class="columns small-12 medium-6 large-4 small-centered">
-        <div class="panel">
+    <div class="row graphic-header">
+        <div class="columns small-2 small-centered">
+            <img src="/static/img/logo.svg">
+        </div>
+    </div>
+
+    <div class="row login">
+        <div class="columns small-12 medium-6 large-4 small-centered">
+
+            <p>Log in to access the admin area</p>
 
             {% if form.errors %}
             <div data-alert class="alert-box alert">
@@ -35,20 +43,26 @@
             <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
             {% csrf_token %}
 
-                <label>{{ form.username.label_tag }}</label>
+                <!-- <label>{{ form.username.label_tag }}</label> -->
                 {{ form.username }}
 
-                <label>{{ form.password.label_tag }}</label>
+                <!-- <label>{{ form.password.label_tag }}</label> -->
                 {{ form.password }}
 
-            <input type="submit" value="login" class="button" />
+            <input type="submit" value="Login" class="button" />
             <input type="hidden" name="next" value="{{ next }}" />
             </form>
 
             {# Assumes you setup the password_reset view in your URLconf #}
 
+            <p class="more-padding"><a href="#">Forgot your password?</a></p>
+
+            <input type="submit" value="Login with Facebook" class="facebook-blue" />
+
+            <p class="more-padding">Don't have an account yet? <a href="#">Create an account</a></p>
+
         </div>
     </div>
-</div>
 
+    {% endblock %}
 {% endblock %}

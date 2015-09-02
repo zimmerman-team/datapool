@@ -226,5 +226,20 @@ $(document).ready(function(){
         return false;
     });
 
+    /* nieuwe shizniz; design 2.0 */
+
+    //klikbaarheid op projects page
+    $('.project-new').on('click',function(){
+      $(this).toggleClass('expanded');
+    });
+
+    $('.header.main').on('click',function(){
+      $(this).parent('.panel').toggleClass('expanded');
+    });
+
+    $('button.configure').on('click',function(){
+      $(this).parents('.header').next('.content').toggleClass('fullvis');
+    });
+
 
 });

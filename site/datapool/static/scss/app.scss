@@ -39,103 +39,257 @@
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
 
-.bg-wrapper {
-	background:$silver;
+//graphic header
+.graphic-header {
+	background-image:url(/static/img/background.png);
+	background-size:cover;
+	background-position:bottom center;
+	img {
+		margin:10rem 0;
+	}
 }
 
-.topbar {
-	background:$blu-tlight;
-	box-shadow: inset 0 -3px 0 0 $blu-tmlight;
-	nav {
-		box-shadow: inset 0 -3px 0 0 $blu-tmlight;
-		.top-bar-section ul li {
-			a {
-				box-shadow: inset 0 -3px 0 0 $blu-tmlight;
-			}
-			&:hover a, &.active a {
-				box-shadow: inset 0 -3px 0 0 $red;
-			}
+//login page
+.login {
+	background: $blue;
+	padding-top:4rem;
+	text-align:center;
+	color:$grey;
+	.button {
+		width: 100%;
+	}
+	input {
+		padding: 1rem 1rem 1.0625rem 1rem;
+		height: auto;
+	}
+	a {
+		color: $white;
+	}
+	.facebook-blue {
+		@include button(
+		    // $padding - Used to build padding for buttons Default: $button-med or rem-calc(12)
+		    $button-med,
+		    // Background color. We can set $bg:false for a transparent background. Default: $primary-color.
+		    #4c66a4,
+		    // If true, set to button radius which is $global-radius or explicitly set radius amount in px (ex. $radius:10px). Default:false.
+		    false,
+		    // We can set $full-width:true to remove side padding extend width. Default:false
+		    true,
+		    // We can set $disabled:true to create a disabled transparent button. Default:false
+		    false
+		  );
+		&:before {
+			font-family: FontAwesome;
+		    content: "\f09a";
 		}
-		.name {
-			width: 14rem;
-			img {
-				width: 100%;
-				height: auto;
-			}
-			h1 {
-				a {
-					padding-left:0;
+	}
+}
+
+//navigation - left side
+.nav {
+	background: $blue;
+	position:fixed;
+	height:100%;
+	h1 {
+		background:$blue-xdark;
+		margin:0;
+		line-height: 4rem;
+		height:4rem;
+		padding-left:1rem;
+		a {
+			display: block;
+			line-height: 3.5rem;
+		}
+		img {
+			width: 50%;
+			height: auto;
+		}
+	}
+	.user-area {
+		color:$white;
+		padding:.6rem 0;
+		background:$blue-dark;
+		h5 {
+			color: $white;
+			font-size: .9rem;
+			margin-bottom: .1rem;
+		}
+		.subheader {
+			font-size: .5rem;
+			color:$grey;
+			margin-top:0;
+			text-transform: uppercase;
+		}
+	}
+	.side-nav {
+		li {
+			a {
+				border-left: .3rem solid transparent;
+				&:hover {
+					border-left: .3rem solid $primary-color;
+				}
+				i {
+					&:first-of-type {
+						width: 1rem;
+						margin-right: .7rem;
+					}
+					&:last-of-type {
+						float: right;
+						padding-top:.25rem;
+					}
 				}
 			}
 		}
 	}
 }
 
-.header {
-	text-align:center;
-	margin:rem-calc(20) 0;
-	padding-bottom:rem-calc(10);
-	border-bottom:1px solid $jet;
+//header right side
+.top.header {
+	background:$white;
+	color:$grey;
+	border-bottom:1px solid $grey-light;
+	text-align:right;
+	height:4rem;
+	line-height:4rem;
+	span {
+		display: inline-block;
+	}
+}
+
+//main content stuff
+.main-content {
+	background:#f8f9fa;
+	padding-top:2rem;
+	padding-bottom:2rem;
 }
 
 .panel {
-	//box-shadow:1px 1px 1px 0px rgba(0,0,0,0.4);
-	//border-radius:4px;
-	overflow:hidden;
-	&.dashboard {
-		h5 {
-			margin-top:rem-calc(-20);
-			margin-left:rem-calc(-20);
-			margin-right:rem-calc(-20);
-			padding:rem-calc(20);
-			color:$blu-dark;
-		}
+	padding:0;
+	box-shadow:2px 2px 2px rgba(0,0,0,.3);
+	.header {
+		color:$white;
+		font-size:1rem;
+		padding:1rem;
 	}
-	&.filters {
-		h5 {
-			background:$oil;
-			color:$white;
-		}
+	.content {
+		padding:1em;
 	}
-	&.number {
-		color:#fff;
-		.fa {
-			color:#fff;
-			font-size:3rem;
-			margin-bottom: 1rem;
+	&.project-new, &.datastream-new {
+		display: inline-block;
+		i {
+			margin-left:.5rem;
+		}
+		.header {
+			background:$primary-color;
+			cursor: pointer;
+			&:hover {
+				background:darken($primary-color,10%);
+			}
 		}
 		.content {
-			font-size:2rem;
-			line-height: 1;
+			display: none;
 		}
-		small {
-			font-size:.8rem;
+		&.expanded {
+			display: block;
+			.header {
+				background:darken($primary-color,10%);
+			}
+			.content {
+				display: block;
+			}
 		}
 	}
-	&.datastream {
-
-	}
-	&#tweets {
-		background:#55acee;
-	}
-	&#retweets {
-		background:darken(#55acee,20%);
-	}
-	&#mentions {
-		background:$primary-color;
-	}
-	&#users {
-		background:$red-dark;
-	}
-	.fa {
-		margin-right: 5px;
-		color:$red;
+	&.project {
+		.header {
+			background:$blue-xlight;
+			cursor: pointer;
+			overflow: hidden;
+			&:hover {
+				background:$blue-light;
+			}
+			.subtitle {
+				font-size:1rem;
+				opacity: .8;
+				font-style: italic;
+			}
+			.datastreams {
+				font-size:1rem;
+				text-align: right;
+				.actions {
+					margin-top:.5rem;
+					display: none;
+					button {
+						margin-bottom: 0;
+					}
+				}
+			}
+			.avatar {
+				img {
+					border-radius:50%;
+					position: absolute;
+					width: 80%;
+					height: auto;
+					top:-.5rem;
+					border:2px solid $white;
+				}
+			}
+		}
+		.content {
+			display: none;
+			.description, .stream {
+				display: none;
+			}
+			&.fullvis {
+				.stream {
+					display: block;
+				}
+			}
+		}
+		&.expanded {
+			.header {
+				background:$blue-light;
+				.datastreams {
+					.actions {
+						display: block;
+					}
+				}
+			}
+			> .content {
+				display: block;
+				.description {
+					display: block;
+				}
+			}
+		}
+		.stream {
+			&.add-datastream {
+				.header {
+					background:$primary-color;
+				}
+			}
+			&.edit-datastream {
+				.actions {
+					float: right;
+					margin-top: -.2rem;
+					button {
+						margin-bottom: 0;
+					}
+				}
+				.content {
+					display: none;
+					&.fullvis {
+						display: block;
+					}
+				}
+			}
+		}
 	}
 }
 
 footer {
-	background:$blu-tlight;
-	color:$white;
+	background:$white;
+	border-top:1px solid $grey-light;
+	color:$grey;
 	padding:rem-calc(20);
 }
 
@@ -173,13 +327,13 @@ footer {
 			display: block;
 			padding:0.5625rem 0.625rem;
 			&:hover {
-				background:$blu-light;
+				background:$blue;
 			}
 		}
 	}
 	.ui-datepicker-current-day {
 		a {
-			background:darken($blu-light, 10%);
+			background:$blue;
 		}
 	}
 	.ui-datepicker-unselectable {
@@ -252,7 +406,7 @@ footer {
 }
 
 .alert-box.helper {
-	background:$blu-tmlight;
+	background:$blue;
 	padding:1.25rem;
 	h3 {
 		color:#fff;
@@ -294,6 +448,19 @@ footer {
 }
 
 //helper classes
+.tableview {
+	display:table;
+	&.row {
+		width:100%;
+	}
+}
+
+.align-middle {
+	display:table-cell;
+	vertical-align: middle;
+	float:none;
+}
+
 .margin-top {
 	margin-top:rem-calc(20);
 }
@@ -307,9 +474,16 @@ footer {
     height: 400px;
 }
 
+.more-padding {
+	padding:2rem 0;
+}
 
 .alert.disabled {
 	display:none;
+}
+
+.italic {
+	font-style:italic;
 }
 
 // [data-magellan-expedition], [data-magellan-expedition-clone] {
