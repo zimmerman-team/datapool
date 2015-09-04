@@ -1,0 +1,111 @@
+
+
+  <div class="columns small-11 small-centered">
+    <div class="panel project">
+      <div class="header main">
+        <div class="row">
+          <div class="columns small-1 avatar"><img src="/static/img/avatar.png">&nbsp;</div>
+          <div class="columns small-4 title">{{project.name}}</div>
+          <div class="columns small-4 subtitle">Subtitle here</div>
+          <div class="columns small-3 datastreams">
+            <div>Datastreams: XX</div>
+            <div class="actions">
+              <button class="button tiny configure">Configure</button>
+              <button class="btn alert tiny kill" data-project-id='{{project.id}}'>Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="row description">
+          <div class="columns small-10 small-offset-2">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae malesuada neque, vitae molestie nisl. Suspendisse rhoncus sodales tortor vel iaculis. Etiam sagittis placerat tincidunt. Mauris non turpis ac nisl elementum posuere. Pellentesque id lacinia lorem. Aliquam leo ex, aliquam sed pulvinar nec, varius a mauris. </p>
+          </div>
+        </div>
+
+        <div class="row stream add-datastream">
+          <div class="columns small-11 small-centered">
+            <div class="panel datastream-new">
+              <div class="header add-data-stream">
+                Add data stream <i class="fa fa-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+        {%for my_data_stream in project.data_streams.all%}              
+        <!-- start datastream blok -->
+        <div class="row stream edit-datastream" id="stream-id-{{my_data_stream.id}}-{{project.id}}">
+          <div class="columns small-11 small-centered">
+            <div class="panel">
+              <div class="header">
+                {{my_data_stream.name}}
+                <div class="actions">
+                  <button class="button tiny configure">Configure</button>
+                  <button class="button tiny alert delete-stream-from-project" stream-parent-id="stream-id-{{my_data_stream.id}}-{{project.id}}">Delete</button>
+                </div>
+              </div>
+              <div class="content">
+
+                <form>
+
+                  <div class="row">
+                    <div class="columns small-6">
+
+                      <div class="row">
+                        <div class="small-3 columns">
+                          <label for="title" class="right inline">Stream name</label>
+                        </div>
+                        <div class="small-9 columns">
+                          <input type="text" id="title">
+                        </div>
+                      </div>
+
+                    
+
+                    </div>
+                    <div class="columns small-6">
+
+               
+
+                      <div class="row">
+                        <div class="small-3 columns">
+                          <label for="title" class="right inline">Chart type</label>
+                        </div>
+                        <div class="small-9 columns">
+                          <input type="text" id="title">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="small-3 columns">
+                          <label for="title" class="right inline">Chart type</label>
+                        </div>
+                        <div class="small-9 columns">
+                          <input type="text" id="title">
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="columns small-12 text-right">
+                      <input class="button small" type="submit" value="Save">
+                    </div>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- eind datastream blok -->
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>

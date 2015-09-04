@@ -122,7 +122,17 @@ def add_project(request):
 	my_projects = DataProject.objects.filter(user=request.user).all()
 	page_vars = {'data_set_streams':data_set_streams,'my_projects':my_projects}
 	crsfcontext = RequestContext(request, page_vars)
-	return render_to_response('add_project.html',crsfcontext)	
+	return render_to_response('projects.html',crsfcontext)	
+
+@login_required
+def projects(request):
+	data_set_streams = DataSetStream.objects.filter(user=request.user)
+	categories = DataSourceCategory.objects.all()
+	
+	my_projects = DataProject.objects.filter(user=request.user).all()
+	page_vars = {'data_set_streams':data_set_streams,'my_projects':my_projects,'categories':categories}
+	crsfcontext = RequestContext(request, page_vars)
+	return render_to_response('projects.html',crsfcontext)	
 
 @login_required
 def save_project(request):

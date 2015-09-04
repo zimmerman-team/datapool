@@ -4,10 +4,6 @@ function DatapoolMap(){
     this.tl = null;
     this.filters = null;
 
-    this.countTweets = 0;
-    this.countRetweets = 0;
-    this.countMentions = 0;
-    this.countUsers = {};
     this.loaded = 0;
 
 
@@ -105,7 +101,7 @@ function DatapoolMap(){
     };
 
     this.formatData = function(data){
-
+            
     }
     this.reDraw = function(data, heatmapId){
 

@@ -297,6 +297,21 @@ class DataModelPivotPoint(models.Model):
 
 
 
+
+
+class DataProject(models.Model):
+
+	user = models.ForeignKey(User)
+	name = models.CharField(max_length=56)
+	description = models.TextField(null=True,blank=True)
+
+    
+	
+
+	def __unicode__(self):
+   		return self.name
+
+
 class DataSetStream(models.Model):
 	CHART_CHOICE = (
 	    (0, 'heat_map'),
@@ -309,6 +324,7 @@ class DataSetStream(models.Model):
 	    #(7, 'FILTER'),
 	    #(8, 'COUNT')
 	)
+	data_project = models.ForeignKey(DataProject,related_name='data_streams')
 	user = models.ForeignKey(User)
 	name = models.CharField(max_length=56)
 	data_stream = models.ForeignKey(DataSource,related_name="data_set_streams")
@@ -320,22 +336,6 @@ class DataSetStream(models.Model):
 
 	def __unicode__(self):
 		return self.data_stream.name+'-'+self.data_stream.name
-
-class DataProject(models.Model):
-
-	user = models.ForeignKey(User)
-	name = models.CharField(max_length=56)
-	description = models.TextField(null=True,blank=True)
-	data_streams = models.ManyToManyField(DataSetStream,null=True)
-
-    
-	
-
-	def __unicode__(self):
-   		return self.name
-
-
-
 
 class DataSetStreamProperty(models.Model):
 

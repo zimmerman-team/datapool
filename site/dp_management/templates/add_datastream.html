@@ -1,0 +1,148 @@
+
+{% block content %}
+
+
+          <div data-alert class="alert-box helper">
+            <h3>Adding data streams to your Data Pool</h3>
+            <p>A stream contains a configured data set that you would like to compare in Data Pool. Streams are needed to create projects. Select a stream on the left, and give it a name. Then add it to your stream list.</p>
+            <p>Once it's added, you can configure it on the right. You don't need to completely define everything, it's also possible to configure on the fly in the Data Pool visualisation dashboard. </p>
+            <p>Don't forget to save once you're done. Then head over to the Projects section.</p>
+            <button class="close btn">Ok, I got it</button>
+          </div>
+
+          <!-- start van boxje -->
+          <div class="row">
+            <div class="large-12 columns">
+              <div class="panel datastream">
+              <form class='stream_id_{{data_stream.id}}' stream-or-prop='stream' method='POST' action="save_data_set/">
+              {% csrf_token %} 
+                <div class="panel-header">
+                  <div class="row">
+                    <div class="large-7 columns">
+                      <h1>{{data_stream.name}} from {{data_stream.data_stream.name}}</h1>
+                    </div>
+                    <div class="large-5 columns text-right">
+                      <button class="btn configure">Configure</button>
+                      <div class="killbutton"><button class="btn alert kill" data-stream-id="{{data_stream.id}}">Delete</button></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel-content">
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <input type='hidden' name='stream-id' value='{{data_stream.id}}' />
+                      <input class="header-input" id="data-name" name="name" type="text" value="{{data_stream.name}}">
+                    </div>
+                  </div>
+                  <div class="large-4 columns">
+                      Chart type <select id="chart-type" name="chart-type">
+                        {% for chart_choice in data_stream.CHART_CHOICE %}
+                          <option value="{{chart_choice.0}}" {% if chart_choice.0 == data_stream.chart_type %}selected{%endif%}>{{chart_choice.1}}</option>
+                                
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="large-4 columns">
+                      X-asis <select id="x-axis" name="x-axis">
+                        {% for my_data_set_property in data_stream.properties.all %}
+                          <option value="{{my_data_set_property.id}}" {% if my_data_set_property.id == data_stream.x_axis.id %}selected{%endif%}>{{my_data_set_property.data_model_property.name}}</option>
+                                
+                        {% endfor %}
+                      </select>
+                    </div>
+
+                  <div class="row">
+                    <div class="large-12 columns margin-top">
+                      <h6>Set some filters</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="large-2 columns">
+                      <input id="year" type="text" placeholder="From year">
+                    </div>
+                    <div class="large-2 columns">
+                      <input id="year" type="text" placeholder="To year">
+                    </div>
+                    <div class="large-4 columns">
+                      <select id="country">
+                        <option value="">Country</option>
+                      </select>
+                    </div>
+                    <div class="large-4 columns">
+                      <select id="city">
+                        <option value="">City</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns margin-top">
+                      <h6>Select what you'd like to include</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="large-4 columns">
+                      <select id="filter-group">
+                        <option value="">Filter terms by group</option>
+                        <option value="group1">Group 1</option>
+                      </select>
+                    </div>
+                    <div class="large-4 columns">
+                      <select id="filter-subgroup">
+                        <option value="">Filter terms by subgroup</option>
+                      </select>
+                    </div>
+                    <div class="large-4 columns">
+                    </div>
+                  </div>
+                  </form>
+                  <div class="row">
+                    <div class="columns large-12">
+                      <table class="filters">
+                        <thead>
+                          <tr>
+                            <th><span>Select terms</span></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for my_data_set_property in data_stream.properties.all %}
+                          <form class='stream_id_{{data_stream.id}}' stream-or-prop='prop' method='post'>
+                            {% csrf_token %} 
+                          <tr>
+                            <td>
+                              <input type='hidden' name='property-id' value='{{my_data_set_property.id}}' />
+                              <input id="checkbox1" type="checkbox" name="use_property" {%if my_data_set_property.use_property %}CHECKED{%endif%}><label for="checkbox1">{{my_data_set_property.data_model_property.name}}</label></td>
+                            <td>
+                              <select id="" name='property_action'>
+                              {% for action_choice in my_data_set_property.ACTIONCHOICE %}
+                                <option value="{{action_choice.0}}" {% if action_choice.0 == my_data_set_property.action and my_data_set_property.use_property == True%}selected{%endif%}>{{action_choice.1}}</option>
+                                
+                              {% endfor %}
+                              </select>
+                              
+                            </td>
+                            <td><input id="filter_value" name="filter_value" type="text" placeholder="Filter by keywords" value={{my_data_set_property.filter_value}} /> <label>show<input type="checkbox" name='show_filter_field' {% if my_data_set_property.show_filter_field %}CHECKED{% endif %}/></label></td>
+                          </tr>
+                          </form>
+                          {% endfor %}
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <button class="btn save" stream-id='{{data_stream.id}}'>Save</button>
+                      <button class="btn close secondary" >Close</button>
+                      <a target='blank' href="/get_queries/{{data_stream.id}}/">get data</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- eind boxje -->
+

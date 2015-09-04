@@ -206,7 +206,7 @@ $(document).ready(function(){
 
     $('#go').click(function(){
       stream_id = $("#stream").val();
-      console.log('stream id = '+stream_id);
+      console.log('stream id = '+stream_id);projectproject
       if($('#name').val() == ''){
         alert('give data stream a name');
         return false;
@@ -229,8 +229,8 @@ $(document).ready(function(){
     /* nieuwe shizniz; design 2.0 */
 
     //klikbaarheid op projects page
-    $('.project-new').on('click',function(){
-      $(this).toggleClass('expanded');
+    $('.project-new-button').on('click',function(){
+      $('.project-new').toggleClass('expanded');
     });
 
     $('.header.main').on('click',function(){
@@ -239,6 +239,22 @@ $(document).ready(function(){
 
     $('button.configure').on('click',function(){
       $(this).parents('.header').next('.content').toggleClass('fullvis');
+    });
+
+    $('.add-data-stream').on('click',function(){
+        $( ".choose-dataset" ).dialog({
+          dialogClass: "no-close",
+          buttons: [
+            {
+              text: "OK",
+              click: function() {
+                alert($('#stream').val());
+                $( this ).dialog( "close" );
+              }
+            }
+          ]
+        });
+
     });
 
 
