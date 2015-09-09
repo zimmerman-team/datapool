@@ -281,6 +281,7 @@ $(document).ready(function(){
     });
 
     $(document).on('click','.add-data-stream',function(){
+        $(this).parent('.panel').addClass('expanded');
         project_id= $(this).attr('projectid');
         console.log(project_id);
         current_project = project_id;

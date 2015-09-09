@@ -231,6 +231,7 @@
 					height: auto;
 					top:-.5rem;
 					border:2px solid $white;
+					box-shadow:2px 2px 2px rgba(0,0,0,.3);
 				}
 			}
 		}
@@ -262,9 +263,21 @@
 			}
 		}
 		.stream {
+			.panel {
+				margin-bottom: .5rem;
+				&.expanded {
+					.header {
+						background:darken($primary-color,10%);
+					}
+				}
+			}
 			&.add-datastream {
+				margin-bottom: 1.5rem;
 				.header {
 					background:$primary-color;
+					&:hover {
+						background:darken($primary-color,10%);
+					}
 				}
 			}
 			&.edit-datastream {

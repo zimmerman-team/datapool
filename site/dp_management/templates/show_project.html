@@ -1,6 +1,6 @@
 {% load datastream_view %}
 
-
+<div class="row">
   <div class="columns small-11 small-centered">
     <div class="panel project">
       <div class="header main">
@@ -31,10 +31,12 @@
               <div class="header add-data-stream" projectid="{{project.id}}">
                 Add data stream <i class="fa fa-plus"></i>
               </div>
+              <div class="content">
+                <div id='choose-stream-{{project.id}}'></div>
+              </div>
             </div>
           </div>
         </div>
-        <div id='choose-stream-{{project.id}}'></div>
         <div id='new-streams-{{project.id}}'></div>
         {%for my_data_stream in project.data_streams.all%}              
         <!-- start datastream blok -->
@@ -45,3 +47,4 @@
       </div>
     </div>
   </div>
+</div>
