@@ -332,6 +332,7 @@ class DataSetStream(models.Model):
 	data_stream = models.ForeignKey(DataSource,related_name="data_set_streams")
 	chart_type = models.IntegerField(choices=CHART_CHOICE, default=0) 
 	x_axis = models.ForeignKey('DataSetStreamProperty',null=True,blank=True)
+	extra_where_clause = models.TextField(null=True,blank=True)
    	class Meta:
    		verbose_name = "Data set stream"
    		verbose_name_plural = "Data set streams"
