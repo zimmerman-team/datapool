@@ -9651,11 +9651,14 @@ th.hide-for-touch {
 .panel.project-new.expanded .content, .panel.datastream-new.expanded .content {
   display: block;
 }
-/* line 203, ../scss/app.scss */
+/* line 202, ../scss/app.scss */
+.panel.project {
+  margin-bottom: .5rem;
+}
+/* line 204, ../scss/app.scss */
 .panel.project .header {
   background: #a4c2d6;
   cursor: pointer;
-  overflow: hidden;
 }
 /* line 207, ../scss/app.scss */
 .panel.project .header:hover {
@@ -9739,8 +9742,29 @@ th.hide-for-touch {
 .panel.project .stream.edit-datastream .content.fullvis {
   display: block;
 }
+/* line 285, ../scss/app.scss */
+.panel.project .stream table.filters {
+  width: 100%;
+}
+/* line 287, ../scss/app.scss */
+.panel.project .stream table.filters input, .panel.project .stream table.filters select, .panel.project .stream table.filters label {
+  margin-bottom: 0;
+}
+/* line 290, ../scss/app.scss */
+.panel.project .stream table.filters td {
+  height: 3.6rem;
+}
+/* line 293, ../scss/app.scss */
+.panel.project .stream table.filters label.show {
+  text-align: center;
+  padding: .5rem;
+}
+/* line 296, ../scss/app.scss */
+.panel.project .stream table.filters label.show input {
+  cursor: pointer;
+}
 
-/* line 289, ../scss/app.scss */
+/* line 305, ../scss/app.scss */
 footer {
   background: #FFFFFF;
   border-top: 1px solid #e2e3e4;
@@ -9748,7 +9772,7 @@ footer {
   padding: 1.25rem;
 }
 
-/* line 297, ../scss/app.scss */
+/* line 313, ../scss/app.scss */
 #ui-datepicker-div {
   background: #FFFFFF;
   padding: .5rem 1rem;
@@ -9756,17 +9780,17 @@ footer {
   display: none;
   z-index: 99999;
 }
-/* line 303, ../scss/app.scss */
+/* line 319, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-next {
   float: right;
 }
-/* line 306, ../scss/app.scss */
+/* line 322, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-month {
   width: 83%;
   display: block;
   float: left;
 }
-/* line 311, ../scss/app.scss */
+/* line 327, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-year {
   display: block;
   float: right;
@@ -9775,119 +9799,119 @@ footer {
   line-height: 2.3125rem;
   text-align: right;
 }
-/* line 319, ../scss/app.scss */
+/* line 335, ../scss/app.scss */
 #ui-datepicker-div td {
   text-align: center;
   padding: 0;
 }
-/* line 322, ../scss/app.scss */
+/* line 338, ../scss/app.scss */
 #ui-datepicker-div td span {
   display: block;
   padding: 0.5625rem 0.625rem;
 }
-/* line 326, ../scss/app.scss */
+/* line 342, ../scss/app.scss */
 #ui-datepicker-div td a {
   display: block;
   padding: 0.5625rem 0.625rem;
 }
-/* line 329, ../scss/app.scss */
+/* line 345, ../scss/app.scss */
 #ui-datepicker-div td a:hover {
   background: #3b4e61;
 }
-/* line 335, ../scss/app.scss */
+/* line 351, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-current-day a {
   background: #3b4e61;
 }
-/* line 339, ../scss/app.scss */
+/* line 355, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-unselectable {
   color: #CCCCCC;
 }
-/* line 343, ../scss/app.scss */
+/* line 359, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-today a {
   border: 1px solid #CCCCCC;
 }
 
-/* line 349, ../scss/app.scss */
+/* line 365, ../scss/app.scss */
 #keyword-0_flexselect {
   border-color: #5dade0;
 }
 
-/* line 353, ../scss/app.scss */
+/* line 369, ../scss/app.scss */
 #keyword-1_flexselect {
   border-color: #a52723;
 }
 
-/* line 359, ../scss/app.scss */
+/* line 375, ../scss/app.scss */
 .datastream button {
   margin-bottom: 0;
   font-size: .8rem;
 }
-/* line 362, ../scss/app.scss */
+/* line 378, ../scss/app.scss */
 .datastream button .fa {
   color: #fff;
 }
-/* line 366, ../scss/app.scss */
+/* line 382, ../scss/app.scss */
 .datastream h1 {
   font-size: 1.8rem;
   margin: .6rem 0;
 }
-/* line 371, ../scss/app.scss */
+/* line 387, ../scss/app.scss */
 .datastream .hl:hover {
   background: #EEEEEE;
 }
-/* line 374, ../scss/app.scss */
+/* line 390, ../scss/app.scss */
 .datastream .hl input, .datastream .hl select, .datastream .hl label {
   margin-top: .35rem;
   margin-bottom: .35rem;
 }
-/* line 380, ../scss/app.scss */
+/* line 396, ../scss/app.scss */
 .datastream input.header-input {
   font-size: 1.8rem;
   height: auto;
 }
-/* line 384, ../scss/app.scss */
+/* line 400, ../scss/app.scss */
 .datastream input[type=checkbox] {
   height: 2.3125rem;
   float: left;
 }
-/* line 387, ../scss/app.scss */
+/* line 403, ../scss/app.scss */
 .datastream input[type=checkbox] + label {
   height: 2.3125rem;
   line-height: 2.3125rem;
 }
-/* line 393, ../scss/app.scss */
+/* line 409, ../scss/app.scss */
 .datastream table {
   width: 100%;
 }
-/* line 395, ../scss/app.scss */
+/* line 411, ../scss/app.scss */
 .datastream table td {
   width: 33.3333333%;
 }
-/* line 398, ../scss/app.scss */
+/* line 414, ../scss/app.scss */
 .datastream table input, .datastream table select, .datastream table label {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 403, ../scss/app.scss */
+/* line 419, ../scss/app.scss */
 .datastream #save {
   margin-top: 1rem;
 }
 
-/* line 408, ../scss/app.scss */
+/* line 424, ../scss/app.scss */
 .alert-box.helper {
   background: #3b4e61;
   padding: 1.25rem;
 }
-/* line 411, ../scss/app.scss */
+/* line 427, ../scss/app.scss */
 .alert-box.helper h3 {
   color: #fff;
 }
-/* line 414, ../scss/app.scss */
+/* line 430, ../scss/app.scss */
 .alert-box.helper.nopadding {
   padding: 0;
   margin: 0;
 }
-/* line 418, ../scss/app.scss */
+/* line 434, ../scss/app.scss */
 .alert-box.helper .close {
   position: relative;
   opacity: 1;
@@ -9924,83 +9948,83 @@ footer {
 .alert-box.helper .close:hover, .alert-box.helper .close:focus {
   color: #FFFFFF;
 }
-/* line 426, ../scss/app.scss */
+/* line 442, ../scss/app.scss */
 .alert-box.helper .close:hover {
   opacity: 1;
 }
 
-/* line 432, ../scss/app.scss */
+/* line 448, ../scss/app.scss */
 .addstream .fa {
   margin: 0;
 }
 
-/* line 436, ../scss/app.scss */
+/* line 452, ../scss/app.scss */
 .panel-content {
   display: none;
 }
 
-/* line 440, ../scss/app.scss */
+/* line 456, ../scss/app.scss */
 .killbutton {
   overflow: hidden;
   display: inline-block;
   float: right;
   margin-left: .3rem;
 }
-/* line 445, ../scss/app.scss */
+/* line 461, ../scss/app.scss */
 .killbutton button {
   white-space: nowrap;
 }
 
-/* line 451, ../scss/app.scss */
+/* line 467, ../scss/app.scss */
 .tableview {
   display: table;
 }
-/* line 453, ../scss/app.scss */
+/* line 469, ../scss/app.scss */
 .tableview.row {
   width: 100%;
 }
 
-/* line 458, ../scss/app.scss */
+/* line 474, ../scss/app.scss */
 .align-middle {
   display: table-cell;
   vertical-align: middle;
   float: none;
 }
 
-/* line 464, ../scss/app.scss */
+/* line 480, ../scss/app.scss */
 .margin-top {
   margin-top: 1.25rem;
 }
 
-/* line 468, ../scss/app.scss */
+/* line 484, ../scss/app.scss */
 #barchart svg {
   width: 100%;
   height: 400px;
 }
 
-/* line 472, ../scss/app.scss */
+/* line 488, ../scss/app.scss */
 #linechart svg {
   width: 100%;
   height: 400px;
 }
 
-/* line 477, ../scss/app.scss */
+/* line 493, ../scss/app.scss */
 .more-padding {
   padding: 2rem 0;
 }
 
-/* line 481, ../scss/app.scss */
+/* line 497, ../scss/app.scss */
 .alert.disabled {
   display: none;
 }
 
-/* line 484, ../scss/app.scss */
+/* line 500, ../scss/app.scss */
 .choose-dataset {
   background: #3b4e61;
   display: none;
 }
 
-/* line 490, ../scss/app.scss */
+/* line 506, ../scss/app.scss */
 .italic {
   font-style: italic;
 }

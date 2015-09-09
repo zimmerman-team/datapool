@@ -200,10 +200,10 @@
 		}
 	}
 	&.project {
+		margin-bottom: .5rem;
 		.header {
 			background:$blue-xlight;
 			cursor: pointer;
-			overflow: hidden;
 			&:hover {
 				background:$blue-light;
 			}
@@ -279,6 +279,22 @@
 					display: none;
 					&.fullvis {
 						display: block;
+					}
+				}
+			}
+			table.filters {
+				width: 100%;
+				input,select,label {
+					margin-bottom:0;
+				}
+				td {
+					height: 3.6rem;
+				}
+				label.show {
+					text-align: center;
+					padding:.5rem;
+					input {
+						cursor: pointer;
 					}
 				}
 			}
