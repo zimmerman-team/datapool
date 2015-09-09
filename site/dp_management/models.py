@@ -131,9 +131,10 @@ class DataSource(models.Model):
 			parse_file = file_grabber.get_the_file(self.url)
 		else:
 			data_file = open(self.data_file.path, 'r')
-			parse_file = data_file.readlines()
+			
 			print 'parse fiel'
-		if self.data_type == 1:			
+		if self.data_type == 1:
+			parse_file = data_file.readlines()			
 			parser.load_xml(parse_file)
 			parser.parse_xml()
 		if self.data_type == 0:
@@ -141,7 +142,7 @@ class DataSource(models.Model):
 			parser.delimiter = self.csv_seprator
 			parser.new_row_on_number = self.new_row_on_number
 			parser.new_row_on_number_name = self.new_row_on_number_name
-			parser.parse(parse_file)
+			parser.parse(data_file)
 
 	def create_orient_schema(self):
 		if self.data_type == 1:

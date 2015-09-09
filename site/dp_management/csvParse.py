@@ -23,7 +23,7 @@ class CsvImport(DataPool):
 	schema_properties = {}
 	schema_classes = {}
 	schema_edges = {}
-
+	errors = []
 
 	def parse(self,file):
 		rownum = 0
@@ -63,8 +63,12 @@ class CsvImport(DataPool):
 					#print 'column = '+col 
 					#print 'header is '+self.header[colnum]
 					if(col != ''):
-						attr_key = str(self.header[colnum])
-						
+						try:
+							attr_key = str(self.header[colnum])
+						except:
+							error = 'error at line '+str(rownum)
+							colnum += 1
+							continue
 						if self.new_row_on_number == True:
 							if str(attr_key).isdigit():
 								col_obj = self.schema_properties[self.prefix+'.year_value']['django_object']

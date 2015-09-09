@@ -5,22 +5,25 @@
 
   <!-- new project panel -->
   <div class="row small-centered choose-dataset">
-          <div >
-            <input id="name" name='name' type="text" placeholder="Name your dataStream">
-          </div>
-          <h6>Select a data set</h6>
-          <select id="cat">
-            {% for cat in categories %}
-                <option value="{{cat.id}}">{{cat.name}}</option>
-              {% endfor %}
-          </select>
-          <select id="subcat">
-            <option value="">Select Category First</option>
-          </select>
-          <select id="stream" name='stream_id'>
-           
-          </select>
-        </div>
+      <div >
+        <input id="name" name='name' type="text" placeholder="Name your dataStream">
+      </div>
+      <h6>Select a data set</h6>
+      <select id="cat">
+        {% for cat in categories %}
+            <option value="{{cat.id}}">{{cat.name}}</option>
+          {% endfor %}
+      </select>
+      <select id="subcat">
+        <option value="">Select Category First</option>
+      </select>
+      <select id="stream" name='stream_id'>
+       
+      </select>
+      <div>
+        <input type="submit" class="button submit-stream-new" value="Choose">
+      </div>
+  </div>
   <div class="columns small-11 small-centered">
     <div class="panel project-new">
       <div class="header project-new-button">

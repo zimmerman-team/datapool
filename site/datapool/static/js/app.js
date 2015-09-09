@@ -38,6 +38,7 @@ $(function() {
 
 $(document).ready(function(){
 
+    var current_project = null;
     var configureFunc = function(){
       $(this).parents('.panel-header').slideUp().siblings('.panel-content').slideDown();
       return false;
@@ -191,7 +192,7 @@ $(document).ready(function(){
       return false;
     });
     //select data set category
-    $('#cat').on('change',function() {
+    $(document).on('change','#cat',function() {
       category_id = $(this).val();
       console.log('category id = '+category_id);
       $.getJSON( '/'+getLanguageCode()+"/get_sub_categories/"+category_id+"/",function(data){
@@ -207,7 +208,7 @@ $(document).ready(function(){
 
     );
     //select subcategory
-    $('#subcat').on('change',function() {
+    $(document).on('change','#subcat',function() {
       sub_category_id = $(this).val();
       console.log('sub cat id = '+sub_category_id);
       $.getJSON( '/'+getLanguageCode()+'/get_data_streams/'+sub_category_id+"/",function(data){
@@ -282,32 +283,55 @@ $(document).ready(function(){
     $(document).on('click','.add-data-stream',function(){
         project_id= $(this).attr('projectid');
         console.log(project_id);
-        $( ".choose-dataset" ).dialog({
-          dialogClass: "no-close",
-          buttons: [
-            {
-              text: "OK",
-              click: function() {
-                stream_id = $('#stream').val();
-                name= $('#name').val();
+        current_project = project_id;
+        $('#choose-stream-'+project_id).append($( ".choose-dataset" ).html());
+        $( ".choose-dataset" ).html('');
+        // $( ".choose-dataset" ).dialog({
+        //   dialogClass: "no-close",
+        //   buttons: [
+        //     {
+        //       text: "OK",
+        //       click: function() {
+        //         stream_id = $('#stream').val();
+        //         name= $('#name').val();
                 
-                console.log(project_id);
-                csrfmiddlewaretoken = $("input[name=csrfmiddlewaretoken]").val();
-                url = "/"+getLanguageCode()+"/add_dataset_to_project/"
-                $.ajax({
-                 type: "POST",
-                 url: url,
-                 data: {'name':name,'stream_id':stream_id,'project_id':project_id,'csrfmiddlewaretoken':csrfmiddlewaretoken}, // serializes the form's elements.
-                 success: function(data)
-                 {
-                     $('#new-streams-'+project_id).prepend(data); // show response from the php script.
-                 }
-               });
-                $( this ).dialog( "close" );
-              }
-            }
-          ]
-        });
+        //         console.log(project_id);
+        //         csrfmiddlewaretoken = $("input[name=csrfmiddlewaretoken]").val();
+        //         url = "/"+getLanguageCode()+"/add_dataset_to_project/"
+        //         $.ajax({
+        //          type: "POST",
+        //          url: url,
+        //          data: {'name':name,'stream_id':stream_id,'project_id':project_id,'csrfmiddlewaretoken':csrfmiddlewaretoken}, // serializes the form's elements.
+        //          success: function(data)
+        //          {
+        //              $('#new-streams-'+project_id).prepend(data); // show response from the php script.
+        //          }
+        //        });
+        //         $( this ).dialog( "close" );
+        //       }
+        //     }
+        //   ]
+        // });
+
+    });
+    $(document).on('click','.submit-stream-new',function(){
+        stream_id = $('#stream').val();
+        name= $('#name').val();
+        
+        console.log(project_id);
+        csrfmiddlewaretoken = $("input[name=csrfmiddlewaretoken]").val();
+        url = "/"+getLanguageCode()+"/add_dataset_to_project/"
+        $.ajax({
+         type: "POST",
+         url: url,
+         data: {'name':name,'stream_id':stream_id,'project_id':project_id,'csrfmiddlewaretoken':csrfmiddlewaretoken}, // serializes the form's elements.
+         success: function(data)
+         {
+             $('#new-streams-'+project_id).prepend(data); // show response from the php script.
+         }
+       });
+      $( ".choose-dataset" ).html($('#choose-stream-'+project_id).html());
+      $('#choose-stream-'+project_id).html('');
 
     });
 

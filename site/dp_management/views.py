@@ -131,7 +131,7 @@ def add_dataset_to_project(request):
 				data_set_property.save()
 		page_vars = {'data_stream':data_set}
 		crsfcontext = RequestContext(request, page_vars)
-		return render_to_response('configure_datastream.html',crsfcontext)	
+		return render_to_response('show_datastream.html',crsfcontext)	
 	else:
 		return HttpResponse("error");
 
