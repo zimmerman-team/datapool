@@ -303,6 +303,7 @@ class DataProject(models.Model):
 
 	user = models.ForeignKey(User)
 	name = models.CharField(max_length=56)
+	sub_title = models.CharField(max_length=56,null=True,blank=True)
 	description = models.TextField(null=True,blank=True)
 
     
@@ -336,6 +337,8 @@ class DataSetStream(models.Model):
 
 	def __unicode__(self):
 		return self.data_stream.name+'-'+self.data_stream.name
+	class Meta:
+		ordering = ['-id']
 
 class DataSetStreamProperty(models.Model):
 

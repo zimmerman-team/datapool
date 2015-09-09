@@ -19,55 +19,6 @@ import json
 # Create your views here.
 
 
-def get_dolly_data(request):
-
-	start_date = request.GET['start']
-	end_date = request.GET['end']
-	exclude_ids = []
-	
-	exclude_ids = request.GET.getlist('exclude_ids')
-	include_ids = request.GET.getlist('include_ids')
-
-	if 'search' in request.GET and request.GET['search'] != '':
-		search_string = request.GET['search']
-		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).filter(text__search=search_string).exclude(u_id_id__in=exclude_ids)[:5000]
-	else:
-		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).exclude(u_id_id__in=exclude_ids)[:5000]
-	return HttpResponse(serializers.serialize("json", data))
-
-def get_tweets_per_day(request):
-	start_date = request.GET['start']
-	end_date = request.GET['end']
-	exclude_ids = request.GET.getlist('exclude_ids')
-	include_ids = request.GET.getlist('include_ids')
-	if 'search' in request.GET and request.GET['search'] != '':
-		search_string = request.GET['search']
-		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).filter(text__search=search_string).exclude(u_id_id__in=exclude_ids).extra(select={'day': 'date( create_at )'}).values('day').annotate(tweets=Count('create_at')).order_by('day')
-	else:
-		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).exclude(u_id_id__in=exclude_ids).extra(select={'day': 'date( create_at )'}).values('day').annotate(tweets=Count('create_at')).order_by('day')
-	return_data = []
-	for row in  data:
-		return_data.append({'tweets':row['tweets'],'date': str(row['day'])})
-	return HttpResponse(json.dumps(return_data))
-
-def get_tweets_per_hour(request):
-	start_date = request.GET['start']
-	end_date = request.GET['end']
-	exclude_ids = request.GET.getlist('exclude_ids')
-	include_ids = request.GET.getlist('include_ids')
-	if 'search' in request.GET and request.GET['search'] != '':
-		search_string = request.GET['search']
-		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).filter(text__search=search_string).exclude(u_id_id__in=exclude_ids).extra(select={'hour': connection.ops.date_trunc_sql('hour', 'create_at')}).values('hour').annotate(tweets=Count('create_at')).order_by('hour')
-	else:
-		data = DollyData.objects.filter(create_at__range=[start_date, end_date]).exclude(u_id_id__in=exclude_ids).extra(select={'hour': connection.ops.date_trunc_sql('hour', 'create_at')}).values('hour').annotate(tweets=Count('create_at')).order_by('hour')
-	return_data = []
-	for row in  data:
-		return_data.append({'tweets':row['tweets'],'hour': str(row['hour'])})
-	return HttpResponse(json.dumps(return_data))
-
-def get_top_twitter_users(request):
-	data = TwitterUser.objects.all().order_by('-count')[:50]
-	return HttpResponse(serializers.serialize("json", data))
 
 @login_required
 def add_data(request):
@@ -103,33 +54,31 @@ def add_data(request):
 @login_required
 def add_project(request):
 
-	data_set_streams = DataSetStream.objects.filter(user=request.user)
 
 	if request.method == 'POST':
 		pprint.pprint(request.POST)
 		data_project = DataProject()
 		data_project.user = request.user
 		data_project.name = request.POST['name']
-		#data_project.description = request.POST['description']
+		data_project.sub_title = request.POST['sub_title']
+		data_project.description = request.POST['description']
 		data_project.save()
 		#print 'data_Set = '+request.POST[u'data_set']
-		for data_stream_id in dict(request.POST)['data_set']:
-			if data_stream_id == '':
-				continue
-			data_project.data_streams.add(DataSetStream.objects.get(pk=int(data_stream_id)))
+		
 		data_project.save();
 
-	my_projects = DataProject.objects.filter(user=request.user).all()
-	page_vars = {'data_set_streams':data_set_streams,'my_projects':my_projects}
-	crsfcontext = RequestContext(request, page_vars)
-	return render_to_response('projects.html',crsfcontext)	
+		page_vars = {'project':data_project}
+		crsfcontext = RequestContext(request, page_vars)
+		return render_to_response('show_project.html',crsfcontext)	
+	else:
+		return HttpResponse("");
 
 @login_required
 def projects(request):
-	data_set_streams = DataSetStream.objects.filter(user=request.user)
+	data_set_streams = DataSetStream.objects.filter(user=request.user).order_by('-id');
 	categories = DataSourceCategory.objects.all()
 	
-	my_projects = DataProject.objects.filter(user=request.user).all()
+	my_projects = DataProject.objects.filter(user=request.user).all().order_by('-id');
 	page_vars = {'data_set_streams':data_set_streams,'my_projects':my_projects,'categories':categories}
 	crsfcontext = RequestContext(request, page_vars)
 	return render_to_response('projects.html',crsfcontext)	
@@ -158,12 +107,33 @@ def save_project(request):
 def add_dataset_to_project(request):
 
 	if request.method == 'POST':
-		data_project = DataProject()
-		data_project.user = request.user
-		data_project.name = request.post['name']
-		data_project.description = request.post['description']
-		data_project.save()
-	return HttpResponse("{'success':'true'}")
+		data_set_name =  request.POST['name']
+		data_stream_id = request.POST['stream_id']
+		project_id = request.POST['project_id']
+		print 'PROJECT ID = '+str(project_id)
+		data_stream = DataSource.objects.get(pk=data_stream_id)
+		project = DataProject.objects.get(pk=project_id)
+		data_set = DataSetStream()
+		data_set.name = data_set_name
+		if data_set_name == '':
+			data_set.name = data_stream.name
+		data_set.user = request.user
+		data_set.data_stream_id = data_stream_id
+		data_set.data_project = project
+		data_set.save();
+		
+		for data_stream_class in data_stream.classes.all():
+			for data_stream_property in data_stream_class.properties.all():
+				data_set_property = DataSetStreamProperty()
+				data_set_property.data_set_stream = data_set
+				data_set_property.data_stream_class = data_stream_class
+				data_set_property.data_model_property = data_stream_property
+				data_set_property.save()
+		page_vars = {'data_stream':data_set}
+		crsfcontext = RequestContext(request, page_vars)
+		return render_to_response('configure_datastream.html',crsfcontext)	
+	else:
+		return HttpResponse("error");
 
 @login_required
 def remove_dataset_from_project(request):
