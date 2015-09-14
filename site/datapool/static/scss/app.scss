@@ -119,7 +119,7 @@
 			height: auto;
 			border-radius:50%;
 			border:2px solid $white;
-			margin-left:1rem;
+			margin-left:.8rem;
 		}
 		.subheader {
 			font-size: .5rem;
@@ -305,6 +305,9 @@ button, .button {
 				}
 			}
 			&.edit-datastream {
+				.header {
+					cursor: default;
+				}
 				.actions {
 					float: right;
 					margin-top: -.4rem;
@@ -349,12 +352,21 @@ button, .button {
 .vis-blok {
 	margin-top:1rem;
 	.visualisation {
+		.header {
+			cursor: default;
+		}
 		.content {
 			display: block;
 		}
 	}
 	.save-filters {
 		margin-bottom:0;
+	}
+	.barchart {
+		svg {
+			height:500px;
+			width: 100%;
+		}
 	}
 }
 
