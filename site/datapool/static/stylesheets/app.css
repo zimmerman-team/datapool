@@ -9626,74 +9626,75 @@ button, .button {
 /* line 181, ../scss/app.scss */
 .panel.project-new, .panel.datastream-new {
   display: inline-block;
+  overflow: hidden;
 }
-/* line 183, ../scss/app.scss */
+/* line 184, ../scss/app.scss */
 .panel.project-new i, .panel.datastream-new i {
   margin-left: .5rem;
 }
-/* line 186, ../scss/app.scss */
+/* line 187, ../scss/app.scss */
 .panel.project-new .header, .panel.datastream-new .header {
   background: #5dade0;
   cursor: pointer;
 }
-/* line 189, ../scss/app.scss */
+/* line 190, ../scss/app.scss */
 .panel.project-new .header:hover, .panel.datastream-new .header:hover {
   background: #3297d8;
 }
-/* line 193, ../scss/app.scss */
+/* line 194, ../scss/app.scss */
 .panel.project-new .content, .panel.datastream-new .content {
   display: none;
 }
-/* line 196, ../scss/app.scss */
+/* line 197, ../scss/app.scss */
 .panel.project-new.expanded, .panel.datastream-new.expanded {
   display: block;
 }
-/* line 198, ../scss/app.scss */
+/* line 199, ../scss/app.scss */
 .panel.project-new.expanded .header, .panel.datastream-new.expanded .header {
   background: #3297d8;
 }
-/* line 201, ../scss/app.scss */
+/* line 202, ../scss/app.scss */
 .panel.project-new.expanded .content, .panel.datastream-new.expanded .content {
   display: block;
 }
-/* line 206, ../scss/app.scss */
+/* line 207, ../scss/app.scss */
 .panel.project {
   margin-bottom: .5rem;
 }
-/* line 208, ../scss/app.scss */
+/* line 209, ../scss/app.scss */
 .panel.project .header {
   background: #a4c2d6;
   cursor: pointer;
 }
-/* line 211, ../scss/app.scss */
+/* line 212, ../scss/app.scss */
 .panel.project .header:hover {
   background: #7fa1b7;
 }
-/* line 214, ../scss/app.scss */
+/* line 215, ../scss/app.scss */
 .panel.project .header .subtitle {
   font-size: 1rem;
   opacity: .8;
   font-style: italic;
 }
-/* line 219, ../scss/app.scss */
+/* line 220, ../scss/app.scss */
 .panel.project .header .datastreams {
   font-size: 1rem;
   text-align: right;
 }
-/* line 222, ../scss/app.scss */
+/* line 223, ../scss/app.scss */
 .panel.project .header .datastreams .actions {
   margin-top: .5rem;
   display: none;
 }
-/* line 225, ../scss/app.scss */
+/* line 226, ../scss/app.scss */
 .panel.project .header .datastreams .actions button {
   margin-bottom: 0;
 }
-/* line 227, ../scss/app.scss */
+/* line 228, ../scss/app.scss */
 .panel.project .header .datastreams .actions button.configure {
   margin-right: .5rem;
 }
-/* line 234, ../scss/app.scss */
+/* line 235, ../scss/app.scss */
 .panel.project .header .avatar img {
   border-radius: 50%;
   position: absolute;
@@ -9703,122 +9704,122 @@ button, .button {
   border: 2px solid #FFFFFF;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
-/* line 245, ../scss/app.scss */
+/* line 246, ../scss/app.scss */
 .panel.project .content {
   display: none;
 }
-/* line 247, ../scss/app.scss */
+/* line 248, ../scss/app.scss */
 .panel.project .content .description, .panel.project .content .stream {
   display: none;
 }
-/* line 251, ../scss/app.scss */
+/* line 252, ../scss/app.scss */
 .panel.project .content.fullvis .stream {
   display: block;
 }
-/* line 257, ../scss/app.scss */
+/* line 258, ../scss/app.scss */
 .panel.project.expanded .header {
   background: #7fa1b7;
 }
-/* line 260, ../scss/app.scss */
+/* line 261, ../scss/app.scss */
 .panel.project.expanded .header .datastreams .actions {
   display: block;
 }
-/* line 265, ../scss/app.scss */
+/* line 266, ../scss/app.scss */
 .panel.project.expanded .avatar {
   line-height: 0;
 }
-/* line 267, ../scss/app.scss */
+/* line 268, ../scss/app.scss */
 .panel.project.expanded .avatar img {
   position: relative;
   width: 100%;
   margin-bottom: -1rem;
   margin-top: 0;
 }
-/* line 274, ../scss/app.scss */
+/* line 275, ../scss/app.scss */
 .panel.project.expanded > .content {
   display: block;
 }
-/* line 276, ../scss/app.scss */
+/* line 277, ../scss/app.scss */
 .panel.project.expanded > .content .description {
   display: block;
 }
-/* line 282, ../scss/app.scss */
+/* line 283, ../scss/app.scss */
 .panel.project .stream .panel {
   margin-bottom: .5rem;
 }
-/* line 285, ../scss/app.scss */
+/* line 286, ../scss/app.scss */
 .panel.project .stream .panel.expanded .header {
   background: #3297d8;
 }
-/* line 292, ../scss/app.scss */
+/* line 293, ../scss/app.scss */
 .panel.project .stream.add-datastream .header {
   background: #5dade0;
 }
-/* line 294, ../scss/app.scss */
+/* line 295, ../scss/app.scss */
 .panel.project .stream.add-datastream .header:hover {
   background: #3297d8;
 }
-/* line 300, ../scss/app.scss */
+/* line 301, ../scss/app.scss */
 .panel.project .stream.edit-datastream .actions {
   float: right;
   margin-top: -.4rem;
 }
-/* line 303, ../scss/app.scss */
+/* line 304, ../scss/app.scss */
 .panel.project .stream.edit-datastream .actions button {
   margin-bottom: 0;
 }
-/* line 305, ../scss/app.scss */
+/* line 306, ../scss/app.scss */
 .panel.project .stream.edit-datastream .actions button.configure {
   margin-right: .5rem;
 }
-/* line 310, ../scss/app.scss */
+/* line 311, ../scss/app.scss */
 .panel.project .stream.edit-datastream .content {
   display: none;
 }
-/* line 312, ../scss/app.scss */
+/* line 313, ../scss/app.scss */
 .panel.project .stream.edit-datastream .content.fullvis {
   display: block;
 }
-/* line 315, ../scss/app.scss */
+/* line 316, ../scss/app.scss */
 .panel.project .stream.edit-datastream .content .save {
   margin-right: .5rem;
 }
-/* line 320, ../scss/app.scss */
+/* line 321, ../scss/app.scss */
 .panel.project .stream table.filters {
   width: 100%;
 }
-/* line 322, ../scss/app.scss */
+/* line 323, ../scss/app.scss */
 .panel.project .stream table.filters input, .panel.project .stream table.filters select, .panel.project .stream table.filters label {
   margin-bottom: 0;
 }
-/* line 325, ../scss/app.scss */
+/* line 326, ../scss/app.scss */
 .panel.project .stream table.filters td {
   height: 3.6rem;
 }
-/* line 328, ../scss/app.scss */
+/* line 329, ../scss/app.scss */
 .panel.project .stream table.filters label.show {
   text-align: center;
   padding: .5rem;
 }
-/* line 331, ../scss/app.scss */
+/* line 332, ../scss/app.scss */
 .panel.project .stream table.filters label.show input {
   cursor: pointer;
 }
 
-/* line 341, ../scss/app.scss */
+/* line 342, ../scss/app.scss */
 .vis-blok {
   margin-top: 1rem;
 }
-/* line 344, ../scss/app.scss */
+/* line 345, ../scss/app.scss */
 .vis-blok .visualisation .content {
   display: block;
 }
-/* line 348, ../scss/app.scss */
+/* line 349, ../scss/app.scss */
 .vis-blok .save-filters {
   margin-bottom: 0;
 }
 
-/* line 353, ../scss/app.scss */
+/* line 354, ../scss/app.scss */
 footer {
   background: #FFFFFF;
   border-top: 1px solid #e2e3e4;
@@ -9826,7 +9827,7 @@ footer {
   padding: 1.25rem;
 }
 
-/* line 361, ../scss/app.scss */
+/* line 460, ../scss/app.scss */
 #ui-datepicker-div {
   background: #FFFFFF;
   padding: .5rem 1rem;
@@ -9834,17 +9835,17 @@ footer {
   display: none;
   z-index: 99999;
 }
-/* line 367, ../scss/app.scss */
+/* line 466, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-next {
   float: right;
 }
-/* line 370, ../scss/app.scss */
+/* line 469, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-month {
   width: 83%;
   display: block;
   float: left;
 }
-/* line 375, ../scss/app.scss */
+/* line 474, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-year {
   display: block;
   float: right;
@@ -9853,119 +9854,119 @@ footer {
   line-height: 2.3125rem;
   text-align: right;
 }
-/* line 383, ../scss/app.scss */
+/* line 482, ../scss/app.scss */
 #ui-datepicker-div td {
   text-align: center;
   padding: 0;
 }
-/* line 386, ../scss/app.scss */
+/* line 485, ../scss/app.scss */
 #ui-datepicker-div td span {
   display: block;
   padding: 0.5625rem 0.625rem;
 }
-/* line 390, ../scss/app.scss */
+/* line 489, ../scss/app.scss */
 #ui-datepicker-div td a {
   display: block;
   padding: 0.5625rem 0.625rem;
 }
-/* line 393, ../scss/app.scss */
+/* line 492, ../scss/app.scss */
 #ui-datepicker-div td a:hover {
   background: #3b4e61;
 }
-/* line 399, ../scss/app.scss */
+/* line 498, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-current-day a {
   background: #3b4e61;
 }
-/* line 403, ../scss/app.scss */
+/* line 502, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-unselectable {
   color: #CCCCCC;
 }
-/* line 407, ../scss/app.scss */
+/* line 506, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-today a {
   border: 1px solid #CCCCCC;
 }
 
-/* line 413, ../scss/app.scss */
+/* line 512, ../scss/app.scss */
 #keyword-0_flexselect {
   border-color: #5dade0;
 }
 
-/* line 417, ../scss/app.scss */
+/* line 516, ../scss/app.scss */
 #keyword-1_flexselect {
   border-color: #a52723;
 }
 
-/* line 423, ../scss/app.scss */
+/* line 522, ../scss/app.scss */
 .datastream button {
   margin-bottom: 0;
   font-size: .8rem;
 }
-/* line 426, ../scss/app.scss */
+/* line 525, ../scss/app.scss */
 .datastream button .fa {
   color: #fff;
 }
-/* line 430, ../scss/app.scss */
+/* line 529, ../scss/app.scss */
 .datastream h1 {
   font-size: 1.8rem;
   margin: .6rem 0;
 }
-/* line 435, ../scss/app.scss */
+/* line 534, ../scss/app.scss */
 .datastream .hl:hover {
   background: #EEEEEE;
 }
-/* line 438, ../scss/app.scss */
+/* line 537, ../scss/app.scss */
 .datastream .hl input, .datastream .hl select, .datastream .hl label {
   margin-top: .35rem;
   margin-bottom: .35rem;
 }
-/* line 444, ../scss/app.scss */
+/* line 543, ../scss/app.scss */
 .datastream input.header-input {
   font-size: 1.8rem;
   height: auto;
 }
-/* line 448, ../scss/app.scss */
+/* line 547, ../scss/app.scss */
 .datastream input[type=checkbox] {
   height: 2.3125rem;
   float: left;
 }
-/* line 451, ../scss/app.scss */
+/* line 550, ../scss/app.scss */
 .datastream input[type=checkbox] + label {
   height: 2.3125rem;
   line-height: 2.3125rem;
 }
-/* line 457, ../scss/app.scss */
+/* line 556, ../scss/app.scss */
 .datastream table {
   width: 100%;
 }
-/* line 459, ../scss/app.scss */
+/* line 558, ../scss/app.scss */
 .datastream table td {
   width: 33.3333333%;
 }
-/* line 462, ../scss/app.scss */
+/* line 561, ../scss/app.scss */
 .datastream table input, .datastream table select, .datastream table label {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 467, ../scss/app.scss */
+/* line 566, ../scss/app.scss */
 .datastream #save {
   margin-top: 1rem;
 }
 
-/* line 472, ../scss/app.scss */
+/* line 571, ../scss/app.scss */
 .alert-box.helper {
   background: #3b4e61;
   padding: 1.25rem;
 }
-/* line 475, ../scss/app.scss */
+/* line 574, ../scss/app.scss */
 .alert-box.helper h3 {
   color: #fff;
 }
-/* line 478, ../scss/app.scss */
+/* line 577, ../scss/app.scss */
 .alert-box.helper.nopadding {
   padding: 0;
   margin: 0;
 }
-/* line 482, ../scss/app.scss */
+/* line 581, ../scss/app.scss */
 .alert-box.helper .close {
   position: relative;
   opacity: 1;
@@ -10002,83 +10003,83 @@ footer {
 .alert-box.helper .close:hover, .alert-box.helper .close:focus {
   color: #FFFFFF;
 }
-/* line 490, ../scss/app.scss */
+/* line 589, ../scss/app.scss */
 .alert-box.helper .close:hover {
   opacity: 1;
 }
 
-/* line 496, ../scss/app.scss */
+/* line 595, ../scss/app.scss */
 .addstream .fa {
   margin: 0;
 }
 
-/* line 500, ../scss/app.scss */
+/* line 599, ../scss/app.scss */
 .panel-content {
   display: none;
 }
 
-/* line 504, ../scss/app.scss */
+/* line 603, ../scss/app.scss */
 .killbutton {
   overflow: hidden;
   display: inline-block;
   float: right;
   margin-left: .3rem;
 }
-/* line 509, ../scss/app.scss */
+/* line 608, ../scss/app.scss */
 .killbutton button {
   white-space: nowrap;
 }
 
-/* line 515, ../scss/app.scss */
+/* line 614, ../scss/app.scss */
 .tableview {
   display: table;
 }
-/* line 517, ../scss/app.scss */
+/* line 616, ../scss/app.scss */
 .tableview.row {
   width: 100%;
 }
 
-/* line 522, ../scss/app.scss */
+/* line 621, ../scss/app.scss */
 .align-middle {
   display: table-cell;
   vertical-align: middle;
   float: none;
 }
 
-/* line 528, ../scss/app.scss */
+/* line 627, ../scss/app.scss */
 .margin-top {
   margin-top: 1.25rem;
 }
 
-/* line 532, ../scss/app.scss */
+/* line 631, ../scss/app.scss */
 #barchart svg {
   width: 100%;
   height: 400px;
 }
 
-/* line 536, ../scss/app.scss */
+/* line 635, ../scss/app.scss */
 #linechart svg {
   width: 100%;
   height: 400px;
 }
 
-/* line 541, ../scss/app.scss */
+/* line 640, ../scss/app.scss */
 .more-padding {
   padding: 2rem 0;
 }
 
-/* line 545, ../scss/app.scss */
+/* line 644, ../scss/app.scss */
 .alert.disabled {
   display: none;
 }
 
-/* line 548, ../scss/app.scss */
+/* line 647, ../scss/app.scss */
 .choose-dataset {
   background: #3b4e61;
   display: none;
 }
 
-/* line 554, ../scss/app.scss */
+/* line 653, ../scss/app.scss */
 .italic {
   font-style: italic;
 }

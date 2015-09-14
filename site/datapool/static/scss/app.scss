@@ -180,6 +180,7 @@ button, .button {
 	}
 	&.project-new, &.datastream-new {
 		display: inline-block;
+		overflow: hidden;
 		i {
 			margin-left:.5rem;
 		}
@@ -356,6 +357,104 @@ footer {
 	color:$grey;
 	padding:rem-calc(20);
 }
+
+// //animaties
+// .project-new.expanded {
+// 	-webkit-animation-name: width-expand;
+// 	animation-name: width-expand;
+// 	-webkit-animation-duration: 1s;
+// 	animation-duration: 1s;
+// 	animation-fill-mode: forwards;
+// 	.content {
+// 		-webkit-animation-name: ht-expand;
+// 		animation-name: ht-expand;
+// 		-webkit-animation-duration: 1s;
+// 		animation-duration: 1s;
+// 		animation-fill-mode: forwards;
+// 	}
+// }
+
+// .project-new {
+// 	overflow:hidden;
+// 	-webkit-animation-name: width-collapse;
+// 	animation-name: width-collapse;
+// 	-webkit-animation-duration: 1s;
+// 	animation-duration: 1s;
+// 	animation-fill-mode: forwards;
+// 	.content {
+// 		-webkit-animation-name: ht-collapse;
+// 		animation-name: ht-collapse;
+// 		-webkit-animation-duration: 1s;
+// 		animation-duration: 1s;
+// 		animation-fill-mode: forwards;
+// 	}
+// }
+
+// @keyframes width-expand { 
+// 	0% { 
+// 		min-width: 180px;
+// 		width: 0%;
+// 		max-height: 3.5rem;
+// 		display: inline-block;
+// 	}
+// 	1% { 
+// 		display: block;
+// 		min-width: 180px;
+// 		width: 0%;
+// 	} 
+// 	50% {
+// 		width: 100%;
+// 	}
+// }
+
+// @keyframes width-collapse { 
+// 	0% { 
+// 		width: 100%;
+// 		display: block;
+// 	}
+// 	50% {
+// 		width: 100%;
+// 		display: block;
+// 	}
+// 	99% { 
+// 		min-width: 180px;
+// 		width: 0%;
+// 	} 
+// 	100% { 
+// 		display: inline-block;
+// 		width: 0%;
+// 		min-width: 180px;
+// 	} 
+// }
+
+// @keyframes ht-expand { 
+// 	0% { 
+// 		display: none;
+// 		max-height:0rem;
+// 	}
+// 	50% { 
+// 		display: block;
+// 		max-height:0rem;
+// 	} 
+// 	100% { 		
+// 		max-height: 40rem;
+// 	} 
+// }
+
+// @keyframes ht-collapse { 
+// 	0% { 
+// 		max-height: 40rem;
+// 		display: block;
+// 	}
+// 	49% { 
+// 		max-height: 0rem;
+// 		display: block;
+// 	} 
+// 	50% { 
+// 		display: none;
+// 		max-height: 0rem;
+// 	} 
+// }
 
 //form, datepicker 
 #ui-datepicker-div {
