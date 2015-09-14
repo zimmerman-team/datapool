@@ -128,7 +128,7 @@ class DataSource(models.Model):
 			data_class.delete()
 		if self.data_file == None or self.data_file == '':
 			file_grabber = FileGrabber()
-			parse_file = file_grabber.get_the_file(self.url)
+			data_file = file_grabber.get_the_file(self.url)
 		else:
 			data_file = open(self.data_file.path, 'r')
 			
