@@ -67,6 +67,7 @@ class CsvImport(DataPool):
 							attr_key = str(self.header[colnum])
 						except:
 							error = 'error at line '+str(rownum)
+							print error;
 							colnum += 1
 							continue
 						if self.new_row_on_number == True:
@@ -81,21 +82,28 @@ class CsvImport(DataPool):
 						print str(col_obj.property_type)+' is property type'
 						col = self.run_regex(col,col_obj)
 						rec_key = col_obj.orient_name
-						if col_obj.property_type == 1:
-							rec_data[self.format_attrib_name(rec_key)] =  int(col)
-						elif col_obj.property_type == 2:
-							rec_data[self.format_attrib_name(rec_key)] =  float(col)
-						elif col_obj.property_type == 4:
-							if col_obj.time_format != '':
-								rec_data[self.format_attrib_name(rec_key)] =  datetime.datetime.strptime(col, col_obj.time_format)
+						try:
+							if col_obj.property_type == 1:
+								rec_data[self.format_attrib_name(rec_key)] =  int(col)
+							elif col_obj.property_type == 2:
+								rec_data[self.format_attrib_name(rec_key)] =  float(col)
+							elif col_obj.property_type == 4:
+								if col_obj.time_format != '':
+									rec_data[self.format_attrib_name(rec_key)] =  datetime.datetime.strptime(col, col_obj.time_format)
+								else:
+									 rec_data[self.format_attrib_name(rec_key)] = date_parse(col)
+							elif col_obj.property_type == 10 :
+								rec_data[self.format_attrib_name(rec_key)] = datetime.datetime.fromtimestamp(int(col))
+							elif col_obj.property_type == 11 :
+								rec_data[self.format_attrib_name(rec_key)] = datetime.datetime.fromtimestamp(int(col)/1000)
 							else:
-								 rec_data[self.format_attrib_name(rec_key)] = date_parse(col)
-						elif col_obj.property_type == 10 :
-							rec_data[self.format_attrib_name(rec_key)] = datetime.datetime.fromtimestamp(int(col))
-						elif col_obj.property_type == 11 :
-							rec_data[self.format_attrib_name(rec_key)] = datetime.datetime.fromtimestamp(int(col)/1000)
-						else:
-							rec_data[self.format_attrib_name(rec_key)] =  self.escape_orientdb(col)
+								rec_data[self.format_attrib_name(rec_key)] =  self.escape_orientdb(col)
+						except:
+							print sys.exc_info()[0]
+							pprint.pprint(rec_data)
+							print 'failed '+self.class_name
+							colnum += 1
+							continue
 				 		
 					colnum += 1
 				for number_col in rec_data_row_on_number:
