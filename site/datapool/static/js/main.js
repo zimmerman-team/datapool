@@ -7,23 +7,15 @@ var datapoolFilters = {
     'excludeUsers': [],
 }
 
-if(! $('#heatmap').length == 0){
-    var dollymap = new DatapoolMap();
-    dollymap.filters = datapoolFilters;
-    dollymap.set_map('heatmap');
-}
 
-if(! $('#linechart').length == 0){
-    var linechart = new DatapoolLinechart();
-    linechart.filters = datapoolFilters;
-    linechart.init();
-}
-if(! $('#barchart').length == 0){
-
+$('.barchart').each(function(){
+    project_id = $(this).attr('data-id');
+    console.log('project_id '+project_id);
     var barchart = new DatapoolBarchart();
     barchart.filters = datapoolFilters;
-    barchart.init();
-}
+    barchart.project_id = project_id;
+    barchart.init()
+});
 
 var loading = false;
 

@@ -52,8 +52,11 @@
                 <div class="header">
                   <i class="fa fa-filter"></i> Set filters
                 </div>
-                <div class="content">
+                <div class="content filters">
                   <form>
+                    <div class='searchboxes-{{project_id}} bar_chart_search'>
+                      
+                    </div>
                     <!-- begin filterveld -->
                     <div class="row">
                       <div class="columns small-12">
@@ -76,7 +79,7 @@
                     <!-- eind filterveld -->
                     <div class="row">
                       <div class="columns small-12">
-                        <input type="submit" value="save" class="button save-filters">
+                        <input type="submit" value="show" class="button save-filters">
                       </div>
                     </div>
                   </form>
@@ -89,7 +92,9 @@
                   Visualisation type
                 </div>
                 <div class="content">
-                  <img src="/static/img/population-pyramid.svg">
+                 <div id="barchart_{{project.id}}" class="panel dashboard barchart" data-id="{{project.id}}">
+                    <svg></svg>
+                  </div>
                 </div>
               </div>
             </div>

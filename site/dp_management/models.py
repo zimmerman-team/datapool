@@ -8,6 +8,9 @@ from filegrabber import FileGrabber
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 import datetime
+from django.conf import settings
+import glob   
+
 
 # Create your models here.
 
@@ -69,6 +72,7 @@ class DataSource(models.Model):
 	data_file = models.FileField(upload_to='data_files',blank=True,null=True)
 	owner = models.ForeignKey(User)
 	prefix = models.CharField(max_length=10)
+	scan_dir = models.BooleanField(default=False)
 	private = models.BooleanField(default=False)
 	data_connection = models.ForeignKey(DataConnection)
 	data_type = models.IntegerField(choices=DATATYPECHOICE, default=0) 
@@ -142,6 +146,7 @@ class DataSource(models.Model):
 			parser.delimiter = self.csv_seprator
 			parser.new_row_on_number = self.new_row_on_number
 			parser.new_row_on_number_name = self.new_row_on_number_name
+			print data_file
 			parser.parse(data_file)
 
 	def create_orient_schema(self):
@@ -166,6 +171,21 @@ class DataSource(models.Model):
 		parser.source = self
 		parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
 		parser.load_schema()
+		if self.scan_dir == True:
+			#scan dir 
+			parser.delete_classes(drop_class=False)
+			path = settings.BASE_DIR+'/manual_upload/'+self.prefix+'/*'
+			print path
+			files=glob.glob(path)   
+			for file in files:     
+				print file
+				parse_file=open(file, 'r')  
+				parser.delimiter = self.csv_seprator
+				parser.new_row_on_number = self.new_row_on_number
+				parser.new_row_on_number_name = self.new_row_on_number_name
+				parser.parse(parse_file)
+			return
+
 		if self.old_data_choice == 0:
 			parser.delete_classes(drop_class=False)
 		if self.data_file == None or self.data_file == '':

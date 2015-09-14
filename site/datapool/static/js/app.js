@@ -57,7 +57,6 @@ $(document).ready(function(){
           data_id = $(this).attr('data-stream-id');
           url = '/'+getLanguageCode()+"/delete_data_stream/"+data_id+"/"
           parent_id = $(this).attr('stream-parent-id');
-          $('#'+parent_id).remove();
           $('#'+parent_id).fadeOut(300,function(){
             $('#'+parent_id).remove();
           });
@@ -65,15 +64,16 @@ $(document).ready(function(){
         if($(this).attr('data-project-id') != undefined){
           //console.log('data-project-id');
           data_id = $(this).attr('data-project-id');
-          url = '/'+getLanguageCode()+"/delete_data_project/"+data_id+"/"
+          url = '/'+getLanguageCode()+"/delete_data_project/"+data_id+"/";
+          $(this).parents('.panel').parent().fadeOut(300,function(){
+            $(this).remove();
+          });
         }
         console.log(url);
         $.getJSON( url,function(data){
           return false;
         });
-        $(this).parents('.panel').parent().fadeOut(300,function(){
-          $(this).remove();
-        });
+       
       }
       return false;
     }

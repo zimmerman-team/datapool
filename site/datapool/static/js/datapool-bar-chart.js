@@ -11,7 +11,7 @@ var DatapoolBarchart = function(){
 
     this.loaded = 0;
     this.search_boxes_loaded = false;
-
+    this.project_id = 0
     this.init = function(){
 
         //console.log('in init barchart');
@@ -30,7 +30,7 @@ var DatapoolBarchart = function(){
 
         //this.chart.yAxis.axisLabel('test y');
 
-        d3.select('#barchart svg')
+        d3.select('#barchart_'+this.project_id+' svg')
             .datum(this.barchartData)
             .call(this.chart);
 
@@ -43,7 +43,7 @@ var DatapoolBarchart = function(){
 
     this.createUrl = function(){
         
-        var url = '/get_project_chart_data/'+$('#barchart').attr('data-id')+'/bar_chart/';
+        var url = '/get_project_chart_data/'+$('#barchart_'+this.project_id).attr('data-id')+'/bar_chart/';
       
         return url;
     }
@@ -57,9 +57,9 @@ var DatapoolBarchart = function(){
             x_axis = data[j]['x_axis'];
             this.search_boxes = data[j]['search_boxes'];
             this.chart.xAxis.axisLabel(x_axis);//set x axis label
-            //console.log('x_axis = '+x_axis);
+            console.log('x_axis = '+x_axis);
             types = data[j]['property_type_set'];
-            //console.log(data[j]);
+            console.log(data[j]);
             for(type in types){
                 //console.log(types);
                 if(type != x_axis){
@@ -121,7 +121,7 @@ var DatapoolBarchart = function(){
         this.loaded++;
         if(this.loaded == 1){
 
-            d3.select('#barchart svg')
+            d3.select('#barchart_'+this.project_id+' svg')
             .datum(this.barchartData)
             .call(this.chart);
 
