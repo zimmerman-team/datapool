@@ -234,7 +234,7 @@ button, .button {
 				img {
 					border-radius:50%;
 					position: absolute;
-					width: 80%;
+					width: 74%;
 					height: auto;
 					top:-.5rem;
 					border:2px solid $white;
@@ -262,6 +262,15 @@ button, .button {
 					}
 				}
 			}
+			.avatar {
+				line-height: 0;
+				img {
+					position: relative;
+					width: 100%;
+					margin-bottom: -1rem;
+					margin-top:0;
+				}
+			}
 			> .content {
 				display: block;
 				.description {
@@ -279,7 +288,7 @@ button, .button {
 				}
 			}
 			&.add-datastream {
-				margin-bottom: 1.5rem;
+				//margin-bottom: 1.5rem;
 				.header {
 					background:$primary-color;
 					&:hover {
@@ -290,7 +299,7 @@ button, .button {
 			&.edit-datastream {
 				.actions {
 					float: right;
-					margin-top: -.2rem;
+					margin-top: -.4rem;
 					button {
 						margin-bottom: 0;
 						&.configure {
@@ -324,6 +333,16 @@ button, .button {
 					}
 				}
 			}
+		}
+	}
+}
+
+//visualisaties
+.vis-blok {
+	margin-top:1rem;
+	.visualisation {
+		.content {
+			display: block;
 		}
 	}
 }

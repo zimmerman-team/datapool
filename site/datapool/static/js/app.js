@@ -316,6 +316,8 @@ $(document).ready(function(){
 
     });
     $(document).on('click','.submit-stream-new',function(){
+        $(this).parents('.datastream-new').removeClass('expanded');
+        
         stream_id = $('#stream').val();
         name= $('#name').val();
         

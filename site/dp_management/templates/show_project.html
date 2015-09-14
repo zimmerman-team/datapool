@@ -20,13 +20,13 @@
 
       <div class="content">
         <div class="row description">
-          <div class="columns small-10 small-offset-2">
+          <div class="columns small-10 small-offset-1">
             <p>{{project.description|linebreaks}}</p>
           </div>
         </div>
-        <div id='visualize-project-{{project.id}}'></div>
+  
         <div class="row stream add-datastream">
-          <div class="columns small-11 small-centered">
+          <div class="columns small-12">
             <div class="panel datastream-new">
               <div class="header add-data-stream" projectid="{{project.id}}">
                 Add data stream <i class="fa fa-plus"></i>
@@ -43,6 +43,54 @@
           {% show_datastream my_data_stream%}
         <!-- eind datastream blok -->
         {% endfor %}
+
+        <div class="vis-blok" id='visualize-project-{{project.id}}'>
+          <!--start van een visualisatie -->
+          <div class="row visualisation">
+            <div class="columns small-3">
+              <div class="panel">
+                <div class="header">
+                  <i class="fa fa-filter"></i> Set filters
+                </div>
+                <div class="content">
+                  <form>
+                    <!-- begin filterveld -->
+                    <div class="row">
+                      <div class="columns small-12">
+                        <label>Tekstveld</label>
+                        <input type="text">
+                      </div>
+                    </div>
+                    <!-- eind filterveld -->
+                    <!-- begin filterveld -->
+                    <div class="row">
+                      <div class="columns small-12">
+                        <label>Selectbox</label>
+                        <select>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                      </div>
+                    </div>
+                    <!-- eind filterveld -->
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="columns small-9">
+              <div class="panel vis">
+                <div class="header">
+                  Visualisation type
+                </div>
+                <div class="content">
+                  <img src="/static/img/population-pyramid.svg">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- eind van een visualisatie -->
+        </div>
 
       </div>
     </div>
