@@ -152,13 +152,13 @@ function DatapoolMap(){
         console.log(data.length);
         for ( i in data){
             data_set = data[i]['data_set'];
-            console.log('formattedData = ');
-            console.log(data_set);
+           // console.log('formattedData = ');
+            //console.log(data_set);
             for (j in data_set){
                 if(data_set[j]['latitude'] == undefined || data_set[j]['longitude'] == undefined){
                     continue;
                 }
-                console.log(data_set[j]['latitude']);
+                //console.log(data_set[j]['latitude']);
                 this.heat[i].addLatLng([data_set[j]['latitude'], data_set[j]['longitude']]);
             }
 

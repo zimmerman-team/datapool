@@ -51,6 +51,7 @@ var DatapoolBarchart = function(){
 
     this.reformatData = function(data){
         var formattedData = {};
+        console.log(data);
         for(var j = 0;j < data.length;j++){
 
 
@@ -64,13 +65,15 @@ var DatapoolBarchart = function(){
             for(type in types){
                 //console.log(types);
                 if(type != x_axis){
-                    formattedData[type] = [];
+                    formattedData[type+'_'+j] = [];
                 }
             }
+            //console.log('data_set = ');
+           // console.log(data_set);
             for(var i = 0; i < data_set.length;i++){
                 for(type in types){
                     if(type != x_axis){
-                        formattedData[type].push([data_set[i][x_axis],data_set[i][type]]);
+                        formattedData[type+'_'+j].push([data_set[i][x_axis],data_set[i][type]]);
                     }
                 }
             }
