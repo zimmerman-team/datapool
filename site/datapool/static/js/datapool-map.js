@@ -168,7 +168,7 @@ function DatapoolMap(){
     }
     this.addSearchBoxes = function(){
         for(box_id in this.search_boxes){
-            $('.heatmap_search').append("<div>"+this.search_boxes[box_id]['name']+"<input type='text' name='"+box_id+"' id='"+box_id+"'/></div>");
+            $('.searchboxes-heatmap-'+this.project_id).append("<div>"+this.search_boxes[box_id]['name']+"<input type='text' name='"+box_id+"' id='"+box_id+"'/></div>");
         }
         this.search_boxes_loaded = true;
     }
