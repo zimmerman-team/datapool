@@ -216,7 +216,7 @@ class DataSourceComment(models.Model):
 
 class DataModelClass(models.Model):
 	data_source = models.ForeignKey(DataSource,related_name="classes")
-	name = models.CharField(max_length=30)
+	name = models.CharField(max_length=128)
 	default_cluster_id = models.CharField(max_length=5)
 	translated_name = models.CharField(max_length=30,null=True,blank=True)
 	orient_name = models.CharField(max_length=30,null=True,blank=True)
