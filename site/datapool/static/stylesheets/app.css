@@ -9691,183 +9691,183 @@ button, .button {
 /* line 236, ../scss/app.scss */
 .panel.project {
   margin-bottom: .5rem;
+  height: 3.5rem;
+  overflow: hidden;
 }
-/* line 238, ../scss/app.scss */
+/* line 240, ../scss/app.scss */
 .panel.project .header {
   background: #a4c2d6;
   cursor: pointer;
 }
-/* line 241, ../scss/app.scss */
+/* line 243, ../scss/app.scss */
 .panel.project .header:hover {
   background: #7fa1b7;
 }
-/* line 244, ../scss/app.scss */
+/* line 246, ../scss/app.scss */
 .panel.project .header .subtitle {
   font-size: 1rem;
   opacity: .8;
   font-style: italic;
 }
-/* line 249, ../scss/app.scss */
+/* line 251, ../scss/app.scss */
 .panel.project .header .datastreams {
   font-size: 1rem;
   text-align: right;
 }
-/* line 252, ../scss/app.scss */
+/* line 254, ../scss/app.scss */
 .panel.project .header .datastreams .actions {
   margin-top: .5rem;
   display: none;
 }
-/* line 255, ../scss/app.scss */
+/* line 257, ../scss/app.scss */
 .panel.project .header .datastreams .actions button {
   margin-bottom: 0;
 }
-/* line 257, ../scss/app.scss */
+/* line 259, ../scss/app.scss */
 .panel.project .header .datastreams .actions button.configure {
   margin-right: .5rem;
 }
-/* line 264, ../scss/app.scss */
+/* line 266, ../scss/app.scss */
 .panel.project .header .avatar img {
   border-radius: 50%;
-  position: absolute;
-  width: 74%;
   height: auto;
   top: -.5rem;
   border: 2px solid #FFFFFF;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
-/* line 275, ../scss/app.scss */
-.panel.project .content {
-  display: none;
-}
 /* line 277, ../scss/app.scss */
+.panel.project .content {
+  overflow: hidden;
+}
+/* line 281, ../scss/app.scss */
 .panel.project .content .description, .panel.project .content .stream {
   display: none;
 }
-/* line 281, ../scss/app.scss */
+/* line 285, ../scss/app.scss */
 .panel.project .content.fullvis .stream {
   display: block;
 }
-/* line 287, ../scss/app.scss */
+/* line 290, ../scss/app.scss */
+.panel.project.expanded {
+  height: auto;
+}
+/* line 292, ../scss/app.scss */
 .panel.project.expanded .header {
   background: #7fa1b7;
 }
-/* line 290, ../scss/app.scss */
+/* line 295, ../scss/app.scss */
 .panel.project.expanded .header .datastreams .actions {
   display: block;
 }
-/* line 295, ../scss/app.scss */
+/* line 300, ../scss/app.scss */
 .panel.project.expanded .avatar {
   line-height: 0;
 }
-/* line 297, ../scss/app.scss */
+/* line 302, ../scss/app.scss */
 .panel.project.expanded .avatar img {
   position: relative;
   width: 100%;
   margin-bottom: -1rem;
   margin-top: 0;
 }
-/* line 304, ../scss/app.scss */
-.panel.project.expanded > .content {
-  display: block;
-}
-/* line 306, ../scss/app.scss */
+/* line 312, ../scss/app.scss */
 .panel.project.expanded > .content .description {
   display: block;
 }
-/* line 312, ../scss/app.scss */
+/* line 318, ../scss/app.scss */
 .panel.project .stream .panel {
   margin-bottom: .5rem;
 }
-/* line 315, ../scss/app.scss */
+/* line 321, ../scss/app.scss */
 .panel.project .stream .panel.expanded .header {
   background: #3297d8;
 }
-/* line 322, ../scss/app.scss */
+/* line 328, ../scss/app.scss */
 .panel.project .stream.add-datastream .header {
   background: #5dade0;
 }
-/* line 324, ../scss/app.scss */
+/* line 330, ../scss/app.scss */
 .panel.project .stream.add-datastream .header:hover {
   background: #3297d8;
 }
-/* line 330, ../scss/app.scss */
+/* line 336, ../scss/app.scss */
 .panel.project .stream.edit-datastream .header {
   cursor: default;
 }
-/* line 333, ../scss/app.scss */
+/* line 339, ../scss/app.scss */
 .panel.project .stream.edit-datastream .actions {
   float: right;
   margin-top: -.4rem;
 }
-/* line 336, ../scss/app.scss */
+/* line 342, ../scss/app.scss */
 .panel.project .stream.edit-datastream .actions button {
   margin-bottom: 0;
 }
-/* line 338, ../scss/app.scss */
+/* line 344, ../scss/app.scss */
 .panel.project .stream.edit-datastream .actions button.configure {
   margin-right: .5rem;
 }
-/* line 343, ../scss/app.scss */
+/* line 349, ../scss/app.scss */
 .panel.project .stream.edit-datastream .content {
   display: none;
 }
-/* line 345, ../scss/app.scss */
+/* line 351, ../scss/app.scss */
 .panel.project .stream.edit-datastream .content.fullvis {
   display: block;
 }
-/* line 348, ../scss/app.scss */
+/* line 354, ../scss/app.scss */
 .panel.project .stream.edit-datastream .content .save {
   margin-right: .5rem;
 }
-/* line 353, ../scss/app.scss */
+/* line 359, ../scss/app.scss */
 .panel.project .stream table.filters {
   width: 100%;
 }
-/* line 355, ../scss/app.scss */
+/* line 361, ../scss/app.scss */
 .panel.project .stream table.filters input, .panel.project .stream table.filters select, .panel.project .stream table.filters label {
   margin-bottom: 0;
 }
-/* line 358, ../scss/app.scss */
+/* line 364, ../scss/app.scss */
 .panel.project .stream table.filters td {
   height: 3.6rem;
 }
-/* line 361, ../scss/app.scss */
+/* line 367, ../scss/app.scss */
 .panel.project .stream table.filters label.show {
   text-align: center;
   padding: .5rem;
 }
-/* line 364, ../scss/app.scss */
+/* line 370, ../scss/app.scss */
 .panel.project .stream table.filters label.show input {
   cursor: pointer;
 }
 
-/* line 374, ../scss/app.scss */
+/* line 380, ../scss/app.scss */
 .vis-blok {
   margin-top: 1rem;
 }
-/* line 377, ../scss/app.scss */
+/* line 383, ../scss/app.scss */
 .vis-blok .visualisation .header {
   cursor: default;
 }
-/* line 380, ../scss/app.scss */
+/* line 386, ../scss/app.scss */
 .vis-blok .visualisation .content {
   display: block;
 }
-/* line 382, ../scss/app.scss */
+/* line 388, ../scss/app.scss */
 .vis-blok .visualisation .content.no-padding {
   padding: 0;
 }
-/* line 387, ../scss/app.scss */
+/* line 393, ../scss/app.scss */
 .vis-blok .save-filters {
   margin-bottom: 0;
 }
-/* line 391, ../scss/app.scss */
+/* line 397, ../scss/app.scss */
 .vis-blok .barchart svg {
   height: 500px;
   width: 100%;
 }
 
-/* line 398, ../scss/app.scss */
+/* line 404, ../scss/app.scss */
 footer {
   background: #FFFFFF;
   border-top: 1px solid #e2e3e4;
@@ -9875,7 +9875,7 @@ footer {
   padding: 1.25rem;
 }
 
-/* line 504, ../scss/app.scss */
+/* line 510, ../scss/app.scss */
 #ui-datepicker-div {
   background: #FFFFFF;
   padding: .5rem 1rem;
@@ -9883,17 +9883,17 @@ footer {
   display: none;
   z-index: 99999;
 }
-/* line 510, ../scss/app.scss */
+/* line 516, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-next {
   float: right;
 }
-/* line 513, ../scss/app.scss */
+/* line 519, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-month {
   width: 83%;
   display: block;
   float: left;
 }
-/* line 518, ../scss/app.scss */
+/* line 524, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-year {
   display: block;
   float: right;
@@ -9902,119 +9902,119 @@ footer {
   line-height: 2.3125rem;
   text-align: right;
 }
-/* line 526, ../scss/app.scss */
+/* line 532, ../scss/app.scss */
 #ui-datepicker-div td {
   text-align: center;
   padding: 0;
 }
-/* line 529, ../scss/app.scss */
+/* line 535, ../scss/app.scss */
 #ui-datepicker-div td span {
   display: block;
   padding: 0.5625rem 0.625rem;
 }
-/* line 533, ../scss/app.scss */
+/* line 539, ../scss/app.scss */
 #ui-datepicker-div td a {
   display: block;
   padding: 0.5625rem 0.625rem;
 }
-/* line 536, ../scss/app.scss */
+/* line 542, ../scss/app.scss */
 #ui-datepicker-div td a:hover {
   background: #3b4e61;
 }
-/* line 542, ../scss/app.scss */
+/* line 548, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-current-day a {
   background: #3b4e61;
 }
-/* line 546, ../scss/app.scss */
+/* line 552, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-unselectable {
   color: #CCCCCC;
 }
-/* line 550, ../scss/app.scss */
+/* line 556, ../scss/app.scss */
 #ui-datepicker-div .ui-datepicker-today a {
   border: 1px solid #CCCCCC;
 }
 
-/* line 556, ../scss/app.scss */
+/* line 562, ../scss/app.scss */
 #keyword-0_flexselect {
   border-color: #5dade0;
 }
 
-/* line 560, ../scss/app.scss */
+/* line 566, ../scss/app.scss */
 #keyword-1_flexselect {
   border-color: #a52723;
 }
 
-/* line 566, ../scss/app.scss */
+/* line 572, ../scss/app.scss */
 .datastream button {
   margin-bottom: 0;
   font-size: .8rem;
 }
-/* line 569, ../scss/app.scss */
+/* line 575, ../scss/app.scss */
 .datastream button .fa {
   color: #fff;
 }
-/* line 573, ../scss/app.scss */
+/* line 579, ../scss/app.scss */
 .datastream h1 {
   font-size: 1.8rem;
   margin: .6rem 0;
 }
-/* line 578, ../scss/app.scss */
+/* line 584, ../scss/app.scss */
 .datastream .hl:hover {
   background: #EEEEEE;
 }
-/* line 581, ../scss/app.scss */
+/* line 587, ../scss/app.scss */
 .datastream .hl input, .datastream .hl select, .datastream .hl label {
   margin-top: .35rem;
   margin-bottom: .35rem;
 }
-/* line 587, ../scss/app.scss */
+/* line 593, ../scss/app.scss */
 .datastream input.header-input {
   font-size: 1.8rem;
   height: auto;
 }
-/* line 591, ../scss/app.scss */
+/* line 597, ../scss/app.scss */
 .datastream input[type=checkbox] {
   height: 2.3125rem;
   float: left;
 }
-/* line 594, ../scss/app.scss */
+/* line 600, ../scss/app.scss */
 .datastream input[type=checkbox] + label {
   height: 2.3125rem;
   line-height: 2.3125rem;
 }
-/* line 600, ../scss/app.scss */
+/* line 606, ../scss/app.scss */
 .datastream table {
   width: 100%;
 }
-/* line 602, ../scss/app.scss */
+/* line 608, ../scss/app.scss */
 .datastream table td {
   width: 33.3333333%;
 }
-/* line 605, ../scss/app.scss */
+/* line 611, ../scss/app.scss */
 .datastream table input, .datastream table select, .datastream table label {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 610, ../scss/app.scss */
+/* line 616, ../scss/app.scss */
 .datastream #save {
   margin-top: 1rem;
 }
 
-/* line 615, ../scss/app.scss */
+/* line 621, ../scss/app.scss */
 .alert-box.helper {
   background: #3b4e61;
   padding: 1.25rem;
 }
-/* line 618, ../scss/app.scss */
+/* line 624, ../scss/app.scss */
 .alert-box.helper h3 {
   color: #fff;
 }
-/* line 621, ../scss/app.scss */
+/* line 627, ../scss/app.scss */
 .alert-box.helper.nopadding {
   padding: 0;
   margin: 0;
 }
-/* line 625, ../scss/app.scss */
+/* line 631, ../scss/app.scss */
 .alert-box.helper .close {
   position: relative;
   opacity: 1;
@@ -10051,89 +10051,89 @@ footer {
 .alert-box.helper .close:hover, .alert-box.helper .close:focus {
   color: #FFFFFF;
 }
-/* line 633, ../scss/app.scss */
+/* line 639, ../scss/app.scss */
 .alert-box.helper .close:hover {
   opacity: 1;
 }
 
-/* line 639, ../scss/app.scss */
+/* line 645, ../scss/app.scss */
 .addstream .fa {
   margin: 0;
 }
 
-/* line 643, ../scss/app.scss */
+/* line 649, ../scss/app.scss */
 .panel-content {
   display: none;
 }
 
-/* line 647, ../scss/app.scss */
+/* line 653, ../scss/app.scss */
 .killbutton {
   overflow: hidden;
   display: inline-block;
   float: right;
   margin-left: .3rem;
 }
-/* line 652, ../scss/app.scss */
+/* line 658, ../scss/app.scss */
 .killbutton button {
   white-space: nowrap;
 }
 
-/* line 658, ../scss/app.scss */
+/* line 664, ../scss/app.scss */
 .tableview {
   display: table;
 }
-/* line 660, ../scss/app.scss */
+/* line 666, ../scss/app.scss */
 .tableview.row {
   width: 100%;
 }
 
-/* line 665, ../scss/app.scss */
+/* line 671, ../scss/app.scss */
 .align-middle {
   display: table-cell;
   vertical-align: middle;
   float: none;
 }
 
-/* line 671, ../scss/app.scss */
+/* line 677, ../scss/app.scss */
 .margin-top {
   margin-top: 1.25rem;
 }
 
-/* line 675, ../scss/app.scss */
+/* line 681, ../scss/app.scss */
 #barchart svg {
   width: 100%;
   height: 400px;
 }
 
-/* line 679, ../scss/app.scss */
+/* line 685, ../scss/app.scss */
 #linechart svg {
   width: 100%;
   height: 400px;
 }
 
-/* line 683, ../scss/app.scss */
+/* line 689, ../scss/app.scss */
 .heatmap {
   width: 100%;
   height: 400px;
 }
 
-/* line 688, ../scss/app.scss */
+/* line 694, ../scss/app.scss */
 .more-padding {
   padding: 2rem 0;
 }
 
-/* line 692, ../scss/app.scss */
+/* line 698, ../scss/app.scss */
 .alert.disabled {
   display: none;
 }
 
-/* line 695, ../scss/app.scss */
+/* line 701, ../scss/app.scss */
 .choose-dataset {
   background: #3b4e61;
   display: none;
 }
 
-/* line 701, ../scss/app.scss */
+/* line 707, ../scss/app.scss */
 .italic {
   font-style: italic;
 }
