@@ -81,7 +81,7 @@ function DatapoolMap(){
     this.createUrl = function(heatmapId){
 
         var url = '/get_project_chart_data/'+this.project_id+'/heat_map/';
-        console.log('get url = '+url);
+        //console.log('get url = '+url);
         return url;
     }
 
@@ -96,6 +96,9 @@ function DatapoolMap(){
             data:$("#all-data").serialize(),
             success: function(data){
                 data = that.formatData(data);
+                 if(that.search_boxes_loaded == false){
+                    that.addSearchBoxes()
+                }
                 that.refresh(data, heatmapId);
             }
         });
@@ -103,20 +106,15 @@ function DatapoolMap(){
 
     this.formatData = function(data){
         var formattedData = {};
-        this.heat = [];
+       
         for(var j = 0;j < data.length;j++){
 
-            this.heat[j] = L.heatLayer([], {
-            minOpacity: .5,
-            radius: 18,
-            blur: 25,
-            gradient: {0.5: 'rgba(0,255,255,0.1)', 0.7: 'rgba(0,153,255,0.1)', 1: 'rgba(51,102,255,0.1)'}
-            }).addTo(this.map);
+            
 
             data_set = data[j]['data'];
             this.search_boxes = data[j]['search_boxes'];
             types = data[j]['property_type_set'];
-            console.log(data[j]);
+            //console.log(data[j]);
             lat_field = '';
             long_field = '';
             for(prop in types){
@@ -131,14 +129,15 @@ function DatapoolMap(){
                 }
 
             }
+            //console.log(lat_field+' '+long_field);
             formattedData[j] = {}
             formattedData[j]['data_set'] = []
             for(var i = 0; i < data_set.length;i++){
                 
                     formattedData[j]['data_set'][i] = {}
 
-                    formattedData[j]['data_set'][i]['latitude'] = data_set[lat_field];
-                    formattedData[j]['data_set'][i]['latitude'] = data_set[long_field];
+                    formattedData[j]['data_set'][i]['latitude'] = data_set[i][lat_field];
+                    formattedData[j]['data_set'][i]['longitude'] = data_set[i][long_field];
                 
             }
         }
@@ -149,17 +148,28 @@ function DatapoolMap(){
 
     }
     this.reDraw = function(data, heatmapId){
-        console.log('formattedData = ');
-        console.log(data);
-        for (var i = 0;i< data.length;i++){
-            data_set = data[i]['data_set']
-            for (var j = 0 ;j<data_set.lenght;j++){
+        console.log(data.length);
+        for ( i in data){
+            data_set = data[i]['data_set'];
+            console.log('formattedData = ');
+            console.log(data_set);
+            for (j in data_set){
+                if(data_set[j]['latitude'] == undefined || data_set[j]['longitude'] == undefined){
+                    continue;
+                }
+                console.log(data_set[j]['latitude']);
                 this.heat[i].addLatLng([data_set[j]['latitude'], data_set[j]['longitude']]);
             }
 
         }
 
      
+    }
+    this.addSearchBoxes = function(){
+        for(box_id in this.search_boxes){
+            $('.heatmap_search').append("<div>"+this.search_boxes[box_id]['name']+"<input type='text' name='"+box_id+"' id='"+box_id+"'/></div>");
+        }
+        this.search_boxes_loaded = true;
     }
 
 }

@@ -58,9 +58,9 @@ var DatapoolBarchart = function(){
             x_axis = data[j]['x_axis'];
             this.search_boxes = data[j]['search_boxes'];
             this.chart.xAxis.axisLabel(x_axis);//set x axis label
-            console.log('x_axis = '+x_axis);
+            //console.log('x_axis = '+x_axis);
             types = data[j]['property_type_set'];
-            console.log(data[j]);
+            //console.log(data[j]);
             for(type in types){
                 //console.log(types);
                 if(type != x_axis){
@@ -99,7 +99,7 @@ var DatapoolBarchart = function(){
         var url = this.createUrl();
         //console.log('url = '+url);
         var that = this;
-        console.log($("#all-data").serialize());
+        //console.log($("#all-data").serialize());
         jQuery.ajax({
             type: 'GET',
             url: url,
@@ -133,7 +133,7 @@ var DatapoolBarchart = function(){
 
     this.addSearchBoxes = function(){
         for(box_id in this.search_boxes){
-            $('.bar_chart_search').append("<div>"+this.search_boxes[box_id]['name']+"<input type='text' name='"+box_id+"' id='"+box_id+"'/></div>");
+            $('.bar_chart_search').append('<div class="row"><div class="columns small-12"><label>'+this.search_boxes[box_id]['name']+"</label><input type='text' name='"+box_id+"' id='"+box_id+"'/></div></div>");
         }
         this.search_boxes_loaded = true;
     }
