@@ -8,13 +8,16 @@ var datapoolFilters = {
 }
 
 
+var graphMap = {};
 $('.barchart').each(function(){
     project_id = $(this).attr('data-id');
     console.log('project_id '+project_id);
     var barchart = new DatapoolBarchart();
     barchart.filters = datapoolFilters;
+
     barchart.project_id = project_id;
     barchart.init()
+    graphMap['barchart_'+project_id] = barchart;
 });
 
 $('.heatmap').each(function(){
@@ -24,6 +27,7 @@ $('.heatmap').each(function(){
     dollymap.project_id = project_id;
     dollymap.filters = datapoolFilters;
     dollymap.set_map('heatmap_'+project_id);
+    graphMap['heatmap_'+project_id] = dollymap;
 });
 
 

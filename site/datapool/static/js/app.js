@@ -227,7 +227,7 @@ $(document).ready(function(){
 
     $(document).on('click','#go',function(){
       stream_id = $("#stream").val();
-      console.log('stream id = '+stream_id);projectproject
+      console.log('stream id = '+stream_id);
       if($('#name').val() == ''){
         alert('give data stream a name');
         return false;
@@ -237,8 +237,11 @@ $(document).ready(function(){
 
     }
     );
-    $(document).on('click','#refresh-data',function(){
-        barchart.getData();
+    $(document).on('click','.refresh-data',function(){
+        function_id = $(this).attr('function-id');
+        console.log(function_id);
+        console.log(graphMap);
+        graphMap[function_id].getData();
         return false;
     });
     $(document).on('click','.visualize',function(){

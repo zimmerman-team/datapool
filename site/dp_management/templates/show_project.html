@@ -53,14 +53,14 @@
                   <i class="fa fa-filter"></i> Set filters
                 </div>
                 <div class="content filters">
-                  <form>
-                    <div class='searchboxes-{{project_id}} bar_chart_search'>
+                  <form id='bar-chart-search-{{project.id}}'>
+                    <div class='searchboxes-{{project.id}} bar_chart_search'>
                       
                     </div>
              
                     <div class="row">
                       <div class="columns small-12">
-                        <input type="submit" value="Show" class="button save-filters">
+                        <input type="submit" value="Show" class="button save-filters refresh-data" function-id="barchart_{{project.id}}">
                       </div>
                     </div>
                   </form>
@@ -89,14 +89,14 @@
                   <i class="fa fa-filter"></i> Set filters
                 </div>
                 <div class="content filters">
-                  <form>
+                  <form id='heatmap-search-{{project.id}}'>
                     <div class='searchboxes-{{project_id}} heatmap_search'>
                       
                     </div>
                   
                     <div class="row">
                       <div class="columns small-12">
-                        <input type="submit" value="show" class="button save-filters">
+                        <input type="submit" value="show" class="button save-filters refresh-data" function-id="heatmap_{{project.id}}">
                       </div>
                     </div>
                   </form>

@@ -5,7 +5,7 @@ function DatapoolMap(){
     this.filters = null;
     this.project_id = 0;
     this.loaded = 0;
-
+    this.search_boxes_loaded = false;
 
     if (typeof standard_basemap !== 'undefined') {
         this.basemap = standard_basemap;
@@ -70,6 +70,7 @@ function DatapoolMap(){
 
     this.refresh = function(data, heatmapId){
         if(data){
+            this.resetData();
             this.reDraw(data, heatmapId);
         } else{
             this.resetData();
@@ -93,7 +94,7 @@ function DatapoolMap(){
             type: 'GET',
             url: url,
             dataType: 'json',
-            data:$("#all-data").serialize(),
+            data:$("#heatmap-search-"+this.project_id).serialize(),
             success: function(data){
                 data = that.formatData(data);
                  if(that.search_boxes_loaded == false){

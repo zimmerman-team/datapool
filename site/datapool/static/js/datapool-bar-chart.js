@@ -99,12 +99,12 @@ var DatapoolBarchart = function(){
         var url = this.createUrl();
         //console.log('url = '+url);
         var that = this;
-        //console.log($("#all-data").serialize());
+        console.log($("#all-data").serialize());
         jQuery.ajax({
             type: 'GET',
             url: url,
             dataType: 'json',
-            data:$("#all-data").serialize(),
+            data:$("#bar-chart-search-"+this.project_id).serialize(),
             success: function(data){
                 var formattedData = that.reformatData(data);
                 if(that.search_boxes_loaded == false){
