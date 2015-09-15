@@ -137,7 +137,7 @@ var DatapoolBarchart = function(){
 
     this.addSearchBoxes = function(){
         for(box_id in this.search_boxes){
-            $('.bar_chart_search').append('<div class="row"><div class="columns small-12"><label>'+this.search_boxes[box_id]['name']+"</label><input type='text' name='"+box_id+"' id='"+box_id+"'/></div></div>");
+            $('.searchboxes-barchart-'+this.project_id).append('<div class="row"><div class="columns small-12"><label>'+this.search_boxes[box_id]['name']+"</label><input type='text' name='"+box_id+"' id='"+box_id+"'/></div></div>");
         }
         this.search_boxes_loaded = true;
     }
