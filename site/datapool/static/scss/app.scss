@@ -235,6 +235,8 @@ button, .button {
 	}
 	&.project {
 		margin-bottom: .5rem;
+		height: 3.5rem;
+		overflow: hidden;
 		.header {
 			background:$blue-xlight;
 			cursor: pointer;
@@ -263,8 +265,8 @@ button, .button {
 			.avatar {
 				img {
 					border-radius:50%;
-					position: absolute;
-					width: 74%;
+					//position: absolute;
+					//width: 74%;
 					height: auto;
 					top:-.5rem;
 					border:2px solid $white;
@@ -273,7 +275,9 @@ button, .button {
 			}
 		}
 		.content {
-			display: none;
+			//display: none;
+			//max-height: 0;
+			overflow: hidden;
 			.description, .stream {
 				display: none;
 			}
@@ -284,6 +288,7 @@ button, .button {
 			}
 		}
 		&.expanded {
+			height: auto;
 			.header {
 				background:$blue-light;
 				.datastreams {
@@ -302,7 +307,8 @@ button, .button {
 				}
 			}
 			> .content {
-				display: block;
+				//display: block;
+				//max-height: auto;
 				.description {
 					display: block;
 				}
