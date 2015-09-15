@@ -19,7 +19,7 @@ urlpatterns = i18n_patterns('',
     url(r'^add_dataset_to_project/','dp_management.views.add_dataset_to_project'),
     url(r'^add_data/','dp_management.views.add_data'),
     url(r'^projects','dp_management.views.projects'),
-    url(r'^','dp_management.views.projects'),
+
     url(r'^get_categories','dp_management.views.get_categories'),
     url(r'^save_property','dp_management.views.save_property'),
     url(r'^save_data_set','dp_management.views.save_data_set'),
@@ -34,6 +34,7 @@ urlpatterns = i18n_patterns('',
     url(r'^get_project_chart_data/(?P<project_id>\w+)/(?P<chart_type>\w+)','dp_management.views.get_project_chart_data',name='project_chart_data'),
     url(r'^visualize_project/(?P<project_id>\w+)','dp_management.views.visualize_project'),
     url(r'^accounts/login/$', auth_views.login),
+    url(r'^','dp_management.views.projects'),
     #url(r'^', include('cms.urls')),
 
 

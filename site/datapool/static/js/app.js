@@ -210,6 +210,7 @@ $(document).ready(function(){
     //select subcategory
     $(document).on('change','#subcat',function() {
       sub_category_id = $(this).val();
+      console.log('in subcat change');
       console.log('sub cat id = '+sub_category_id);
       $.getJSON( '/'+getLanguageCode()+'/get_data_streams/'+sub_category_id+"/",function(data){
         $('#stream').empty()
