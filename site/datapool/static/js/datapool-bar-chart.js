@@ -57,6 +57,7 @@ var DatapoolBarchart = function(){
 
             data_set = data[j]['data'];
             x_axis = data[j]['x_axis'];
+            data_set_name = data[j]['data_stream'];
             this.search_boxes = data[j]['search_boxes'];
             this.chart.xAxis.axisLabel(x_axis);//set x axis label
             //console.log('x_axis = '+x_axis);
@@ -65,7 +66,7 @@ var DatapoolBarchart = function(){
             for(type in types){
                 //console.log(types);
                 if(type != x_axis){
-                    formattedData[type+'_'+j] = [];
+                    formattedData[type+'_'+data_set_name] = [];
                 }
             }
             //console.log('data_set = ');
@@ -73,7 +74,7 @@ var DatapoolBarchart = function(){
             for(var i = 0; i < data_set.length;i++){
                 for(type in types){
                     if(type != x_axis){
-                        formattedData[type+'_'+j].push([data_set[i][x_axis],data_set[i][type]]);
+                        formattedData[type+'_'+data_set_name].push([data_set[i][x_axis],data_set[i][type]]);
                     }
                 }
             }
@@ -86,7 +87,7 @@ var DatapoolBarchart = function(){
                 i++;
             }
         }
-        //console.log(return_arr);
+        console.log(return_arr);
         return return_arr;
     }
 

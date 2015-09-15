@@ -135,6 +135,9 @@ class DataPool():
 		self.client.db_open(db_name, user_name,password )
 		self.prefix = prefix
 
+	def close(self):
+		self.client.db_close()
+
 
 	def connect_old(self):
 		self.client = pyorient.OrientDB("localhost", 2424)
@@ -149,19 +152,15 @@ class DataPool():
 			print clss.get('superClass')
 			if str(clss.get('name')).startswith(self.prefix):
 				#get number of rows
-				result = self.client.command("SELECT COUNT(@rid) as num_rows FROM "+clss.get('name'))
-				for num_row_res in result:
-					num_rows = int(num_row_res.num_rows)
+
 				#numrows = result[0]['num_rows']
 
 				type_class = 'EDGE'
 				if(clss.get('superClass') == 'V'):
 					type_class = 'VERTEX'
-				while(num_rows > 0):
-					print 'DELETE '+type_class+' '+clss.get('superClass')+' WHERE @class="'+clss.get('name')+'" LIMIT '+str(self.max_rows_to_delete)
-					self.client.command('DELETE '+type_class+' '+clss.get('superClass')+' WHERE @class="'+clss.get('name')+'" LIMIT '+str(self.max_rows_to_delete))
+				print 'TRUNCATE CLASS '+clss.get('name')+' UNSAFE'
+				self.client.command('TRUNCATE CLASS '+clss.get('name')+' UNSAFE')
 					
-					num_rows = num_rows - self.max_rows_to_delete
 				if drop_class == True:
 					print 'DROP CLASS '+clss.get('name')
 					self.client.command('DROP CLASS '+clss.get('name'))
@@ -386,11 +385,13 @@ class DataPool():
 				continue
 			if data_set_property.get_action_display() == 'SEARCHBOX':
 				search_boxes['param_'+str(data_set_property.id)] = {'name':data_set_property.data_model_property.translated_name,'type':data_set_property.data_model_property.get_property_type_display()}
-
-				
-			property_type_set[data_set_property.data_model_property.orient_name] = {}
-			property_type_set[data_set_property.data_model_property.orient_name]['type'] = data_set_property.data_model_property.get_property_type_display()
-			property_type_set[data_set_property.data_model_property.orient_name]['action'] = data_set_property.get_action_display()
+			add_field = True
+			if  (data_set_property.get_action_display() == 'SEARCHBOX' or data_set_property.get_action_display() == 'FILTER') and data_set_property.show_filter_field != True:
+				add_field = False
+			if add_field :
+				property_type_set[data_set_property.data_model_property.orient_name] = {}
+				property_type_set[data_set_property.data_model_property.orient_name]['type'] = data_set_property.data_model_property.get_property_type_display()
+				property_type_set[data_set_property.data_model_property.orient_name]['action'] = data_set_property.get_action_display()
 			action_list = data_set_property.ACTIONCHOICE
 			class_name = data_set_property.data_stream_class.name
 			if not class_name  in query_data_set:
@@ -410,9 +411,9 @@ class DataPool():
 				temp_data.append(row.oRecordData)
 			#make datatype array
 
-			query_result.append({'query':query,'property_type_set':property_type_set,'graph':data_set.get_chart_type_display(),'x_axis':data_set.x_axis.data_model_property.orient_name,'data':temp_data , 'search_boxes':search_boxes})
+			query_result.append({'query':query,'data_stream':data_set.name,'property_type_set':property_type_set,'graph':data_set.get_chart_type_display(),'x_axis':data_set.x_axis.data_model_property.orient_name,'data':temp_data , 'search_boxes':search_boxes})
 			
-			
+		self.close()
 		return query_result
 		
 

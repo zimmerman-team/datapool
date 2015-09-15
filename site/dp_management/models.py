@@ -148,6 +148,7 @@ class DataSource(models.Model):
 			parser.new_row_on_number_name = self.new_row_on_number_name
 			print data_file
 			parser.parse(data_file)
+		parser.close()
 
 	def create_orient_schema(self):
 		if self.data_type == 1:
@@ -160,6 +161,8 @@ class DataSource(models.Model):
 		parser.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
 		parser.delete_classes(drop_class=True)
 		parser.create_orient_schema()
+		parser.close()
+
 		#parser.connect_old()
 
 	def process(self):
@@ -187,6 +190,7 @@ class DataSource(models.Model):
 					parser.parse(parse_file)
 				except:
 					pass
+			parser.close()
 			return
 
 		if self.old_data_choice == 0:
@@ -206,6 +210,8 @@ class DataSource(models.Model):
 			parser.new_row_on_number = self.new_row_on_number
 			parser.new_row_on_number_name = self.new_row_on_number_name
 			parser.parse(parse_file)
+		parser.close()
+
 
 
 
