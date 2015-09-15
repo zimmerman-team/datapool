@@ -17,6 +17,28 @@ $('.barchart').each(function(){
     barchart.init()
 });
 
+$('.heatmap').each(function(){
+    project_id = $(this).attr('data-id');
+    console.log('project_id '+project_id);
+    var dollymap = new DatapoolMap();
+    dollymap.project_id = project_id;
+    dollymap.filters = datapoolFilters;
+    dollymap.set_map('heatmap_'+project_id);
+});
+
+
+$('.linechart').each(function(){
+    project_id = $(this).attr('data-id');
+    console.log('project_id '+project_id);
+    var linechart = new DatapoolLinechart();
+    linechart.filters = datapoolFilters;
+    linechart.project_id = project_id;
+    linechart.init();
+});
+
+
+
+
 var loading = false;
 
 jQuery("#go").click(function(e){
@@ -24,6 +46,7 @@ jQuery("#go").click(function(e){
     if(loading){
         return false;
     }
+
     loading = true;
 
     datapoolFilters.keywords[0] = jQuery("#keyword-0").val();

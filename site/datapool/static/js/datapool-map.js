@@ -3,7 +3,7 @@ function DatapoolMap(){
     this.basemap = "zimmerman2014.hmpkg505";
     this.tl = null;
     this.filters = null;
-
+    this.project_id = 0;
     this.loaded = 0;
 
 
@@ -32,7 +32,8 @@ function DatapoolMap(){
         // }
 
         jQuery("#"+div_id).css("min-height", "450px");
-        this.map = L.map('heatmap', mapoptions).setView([-1.292066, 36.821946], 11);
+        jQuery("#"+div_id).css("min-width", "450px");
+        this.map = L.map(div_id, mapoptions).setView([-1.292066, 36.821946], 11);
 
         if (zoomposition){
             new L.Control.Zoom({ position: zoomposition }).addTo(this.map);
@@ -70,17 +71,16 @@ function DatapoolMap(){
         if(data){
             this.reDraw(data, heatmapId);
         } else{
-
             this.resetData();
             this.loaded = 0;
             this.getData(data, 0);
-            this.getData(data, 1);
         }
     };
 
     this.createUrl = function(heatmapId){
 
-        var url = '/get_project_chart_data/'+$('#barchart').attr('data-id')+'/heat_map/';
+        var url = '/get_project_chart_data/'+this.pro+'/heat_map/';
+        console.log('get url = '+url);
         return url;
     }
 
@@ -93,7 +93,7 @@ function DatapoolMap(){
             url: url,
             dataType: 'json',
             data:$("#all-data").serialize(),
-            success: function(data){http://i.imgur.com/E3b0aCE.jpg
+            success: function(data){
                 that.formatData(data);
                 that.refresh(data, heatmapId);
             }
@@ -101,7 +101,8 @@ function DatapoolMap(){
     };
 
     this.formatData = function(data){
-            
+        console.log(data)
+
     }
     this.reDraw = function(data, heatmapId){
 
