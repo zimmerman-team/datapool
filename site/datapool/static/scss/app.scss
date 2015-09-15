@@ -47,6 +47,21 @@
 	img {
 		margin:10rem 0;
 	}
+	&.fourofour {
+		background-image:url(/static/img/background-404.png);
+		img {
+			margin: 2rem 0 3rem;
+		}
+		a {
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left:0;
+			top:0;
+			z-index: 99;
+		}
+	}
 }
 
 //login page
@@ -82,6 +97,13 @@
 			font-family: FontAwesome;
 		    content: "\f09a";
 		}
+	}
+}
+
+//404
+.errorchart {
+	img {
+		margin:3rem 0;
 	}
 }
 
