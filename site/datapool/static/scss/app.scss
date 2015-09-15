@@ -47,6 +47,21 @@
 	img {
 		margin:10rem 0;
 	}
+	&.fourofour {
+		background-image:url(/static/img/background-404.png);
+		img {
+			margin: 2rem 0 3rem;
+		}
+		a {
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left:0;
+			top:0;
+			z-index: 99;
+		}
+	}
 }
 
 //login page
@@ -85,6 +100,13 @@
 	}
 }
 
+//404
+.errorchart {
+	img {
+		margin:3rem 0;
+	}
+}
+
 //navigation - left side
 .nav {
 	background: $blue;
@@ -113,6 +135,13 @@
 			color: $white;
 			font-size: .9rem;
 			margin-bottom: .1rem;
+		}
+		img {
+			width: 100%;
+			height: auto;
+			border-radius:50%;
+			border:2px solid $white;
+			margin-left:.8rem;
 		}
 		.subheader {
 			font-size: .5rem;
@@ -298,6 +327,9 @@ button, .button {
 				}
 			}
 			&.edit-datastream {
+				.header {
+					cursor: default;
+				}
 				.actions {
 					float: right;
 					margin-top: -.4rem;
@@ -342,12 +374,21 @@ button, .button {
 .vis-blok {
 	margin-top:1rem;
 	.visualisation {
+		.header {
+			cursor: default;
+		}
 		.content {
 			display: block;
 		}
 	}
 	.save-filters {
 		margin-bottom:0;
+	}
+	.barchart {
+		svg {
+			height:500px;
+			width: 100%;
+		}
 	}
 }
 

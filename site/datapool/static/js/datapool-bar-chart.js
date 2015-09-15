@@ -18,11 +18,12 @@ var DatapoolBarchart = function(){
         this.chart = nv.models.multiBarChart();
         this.chart.x(function(d) { return d[0] })  
         this.chart.y(function(d) { return d[1] }) 
-        this.chart.margin({left: 60, right: 20})
+        this.chart.margin({left: 100})
         //this.chart.useInteractiveGuideline(true)
         //this.chart.showLegend(true)
         this.chart.showYAxis(true)
         this.chart.showXAxis(true)
+        this.chart.height(500)
         // this.chart.interpolate("basis")
       
         this.chart.xAxis    

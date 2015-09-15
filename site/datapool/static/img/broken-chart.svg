@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-24 207.2 379.8 233.8" style="enable-background:new -24 207.2 379.8 233.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;}
+	.st1{opacity:0.8;fill:none;stroke:#D3D3D3;enable-background:new    ;}
+	.st2{opacity:0.8;fill:none;stroke:#969696;enable-background:new    ;}
+	.st3{fill:#80B1D3;enable-background:new    ;}
+	.st4{fill:#1F2B37;enable-background:new    ;}
+</style>
+<defs  xmlns="http://www.w3.org/1999/xhtml">
+	<style  type="text/css">
+		<![CDATA[
+body { padding: 50px; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 14px; line-height: 1.5; font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(119, 119, 119); font-weight: 300; }
+h1, h2, h3, h4, h5, h6 { color: rgb(34, 34, 34); margin: 0px 0px 20px; }
+p, ul, ol, table, pre, dl { margin: 0px 0px 20px; }
+h1, h2, h3 { line-height: 1.1; }
+h1 { font-size: 28px; }
+h2 { color: rgb(57, 57, 57); }
+h3, h4, h5, h6 { color: rgb(73, 73, 73); }
+a { color: rgb(51, 153, 204); font-weight: 400; text-decoration: none; }
+a small { font-size: 11px; color: rgb(119, 119, 119); margin-top: -0.6em; display: block; }
+.wrapper { width: 960px; margin: 0px auto; }
+blockquote { border-left-width: 1px; border-left-style: solid; border-left-color: rgb(229, 229, 229); margin: 0px; padding: 0px 0px 0px 20px; font-style: italic; }
+code, pre { font-family: Monaco, 'Bitstream Vera Sans Mono', 'Lucida Console', Terminal; color: rgb(51, 51, 51); font-size: 12px; }
+pre { padding: 8px 15px; border-radius: 5px; border: 1px solid rgb(229, 229, 229); overflow-x: auto; background: rgb(248, 248, 248); }
+.chartWindow { border-radius: 5px; border: 1px solid rgb(229, 229, 229); margin-bottom: 15px; overflow-x: auto; }
+dt { color: rgb(68, 68, 68); font-weight: 700; }
+th { color: rgb(68, 68, 68); }
+img { max-width: 100%; }
+header { width: 270px; float: left; position: fixed; }
+header ul { list-style: none; height: 40px; padding: 0px; border-radius: 5px; border: 1px solid rgb(210, 210, 210); box-shadow: rgb(255, 255, 255) 0px 1px 0px inset, rgba(0, 0, 0, 0.027451) 0px -1px 0px inset; width: 270px; background: -webkit-linear-gradient(top, rgb(248, 248, 248) 0%, rgb(221, 221, 221) 100%); }
+header li { width: 89px; float: left; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(210, 210, 210); height: 40px; }
+header ul a { line-height: 1; font-size: 11px; color: rgb(153, 153, 153); display: block; text-align: center; padding-top: 6px; height: 40px; }
+strong { color: rgb(34, 34, 34); font-weight: 700; }
+header ul li + li { width: 88px; border-left-width: 1px; border-left-style: solid; border-left-color: rgb(255, 255, 255); }
+header ul li + li + li { border-right-style: none; width: 89px; }
+header ul a strong { font-size: 14px; display: block; color: rgb(34, 34, 34); }
+section { width: 600px; float: right; padding-bottom: 50px; }
+small { font-size: 11px; }
+hr { border: 0px; height: 1px; margin: 0px 0px 20px; background: rgb(229, 229, 229); }
+footer { width: 270px; float: left; position: fixed; bottom: 50px; }
+div#examples img { border-radius: 5px; border: 1px solid rgb(210, 210, 210); margin: 0px 5px 0px 0px; padding: 5px; }
+.highlight { background: rgb(255, 255, 255); }
+.highlight .c { color: rgb(153, 153, 136); font-style: italic; }
+.highlight .err { color: rgb(166, 23, 23); background-color: rgb(227, 210, 210); }
+.highlight .k { font-weight: bold; }
+.highlight .o { font-weight: bold; }
+.highlight .cm { color: rgb(153, 153, 136); font-style: italic; }
+.highlight .cp { color: rgb(153, 153, 153); font-weight: bold; }
+.highlight .c1 { color: rgb(153, 153, 136); font-style: italic; }
+.highlight .cs { color: rgb(153, 153, 153); font-weight: bold; font-style: italic; }
+.highlight .gd { color: rgb(0, 0, 0); background-color: rgb(255, 221, 221); }
+.highlight .gd .x { color: rgb(0, 0, 0); background-color: rgb(255, 170, 170); }
+.highlight .ge { font-style: italic; }
+.highlight .gr { color: rgb(170, 0, 0); }
+.highlight .gh { color: rgb(153, 153, 153); }
+.highlight .gi { color: rgb(0, 0, 0); background-color: rgb(221, 255, 221); }
+.highlight .gi .x { color: rgb(0, 0, 0); background-color: rgb(170, 255, 170); }
+.highlight .go { color: rgb(136, 136, 136); }
+.highlight .gp { color: rgb(85, 85, 85); }
+.highlight .gs { font-weight: bold; }
+.highlight .gu { color: rgb(128, 0, 128); font-weight: bold; }
+.highlight .gt { color: rgb(170, 0, 0); }
+.highlight .kc { font-weight: bold; }
+.highlight .kd { font-weight: bold; }
+.highlight .kn { font-weight: bold; }
+.highlight .kp { font-weight: bold; }
+.highlight .kr { font-weight: bold; }
+.highlight .kt { color: rgb(68, 85, 136); font-weight: bold; }
+.highlight .m { color: rgb(0, 153, 153); }
+.highlight .s { color: rgb(221, 17, 68); }
+.highlight .na { color: rgb(0, 128, 128); }
+.highlight .nb { color: rgb(0, 134, 179); }
+.highlight .nc { color: rgb(68, 85, 136); font-weight: bold; }
+.highlight .no { color: rgb(0, 128, 128); }
+.highlight .ni { color: rgb(128, 0, 128); }
+.highlight .ne { color: rgb(153, 0, 0); font-weight: bold; }
+.highlight .nf { color: rgb(153, 0, 0); font-weight: bold; }
+.highlight .nn { color: rgb(85, 85, 85); }
+.highlight .nt { color: rgb(0, 0, 128); }
+.highlight .nv { color: rgb(0, 128, 128); }
+.highlight .ow { font-weight: bold; }
+.highlight .w { color: rgb(187, 187, 187); }
+.highlight .mf { color: rgb(0, 153, 153); }
+.highlight .mh { color: rgb(0, 153, 153); }
+.highlight .mi { color: rgb(0, 153, 153); }
+.highlight .mo { color: rgb(0, 153, 153); }
+.highlight .sb { color: rgb(221, 17, 68); }
+.highlight .sc { color: rgb(221, 17, 68); }
+.highlight .sd { color: rgb(221, 17, 68); }
+.highlight .s2 { color: rgb(221, 17, 68); }
+.highlight .se { color: rgb(221, 17, 68); }
+.highlight .sh { color: rgb(221, 17, 68); }
+.highlight .si { color: rgb(221, 17, 68); }
+.highlight .sx { color: rgb(221, 17, 68); }
+.highlight .sr { color: rgb(0, 153, 38); }
+.highlight .s1 { color: rgb(221, 17, 68); }
+.highlight .ss { color: rgb(153, 0, 115); }
+.highlight .bp { color: rgb(153, 153, 153); }
+.highlight .vc { color: rgb(0, 128, 128); }
+.highlight .vg { color: rgb(0, 128, 128); }
+.highlight .vi { color: rgb(0, 128, 128); }
+.highlight .il { color: rgb(0, 153, 153); }
+.type-csharp .highlight .k { color: rgb(0, 0, 255); }
+.type-csharp .highlight .kt { color: rgb(0, 0, 255); }
+.type-csharp .highlight .nf { color: rgb(0, 0, 0); font-weight: normal; }
+.type-csharp .highlight .nc { color: rgb(43, 145, 175); }
+.type-csharp .highlight .nn { color: rgb(0, 0, 0); }
+.type-csharp .highlight .s { color: rgb(163, 21, 21); }
+.type-csharp .highlight .sc { color: rgb(163, 21, 21); }
+			]]>
+	</style>
+</defs>
+<g transform="translate(570,0)">
+	<line class="st0" x1="-239.1" y1="432.9" x2="-239.1" y2="437"/>
+</g>
+<path class="st0" d="M-17.9,437v-4.1h348.8v4.1"/>
+<g transform="translate(0,360)">
+	<line class="st1" x1="-17.9" y1="72.9" x2="330.9" y2="72.9"/>
+</g>
+<g transform="translate(0,305)">
+	<line class="st2" x1="-17.9" y1="90.3" x2="330.9" y2="90.3"/>
+</g>
+<g transform="translate(0,250)">
+	<line class="st2" x1="-17.9" y1="107.7" x2="330.9" y2="107.7"/>
+</g>
+<g transform="translate(0,195)">
+	<line class="st2" x1="-17.9" y1="125" x2="330.9" y2="125"/>
+</g>
+<g transform="translate(0,139.99999999999997)">
+	<line class="st2" x1="-17.9" y1="142.4" x2="330.9" y2="142.4"/>
+</g>
+<g transform="translate(0,85)">
+	<line class="st2" x1="-17.9" y1="159.8" x2="330.9" y2="159.8"/>
+</g>
+<g transform="translate(0,30)">
+	<line class="st2" x1="-17.9" y1="177.2" x2="330.9" y2="177.2"/>
+</g>
+<path d="M-17.9,207.2L-17.9,207.2v225.7l0,0"/>
+<path class="st0" d="M-22,207.2h4.1v225.7H-22"/>
+<rect id="dimple-supermarkets-regular-supermarkets---" x="21" y="215.8" transform="matrix(-0.9276 -0.3735 0.3735 -0.9276 -40.1851 640.0485)" class="st3" width="41.9" height="216.3"/>
+<rect id="dimple-supermarkets-budget-supermarkets---" x="186.5" y="260.5" transform="matrix(-0.6484 0.7613 -0.7613 -0.6484 612.058 427.1694)" class="st3" width="41.9" height="188.8"/>
+<rect id="dimple-supermarkets-premium-supermarkets---" x="101" y="405.6" class="st3" width="41.9" height="26.5"/>
+<rect id="dimple-hypermarkets-budget-hypermarkets---" x="251.4" y="259" transform="matrix(-0.6768 0.7362 -0.7362 -0.6768 716.5914 391.3915)" class="st4" width="41.9" height="188.1"/>
+<rect id="dimple-hypermarkets-regular-hypermarkets---" x="120.1" y="283.5" transform="matrix(-0.5435 0.8394 -0.8394 -0.5435 526.8776 450.1734)" class="st4" width="41.9" height="169.8"/>
+<rect id="dimple-hypermarkets-premium-hypermarkets---" x="53.3" y="363.8" transform="matrix(-0.5092 -0.8607 0.8607 -0.5092 -229.6785 663.1698)" class="st4" width="41.9" height="66.6"/>
+</svg>

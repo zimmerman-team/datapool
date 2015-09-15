@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Data Pool{% endblock title %}</title>
+    <title>Data Pool | 404 Not found</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href= "{% static "stylesheets/flexselect.css" %}" />
     <link rel="stylesheet" href="{% static "stylesheets/jquery.timepicker.css" %}" />
@@ -19,92 +19,45 @@
 
     <!-- start main wrapper row -->
 
-    <div class="row">
+    <div class="row graphic-header fourofour">
+        <div class="columns small-2 small-centered">
+            <img src="/static/img/logo.svg">
+            <a href="/"></a>
+        </div>
+    </div>
 
-      {% block sidebar %}
-      <!-- start left side -->
+    <div class="row main-content">
 
-      <div class="columns small-2 nav">
+      <div class="columns small-12">
 
-        <div class="row"> 
-
-          <nav role="navigation">
-
-            <h1><a href="/"><img src="/static/img/logo.svg"></a></h1>
-
-            <div class="user-area row">
-              <div class="columns small-4">
-                <img src="/static/img/user.png">
-              </div>
-              <div class="columns small-8">
-                <h5><span class="italic">Welcome!</span> John Doe</h5>
-                <h6 class="subheader">Administrator</h6>
-                <button class="button tiny">Edit profile</button>
-              </div>
-            </div>
-
-            <ul class="side-nav">
-              {% block navigation %}
-<!--               <li><a href="/add_data"><i class="fa fa-archive"></i>Data sets<i class="fa fa-chevron-right"></i></a></li>
- -->              <li><a href="/projects"><i class="fa fa-file-o"></i>Projects<i class="fa fa-chevron-right"></i></a></li>
-              {% endblock %}
-            </ul>
-          </nav>
-
+        <div class="row">
+          <div class="columns small-6 medium-5 large-4 small-centered text-center errorchart">
+            <img src="/static/img/broken-chart.svg">
+          </div>
+        </div>
+        <div class="row">
+          <div class="columns small-12 medium-10 large-8 small-centered text-center">
+            <h1>Something went wrong there...</h1>
+            <p>The page you are looking for cannot be found.</p>
+          </div>
         </div>
 
       </div>
-
-      <!-- end left side -->
-
-      {% endblock %}
-
-      {% block rightside %}
-
-      <!-- start right side -->
-
-      <div class="columns small-10">
-
-        <div class="row top header">
-          <div class="columns small-12">
-            <span class="user">John Doe</span>
-          </div>
-        </div>
-
-        <div class="row main-content">
-
-          <div class="columns small-12">
-
-            {% block content %}
-            {% endblock %}
-
-          </div>
-
-        </div>
-
-      <!--start footer -->
-        <footer class="row">
-          <div class="large-4 columns large-centered">
-            <div class="row">
-              <div class="large-6 columns">
-                <a href="http://www.zimmermanzimmerman.nl" target="_blank"><img src="/static/img/zz-logo.svg"></a>
-              </div>
-              <div class="large-6 columns">
-                <a href="http://www.leidenuniv.nl" target="_blank"><img src="/static/img/leiden.svg"></a>
-              </div>
-            </div>
-          </div>
-        </footer>
-
-      </div>
-
-      <!-- end right side -->
-
-      {% endblock %}
 
     </div>
 
-    <!-- end main wrapper row -->
+    <footer class="row">
+      <div class="large-4 columns large-centered">
+        <div class="row">
+          <div class="large-6 columns">
+            <a href="http://www.zimmermanzimmerman.nl" target="_blank"><img src="/static/img/zz-logo.svg"></a>
+          </div>
+          <div class="large-6 columns">
+            <a href="http://www.leidenuniv.nl" target="_blank"><img src="/static/img/leiden.svg"></a>
+          </div>
+        </div>
+      </div>
+    </footer>
       
     <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}" type="text/javascript"></script>
     <script src="{% static "js/liquidmetal.js" %}" type="text/javascript"></script>
