@@ -183,7 +183,10 @@ class DataSource(models.Model):
 				parser.delimiter = self.csv_seprator
 				parser.new_row_on_number = self.new_row_on_number
 				parser.new_row_on_number_name = self.new_row_on_number_name
-				parser.parse(parse_file)
+				try:
+					parser.parse(parse_file)
+				except:
+					pass
 			return
 
 		if self.old_data_choice == 0:
