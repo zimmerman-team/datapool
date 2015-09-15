@@ -379,6 +379,9 @@ button, .button {
 		}
 		.content {
 			display: block;
+			&.no-padding {
+				padding:0;
+			}
 		}
 	}
 	.save-filters {
