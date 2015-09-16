@@ -110,6 +110,7 @@ var DatapoolBarchart = function(){
             dataType: 'json',
             data:$("#bar-chart-search-"+this.project_id).serialize(),
             success: function(data){
+                
                 var formattedData = that.reformatData(data);
                 if(that.search_boxes_loaded == false){
                     that.addSearchBoxes()

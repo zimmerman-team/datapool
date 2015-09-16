@@ -9,7 +9,7 @@
           <div class="columns small-4 title">{{project.name}}</div>
           <div class="columns small-4 subtitle">{{project.sub_title}}</div>
           <div class="columns small-4 datastreams">
-            <div>Datastreams: XX</div>
+            <div>Datastreams: {{ project.data_streams.count }}</div>
             <div class="actions">
               <button class="button tiny configure">Configure</button>
               <button class="btn alert tiny kill" data-project-id='{{project.id}}'>Delete</button>
@@ -46,7 +46,8 @@
 
         <div class="vis-blok" id='visualize-project-{{project.id}}'>
           <!--start van een visualisatie -->
-          <div class="row visualisation">
+          {% if 'bar_chart' in chart_types %}
+          <div class="row visualisation" id='vis-barchart-{{project.id}}'>
             <div class="columns small-3">
               <div class="panel">
                 <div class="header">
@@ -80,9 +81,11 @@
               </div>
             </div>
           </div>
+          {% endif %}
           <!-- eind van een visualisatie -->
                <!--start van een visualisatie -->
-          <div class="row visualisation">
+               {% if 'heat_map' in chart_types %}
+          <div class="row visualisation" id='vis-heatmap-{{project.id}}'>
             <div class="columns small-3">
               <div class="panel">
                 <div class="header">
@@ -116,6 +119,7 @@
               </div>
             </div>
           </div>
+          {% endif %}
           <!-- eind van een visualisatie -->
          
         </div>

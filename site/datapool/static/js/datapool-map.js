@@ -96,10 +96,12 @@ function DatapoolMap(){
             dataType: 'json',
             data:$("#heatmap-search-"+this.project_id).serialize(),
             success: function(data){
+                
                 data = that.formatData(data);
                  if(that.search_boxes_loaded == false){
                     that.addSearchBoxes()
                 }
+
                 that.refresh(data, heatmapId);
             }
         });
