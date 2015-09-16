@@ -72,9 +72,7 @@ var DatapoolBarchart = function(){
             //console.log('data_set = ');
            // console.log(data_set);
             for(var i = 0; i < data_set.length;i++){
-                if(data_set[i][x_axis] == undefined){
-                    continue;
-                }
+                
                 for(type in types){
                     if(type != x_axis){
                         formattedData[type+'_'+data_set_name].push([data_set[i][x_axis],data_set[i][type]]);
