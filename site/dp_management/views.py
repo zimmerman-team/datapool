@@ -250,9 +250,9 @@ def get_project_chart_data(request,project_id,chart_type):
 	return_arr = []
 	pprint.pprint(request.POST)
 	print 'is post'
-	datapool = DataPool()
 	for data_set_stream in project.data_streams.all():
 		if data_set_stream.get_chart_type_display() == chart_type:
+			datapool = DataPool()
 			return_arr = return_arr + datapool.get_query_data(data_set_stream,request.GET)
 	return HttpResponse(json.dumps(return_arr))
 
