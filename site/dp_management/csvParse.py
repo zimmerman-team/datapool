@@ -8,7 +8,32 @@ import datetime
 import re
 
 from dateutil.parser import parse as date_parse
+"""
+	class for importing CSV files, sepertator , can be set
+	it has the new row on number functionality
+	if this is set it will generate a new row if the column name is a number 
+	This is usefull when the data set has year as columns
+	for example: 	indicator, 	location, 	2001,	2002,	2003,	2004
+					'poverty',	'kenya',	23,		43,		12,		54
+					'riches',	'kenya',	33,		53,		22,		64
 
+	with new_row_on_number = True
+	and row_on_number_column_name = 'year'
+	this can be transformed into 
+					indicator, 	location, 	year, 	year_value
+					'poverty',	'kenya',	2001,	23
+					'poverty',	'kenya',	2002,	43
+					'poverty',	'kenya',	2003,	12
+					'poverty',	'kenya',	2004,	54
+					'riches',	'kenya',	2001,	33
+					'riches',	'kenya',	2002,	53
+					'riches',	'kenya',	2003,	22
+					'riches',	'kenya',	2004,	64
+
+	this is a lot better for querying and grouping by year.
+
+
+"""
 class CsvImport(DataPool):
 
 	name_cvs = ''
@@ -27,24 +52,23 @@ class CsvImport(DataPool):
 
 	def parse(self,file):
 		rownum = 0
-		self.class_name = self.prefix
+		self.class_name = self.prefix #if csv the table (class) nae is the prefix
 		                                                                  
 		reader = csv.reader(file, delimiter=self.delimiter.encode('ascii'), quotechar=self.quotechar.encode('ascii'))
-		for row in reader:
+		for row in reader:			
 			if rownum == 0:
 				self.header = row
 
 
 			else:
 				if rownum%1000 == 0:
-					print 'thousand rows parsed'
+					print 'thousand rows parsed'#just for debugging to see how fast it's parsing , can be removed 
 				colnum = 0
-				#print "select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1"
 				if self.class_name in self.schema_classes:
-					class_cluster_id = self.schema_classes[self.class_name]['cluster_id']
-					print class_cluster_id
+					class_cluster_id = self.schema_classes[self.class_name]['cluster_id'] # get the cluster id stored in the django model
 				else:
-					cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1")
+					# if not set get ist from orient and create django object 
+					cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1") 
 					for cluster_id in cluster_ids:
 						try:
 							pprint.pprint(cluster_id.classes)
@@ -56,6 +80,7 @@ class CsvImport(DataPool):
 							print 'class not found'
 							class_cluster_id = self.create_django_class(self.header)
 				if self.create_schema == True :
+					#if run to create schema break here and do not insert data TODO : seperate schema creation from data insertion 
 					break
 				rec_data = {}
 				rec_data_row_on_number = {}
@@ -71,17 +96,17 @@ class CsvImport(DataPool):
 							colnum += 1
 							continue
 						if self.new_row_on_number == True:
+							#if new_ro_on number is set to True , make a new Row for each number (see class comment)
 							if str(attr_key).isdigit():
 								col_obj = self.schema_properties[self.prefix+'.year_value']['django_object']
-								col = self.run_regex(col,col_obj)
+								col = self.run_regex(col,col_obj)# run regular expressions
 								rec_data_row_on_number[self.header[colnum]] = self.escape_orientdb(col)
 								colnum += 1
 								continue
-						col_obj = self.schema_properties[self.prefix+'.'+self.format_attrib_name(attr_key)]['django_object']
-						print col+' is column'
-						print str(col_obj.property_type)+' is property type'
+						col_obj = self.schema_properties[self.prefix+'.'+self.format_attrib_name(attr_key)]['django_object'] # get django object for property
 						col = self.run_regex(col,col_obj)
 						rec_key = col_obj.orient_name
+						# try to set coumn with the right data type
 						try:
 							if col_obj.property_type == 1:
 								rec_data[self.format_attrib_name(rec_key)] =  int(col)
@@ -107,6 +132,7 @@ class CsvImport(DataPool):
 				 		
 					colnum += 1
 				for number_col in rec_data_row_on_number:
+					#make data for seprerate columns that are now rows
 					rec_data['year'] = int(number_col);
 					rec_data['year_value'] = rec_data_row_on_number[number_col];
 					rec = {'@'+self.class_name:rec_data}
@@ -119,6 +145,7 @@ class CsvImport(DataPool):
 						pprint.pprint(rec)
 						print 'failed '+self.class_name
 				else:
+					#create regular record in orient db
 					rec = {'@'+self.class_name:rec_data}
 					#pprint.pprint(rec)
 					#pprint.pprint(self.header)
@@ -132,10 +159,12 @@ class CsvImport(DataPool):
 		            
 			rownum += 1
 
+	"""
+		create the class for django , this is not the same as the one in genericDatapool because of the new_row_on_number
+		
+	"""
 	def create_django_class(self,first_row):
-	   	#cluster_id = self.client.command('create class '+self.class_name+' EXTENDS V')
-	   	#cluster_ids = self.client.command("select classes[name='"+self.class_name+"'].defaultClusterId FROM 0:1")
-		#cluster_id = cluster_ids[0].classes
+	   	
 	   	data_model_class = models.DataModelClass()
 		data_model_class.name = self.class_name
 		data_model_class.translated_name = self.class_name
@@ -150,13 +179,9 @@ class CsvImport(DataPool):
 	   	colnum = 0
 	   	if(self.new_row_on_number):
 	   		self.create_property_model(self.class_name,self.row_on_number_column_name,data_model_class)
-	   		#self.client.command('create property '+self.class_name+'.'+self.row_on_number_column_name+' INTEGER')
 	   		
-	   		#print 'create property '+self.class_name+'.'+self.row_on_number_column_name+' INTEGER'
 			self.create_property_model(self.class_name,self.row_on_number_column_name+'_value',data_model_class)
-	   		#self.client.command('create property '+self.class_name+'.year_value STRING')
 	   		
-	   		#print 'create property '+self.class_name+'.year_value STRING'
 
 		for attr_key in first_row:
 			attr_key = str(attr_key).replace(self.quotechar,'')
@@ -171,9 +196,6 @@ class CsvImport(DataPool):
 			self.header[colnum] = attr_key
 			print 'create property '+self.class_name+'.'+self.format_attrib_name(attr_key)+' STRING'
 			self.create_property_model(self.class_name,self.format_attrib_name(attr_key),data_model_class)
-			# self.client.command('create property '+self.class_name+'.'+self.format_attrib_name(attr_key)+' STRING')
-			# if 'date' in attr_key.lower():
-			# 	self.client.command('create property '+self.class_name+'.'+self.format_attrib_name(attr_key)+'__iso__'+' DATETIME')
 			colnum += 1
 		return data_model_class
 

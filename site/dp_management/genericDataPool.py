@@ -10,7 +10,10 @@ import pprint
 from filegrabber import FileGrabber
 import models
 
+"""
+	generic class with datapool functions for OrientDB
 
+"""
 class DataPool():
 	db_name = 'datapool'
 	user_name = 'root'
@@ -29,6 +32,9 @@ class DataPool():
 
 
 
+	"""
+		create class in orientdb
+	"""
 	def create_class(self,data_model_class):
 
 		cluster_ids = self.client.command('create class '+data_model_class.orient_name+' EXTENDS V ')
@@ -40,6 +46,9 @@ class DataPool():
 		data_model_class.save()
 		return cluster_id
 
+	"""
+		create model in django
+	"""
 	def create_model(self,class_name):
 		class_name = class_name.strip()
 		data_model_class = models.DataModelClass()
@@ -54,6 +63,11 @@ class DataPool():
 		self.schema_classes[class_name]['django_object'] = data_model_class
 		return data_model_class
 		
+
+	"""
+		create property django model
+	"""
+
 	def create_property_model(self,class_name,property_name,data_model_class):
 		property_name = property_name.strip()
 		prop_name =self.format_attrib_name(property_name)
@@ -72,7 +86,11 @@ class DataPool():
 			data_model_class_property_iso_.name = prop_name+'__iso__'
 			data_model_class_property_iso_.type = 'DATETIME'
 			data_model_class_property_iso_.save()
-	
+
+
+	"""
+		create property in orientdb
+	"""
 	def create_property(self,data_model_class_property):
 		type_conversion ={'STRING':'STRING',
 	    				'INTEGER':'LONG',
@@ -97,7 +115,9 @@ class DataPool():
 
 
 
-
+	"""
+		create edge in orient db
+	"""
 	def create_edge(self,from_rec,to_rec,edge_name,parent,child):
 		edge_command = "CREATE edge "+edge_name.encode(self.encoding)+" from "+from_rec+" to "+to_rec
 		try:
@@ -106,6 +126,9 @@ class DataPool():
 			self.create_edge_object(edge_name,parent,child)
 			self.client.command(edge_command)
 	
+	"""
+		create edge class in orientdb
+	"""
 	def create_edge_object(self,django_edge):
 		edge_command = "create class "+django_edge.name.encode(self.encoding)+" extends E"
 
@@ -116,6 +139,9 @@ class DataPool():
 		self.client.command('CREATE PROPERTY '+django_edge.name.encode(self.encoding)+'.in LINK '+django_edge.class_in.name.encode(self.encoding))
 		
 
+	"""
+		create edge class in django
+	"""
 	def create_edge_model(self,edge_name,parent_object,child_object):
 		django_edge = models.DataModelEdge()
 		django_edge.name = edge_name
@@ -166,6 +192,10 @@ class DataPool():
 					self.client.command('DROP CLASS '+clss.get('name'))
 
 
+	"""
+		return STRING
+		try and format the tag name to properly work in orientdb  (TODO: this does not check for lenghts or keywords)
+	"""
 	def format_class_name(self,tag_name):
 		#replace minus
 		tag_name = re.sub("(\{.*\})","",tag_name) 
@@ -187,12 +217,18 @@ class DataPool():
 		tag_name = tag_name.replace('-','')
 		return tag_name.replace(' ','').encode(self.encoding)
 
+	"""
+		beginning of escaping 
+	"""
 	def escape_orientdb(self,text):
 		escapechars = '@()"%'
 		for special_char in escapechars:
 			text = text.replace(special_char,'\\'+special_char)
 		return text
 
+	"""
+		create structure for tree view
+	"""
 	def make_structure(self):
 		query = 'SELECT classes FROM 0:1'
 		db_classes = self.client.command(query)
@@ -245,7 +281,9 @@ class DataPool():
 		self.file_to_parse = file_grabber.get_the_file(url)
 		
 
-
+	"""
+		create tree
+	"""
 	def make_tree(self,element_name,child_data,tree_dict,classes):
 
 		tree_dict[element_name] = {}
@@ -290,7 +328,10 @@ class DataPool():
 		
 		sub_structure_tree.append(element_data)
 
+	"""
+		create pivot pont between data set NOT NUSED YET IMPLEMENTATION NOT COMPLETE
 
+	"""
 	def create_pivot(self,from_class,to_class,from_match, to_match):
 		class_name = from_class+"_"+to_class
 		query = 'CREATE CLASS '+class_name+'_pivot EXTENDS V'
@@ -358,6 +399,10 @@ class DataPool():
 				continue
 			self.schema_edges[data_model_edge.name] = data_model_edge
 
+	"""
+
+		create the schema in orient db from the djnago models
+	"""
 	def create_orient_schema(self):
 		source = self.source
 		#get classes
@@ -373,6 +418,10 @@ class DataPool():
 		for data_model_edge in models.DataModelEdge.objects.filter(data_source=source).all():
 			self.create_edge_object(data_model_edge)
 
+
+	"""
+		query orient db
+	"""
 	def get_query_data(self,data_set,post_data):
 		connection = data_set.data_stream.data_connection
 		self.connect(connection.name,connection.username,connection.password,connection.host,connection.port,self.prefix)
@@ -428,7 +477,9 @@ class DataPool():
 
 
 
-
+"""
+	clas for managing query building
+"""
 class QueryData:
 	
 	class_name = ''
@@ -442,7 +493,9 @@ class QueryData:
 			self.fields[action[1]] = []
 
 
-
+	"""
+		make the query based on the values of DataStreamClass and DataStreamProperties
+	"""
 	def make_query(self):
 		pprint.pprint(self.parameters)
 		#set filter fields

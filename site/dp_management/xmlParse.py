@@ -11,7 +11,12 @@ import pprint
 import models
 
 
-
+"""
+	class for importing  XML files
+	This is not nearly as developed as the CSV parser since thee have been no files for testing
+	work well with iati files
+	but front end implementation(rendering , query builder etc.) is CSV for now!!!!!! 
+"""
 class xmlImport(DataPool):
 	
 	
@@ -48,8 +53,8 @@ class xmlImport(DataPool):
 	 		rec_data[self.format_attrib_name(attr_key)] =  element.get(attr_key)
 	 		if 'date' in attr_key:
 	 			try:
-	 				date = parse( element.get(attr_key))
-	 				rec_data[self.format_attrib_name(attr_key)+'__iso__'] = element.get(attr_key)
+	 				date = parse( element.get(attr_key)) #this is for checkig if it's a valid data format
+	 				rec_data[self.format_attrib_name(attr_key)+'__iso__'] = element.get(attr_key) #add to record data
 	 			except:
 	 				print 'parsedate failed '+element.get(attr_key)
 	 				pass

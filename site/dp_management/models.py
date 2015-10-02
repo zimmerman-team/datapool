@@ -346,9 +346,9 @@ class DataProject(models.Model):
 class DataSetStream(models.Model):
 	CHART_CHOICE = (
 	    (0, 'heat_map'),
-	    (1, 'country_map'),
+	    #(1, 'country_map'),
 	    (2, 'bar_chart'),
-	    (3,	'line_chart'),
+	    #(3,	'line_chart'),
 	    #(4,	'MAX'),
 	    #(5,	'SUM'),
 	    #(6, 'AVG'),
