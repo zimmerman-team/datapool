@@ -140,7 +140,7 @@ INSTALLED_APPS = (
     'djangocms_picture',
     'djangocms_teaser',
     'djangocms_video',
-    'djangocms_text_ckeditor',
+#    'djangocms_text_ckeditor',
     'reversion',
     'datapool',
     'dp_management',
@@ -186,10 +186,15 @@ DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'datapool',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': 'solaria07',                  # Not used with sqlite3.
+        'USER': 'datapool',                      # Not used with sqlite3.
+        'PASSWORD': 'datapool',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    },
+    'orient': {
+        'NAME': 'datapool',
+        'USER': 'datapool',
+        'PASSWORD': 'datapool',
     }
 }
 
